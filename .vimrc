@@ -1,0 +1,9 @@
+set clipboard=unnamed
+call plug#begin('~/.vim/plugins')
+Plug 'scrooloose/nerdtree'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+Plug 'othree/html5.vim'
+Plug 'powerline/powerline'
+call plug#end()
