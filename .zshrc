@@ -1,5 +1,4 @@
-# Created by newuser for 5.5.1
 alias tick="ping www.google.de"
-alias bashrc="vi ~/.bash_profile"
+alias zshrc="vim ~/.zshrc"
 alias finder="open ~"
-
+alias firefox="/Applications/Firefox.app/Contents/MacOs/firefox"
