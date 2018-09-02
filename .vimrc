@@ -1,4 +1,5 @@
-set clipboard=unnamed
+syntax on
+colorscheme citylights
 call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
