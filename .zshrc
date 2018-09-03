@@ -6,7 +6,7 @@ compinit
 setopt correctall
 
 #set prompt text 
-export PS1="[%T] %d : "
+export PS1=$'\e[0;34m$ %d \e[0m'
 
 #set alias
 alias tick="ping www.google.de"
