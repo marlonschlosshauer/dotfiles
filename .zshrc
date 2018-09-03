@@ -13,5 +13,5 @@ alias tick="ping www.google.de"
 alias zshrc="vim ~/.zshrc"
 alias finder="open ~"
 alias firefox="/Applications/Firefox.app/Contents/MacOs/firefox"
-
-
+alias rasp="ping 192.168.2.106"
+alias reload=". ~/.zshrc"
