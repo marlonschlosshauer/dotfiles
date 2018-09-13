@@ -18,4 +18,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
 Plug 'powerline/powerline'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
