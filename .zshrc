@@ -14,6 +14,7 @@ export TERM=xterm-256color
 #set alias
 alias tick="ping www.google.de"
 alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 alias finder="open ~"
 alias rasp="ping 192.168.2.106"
 alias sshrasp="ssh pi@192.168.2.106"
