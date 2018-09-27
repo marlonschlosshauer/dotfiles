@@ -11,6 +11,9 @@ export PS1=$'\e[0;34m$ %d \e[0m'
 #improve color support
 export TERM=xterm-256color
 
+#Enable name generation for simpler grep 
+setopt extendedglob
+
 #set alias
 alias tick="ping www.google.de"
 alias zshrc="vim ~/.zshrc"
