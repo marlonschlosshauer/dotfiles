@@ -8,7 +8,7 @@ set laststatus=2
 
 syntax enable
 syntax on
-colorscheme citylights
+colorscheme chroma 
 set background=dark
 
 call plug#begin('~/.vim/plugins')
