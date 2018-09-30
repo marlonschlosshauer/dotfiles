@@ -12,11 +12,13 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
-;Install EVIL
+;Install evil
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
 
+;Install evil-surround
+(require 'evil-surround)
 
 ;Install undo-tree
 (global-undo-tree-mode)
@@ -26,10 +28,18 @@
 (global-set-key [(control ?.)] 'goto-last-change)
 (global-set-key [(control ?,)] 'goto-last-change-reverse)
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (badwolf-theme undo-tree omnisharp goto-chg company))))
+    (evil-magit magit evil-surround badwolf-theme undo-tree omnisharp goto-chg company))))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 ;;Plugin setup
@@ -54,7 +64,10 @@
     (evil-define-key 'normal package-menu-mode-map (kbd "m") #'package-menu-mark-install)
     (evil-define-key 'normal package-menu-mode-map (kbd "u") #'package-menu-mark-unmark)
     (evil-define-key 'normal package-menu-mode-map (kbd "x") #'package-menu-execute))
-)
+  )
+
+;Pull up magit
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;;Graphical settings
 ;Load theme
@@ -75,3 +88,6 @@
 
 ;Show line numbers
 (global-linum-mode t)
+
+;;Change feel
+(setq default-tab-width 4)
