@@ -25,6 +25,9 @@
 
 ;Install goto-chg
 (require 'goto-chg)
+
+;;Plugin setup
+;Setup goto-chg (for omnisharp)
 (global-set-key [(control ?.)] 'goto-last-change)
 (global-set-key [(control ?,)] 'goto-last-change-reverse)
 (custom-set-variables
@@ -42,7 +45,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;Plugin setup
 ;Enable company (and C# code completion)
 (add-hook 'after-init-hook 'global-company-mode)
 (eval-after-load
