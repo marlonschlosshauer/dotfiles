@@ -1,6 +1,4 @@
 ;; Set enviroment variables
-;; example of setting env var named “path”, by appending a new path to existing path
-
 (setenv "PATH"
 	(concat
 	 "/Users/akira/Documents/templates/c#/" ";"
@@ -21,7 +19,7 @@
 	 )
 	)
 
-;; Install Plugins
+;; Install package manager
 ;MEPLA package manager stuff, I think.
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -35,9 +33,9 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
-;Install evil
+;; Install Plugins
 (add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
+(require 'evil) ;Install evil
 (evil-mode 1)
 
 ;Install undo-tree
@@ -46,7 +44,13 @@
 ;Install goto-chg
 (require 'goto-chg)
 
-;;Plugin setup
+;Install evil-surround
+(require 'evil-surround)
+
+
+
+;; Plugin setup
+
 ;Setup goto-chg (for omnisharp)
 (global-set-key [(control ?.)] 'goto-last-change)
 (global-set-key [(control ?,)] 'goto-last-change-reverse)
@@ -68,7 +72,9 @@
 ;Pull up magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;;Graphical settings
+
+
+;; Graphical settings
 ;Load theme
 (load-theme 'badwolf t)
 
@@ -83,7 +89,6 @@
 ;Show line numbers
 (global-linum-mode t)
 
-;;TESTING
 ;; Installing omnisharp
 (eval-after-load
   'company
