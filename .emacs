@@ -47,11 +47,19 @@
 ;Install evil-surround
 (require 'evil-surround)
 
+;Install evil-magit
+(require 'evil-magit)
 
+;Install yasnippets
+(require 'yasnippet)
+;(yas-reload-all)
+;(add-hook 'csharp-mode-map' yas-minor-mode)
+;(add-hook 'prog-mode-hook 'yas-minor-mode)
+(yas-global-mode 1)
 
 ;; Plugin setup
 
-;Setup goto-chg (for omnisharp)
+;goto-chg (for omnisharp)
 (global-set-key [(control ?.)] 'goto-last-change)
 (global-set-key [(control ?,)] 'goto-last-change-reverse)
 (custom-set-variables
@@ -61,7 +69,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-magit magit evil-surround badwolf-theme undo-tree omnisharp goto-chg company))))
+    (yasnippet evil-magit magit evil-surround badwolf-theme undo-tree omnisharp goto-chg company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
