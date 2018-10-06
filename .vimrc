@@ -8,7 +8,7 @@ set laststatus=2
 
 syntax enable
 syntax on
-colorscheme chroma 
+colorscheme badwolf
 set background=dark
 
 call plug#begin('~/.vim/plugins')
