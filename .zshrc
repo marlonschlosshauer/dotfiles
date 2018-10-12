@@ -33,4 +33,6 @@ alias sshrasp="ssh pi@192.168.2.106"
 alias reload=". ~/.zshrc"
 alias enterp="cd ~/Projects/csharp/Lookup"
 alias entersh="cd /Users/akira/Documents/shellscripts/"
-alias paths="sudo vim /etc/paths"
+alias paths="sudo vim /etc/paths" #Need to fix this
+alias progs="cd /usr/local/"
+alias emacs.d="cd ~/.emacs.d/"
