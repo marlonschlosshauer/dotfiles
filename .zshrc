@@ -36,3 +36,4 @@ alias entersh="cd /Users/akira/Documents/shellscripts/"
 alias paths="sudo vim /etc/paths" #Need to fix this
 alias progs="cd /usr/local/"
 alias emacs.d="cd ~/.emacs.d/"
+alias tellme="tail -n 13 ~/.zshrc"
