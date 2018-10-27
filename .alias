@@ -1,0 +1,18 @@
+alias tick="ping www.google.de"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias bashrc="vim ~/.bashrc"
+alias aliases="vim ~/.alias"
+alias finder="open ~"
+
+alias rasp="ping 192.168.2.106"
+alias sshrasp="ssh pi@192.168.2.106"
+alias reload=". ~/.zshrc"
+
+alias entersh="cd /Users/akira/Documents/shellscripts/"
+alias paths="sudo vim /etc/paths" #Need to fix this
+alias progs="cd /usr/local/"
+alias emacs.d="cd ~/.emacs.d/"
+
+#working enviroment
+alias enterp="cd ~/Projects/csharp/Lookup"
