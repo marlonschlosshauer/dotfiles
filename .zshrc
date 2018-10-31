@@ -26,6 +26,11 @@ setopt histignoredups
 #show if dir or file on auto-completion with trailing /
 setopt listtypes
 
+
+# Setting for the new UTF-8 terminal support in Lion
+LC_CTYPE=en_GB.UTF-8
+LC_ALL=en_GB.UTF-8
+
 #import aliases
 source ~/.alias
 
