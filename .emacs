@@ -163,3 +163,7 @@
 ;; downside that documentation is impossible to fetch.
 (setq omnisharp-auto-complete-want-documentation nil)
 ;; omnisharp setup done.
+
+
+;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
+(setq-default c-basic-offset 4)
