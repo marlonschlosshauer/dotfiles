@@ -4,7 +4,7 @@ alias vimrc="vim ~/.vimrc"
 alias bashrc="vim ~/.bashrc"
 alias aliases="vim ~/.alias"
 alias finder="open ~"
-alias tellme="cat ~/.alias"
+alias tellme="cat ~/.alias | cut -c 7-255 | lolcat"
 
 alias tickrasp="ping 192.168.2.106"
 alias sshrasp="ssh pi@192.168.2.106"
@@ -16,6 +16,9 @@ alias entersh="cd /Users/akira/Documents/shellscripts/"
 alias paths="sudo vim /etc/paths" #Need to fix this
 alias enterprogs="cd /usr/local/"
 alias emacs.d="cd ~/.emacs.d/"
+
+alias dragon="fortune | cowsay -f dragon | lolcat"
+alias stars="telnet towel.blinkenlights.nl"
 
 #working enviroment
 alias enterp="cd ~/Projects/csharp/Lookup"
