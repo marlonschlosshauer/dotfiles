@@ -91,6 +91,9 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Remove splash screen
+(setq inhibit-splash-screen t)
+
 ;Hide macOS top bar
 (setq ns-auto-hide-menu-bar t)
 
@@ -167,3 +170,4 @@
 
 ;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
 (setq-default c-basic-offset 4)
+
