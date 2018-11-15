@@ -15,7 +15,7 @@ Apache=$(ps aux | grep mysql | wc -l);
 
 if [ $Apache -gt "1" ]
 then
-    echo "Apacheis running.";
+    echo "Apache is running.";
 else
     echo "Apache is not running.";
 fi;
