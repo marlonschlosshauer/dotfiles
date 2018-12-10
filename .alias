@@ -5,10 +5,12 @@ alias bashrc="vim ~/.bashrc"
 alias aliases="vim ~/.alias"
 alias finder="open ~"
 alias tellme="cat ~/.alias | cut -c 7-255 | lolcat"
+alias board= "pbcopy"
 
-alias tickrasp="ping 192.168.2.1"
-alias sshrasp="ssh pi@192.168.2.1"
+alias tickrasp="ping 192.168.2.106"
+alias sshrasp="ssh pi@192.168.2.106"
 alias rasp="~/.scripts/rasp.sh"
+alias git tree="git log --oneline"
 
 alias reload=". ~/.zshrc"
 

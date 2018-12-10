@@ -171,3 +171,6 @@
 ;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
 (setq-default c-basic-offset 4)
 
+;; CC Mode sane indenting
+(setq c-default-style "linux"
+          c-basic-offset 4)
