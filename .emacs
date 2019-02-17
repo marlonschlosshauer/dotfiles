@@ -1,4 +1,4 @@
-;; Set enviroment variables
+;;; Set enviroment variables
 (setenv "PATH"
 	(concat
 	 "/Users/akira/Documents/templates/c#/" ";"
@@ -19,8 +19,7 @@
 	 )
 	)
 
-;; Install package manager
-;MEPLA package manager stuff, I think.
+;;; Install package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
 		    (not (gnutls-available-p))))
@@ -33,76 +32,46 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
-;; Install Plugins
+;;; Install Plugins
+
+;; Install evil
 (add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil) ;Install evil
+(require 'evil)
 (evil-mode 1)
 
-;Install undo-tree
+;; Install undo-tree
 (global-undo-tree-mode)
 
-;Install goto-chg
+;; Install goto-chg
 (require 'goto-chg)
 
-;Install evil-surround
+;; Install evil-surround
 (require 'evil-surround)
 
-;Install evil-magit
+;; Install evil-magit
 (require 'evil-magit)
 
-;Install yasnippets
+;; Install yasnippets
 (require 'yasnippet)
-;(yas-reload-all)
-;(add-hook 'csharp-mode-map' yas-minor-mode)
-;(add-hook 'prog-mode-hook 'yas-minor-mode)
 (yas-global-mode 1)
 
-;; Plugin setup
+;;; Setup plugins 
 
-;goto-chg (for omnisharp)
+;; Install goto-chg (for omnisharp)
 (global-set-key [(control ?.)] 'goto-last-change)
 (global-set-key [(control ?,)] 'goto-last-change-reverse)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
     (yasnippet evil-magit magit evil-surround badwolf-theme undo-tree omnisharp goto-chg company))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-faces)
 
-;Pull up magit
+;; Bind magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-
-
-;; Graphical settings
-;Load theme
-(load-theme 'badwolf t)
-
-;Removing GUI items
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; Remove splash screen
-(setq inhibit-splash-screen t)
-
-;Hide macOS top bar
-(setq ns-auto-hide-menu-bar t)
-
-;Show line numbers
-(global-linum-mode t)
-
-;; Installing omnisharp
+;; Setup omnisharp
 (eval-after-load
-  'company
+    'company
   '(add-to-list 'company-backends #'company-omnisharp))
 
 (defun my-csharp-mode-setup ()
@@ -118,16 +87,19 @@
   (setq tab-width 4)
   (setq evil-shift-width 4)
 
-  ;csharp-mode README.md recommends this too
-  ;(electric-pair-mode 1)       ;; Emacs 24
-  ;(electric-pair-local-mode 1) ;; Emacs 25
+					;csharp-mode README.md recommends this too
+					;(electric-pair-mode 1)       ;; Emacs 24
+					;(electric-pair-local-mode 1) ;; Emacs 25
 
   (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
   (local-set-key (kbd "C-c C-c") 'recompile))
 
 (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
 
-;; Example evil-mode config
+;; Speed up auto-complete on mono drastically. 
+(setq omnisharp-auto-complete-want-documentation nil)
+
+;; Setup evil-mode 
 
 (evil-define-key 'insert omnisharp-mode-map (kbd "M-.") 'omnisharp-auto-complete)
 (evil-define-key 'normal omnisharp-mode-map (kbd "<f12>") 'omnisharp-go-to-definition)
@@ -162,15 +134,28 @@
   (kbd ",ra")
   (lambda() (interactive) (omnisharp-unit-test "all")))
 
-;; Speed up auto-complete on mono drastically. This comes with the
-;; downside that documentation is impossible to fetch.
-(setq omnisharp-auto-complete-want-documentation nil)
-;; omnisharp setup done.
-
-
 ;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
 (setq-default c-basic-offset 4)
 
 ;; CC Mode sane indenting
 (setq c-default-style "linux"
-          c-basic-offset 4)
+      c-basic-offset 4)
+;;; Graphical settings
+
+;; Load theme
+(load-theme 'badwolf t)
+
+;; Removing GUI items
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Remove splash screen
+(setq inhibit-splash-screen t)
+
+;; Hide macOS top bar
+(setq ns-auto-hide-menu-bar t)
+
+;; Show line numbers
+(global-linum-mode t)
+
