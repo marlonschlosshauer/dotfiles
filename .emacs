@@ -36,7 +36,11 @@
 
 ;; Install evil
 (add-to-list 'load-path "~/.emacs.d/evil")
+(setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+(setq evil-want-keybinding nil)
 (require 'evil)
+(when (require 'evil-collection nil t)
+  (evil-collection-init))
 (evil-mode 1)
 
 ;; Install undo-tree
@@ -47,6 +51,7 @@
 
 ;; Install evil-surround
 (require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;; Install evil-magit
 (require 'evil-magit)
@@ -56,15 +61,26 @@
 (yas-global-mode 1)
 
 ;;; Setup plugins 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 ;; Install goto-chg (for omnisharp)
 (global-set-key [(control ?.)] 'goto-last-change)
 (global-set-key [(control ?,)] 'goto-last-change-reverse)
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet evil-magit magit evil-surround badwolf-theme undo-tree omnisharp goto-chg company))))
-(custom-set-faces)
+    (exec-path-from-shell yasnippet evil-magit magit evil-surround badwolf-theme undo-tree omnisharp goto-chg company))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 ;; Bind magit
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -87,9 +103,9 @@
   (setq tab-width 4)
   (setq evil-shift-width 4)
 
-					;csharp-mode README.md recommends this too
-					;(electric-pair-mode 1)       ;; Emacs 24
-					;(electric-pair-local-mode 1) ;; Emacs 25
+  ;;csharp-mode README.md recommends this too
+  ;;(electric-pair-mode 1)       ;; Emacs 24
+  ;;(electric-pair-local-mode 1) ;; Emacs 25
 
   (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
   (local-set-key (kbd "C-c C-c") 'recompile))
