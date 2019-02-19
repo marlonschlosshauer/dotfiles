@@ -8,8 +8,7 @@
 	 "/bin" ";"
 	 "/usr/sbin" ";"
 	 "/sbin" ";"
-	 "/usr/local/lib/mono" ";"
-	 "~/.aspnet" ";"
+	 "/usr/local/lib/mono" ";" "~/.aspnet" ";"
 	 "~/.dotnet" ";"
 	 "~/.local/share/NuGet" ";"
 	 "~/.mono" ";"
@@ -31,6 +30,25 @@
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
+
+;;; Graphical settings
+
+;; Load theme
+(load-theme 'badwolf t)
+
+;; Removing GUI items
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Remove splash screen
+(setq inhibit-splash-screen t)
+
+;; Hide macOS top bar
+(setq ns-auto-hide-menu-bar t)
+
+;; Show line numbers
+(global-linum-mode t)
 
 ;;; Install Plugins
 
@@ -105,24 +123,6 @@
 ;; CC Mode sane indenting
 (setq c-default-style "linux"
       c-basic-offset 4)
-;;; Graphical settings
-
-;; Load theme
-(load-theme 'badwolf t)
-
-;; Removing GUI items
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; Remove splash screen
-(setq inhibit-splash-screen t)
-
-;; Hide macOS top bar
-(setq ns-auto-hide-menu-bar t)
-
-;; Show line numbers
-(global-linum-mode t)
 
 (custom-set-variables
  '(package-selected-packages
