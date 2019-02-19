@@ -36,14 +36,21 @@
 
 ;; Install evil
 (add-to-list 'load-path "~/.emacs.d/evil")
-(setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+(setq evil-want-integration t) 
 (setq evil-want-keybinding nil)
 (require 'evil)
 (when (require 'evil-collection nil t)
   (evil-collection-init))
 (evil-mode 1)
 
+;; Install company
+(require 'company)
+(require 'company-web-html)
+(add-hook 'after-init-hook 'global-company-mode)
+;;(define-key web-mode-map (kbd "C-;") 'company-web-html)
+
 ;; Install undo-tree
+(require 'undo-tree)
 (global-undo-tree-mode)
 
 ;; Install goto-chg
@@ -64,91 +71,33 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-;; Install goto-chg (for omnisharp)
-(global-set-key [(control ?.)] 'goto-last-change)
-(global-set-key [(control ?,)] 'goto-last-change-reverse)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (exec-path-from-shell yasnippet evil-magit magit evil-surround badwolf-theme undo-tree omnisharp goto-chg company))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; Bind magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; Setup omnisharp
-(eval-after-load
-    'company
-  '(add-to-list 'company-backends #'company-omnisharp))
+;;; Setup web-mode
 
-(defun my-csharp-mode-setup ()
-  (omnisharp-mode)
-  (company-mode)
-  (flycheck-mode)
+;; Start web-mode when in these files
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
-  (setq indent-tabs-mode nil)
-  (setq c-syntactic-indentation t)
-  (c-set-style "ellemtel")
-  (setq c-basic-offset 4)
-  (setq truncate-lines t)
-  (setq tab-width 4)
-  (setq evil-shift-width 4)
+;; Set highlighting
+(setq web-mode-enable-current-column-highlight t)
+(setq web-mode-enable-current-element-highlight t)
 
-  ;;csharp-mode README.md recommends this too
-  ;;(electric-pair-mode 1)       ;; Emacs 24
-  ;;(electric-pair-local-mode 1) ;; Emacs 25
+;; Enable company for web-mode
+(defun my-web-mode-hook ()
+  (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
+  )
 
-  (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
-  (local-set-key (kbd "C-c C-c") 'recompile))
+;; Load possible yasnippets
+(yas-reload-all)
 
-(add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
+;;(add-hook 'web-mode-hook  'my-web-mode-hook)
 
-;; Speed up auto-complete on mono drastically. 
-(setq omnisharp-auto-complete-want-documentation nil)
-
-;; Setup evil-mode 
-
-(evil-define-key 'insert omnisharp-mode-map (kbd "M-.") 'omnisharp-auto-complete)
-(evil-define-key 'normal omnisharp-mode-map (kbd "<f12>") 'omnisharp-go-to-definition)
-(evil-define-key 'normal omnisharp-mode-map (kbd "g u") 'omnisharp-find-usages)
-(evil-define-key 'normal omnisharp-mode-map (kbd "g I") 'omnisharp-find-implementations) ; g i is taken
-(evil-define-key 'normal omnisharp-mode-map (kbd "g o") 'omnisharp-go-to-definition)
-(evil-define-key 'normal omnisharp-mode-map (kbd "g r") 'omnisharp-run-code-action-refactoring)
-(evil-define-key 'normal omnisharp-mode-map (kbd "g f") 'omnisharp-fix-code-issue-at-point)
-(evil-define-key 'normal omnisharp-mode-map (kbd "g F") 'omnisharp-fix-usings)
-(evil-define-key 'normal omnisharp-mode-map (kbd "g R") 'omnisharp-rename)
-(evil-define-key 'normal omnisharp-mode-map (kbd ", i") 'omnisharp-current-type-information)
-(evil-define-key 'normal omnisharp-mode-map (kbd ", I") 'omnisharp-current-type-documentation)
-(evil-define-key 'insert omnisharp-mode-map (kbd ".") 'omnisharp-add-dot-and-auto-complete)
-(evil-define-key 'normal omnisharp-mode-map (kbd ", n t") 'omnisharp-navigate-to-current-file-member)
-(evil-define-key 'normal omnisharp-mode-map (kbd ", n s") 'omnisharp-navigate-to-solution-member)
-(evil-define-key 'normal omnisharp-mode-map (kbd ", n f") 'omnisharp-navigate-to-solution-file-then-file-member)
-(evil-define-key 'normal omnisharp-mode-map (kbd ", n F") 'omnisharp-navigate-to-solution-file)
-(evil-define-key 'normal omnisharp-mode-map (kbd ", n r") 'omnisharp-navigate-to-region)
-(evil-define-key 'normal omnisharp-mode-map (kbd "<f12>") 'omnisharp-show-last-auto-complete-result)
-(evil-define-key 'insert omnisharp-mode-map (kbd "<f12>") 'omnisharp-show-last-auto-complete-result)
-(evil-define-key 'normal omnisharp-mode-map (kbd ",.") 'omnisharp-show-overloads-at-point)
-(evil-define-key 'normal omnisharp-mode-map (kbd ",rl") 'recompile)
-
-(evil-define-key 'normal omnisharp-mode-map (kbd ",rt")
-  (lambda() (interactive) (omnisharp-unit-test "single")))
-
-(evil-define-key 'normal omnisharp-mode-map
-  (kbd ",rf")
-  (lambda() (interactive) (omnisharp-unit-test "fixture")))
-
-(evil-define-key 'normal omnisharp-mode-map
-  (kbd ",ra")
-  (lambda() (interactive) (omnisharp-unit-test "all")))
+;; Turn on emmet
+(add-hook 'web-mode-hook  'emmet-mode)
 
 ;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
 (setq-default c-basic-offset 4)
@@ -175,3 +124,9 @@
 ;; Show line numbers
 (global-linum-mode t)
 
+(custom-set-variables
+ '(package-selected-packages
+   (quote
+    (yasnippet web-mode web omnisharp golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+(custom-set-faces
+ )
