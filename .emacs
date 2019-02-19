@@ -92,6 +92,12 @@
 ;; Bind magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;; Load possible yasnippets
+(yas-reload-all)
+
+;; Turn on emmet
+(add-hook 'web-mode-hook  'emmet-mode)
+
 ;;; Setup web-mode
 
 ;; Start web-mode when in these files
@@ -109,13 +115,11 @@
   (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
   )
 
-;; Load possible yasnippets
-(yas-reload-all)
+;;; Configure emacs
 
-;;(add-hook 'web-mode-hook  'my-web-mode-hook)
-
-;; Turn on emmet
-(add-hook 'web-mode-hook  'emmet-mode)
+;; Turn off creation of temp files
+(setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
 (setq-default c-basic-offset 4)
@@ -123,7 +127,7 @@
 ;; CC Mode sane indenting
 (setq c-default-style "linux"
       c-basic-offset 4)
-
+;; Package manager added this, no-touch
 (custom-set-variables
  '(package-selected-packages
    (quote
