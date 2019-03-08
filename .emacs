@@ -85,6 +85,9 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+;; Install prettier-emacs
+(require 'prettier-js)
+
 ;;; Setup plugins 
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
@@ -115,6 +118,10 @@
   (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
   )
 
+;; Enable prettier-emacs / prettier-js
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook 'prettier-js-mode)
+
 ;;; Configure emacs
 
 ;; Turn off creation of temp files
@@ -129,8 +136,22 @@
       c-basic-offset 4)
 ;; Package manager added this, no-touch
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet web-mode web omnisharp golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+    (prettier-js yasnippet web-mode web omnisharp golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
+(put 'upcase-region 'disabled nil)
+
+;; Turn auto reload of buffer (on file change) on
+(global-auto-revert-mode t)
+
+
