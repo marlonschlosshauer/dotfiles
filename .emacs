@@ -121,6 +121,7 @@
 ;; Enable prettier-emacs / prettier-js
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'web-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook (lambda () (add-hook 'after-save-hook 'prettier-js)))
 
 ;;; Configure emacs
 
