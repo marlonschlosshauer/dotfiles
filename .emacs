@@ -65,7 +65,6 @@
 (require 'company)
 (require 'company-web-html)
 (add-hook 'after-init-hook 'global-company-mode)
-;;(define-key web-mode-map (kbd "C-;") 'company-web-html)
 
 ;; Install undo-tree
 (require 'undo-tree)
@@ -85,9 +84,6 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;; Install prettier-emacs
-(require 'prettier-js)
-
 ;;; Setup plugins 
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
@@ -101,13 +97,12 @@
 ;; Turn on emmet
 (add-hook 'web-mode-hook  'emmet-mode)
 
-;;; Setup web-mode
-
 ;; Start web-mode when in these files
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
 ;; Set highlighting
 (setq web-mode-enable-current-column-highlight t)
@@ -118,17 +113,10 @@
   (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
   )
 
-;; Enable prettier-emacs / prettier-js
-(add-hook 'js2-mode-hook 'prettier-js-mode)
-(add-hook 'web-mode-hook 'prettier-js-mode)
-
-(defun do-prettier-js ()
-  (when (eq major-mode 'web-mode)
-    (prettier-js)))
-
-(add-hook 'before-save-hook 'do-prettier-js)
-
 ;;; Configure emacs
+
+;; Turn auto reload of buffer (on file change) on
+(global-auto-revert-mode t)
 
 ;; Turn off creation of temp files
 (setq make-backup-files nil)
@@ -137,27 +125,15 @@
 ;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
 (setq-default c-basic-offset 4)
 
-;; CC Mode sane indenting
+;; Sane indenting
 (setq c-default-style "linux"
       c-basic-offset 4)
+
 ;; Package manager added this, no-touch
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (prettier-js yasnippet web-mode web omnisharp golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+    (yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  )
 (put 'upcase-region 'disabled nil)
-
-;; Turn auto reload of buffer (on file change) on
-(global-auto-revert-mode t)
-
-
