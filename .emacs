@@ -51,7 +51,6 @@
 (global-linum-mode t)
 
 ;;; Install Plugins
-
 ;; Install evil
 (add-to-list 'load-path "~/.emacs.d/evil")
 (setq evil-want-integration t) 
@@ -61,30 +60,22 @@
   (evil-collection-init))
 (evil-mode 1)
 
-;; Install company
 (require 'company)
 (require 'company-web-html)
-(add-hook 'after-init-hook 'global-company-mode)
-
-;; Install undo-tree
 (require 'undo-tree)
-(global-undo-tree-mode)
-
-;; Install goto-chg
 (require 'goto-chg)
-
-;; Install evil-surround
 (require 'evil-surround)
+(require 'evil-magit)
+(require 'yasnippet)
+(require 'autopair)
+
+;;; Setup plugins
+
+(add-hook 'after-init-hook 'global-company-mode)
+(global-undo-tree-mode)
+(yas-global-mode 1)
 (global-evil-surround-mode 1)
 
-;; Install evil-magit
-(require 'evil-magit)
-
-;; Install yasnippets
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;;; Setup plugins 
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
@@ -113,6 +104,9 @@
   (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
   )
 
+;; Start autopair
+(autopair-global-mode)
+
 ;;; Configure emacs
 
 ;; Turn auto reload of buffer (on file change) on
@@ -140,7 +134,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+    (autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
