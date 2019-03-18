@@ -108,6 +108,9 @@
 ;; Start autopair
 (autopair-global-mode)
 
+;; Start function folding
+(add-hook 'web-mode-hook 'origami-mode)
+
 ;;; Configure emacs
 
 ;; Turn auto reload of buffer (on file change) on
@@ -136,6 +139,10 @@
 ;; Show tabs
 (setq whitespace-style '(face tabs tab-mark trailing))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(whitespace-tab ((t (:foreground "#636363")))))
 
 (setq whitespace-display-mappings
@@ -152,12 +159,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+	(origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+
 (put 'upcase-region 'disabled nil)
 
