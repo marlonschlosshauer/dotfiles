@@ -53,7 +53,7 @@
 ;;; Install Plugins
 ;; Install evil
 (add-to-list 'load-path "~/.emacs.d/evil")
-(setq evil-want-integration t) 
+(setq evil-want-integration t)
 (setq evil-want-keybinding nil)
 (require 'evil)
 (when (require 'evil-collection nil t)
@@ -68,6 +68,7 @@
 (require 'evil-magit)
 (require 'yasnippet)
 (require 'autopair)
+(require 'whitespace)
 
 ;;; Setup plugins
 
@@ -116,15 +117,32 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
-;; Change C Mode indenting to 4 spaces instead of 1 or what ever the stupid looking default is.
-(setq-default c-basic-offset 4)
-
-;; Sane indenting
-(setq c-default-style "linux"
-      c-basic-offset 4)
-
 ;; Set better commenting bind
 (global-set-key (kbd "C-x c") 'comment-region)
+
+;; Setup indentation
+(setq indent-tabs-mode t)
+(setq-default tab-width 4)
+(setq c-default-style "linux")
+(setq-local c-basic-offset 4)
+(setq-local javascript-indent-level 4)
+(setq-local js-indent-level 4)
+(setq-local js4-basic-offset 4)
+(setq-local web-mode-markup-indent-offset 4)
+(setq-local web-mode-css-indent-offset 4)
+(setq-local web-mode-code-indent-offset 4)
+(setq-local css-indent-offset 4)
+
+;; Show tabs
+(setq whitespace-style '(face tabs tab-mark trailing))
+(custom-set-faces
+ '(whitespace-tab ((t (:foreground "#636363")))))
+
+(setq whitespace-display-mappings
+ '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
+
+(global-whitespace-mode) ; Enable whitespace mode everywhere
+
 
 ;; Package manager added this, no-touch
 (custom-set-variables
@@ -142,3 +160,4 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'upcase-region 'disabled nil)
+
