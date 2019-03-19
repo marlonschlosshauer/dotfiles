@@ -69,6 +69,7 @@
 (require 'yasnippet)
 (require 'autopair)
 (require 'whitespace)
+(require 'key-chord)
 
 ;;; Setup plugins
 
@@ -110,6 +111,13 @@
 
 ;; Start function folding
 (add-hook 'web-mode-hook 'origami-mode)
+
+;; Start google-this
+(google-this-mode 1)
+
+;; Map ESCP to jj
+(key-chord-mode 1)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 ;;; Configure emacs
 
@@ -162,7 +170,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+	(key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 
 (put 'upcase-region 'disabled nil)
 
