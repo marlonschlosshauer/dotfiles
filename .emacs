@@ -123,6 +123,9 @@
 ;; Set better commenting bind
 (global-set-key (kbd "C-x c") 'comment-region)
 
+;; Set font
+(set-frame-font "SF Mono Medium" nil t)
+
 ;; Setup indentation
 (setq indent-tabs-mode t)
 (setq-default tab-width 4)
