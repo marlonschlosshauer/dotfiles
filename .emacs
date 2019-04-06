@@ -115,7 +115,7 @@
 ;; Start google-this
 (google-this-mode 1)
 
-;; Map ESCP to jj
+;; Map ESC to jj
 (key-chord-mode 1)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
