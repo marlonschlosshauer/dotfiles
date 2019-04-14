@@ -1,10 +1,5 @@
 alias tick="ping www.google.de"
-alias board= "pbcopy"
-
-alias remote="ssh worker@192.168.2.106"
-alias git tree="git log --oneline"
-
-alias reload=". ~/.zshrc"
-
+alias remote="ssh peon@192.168.2.134"
+alias reload=". ~/.bashrc"
 alias dragon="fortune | cowsay -f dragon | lolcat"
 alias stars="telnet towel.blinkenlights.nl"

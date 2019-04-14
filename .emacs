@@ -33,8 +33,12 @@
 
 ;;; Graphical settings
 
+;; Make titelbar dark
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+;; TODO: remove badwolf and sublime-themes
+
 ;; Load theme
-(load-theme 'badwolf t)
+(load-theme 'doom-one t)
 
 ;; Removing GUI items
 (menu-bar-mode -1)
@@ -60,6 +64,7 @@
   (evil-collection-init))
 (evil-mode 1)
 
+(require 'php-mode)
 (require 'company)
 (require 'company-web-html)
 (require 'undo-tree)
@@ -70,6 +75,9 @@
 (require 'autopair)
 (require 'whitespace)
 (require 'key-chord)
+
+(if (fboundp 'global-font-lock-mode)
+    (global-font-lock-mode 1))
 
 ;;; Setup plugins
 
@@ -105,6 +113,8 @@
 (defun my-web-mode-hook ()
   (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
   )
+
+(add-hook 'web-mode-hook 'my-web-mode-hook)
 
 ;; Start autopair
 (autopair-global-mode)
@@ -170,7 +180,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+	(doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 
 (put 'upcase-region 'disabled nil)
 

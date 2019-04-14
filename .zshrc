@@ -6,7 +6,7 @@ compinit
 setopt correctall
 
 #set prompt text 
-export PS1=$'\e[91m/%2~ '
+#export PS1=$'\e[91m/%2~ '
 
 #improve color support
 export TERM=xterm-256color
