@@ -10,6 +10,8 @@ syntax enable
 syntax on
 set background=dark
 
+inoremap jj <Esc>
+
 call plug#begin('~/.vim/plugins')
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'

@@ -1,5 +1,7 @@
 alias tick="ping www.google.de"
-alias remote="ssh peon@192.168.2.134"
+alias remote="ssh peon@192.168.2.137"
 alias reload=". ~/.bashrc"
 alias dragon="fortune | cowsay -f dragon | lolcat"
 alias stars="telnet towel.blinkenlights.nl"
+#alias fdisk -l="diskutil list"
+alias ..="cd .."

@@ -1,19 +1,11 @@
 ;;; Set enviroment variables
 (setenv "PATH"
 	(concat
-	 "/Users/akira/Documents/templates/c#/" ";"
-	 "/Users/akira/Documents/shellscripts" ";"
 	 "/usr/local/bin" ";"
 	 "/usr/bin" ";"
 	 "/bin" ";"
 	 "/usr/sbin" ";"
 	 "/sbin" ";"
-	 "/usr/local/lib/mono" ";" "~/.aspnet" ";"
-	 "~/.dotnet" ";"
-	 "~/.local/share/NuGet" ";"
-	 "~/.mono" ";"
-	 "~/.nuget" ";"
-	 "~/.omnisharp" ";"
 	 (getenv "PATH")
 	 )
 	)
@@ -32,11 +24,6 @@
 (package-initialize)
 
 ;;; Graphical settings
-
-;; Make titelbar dark
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
-;; TODO: remove badwolf and sublime-themes
-
 ;; Load theme
 (load-theme 'doom-one t)
 
@@ -129,6 +116,16 @@
 (key-chord-mode 1)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
+;; Change flymd browser from chrome to firefox
+(defun my-flymd-browser-function (url)
+  (let ((process-environment (browse-url-process-environment)))
+    (apply 'start-process
+           (concat "firefox " url)
+           nil
+           "/usr/bin/open"
+           (list "-a" "firefox" url))))
+(setq flymd-browser-open-function 'my-flymd-browser-function)
+
 ;;; Configure emacs
 
 ;; Turn auto reload of buffer (on file change) on
@@ -180,7 +177,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+	(flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 
 (put 'upcase-region 'disabled nil)
 
