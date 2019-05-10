@@ -1,14 +1,15 @@
-(load "~/plugins.el")
+(load "~/.emacs.d/plugins.el")
 (plugins)
 
-(load "~/graphics.el")
+(load "~/.emacs.d/graphics.el")
 (graphics)
 
-(load "~/setup.el")
+(load "~/.emacs.d/setup.el")
 (setup)
 
-(load "~/conf.el")
+(load "~/.emacs.d/conf.el")
 (conf)
+
 
 ;; Package manager added this, no-touch
 (custom-set-variables
