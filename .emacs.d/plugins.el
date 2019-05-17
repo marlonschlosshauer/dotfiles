@@ -12,16 +12,12 @@
 	  (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
   (package-initialize)
 
-  ;; Install evil
-  (add-to-list 'load-path "~/.emacs.d/evil")
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (require 'evil)
-  (when (require 'evil-collection nil t)
-	(evil-collection-init))
-  (evil-mode 1)
 
-  ;; Require other plugins
+  (setq evil-want-keybinding nil)
+
+  (require 'evil)
+  (require 'org)
+  (require 'helm-config)
   (require 'php-mode)
   (require 'company)
   (require 'company-web-html)

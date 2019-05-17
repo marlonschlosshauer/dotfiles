@@ -1,5 +1,5 @@
 (defun conf()
-;;; Set enviroment variables
+  ;; Set enviroment variables
   (setenv "PATH"
 		  (concat
 		   "/usr/local/bin" ";"
@@ -18,12 +18,18 @@
   ;; Turn auto reload of buffer (on file change) on
   (global-auto-revert-mode t)
 
+  ;; Org-mode
+  (setq org-agenda-files '("~/Projects/org/"))
+
   ;; Turn off creation of temp files
   (setq make-backup-files nil)
   (setq auto-save-default nil)
 
   ;; Set better commenting bind
   (global-set-key (kbd "C-x c") 'comment-region)
+
+  ;; Replace M-x with helm
+  ;(global-set-key (kbd "M-x") 'helm-M-x)
 
   ;; Set font
   (set-frame-font "SF Mono Medium" nil t)
@@ -41,6 +47,7 @@
   (setq-local web-mode-code-indent-offset 4)
   (setq-local css-indent-offset 4)
 
+
   ;; Show tabs
   (setq whitespace-style '(face tabs tab-mark trailing))
   (custom-set-faces
@@ -53,4 +60,7 @@
   (setq whitespace-display-mappings
 		'((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
   ;;Enable whitespace mode everywhere
-  (global-whitespace-mode))
+  (global-whitespace-mode)
+
+  (put 'upcase-region 'disabled nil)
+  (put 'erase-buffer 'disabled nil))

@@ -1,16 +1,31 @@
 (defun setup ()
-;;; Setup plugins
+  ;; Setup evil
+  (global-evil-surround-mode 1)
+
+  (when (require 'evil-collection nil t)
+	(evil-collection-init))
+  (evil-mode 1)
+
+  (setq evil-want-integration t)
 
   (add-hook 'after-init-hook 'global-company-mode)
   (global-undo-tree-mode)
   (yas-global-mode 1)
-  (global-evil-surround-mode 1)
 
+  ;; Add environment load paths
   (when (memq window-system '(mac ns x))
 	(exec-path-from-shell-initialize))
 
-  ;; Bind magit
+  ;; Org-mode
+  (setq org-return-follows-link t)
+
+  ;; magit
   (global-set-key (kbd "C-x g") 'magit-status)
+
+  ;; Make magit open in the current buffer
+  (setq magit-display-buffer-function
+		(lambda (buffer)
+		  (display-buffer buffer '(display-buffer-same-window))))
 
   ;; Load possible yasnippets
   (yas-reload-all)
