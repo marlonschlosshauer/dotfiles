@@ -1,4 +1,3 @@
-
 (load "~/.emacs.d/plugins.el")
 (plugins)
 
@@ -20,7 +19,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files nil)
+ '(org-agenda-files
+   (quote
+	("~/Projects/org/todo.org" "/Users/akira/Projects/org/ProjectRA.org")))
  '(package-selected-packages
    (quote
 	(evil org ## helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))

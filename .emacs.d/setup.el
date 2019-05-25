@@ -25,7 +25,16 @@
   ;; Make magit open in the current buffer
   (setq magit-display-buffer-function
 		(lambda (buffer)
-		  (display-buffer buffer '(display-buffer-same-window))))
+		  (display-buffer
+		   buffer (if (and (derived-mode-p 'magit-mode)
+						   (memq (with-current-buffer buffer major-mode)
+								 '(magit-process-mode
+								   magit-revision-mode
+								   magit-diff-mode
+								   maigt-stash-mode
+								   magit-status-mode)))
+					  nil
+					'(display-buffer-same-window)))))
 
   ;; Load possible yasnippets
   (yas-reload-all)

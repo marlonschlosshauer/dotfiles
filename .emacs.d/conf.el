@@ -18,18 +18,35 @@
   ;; Turn auto reload of buffer (on file change) on
   (global-auto-revert-mode t)
 
+  ;; Enable line wrapping
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+
+  ;; Set line wrap
+  (setq-default fill-column 80)
+
   ;; Org-mode
-  (setq org-agenda-files '("~/Projects/org/"))
+  (setq org-agenda-files '("~/Projects/org/todo.org"))
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "DEL")))
+  (setq org-capture-templates
+		'(
+		  ("t" "TODO " entry
+		   (file "~/Projects/org/todo.org")
+		   "* TODO %?
+SCHEDULED: %t")
+
+		  ("s" "SCHEDULE " entry
+		   (file "~/Projects/org/schedule.org")
+		   "* SCHEDULE %?
+SCHEDULED: %t")
+
+		  ("r" "REMINDER " entry
+		   (file "~/Projects/org/reminder.org")
+		   "* REMINDER %?
+SCHEDULED: %t")))
 
   ;; Turn off creation of temp files
   (setq make-backup-files nil)
   (setq auto-save-default nil)
-
-  ;; Set better commenting bind
-  (global-set-key (kbd "C-x c") 'comment-region)
-
-  ;; Replace M-x with helm
-  ;(global-set-key (kbd "M-x") 'helm-M-x)
 
   ;; Set font
   (set-frame-font "SF Mono Medium" nil t)
