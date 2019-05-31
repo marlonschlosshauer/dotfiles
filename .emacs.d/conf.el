@@ -26,7 +26,7 @@
 
   ;; Org-mode
   (setq org-agenda-files '("~/Projects/org/todo.org"))
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "DEL")))
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "5" "4" "3" "2" "1" "|" "DONE" "DEL")))
   (setq org-capture-templates
 		'(
 		  ("t" "TODO " entry

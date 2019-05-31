@@ -22,6 +22,11 @@
   ;; magit
   (global-set-key (kbd "C-x g") 'magit-status)
 
+  ;; projectile
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1)
+
   ;; Make magit open in the current buffer
   (setq magit-display-buffer-function
 		(lambda (buffer)

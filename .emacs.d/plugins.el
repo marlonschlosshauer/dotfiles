@@ -13,9 +13,15 @@
   (package-initialize)
 
 
+  ;; Load custome packages
+(add-to-list 'load-path "~/.emacs.d/evil-numbers/")
+
   (setq evil-want-keybinding nil)
 
   (require 'evil)
+  (require 'evil-numbers)
+  (require 'projectile)
+  (require 'switch-window)
   (require 'org)
   (require 'helm-config)
   (require 'php-mode)
