@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("wordpress-themes"
+ (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/")
+ (front-context-string . "index.php\n  drwx")
+ (rear-context-string . "28 Jun  5  2014 ")
+ (position . 229))
+("org-capture-last-stored"
+ (filename . "~/Projects/org/todo.org")
+ (front-context-string . "* TODO Woop woop")
+ (rear-context-string . "2019-05-25 Fri>\n")
+ (position . 55))
+)
