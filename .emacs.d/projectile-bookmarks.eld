@@ -1,0 +1,1 @@
+("~/labs/" "~/Projects/web/typescript/highlight-bot/" "~/projects/web/typescript/highlight-bot/" "~/org/" "~/Projects/" "~/Projects/csharp/highlight-server/" "~/Projects/csharp/TwitchLib.Client/")

@@ -18,6 +18,8 @@
 
   ;; Org-mode
   (setq org-return-follows-link t)
+  ;; Force org to open files in dired, instead of finder
+  (add-to-list 'org-file-apps '(directory . emacs))
 
   ;; magit
   (global-set-key (kbd "C-x g") 'magit-status)

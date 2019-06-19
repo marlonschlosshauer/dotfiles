@@ -2,14 +2,29 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("wordpress-themes"
- (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/")
+(("projects.org"
+ (filename . "~/org/projects.org")
+ (front-context-string . "ile:~/org/emacs.")
+ (rear-context-string . "]\n* Emacs\n** [[f")
+ (position . 300))
+("labs"
+ (filename . "~/labs/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "84 Jun 12 13:21 ")
+ (position . 233))
+("Downloads"
+ (filename . "~/Downloads/")
+ (front-context-string . ".DS_Store\n  -rw-")
+ (rear-context-string . "48 Jun 11 22:59 ")
+ (position . 253))
+("org"
+ (filename . "~/org/")
+ (front-context-string . "commands.org\n  -")
+ (rear-context-string . "85 Jun 12 01:39 ")
+ (position . 295))
+("remote-html"
+ (filename . "/ssh:peon@192.168.2.112:/var/www/html/")
  (front-context-string . "index.php\n  drwx")
  (rear-context-string . "28 Jun  5  2014 ")
  (position . 229))
-("org-capture-last-stored"
- (filename . "~/Projects/org/todo.org")
- (front-context-string . "* TODO Woop woop")
- (rear-context-string . "2019-05-25 Fri>\n")
- (position . 55))
 )

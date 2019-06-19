@@ -49,7 +49,7 @@ SCHEDULED: %t")))
   (setq auto-save-default nil)
 
   ;; Set font
-  (set-frame-font "SF Mono Medium" nil t)
+  ;(set-frame-font "SF Mono Medium" nil t)
 
   ;; Setup indentation
   (setq indent-tabs-mode t)
