@@ -1,9 +1,10 @@
 (load "~/.emacs.d/plugins.el")
+(start-manager)
+;;(check-plugins)
 (plugins)
 
 (load "~/.emacs.d/graphics.el")
 (graphics)
-
 (load "~/.emacs.d/setup.el")
 (setup)
 
