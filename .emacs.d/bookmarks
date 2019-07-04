@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("projects.org"
+(("storefront"
+ (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/storefront/")
+ (front-context-string . "screenshot.png\n ")
+ (rear-context-string . "74 Jun  7 19:38 ")
+ (position . 1596))
+("theme"
+ (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/storefront-child/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "96 Jun 10 18:14 ")
+ (position . 192))
+("projects.org"
  (filename . "~/org/projects.org")
  (front-context-string . "ile:~/org/emacs.")
  (rear-context-string . "]\n* Emacs\n** [[f")

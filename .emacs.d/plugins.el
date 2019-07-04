@@ -40,7 +40,7 @@
 
 
 (defun check-plugins ()
-  (setq list-of-plugins '('autopair 'company 'csharp 'doom 'evil 'evil 'evil 'evil 'exec 'google 'helm 'key 'origami 'php 'projectile 'switch 'typescript 'web 'yasnippet))
+  (setq list-of-plugins '('typescript-mode 'csharp-mode 'projectile 'switch-window 'evil 'org 'helm 'flymd 'doom-themes 'sublime-themes 'php-mode 'key-chord 'google-this 'origami 'autopair 'yasnippet 'web-mode 'web 'golden-ratio 'exec-path-from-shell 'evil-surround 'evil-magit 'evil-collection 'emmet-mode 'company-web 'badwolf-theme))
 
   (package-refresh-contents)
   (let (value)
