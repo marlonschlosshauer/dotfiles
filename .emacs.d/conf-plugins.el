@@ -25,6 +25,26 @@
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
+  (setq org-agenda-files '("~/Projects/org/todo.org"))
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "5" "4" "3" "2" "1" "|" "DONE" "DEL")))
+  (setq org-capture-templates
+		'(
+		  ("t" "TODO " entry
+		   (file "~/Projects/org/todo.org")
+		   "* TODO %?
+SCHEDULED: %t")
+
+		  ("s" "SCHEDULE " entry
+		   (file "~/Projects/org/schedule.org")
+		   "* SCHEDULE %?
+SCHEDULED: %t")
+
+		  ("r" "REMINDER " entry
+		   (file "~/Projects/org/reminder.org")
+		   "* REMINDER %?
+SCHEDULED: %t")))
+
+
   ;; magit
   (global-set-key (kbd "C-x g") 'magit-status)
 

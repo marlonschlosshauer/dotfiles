@@ -1,21 +1,24 @@
-(load "~/.emacs.d/plugins.el")
+(load "~/.emacs.d/manage-plugins.el")
 (start-manager)
+;; Do on initial install
 ;;(check-plugins)
 (plugins)
 
 (load "~/.emacs.d/graphics.el")
 (graphics)
-(load "~/.emacs.d/setup.el")
+
+(load "~/.emacs.d/conf-plugins.el")
 (setup)
 
-(load "~/.emacs.d/conf.el")
+(load "~/.emacs.d/conf-emacs.el")
 (conf)
 
 (load "~/.emacs.d/binds.el")
 (binds)
 
-(load "~/.emacs.d/custom.el")
+(load "~/.emacs.d/expiremental.el")
 
+;; I hate how this is here
 ;; Package manager added this, no-touch
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

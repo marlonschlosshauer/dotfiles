@@ -25,26 +25,6 @@
   ;; Set line wrap
   (setq-default fill-column 80)
 
-  ;; Org-mode
-  (setq org-agenda-files '("~/Projects/org/todo.org"))
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "5" "4" "3" "2" "1" "|" "DONE" "DEL")))
-  (setq org-capture-templates
-		'(
-		  ("t" "TODO " entry
-		   (file "~/Projects/org/todo.org")
-		   "* TODO %?
-SCHEDULED: %t")
-
-		  ("s" "SCHEDULE " entry
-		   (file "~/Projects/org/schedule.org")
-		   "* SCHEDULE %?
-SCHEDULED: %t")
-
-		  ("r" "REMINDER " entry
-		   (file "~/Projects/org/reminder.org")
-		   "* REMINDER %?
-SCHEDULED: %t")))
-
   ;; Turn off creation of temp files
   (setq make-backup-files nil)
   (setq auto-save-default nil)
