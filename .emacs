@@ -27,7 +27,7 @@
 	("~/Projects/org/todo.org" "/Users/akira/Projects/org/ProjectRA.org")))
  '(package-selected-packages
    (quote
-	(typescript-mode csharp-mode projectile switch-window evil org ## helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+	(yasnippet-snippets typescript-mode csharp-mode projectile switch-window evil org ## helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

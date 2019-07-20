@@ -11,6 +11,7 @@
 		   )
 		  )
 
+
   ;; Change font color for keywords
   (if (fboundp 'global-font-lock-mode)
 	  (global-font-lock-mode 1))
@@ -19,7 +20,7 @@
   (global-auto-revert-mode t)
 
   ;; Enable line wrapping
-  (add-hook 'org-mode-hook 'auto-fill-mode)
+  (add-hook 'text-mode-hook 'auto-fill-mode)
 
   ;; Set line wrap
   (setq-default fill-column 80)
