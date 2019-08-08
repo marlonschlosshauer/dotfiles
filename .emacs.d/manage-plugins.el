@@ -26,6 +26,8 @@
   (require 'projectile)
   (require 'switch-window)
   (require 'org)
+  ;; (require 'evil-org)
+  ;; (require 'evil-org-agenda)
   (require 'helm-config)
   (require 'php-mode)
   (require 'company)

@@ -61,4 +61,9 @@
   (global-whitespace-mode)
 
   (put 'upcase-region 'disabled nil)
-  (put 'erase-buffer 'disabled nil))
+  (put 'erase-buffer 'disabled nil)
+
+  ;; Auto mode
+  (add-to-list 'auto-mode-alist '("\.tsx\'" . typescript-mode))
+  (add-to-list 'auto-mode-alist '("\\.ts?\\'" . typescript-mode))
+  (add-to-list 'auto-mode-alist '("\.php\'" . php-mode)))

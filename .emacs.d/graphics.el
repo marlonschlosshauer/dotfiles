@@ -14,4 +14,9 @@
   (setq ns-auto-hide-menu-bar t)
 
   ;; Show line numbers
-  (global-linum-mode t))
+  (global-linum-mode t)
+
+  ;; Make top bar light
+  (add-to-list 'default-frame-alist '(ns-appearance . light)))
+
+

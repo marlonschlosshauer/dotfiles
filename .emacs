@@ -18,6 +18,7 @@
 
 (load "~/.emacs.d/expiremental.el")
 
+
 ;; I hate how this is here
 ;; Package manager added this, no-touch
 (custom-set-variables
@@ -25,15 +26,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-	("~/Projects/org/todo.org" "/Users/akira/Projects/org/ProjectRA.org")))
+ '(org-agenda-files (quote ("~/org/todo.org")))
  '(package-selected-packages
    (quote
-	(yasnippet-snippets typescript-mode csharp-mode projectile switch-window evil org ## helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+	(lsp-mode evil-org flycheck yasnippet-snippets typescript-mode csharp-mode projectile switch-window evil org ## helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(whitespace-tab ((t (:foreground "#636363")))))
+
+
+;; Load default tood file
+(find-file "~/org/todo.org")
+
+(load "~/.emacs.d/manage-functions.el")

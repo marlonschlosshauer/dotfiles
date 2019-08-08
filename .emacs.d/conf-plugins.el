@@ -22,28 +22,19 @@
 
   ;; Org-mode
   (setq org-return-follows-link t)
+
+
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
-  (setq org-agenda-files '("~/Projects/org/todo.org"))
+  ;; Agenda
+  (setq org-agenda-files '((sequence "~/org/todo.org" "~/.notes")))
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "5" "4" "3" "2" "1" "|" "DONE" "DEL")))
-  (setq org-capture-templates
-		'(
-		  ("t" "TODO " entry
-		   (file "~/Projects/org/todo.org")
-		   "* TODO %?
-SCHEDULED: %t")
 
-		  ("s" "SCHEDULE " entry
-		   (file "~/Projects/org/schedule.org")
-		   "* SCHEDULE %?
-SCHEDULED: %t")
-
-		  ("r" "REMINDER " entry
-		   (file "~/Projects/org/reminder.org")
-		   "* REMINDER %?
-SCHEDULED: %t")))
-
+  ;; evil-org
+  ;; (add-hook 'org-mode-hook 'evil-org-mode)
+  ;; (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+  ;; (evil-org-agenda-set-keys)
 
   ;; magit
   (global-set-key (kbd "C-x g") 'magit-status)
@@ -72,6 +63,7 @@ SCHEDULED: %t")))
 
   ;; Turn on emmet
   (add-hook 'web-mode-hook  'emmet-mode)
+  (add-hook 'php-mode-hook  'emmet-mode)
 
   ;; Start web-mode when in these files
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))

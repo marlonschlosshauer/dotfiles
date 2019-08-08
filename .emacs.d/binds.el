@@ -17,11 +17,10 @@
   (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
 
-  (enable-german-binds)
-)
+  (enable-german-binds))
 
 (defun enable-german-binds()
- ;; Meta-5
+  ;; Meta-5
   (global-set-key (kbd "M-5") '(lambda () (interactive) (insert "[")))
   ;; Meta-6
   (global-set-key (kbd "M-6") '(lambda () (interactive) (insert "]")))

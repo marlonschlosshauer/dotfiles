@@ -2,21 +2,21 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("storefront"
- (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/storefront/")
- (front-context-string . "screenshot.png\n ")
- (rear-context-string . "74 Jun  7 19:38 ")
- (position . 1596))
-("theme"
- (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/storefront-child/")
- (front-context-string . "..\n  drwxr-xr-x ")
- (rear-context-string . "96 Jun 10 18:14 ")
- (position . 192))
-("projects.org"
- (filename . "~/org/projects.org")
- (front-context-string . "ile:~/org/emacs.")
- (rear-context-string . "]\n* Emacs\n** [[f")
- (position . 300))
+(("org-capture-last-stored"
+ (filename . "~/.notes")
+ (front-context-string . "** TODO Bind org")
+ (rear-context-string . "2019-08-02 Fri]\n")
+ (position . 53))
+(".emacs.d"
+ (filename . "~/.emacs.d/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "96 Jun 20 00:47 ")
+ (position . 242))
+("themes"
+ (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/")
+ (front-context-string . "storefront\n  drw")
+ (rear-context-string . "96 Jun  8 21:59 ")
+ (position . 348))
 ("labs"
  (filename . "~/labs/")
  (front-context-string . ".git\n  -rw-r--r-")
