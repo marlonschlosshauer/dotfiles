@@ -1,4 +1,4 @@
-(defun conf()
+(defun conf-emacs()
   ;; Set enviroment variables
   (setenv "PATH"
 		  (concat

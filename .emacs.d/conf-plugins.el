@@ -1,8 +1,4 @@
-(defun setup ()
-  ;; Load path
-  (when (memq window-system '(mac ns x))
-	(exec-path-from-shell-initialize))
-
+(defun conf-plugins ()
   ;; Setup evil
   (global-evil-surround-mode 1)
 

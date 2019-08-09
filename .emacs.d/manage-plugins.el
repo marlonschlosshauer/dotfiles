@@ -15,7 +15,7 @@
 										;(add-to-list 'load-path "~/.emacs.d/evil")
   (package-initialize))
 
-(defun plugins ()
+(defun manage-plugins ()
   (setq evil-want-keybinding nil)
 
   (require 'evil)
@@ -42,11 +42,19 @@
 
 
 (defun check-plugins ()
-  (setq list-of-plugins '('typescript-mode 'csharp-mode 'projectile 'switch-window 'evil 'org 'helm 'flymd 'doom-themes 'sublime-themes 'php-mode 'key-chord 'google-this 'origami 'autopair 'yasnippet 'web-mode 'web 'golden-ratio 'exec-path-from-shell 'evil-surround 'evil-magit 'evil-collection 'emmet-mode 'company-web 'badwolf-theme))
+										; list the packages you want
 
-  (package-refresh-contents)
-  (let (value)
-	(dolist (element list-of-plugins value)
-	  (unless (package-installed-p (cons element value))
-		(package-install (cons element value))))))
+  (setq package-list  '(typescript-mode csharp-mode projectile switch-window evil org helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web))
 
+										; list the repositories containing them
+										; activate all the packages (in particular autoloads)
+  (package-initialize)
+
+										; fetch the list of packages available
+  (unless package-archive-contents
+	(package-refresh-contents))
+
+										; install the missing packages
+  (dolist (package package-list)
+	(unless (package-installed-p package)
+	  (package-install package))))
