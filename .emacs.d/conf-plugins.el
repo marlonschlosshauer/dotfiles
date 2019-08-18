@@ -19,7 +19,6 @@
   ;; Org-mode
   (setq org-return-follows-link t)
 
-
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
@@ -61,6 +60,10 @@
   (add-hook 'web-mode-hook  'emmet-mode)
   (add-hook 'php-mode-hook  'emmet-mode)
 
+  ;; Handle lsp mode
+  (add-hook 'web-mode-hook #'lsp)
+  (add-hook 'typescript-mode-hook #'lsp)
+
   ;; Start web-mode when in these files
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -92,6 +95,10 @@
   (key-chord-mode 1)
   (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
+  ;; Deleted repeating blank lines
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+  (add-hook 'before-save-hook 'xah-clean-whitespace)
+
   ;; Change flymd browser from chrome to firefox
   (defun my-flymd-browser-function (url)
 	(let ((process-environment (browse-url-process-environment)))
@@ -101,3 +108,4 @@
 			 "/usr/bin/open"
 			 (list "-a" "firefox" url))))
   (setq flymd-browser-open-function 'my-flymd-browser-function))
+

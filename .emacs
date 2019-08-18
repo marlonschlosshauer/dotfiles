@@ -19,7 +19,8 @@
 (load "~/.emacs.d/expiremental.el")
 (load "~/.emacs.d/manage-functions.el")
 
-
+;; Lazy fix for #34341 Bad Request
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; I hate how this is here
 ;; Package manager added this, no-touch
@@ -39,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(whitespace-tab ((t (:foreground "#636363")))))
 
-
   ;; Load path
   (when (memq window-system '(mac ns x))
 	(exec-path-from-shell-initialize))
+

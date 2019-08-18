@@ -2,26 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/.notes")
- (front-context-string . "** TODO Bind org")
- (rear-context-string . "2019-08-02 Fri]\n")
- (position . 53))
-(".emacs.d"
+(("papula"
+ (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/papula/")
+ (front-context-string . ".\n  drwxr-xr-x  ")
+ (rear-context-string . "96 Aug 10 15:49 ")
+ (position . 132))
+("emacs"
  (filename . "~/.emacs.d/")
  (front-context-string . ".DS_Store\n  drwx")
  (rear-context-string . "96 Jun 20 00:47 ")
  (position . 242))
-("themes"
- (filename . "/ssh:peon@192.168.2.112:/var/www/html/wp-content/themes/")
- (front-context-string . "storefront\n  drw")
- (rear-context-string . "96 Jun  8 21:59 ")
- (position . 348))
-("labs"
- (filename . "~/labs/")
- (front-context-string . ".git\n  -rw-r--r-")
- (rear-context-string . "84 Jun 12 13:21 ")
- (position . 233))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
@@ -32,9 +22,4 @@
  (front-context-string . "commands.org\n  -")
  (rear-context-string . "85 Jun 12 01:39 ")
  (position . 295))
-("remote-html"
- (filename . "/ssh:peon@192.168.2.112:/var/www/html/")
- (front-context-string . "index.php\n  drwx")
- (rear-context-string . "28 Jun  5  2014 ")
- (position . 229))
 )

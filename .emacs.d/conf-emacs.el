@@ -11,7 +11,6 @@
 		   )
 		  )
 
-
   ;; Change font color for keywords
   (if (fboundp 'global-font-lock-mode)
 	  (global-font-lock-mode 1))
@@ -45,7 +44,6 @@
   (setq-local web-mode-code-indent-offset 4)
   (setq-local css-indent-offset 4)
 
-
   ;; Show tabs
   (setq whitespace-style '(face tabs tab-mark trailing))
   (custom-set-faces
@@ -64,6 +62,5 @@
   (put 'erase-buffer 'disabled nil)
 
   ;; Auto mode
-  (add-to-list 'auto-mode-alist '("\.tsx\'" . typescript-mode))
   (add-to-list 'auto-mode-alist '("\\.ts?\\'" . typescript-mode))
-  (add-to-list 'auto-mode-alist '("\.php\'" . php-mode)))
+  (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode)))

@@ -38,8 +38,8 @@
   (require 'autopair)
   (require 'whitespace)
   (require 'key-chord)
+  (require 'lsp-mode)
   (require 'tramp))
-
 
 (defun check-plugins ()
 										; list the packages you want
