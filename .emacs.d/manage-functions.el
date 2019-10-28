@@ -26,3 +26,9 @@ Version 2017-09-22"
 		  (while (equal (char-before) 32) ; char 32 is space
 			(delete-char -1))))
 	  (message "white space cleaned"))))
+
+;;(defun open-elfeed-link-in-browser ()
+;;  (interactive)
+;;  (let ((entry) ((elfeed-search-selected :single)))
+;;	()
+;;)

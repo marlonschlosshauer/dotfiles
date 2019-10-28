@@ -1,7 +1,7 @@
 (load "~/.emacs.d/manage-plugins.el")
 (start-manager)
-;; Do on initial install
-;(check-plugins)
+; Do on initial install
+(check-plugins)
 (manage-plugins)
 
 (load "~/.emacs.d/graphics.el")
@@ -32,7 +32,7 @@
  '(org-agenda-files (quote ("~/org/todo.org")))
  '(package-selected-packages
    (quote
-	(wanderlust lsp-mode evil-org flycheck yasnippet-snippets typescript-mode csharp-mode projectile switch-window evil org ## helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
+	(restclient elfeed-org htmlize omnisharp magit-todos org-pdfview org-listcruncher pdf-tools wanderlust lsp-mode evil-org flycheck yasnippet-snippets typescript-mode csharp-mode projectile switch-window evil org ## helm flymd doom-themes sublime-themes php-mode key-chord google-this origami autopair yasnippet web-mode web golden-ratio exec-path-from-shell evil-surround evil-magit evil-collection emmet-mode company-web badwolf-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

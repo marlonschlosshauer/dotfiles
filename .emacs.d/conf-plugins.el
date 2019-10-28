@@ -19,6 +19,9 @@
   ;; Org-mode
   (setq org-return-follows-link t)
 
+  ;; org-pdfview
+  (eval-after-load 'org '(require 'org-pdfview))
+
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
@@ -31,12 +34,6 @@
   ;; (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
   ;; (evil-org-agenda-set-keys)
 
-  ;; magit
-  (global-set-key (kbd "C-x g") 'magit-status)
-
-  ;; projectile
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode +1)
 
   ;; Make magit open in the current buffer
@@ -63,6 +60,7 @@
   ;; Handle lsp mode
   (add-hook 'web-mode-hook #'lsp)
   (add-hook 'typescript-mode-hook #'lsp)
+  (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
   ;; Start web-mode when in these files
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
@@ -98,6 +96,16 @@
   ;; Deleted repeating blank lines
   (add-hook 'before-save-hook 'whitespace-cleanup)
   (add-hook 'before-save-hook 'xah-clean-whitespace)
+
+  ;; pdf-tools
+  ;(pdf-tools-install)
+  (pdf-loader-install)
+  (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
+
+  ;; elfeed
+  (setq-default elfeed-search-filter "@2-weeks-ago ")
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/org/rss.org"))
 
   ;; Change flymd browser from chrome to firefox
   (defun my-flymd-browser-function (url)

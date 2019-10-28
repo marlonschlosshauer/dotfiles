@@ -13,10 +13,10 @@
   ;; Hide macOS top bar
   (setq ns-auto-hide-menu-bar t)
 
-  ;; Show line numbers
+  ;; line numbers
+  (setq linum-format "%4d \u2502 ")
   (global-linum-mode t)
 
   ;; Make top bar light
   (add-to-list 'default-frame-alist '(ns-appearance . light)))
-
 
