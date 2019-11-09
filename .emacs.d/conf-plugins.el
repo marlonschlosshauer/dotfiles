@@ -26,8 +26,8 @@
   (add-to-list 'org-file-apps '(directory . emacs))
 
   ;; Agenda
-  (setq org-agenda-files '((sequence "~/org/todo.org" "~/.notes")))
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "5" "4" "3" "2" "1" "|" "DONE" "DEL")))
+  (setq org-agenda-files '((sequence "~/org/agenda.org")))
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE" "CANCEL")))
 
   ;; evil-org
   ;; (add-hook 'org-mode-hook 'evil-org-mode)
@@ -37,7 +37,7 @@
   (projectile-mode +1)
 
   ;; Make magit open in the current buffer
-  (setq magit-display-buffer-function
+(setq magit-display-buffer-function
 		(lambda (buffer)
 		  (display-buffer
 		   buffer (if (and (derived-mode-p 'magit-mode)
@@ -58,8 +58,8 @@
   (add-hook 'php-mode-hook  'emmet-mode)
 
   ;; Handle lsp mode
-  (add-hook 'web-mode-hook #'lsp)
-  (add-hook 'typescript-mode-hook #'lsp)
+  ;; (add-hook 'web-mode-hook #'lsp)
+  ;; (add-hook 'typescript-mode-hook #'lsp)
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
   ;; Start web-mode when in these files
@@ -75,8 +75,7 @@
 
   ;; Enable company for web-mode
   (defun my-web-mode-hook ()
-	(set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
-	)
+	(set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files)))
 
   (add-hook 'web-mode-hook 'my-web-mode-hook)
 
@@ -116,4 +115,3 @@
 			 "/usr/bin/open"
 			 (list "-a" "firefox" url))))
   (setq flymd-browser-open-function 'my-flymd-browser-function))
-

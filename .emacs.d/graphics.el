@@ -17,6 +17,10 @@
   (setq linum-format "%4d \u2502 ")
   (global-linum-mode t)
 
+  ;; Highlight closing tags (parenthesis, brackets)
+  (show-paren-mode t)
+  (setq show-paren-delay 0)
+
   ;; Make top bar light
   (add-to-list 'default-frame-alist '(ns-appearance . light)))
 

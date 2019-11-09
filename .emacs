@@ -1,7 +1,7 @@
 (load "~/.emacs.d/manage-plugins.el")
 (start-manager)
 ; Do on initial install
-(check-plugins)
+;(check-plugins)
 (manage-plugins)
 
 (load "~/.emacs.d/graphics.el")
