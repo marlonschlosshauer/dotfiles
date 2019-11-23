@@ -1,11 +1,14 @@
 (defun binds()
   ;;; General binds
 
+  ;; evil-multiedit binds
+  (evil-multiedit-default-keybinds)
+
   ;; magit
   (global-set-key (kbd "C-c g") 'magit)
 
   ;; org-agenda
-  (global-set-key (kbd "C-c a") 'magit)
+  (global-set-key (kbd "C-c a") 'org-agenda-list)
 
   ;; Set org-capture keybinding
   (global-set-key (kbd "C-c c") 'org-capture)

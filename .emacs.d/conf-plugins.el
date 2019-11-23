@@ -28,11 +28,12 @@
   ;; Agenda
   (setq org-agenda-files '((sequence "~/org/agenda.org")))
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE" "CANCEL")))
+  (setq org-default-notes-file "~/org/agenda.org")
 
   ;; evil-org
-  ;; (add-hook 'org-mode-hook 'evil-org-mode)
-  ;; (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-  ;; (evil-org-agenda-set-keys)
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+  (evil-org-agenda-set-keys)
 
   (projectile-mode +1)
 
@@ -58,16 +59,19 @@
   (add-hook 'php-mode-hook  'emmet-mode)
 
   ;; Handle lsp mode
-  ;; (add-hook 'web-mode-hook #'lsp)
-  ;; (add-hook 'typescript-mode-hook #'lsp)
+  (add-hook 'web-mode-hook #'lsp)
+  (add-hook 'typescript-mode-hook #'lsp)
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
   ;; Start web-mode when in these files
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+
+  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 
   ;; Set highlighting
   (setq web-mode-enable-current-column-highlight t)
@@ -77,6 +81,7 @@
   (defun my-web-mode-hook ()
 	(set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files)))
 
+  (push 'company-lsp company-backends)
   (add-hook 'web-mode-hook 'my-web-mode-hook)
 
   ;; Start autopair
@@ -105,6 +110,26 @@
   (setq-default elfeed-search-filter "@2-weeks-ago ")
   (elfeed-org)
   (setq rmh-elfeed-org-files (list "~/org/rss.org"))
+
+  ;; SQL Mode stuff
+  (add-hook 'sql-interactive-mode-hook
+          (lambda ()
+            (toggle-truncate-lines t)))
+
+  ;; PlantUML
+  (setq org-plantuml-jar-path "~/plantuml.jar")
+  (setq plantuml-jar-path "~/plantuml.jar")
+  (setq plantuml-default-exec-mode 'jar)
+
+  (setq org-plantuml-executable-path "/usr/local/bin/plantuml")
+  (setq plantuml-executable-path "/usr/local/bin/plantuml")
+  (setq plantuml-default-exec-mode 'executable)
+
+  (add-to-list
+   'org-src-lang-modes '("plantuml" . plantuml))
+
+  (with-eval-after-load 'org
+	(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t))))
 
   ;; Change flymd browser from chrome to firefox
   (defun my-flymd-browser-function (url)
