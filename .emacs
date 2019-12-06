@@ -50,7 +50,9 @@
 	:ensure t
 	:config
 	;;(pdf-tools-install)
-	(pdf-loader-install)))
+	(pdf-loader-install)
+	(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))))
+
 
 (use-package evil
   :ensure t
