@@ -26,7 +26,7 @@
 					'(display-buffer-same-window))))))
 
 (use-package org
-  :ensure t
+  :defer t
   :config
   (global-set-key (kbd "C-c a") 'org-agenda-list)
   (global-set-key (kbd "C-c c") 'org-capture)
@@ -78,7 +78,7 @@
 	:config
 	(evil-collection-init)
 	(evil-collection-define-key 'normal 'dired-mode-map
-								(kbd ".") 'dired-up-directory))
+	  (kbd ".") 'dired-up-directory))
 
   (use-package evil-numbers
 	:ensure t
@@ -103,7 +103,7 @@
 	(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)))
 
 (use-package elfeed
-  :ensure t
+  :defer t
   :config
   (setq-default elfeed-search-filter "@2-weeks-ago ")
 										;(evil-collection-define-key 'normal 'elfeed-search-mode-map
@@ -119,7 +119,7 @@
   :ensure t)
 
 (use-package company
-  :ensure t
+  :defer t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
 
@@ -154,7 +154,7 @@
   :ensure t)
 
 (use-package web-mode
-  :ensure t
+  :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -174,7 +174,7 @@
 	(add-hook 'web-mode-hook  'emmet-mode)))
 
 (use-package sql
-  :ensure t
+  :defer t
   :config
   (add-hook 'sql-interactive-mode-hook
 			(lambda ()
@@ -192,7 +192,7 @@
 	(exec-path-from-shell-initialize)))
 
 (use-package restclient
-  :ensure t
+  :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode)))
 
