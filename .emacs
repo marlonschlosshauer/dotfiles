@@ -30,7 +30,7 @@
 (use-package org
   :defer t
   :config
-  (global-set-key (kbd "C-c a") 'org-agenda-list)
+  (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture)
 
   (setq org-return-follows-link t)
