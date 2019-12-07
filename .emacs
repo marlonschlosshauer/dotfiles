@@ -31,8 +31,6 @@
 (use-package org
   :defer t
   :config
-  (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c c") 'org-capture)
 
   (setq org-return-follows-link t)
   (setq org-src-tab-acts-natively t)
@@ -336,4 +334,7 @@
 (global-set-key (kbd "C-x c") 'comment-region)
 (global-set-key (kbd "C-x t") 'delete-trailing-whitespace)
 
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
 ;;; End of Binds
