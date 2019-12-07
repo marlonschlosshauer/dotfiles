@@ -125,12 +125,22 @@
 	(setq rmh-elfeed-org-files (list "~/org/rss.org"))))
 
 (use-package lsp-mode
-  :ensure t)
+  :ensure t
+  :commands lsp
+  :hook
+  ((python-mode) . lsp)
+  :config
+
+  (use-package lsp-ui
+	:commands lsp-ui-mode
+	:custom
+	(lsp-ui-doc-position 'at-point)
+	(lsp-ui-doc-include-signature nil)))
 
 (use-package company
-  :defer t
+  :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
+  (global-company-mode 1)
 
   (use-package company-lsp
 	:ensure t
