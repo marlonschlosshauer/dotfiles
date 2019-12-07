@@ -28,33 +28,6 @@
 					  nil
 					'(display-buffer-same-window))))))
 
-(use-package org
-  :defer t
-  :config
-
-  (setq org-return-follows-link t)
-  (setq org-src-tab-acts-natively t)
-
-  ;; Force org to open files in dired, instead of finder
-  (add-to-list 'org-file-apps '(directory . emacs))
-
-  (setq org-agenda-files '("~/org/"))
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE" "CANCEL")))
-  (setq org-default-notes-file "~/org/todo.org")
-
-  (setq org-agenda-custom-commands
-		'(("c" "Simple agenda view"
-		   ((agenda "")
-			(alltodo "")))))
-
-  (use-package org-pdfview
-	:ensure t
-	:config
-	;;(pdf-tools-install)
-	(pdf-loader-install)
-	(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))))
-
-
 (use-package evil
   :ensure t
   :defer .1
@@ -108,6 +81,32 @@
 	:config
 	(key-chord-mode 1)
 	(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)))
+
+(use-package org
+  :defer t
+  :config
+  ;;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (setq org-return-follows-link t)
+  (setq org-src-tab-acts-natively t)
+
+  ;; Force org to open files in dired, instead of finder
+  (add-to-list 'org-file-apps '(directory . emacs))
+
+  (setq org-agenda-files '("~/org/"))
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE" "CANCEL")))
+  (setq org-default-notes-file "~/org/todo.org")
+
+  (setq org-agenda-custom-commands
+		'(("c" "Simple agenda view"
+		   ((agenda "")
+			(alltodo "")))))
+
+  (use-package org-pdfview
+	:ensure t
+	:config
+	;;(pdf-tools-install)
+	(pdf-loader-install)
+	(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))))
 
 (use-package elfeed
   :defer t
