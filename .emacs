@@ -110,10 +110,13 @@
 
 (use-package elfeed
   :defer t
+  :after evil-collection
   :config
+  (add-hook 'elfeed-search-mode-hook
+			(lambda ()
+			  (evil-collection-define-key 'normal 'elfeed-search-mode-map
+				(kbd "RET") 'elfeed-search-browse-url)))
   (setq-default elfeed-search-filter "@2-weeks-ago ")
-										;(evil-collection-define-key 'normal 'elfeed-search-mode-map
-										;(kbd "RET") 'elfeed-search-browse-url)
 
   (use-package elfeed-org
 	:defer t
