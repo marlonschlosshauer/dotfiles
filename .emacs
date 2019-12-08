@@ -127,6 +127,8 @@
 (use-package lsp-mode
   :ensure t
   :commands lsp
+  :custom
+  (lsp-prefer-flymake nil)
   :hook
   ((python-mode) . lsp)
   :config
