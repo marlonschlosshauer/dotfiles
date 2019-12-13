@@ -92,9 +92,9 @@
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
-  (setq org-agenda-files '("~/org/"))
+  (setq org-agenda-files '("~/Dropbox/org/"))
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE" "CANCEL")))
-  (setq org-default-notes-file "~/org/todo.org")
+  (setq org-default-notes-file "~/Dropbox/org/todo.org")
 
   (setq org-agenda-custom-commands
 		'(("c" "Simple agenda view"
@@ -122,7 +122,7 @@
 	:defer t
 	:config
 	(elfeed-org)
-	(setq rmh-elfeed-org-files (list "~/org/rss.org"))))
+	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
 
 (use-package lsp-mode
   :ensure t
