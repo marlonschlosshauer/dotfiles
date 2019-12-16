@@ -124,6 +124,11 @@
 	(elfeed-org)
 	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
 
+(use-package python
+  :defer t
+  :config
+  (setq python-shell-interpreter "/usr/local/bin/python3"))
+
 (use-package lsp-mode
   :ensure t
   :commands lsp
