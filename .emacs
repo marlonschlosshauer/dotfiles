@@ -133,7 +133,11 @@
 (use-package python
   :defer t
   :config
-  (setq python-shell-interpreter "/usr/local/bin/python3"))
+  (setq python-shell-interpreter "/usr/local/bin/python3")
+
+  (use-package pyvenv
+	:ensure t)
+
   (use-package flycheck-pyflakes
 	:ensure t
 	:after flycheck))
