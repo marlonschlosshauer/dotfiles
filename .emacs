@@ -126,10 +126,17 @@
 	(elfeed-org)
 	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 (use-package python
   :defer t
   :config
   (setq python-shell-interpreter "/usr/local/bin/python3"))
+  (use-package flycheck-pyflakes
+	:ensure t
+	:after flycheck))
 
 (use-package lsp-mode
   :ensure t
@@ -142,6 +149,7 @@
 
   (use-package lsp-ui
 	:commands lsp-ui-mode
+	:disabled t
 	:custom
 	(lsp-ui-doc-position 'at-point)
 	(lsp-ui-doc-include-signature nil)))
