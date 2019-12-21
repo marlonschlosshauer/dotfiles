@@ -83,6 +83,8 @@
 	(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)))
 
 (use-package org
+  :mode (("\\.org\\'" . org-mode)
+		 ("\\.md\\'" . org-mode))
   :defer t
   :config
   ;;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
