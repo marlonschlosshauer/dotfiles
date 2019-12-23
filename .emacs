@@ -110,6 +110,11 @@
 	(pdf-loader-install)
 	(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))))
 
+(use-package helm
+  :ensure t
+  :config
+  (global-set-key (kbd "M-x") 'helm-M-x))
+
 (use-package elfeed
   :defer t
   :after evil-collection
