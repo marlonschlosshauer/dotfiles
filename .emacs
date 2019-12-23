@@ -356,12 +356,10 @@
 
 (global-set-key (kbd "C-x j") 'xref-find-definitions)
 (global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
-(global-set-key (kbd "C-x C-u") 'list-tags)
-
-;; Set better commenting bind
-(global-set-key (kbd "C-x c") 'comment-region)
-(global-set-key (kbd "C-x t") 'delete-trailing-whitespace)
-
+(global-set-key (kbd "C-x SPC") 'company-complete)
+(global-set-key (kbd "C-x v") 'comment-region)
+(global-set-key (kbd "C-x r") 'lsp-rename)
+(global-set-key (kbd "C-x t") 'lsp-format-buffer)
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
