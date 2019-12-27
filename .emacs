@@ -55,27 +55,32 @@
 
   (use-package evil-collection
 	:ensure t
+	:after evil
 	:config
 	(evil-collection-init))
 
   (use-package evil-numbers
 	:ensure t
+	:after evil
 	:config
 	(define-key evil-normal-state-map (kbd "+") 'evil-numbers/inc-at-pt)
 	(define-key evil-normal-state-map (kbd "-") 'evil-numbers/dec-at-pt))
 
   (use-package evil-multiedit
 	:ensure t
+	:after evil
 	:config
 	(evil-multiedit-default-keybinds))
 
   (use-package evil-surround
 	:ensure t
+	:after evil
 	:config
 	(global-evil-surround-mode 1))
 
   (use-package key-chord
 	:ensure t
+	:after evil
 	:config
 	(key-chord-mode 1)
 	(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)))
@@ -131,7 +136,8 @@
   (setq-default elfeed-search-filter "@2-weeks-ago ")
 
   (use-package elfeed-org
-	:defer t
+	:ensure t
+	:after org
 	:config
 	(elfeed-org)
 	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
