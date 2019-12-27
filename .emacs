@@ -56,9 +56,7 @@
   (use-package evil-collection
 	:ensure t
 	:config
-	(evil-collection-init)
-	(evil-collection-define-key 'normal 'dired-mode-map
-	  (kbd ".") 'dired-up-directory))
+	(evil-collection-init))
 
   (use-package evil-numbers
 	:ensure t
@@ -114,6 +112,13 @@
   :ensure t
   :config
   (global-set-key (kbd "M-x") 'helm-M-x))
+
+(use-package dired-subtree
+  :ensure t
+  :after evil-collection
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+	(kbd ".") 'dired-subtree-toggle))
 
 (use-package elfeed
   :defer t
