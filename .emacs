@@ -199,7 +199,10 @@
 (use-package yasnippet
   :ensure t
   :config
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  ;; Load this to fix : Symbol’s function definition is void: yasnippet-snippets--fixed-indent
+  ;; Caused in python-mode by python-send-buffer
+  (load "~/.emacs.d/elisp/experimental.el"))
 
 (use-package autopair
   :ensure t
