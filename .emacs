@@ -59,7 +59,7 @@
 
   (use-package evil-collection
 	:ensure t
-	:after evil
+	:after (evil dired)
 	:config
 	(evil-collection-init))
 
