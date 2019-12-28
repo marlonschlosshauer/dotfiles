@@ -61,7 +61,9 @@
 	:ensure t
 	:after (evil dired)
 	:config
-	(evil-collection-init))
+	(evil-collection-init)
+	(evil-collection-define-key 'normal 'dired-mode-map
+	  (kbd ".") 'dired-up-directory))
 
   (use-package evil-numbers
 	:ensure t
