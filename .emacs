@@ -122,13 +122,6 @@
   :config
   (global-set-key (kbd "M-x") 'helm-M-x))
 
-(use-package dired-subtree
-  :ensure t
-  :after evil-collection
-  :config
-  (evil-collection-define-key 'normal 'dired-mode-map
-	(kbd ".") 'dired-subtree-toggle))
-
 (use-package elfeed
   :defer t
   :after evil-collection
@@ -168,15 +161,7 @@
   :custom
   (lsp-prefer-flymake nil)
   :hook
-  ((python-mode) . lsp)
-  :config
-
-  (use-package lsp-ui
-	:commands lsp-ui-mode
-	:disabled t
-	:custom
-	(lsp-ui-doc-position 'at-point)
-	(lsp-ui-doc-include-signature nil)))
+  ((python-mode) . lsp))
 
 (use-package company
   :ensure t
@@ -347,6 +332,7 @@
 
 ;; Show tabs
 (setq whitespace-style '(face tabs tab-mark trailing))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
