@@ -1,1 +1,0 @@
-("~/" "~/labs/" "~/projects/web/bc/" "~/projects/" "~/labs/CN1/Labor1/" "~/org/" "~/projects/typescript/highlight-bot/" "~/.emacs.d/pdf-tools/" "~/projects/test/" "~/projects/test/two/" "~/projects/test/three/" "~/projects/test/one/" "~/projects/c/array-functions/" "~/Projects/" "~/projects/python/queue/" "~/Projects/typescript/highlight-bot/")
