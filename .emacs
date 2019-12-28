@@ -11,6 +11,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package dired
+  :config
+  (setq dired-listing-switches "-alh"))
+
 (use-package magit
   :ensure t
   :config
