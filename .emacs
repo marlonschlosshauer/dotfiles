@@ -96,7 +96,8 @@
 		 ("\\.md\\'" . org-mode))
   :defer t
   :config
-  ;;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (setq org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
   (setq org-return-follows-link t)
   (setq org-src-tab-acts-natively t)
 
