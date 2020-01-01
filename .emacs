@@ -252,6 +252,15 @@
   :config
   (rainbow-mode))
 
+(use-package spotify
+  :ensure t
+  :bind (("C-c s ." . spotify-playpause)
+		 ("C-c s l" . spotify-next)
+		 ("C-c s h" . spotify-previous))
+  :config
+  (setq spotify-oauth2-client-id "")
+  (setq spotify-oauth2-client-secret ""))
+
 (use-package doom-themes
   :ensure t
   :config
