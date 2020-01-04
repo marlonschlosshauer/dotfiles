@@ -113,6 +113,12 @@
 		   ((agenda "")
 			(alltodo "")))))
 
+  (setq org-capture-templates
+		'(("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
+		   "* TODO %? %i\n  %a")
+		  ("s" "SEARCH" entry (file+headline "~/Dropbox/org/todo.org" "Search")
+		   "* TODO SEARCH [[elisp:(google-this-string nil \"%^{PROMPT}\" t)][%\\1]]")))
+
   (use-package org-pdfview
 	:ensure t
 	:config
