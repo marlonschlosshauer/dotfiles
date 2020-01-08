@@ -171,6 +171,14 @@
   :config
   (setq python-shell-interpreter "/usr/local/bin/python3")
 
+  (use-package py-yapf
+	:ensure t
+	:config
+	(add-hook 'python-mode-hook 'py-yapf-enable-on-save))
+
+  (use-package python-pytest
+	:ensure t)
+
   (use-package pyvenv
 	:ensure t)
 
