@@ -101,6 +101,12 @@
   (setq org-return-follows-link t)
   (setq org-src-tab-acts-natively t)
 
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+	 (shell . t)
+	 (python . t)))
+
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
