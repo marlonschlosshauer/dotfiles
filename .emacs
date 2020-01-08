@@ -127,10 +127,18 @@
 
   (use-package org-pdfview
 	:ensure t
+	:after pdf-tools
+	:mode ("\\.pdf$" .  pdf-view-mode)
 	:config
 	;;(pdf-tools-install)
-	(pdf-loader-install)
-	(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))))
+	))
+
+(use-package pdf-tools
+  :ensure t
+  :config
+  (pdf-loader-install)
+  (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
+
 
 (use-package helm
   :ensure t
