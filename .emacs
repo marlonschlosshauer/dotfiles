@@ -128,7 +128,6 @@
   (use-package org-pdfview
 	:ensure t
 	:after pdf-tools
-	:mode ("\\.pdf$" .  pdf-view-mode)
 	:config
 	;;(pdf-tools-install)
 	))
