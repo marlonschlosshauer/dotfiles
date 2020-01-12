@@ -203,10 +203,13 @@
 	:config
 	(push 'company-lsp company-backends)))
 
-(use-package switch-window
+(use-package ace-window
   :ensure t
+  :bind ("C-x o " . ace-window)
   :config
-  (global-set-key (kbd "C-x o") 'switch-window))
+  (custom-set-faces
+   '(aw-leading-char-face
+	 ((t (:inherit ace-jump-face-foreground :height 2.0))))))
 
 (use-package projectile
   :ensure t
