@@ -178,8 +178,11 @@
   (use-package python-pytest
 	:ensure t)
 
-  (use-package pyvenv
-	:ensure t)
+  (use-package virtualenvwrapper
+	:ensure t
+	:config
+	(venv-initialize-interactive-shells)
+	(setq venv-location "~/.venv/"))
 
   (use-package flycheck-pyflakes
 	:ensure t
