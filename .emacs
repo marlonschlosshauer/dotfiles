@@ -139,11 +139,6 @@
   (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
 
 
-(use-package helm
-  :ensure t
-  :config
-  (global-set-key (kbd "M-x") 'helm-M-x))
-
 (use-package elfeed
   :defer t
   :after evil-collection
@@ -213,6 +208,17 @@
   (custom-set-faces
    '(aw-leading-char-face
 	 ((t (:inherit ace-jump-face-foreground :height 2.0))))))
+
+(use-package helm
+  :ensure t
+  :config
+  (global-set-key (kbd "M-x") 'helm-M-x)
+
+  (use-package helm-projectile
+	:ensure t
+	:after projectile
+	:config
+	(helm-projectile-on)))
 
 (use-package projectile
   :ensure t
