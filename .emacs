@@ -295,10 +295,7 @@
   :ensure t
   :bind (("C-c s ." . spotify-playpause)
 		 ("C-c s l" . spotify-next)
-		 ("C-c s h" . spotify-previous))
-  :config
-  (setq spotify-oauth2-client-id "")
-  (setq spotify-oauth2-client-secret ""))
+		 ("C-c s h" . spotify-previous)))
 
 (use-package doom-themes
   :ensure t
