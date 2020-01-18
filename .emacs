@@ -241,7 +241,9 @@
   (autopair-global-mode))
 
 (use-package origami
-  :ensure t)
+  :ensure t
+  :config
+  (global-origami-mode))
 
 (use-package web-mode
   :defer t
