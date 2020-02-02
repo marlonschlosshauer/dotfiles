@@ -300,9 +300,15 @@
 		 ("C-c s h" . spotify-previous)))
 
 (use-package doom-themes
+  :disabled
   :ensure t
   :config
   (load-theme 'doom-one t))
+
+(use-package soothe-theme
+  :ensure t
+  :config
+  (load-theme 'soothe t))
 ;;; End of packages
 
 ;;; Misc
