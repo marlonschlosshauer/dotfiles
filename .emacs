@@ -361,10 +361,7 @@
 (global-auto-revert-mode t)
 
 ;; Enable line wrapping
-(add-hook 'text-mode-hook 'auto-fill-mode)
-
-;; Set line wrap
-(setq-default fill-column 80)
+(global-visual-line-mode)
 
 ;; Turn off creation of temp files
 (setq make-backup-files nil)
