@@ -1,6 +1,6 @@
 alias tick="ping www.google.de"
 alias remote="ssh peon@192.168.2.112"
-alias reload=". ~/.bash_profile"
+alias reload=". ~/.zshrc"
 alias dragon="fortune | cowsay -f dragon | lolcat"
 alias stars="telnet towel.blinkenlights.nl"
 #alias fdisk -l="diskutil list"
