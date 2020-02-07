@@ -1,4 +1,3 @@
-
 # Change prompt
 PS1="%1d$ "
 
@@ -6,4 +5,5 @@ PS1="%1d$ "
 if [ -f ~/.alias ]; then
     . ~/.alias
 fi
+
 
