@@ -188,8 +188,9 @@
   :commands lsp
   :custom
   (lsp-prefer-flymake nil)
-  :hook
-  ((python-mode) . lsp))
+  :hook(
+		(python-mode . lsp)
+		(js-mode . lsp)))
 
 (use-package company
   :ensure t
