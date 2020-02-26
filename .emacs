@@ -264,8 +264,6 @@
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 4)
 
-  (add-hook 'web-mode-hook 'origami-mode)
-
   (use-package emmet-mode
 	:ensure t
 	:config
