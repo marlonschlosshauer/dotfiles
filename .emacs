@@ -309,12 +309,12 @@
 		 ("C-c s h" . spotify-previous)))
 
 (use-package doom-themes
-  :disabled
   :ensure t
   :config
-  (load-theme 'doom-one t))
+  (load-theme 'doom-molokai t))
 
 (use-package soothe-theme
+  :disabled
   :ensure t
   :config
   (load-theme 'soothe t))
@@ -347,7 +347,7 @@
 (setq show-paren-delay 0)
 
 ;; Make top bar light
-(add-to-list 'default-frame-alist '(ns-appearance . light))
+;;(add-to-list 'default-frame-alist '(ns-appearance . light))
 
 ;;; Built-in Emacs
 ;; Set enviroment variables
