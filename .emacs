@@ -259,12 +259,21 @@
   (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
 
+  (setq js-indent-level 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 4)
+
   (add-hook 'web-mode-hook 'origami-mode)
 
   (use-package emmet-mode
 	:ensure t
 	:config
 	(add-hook 'web-mode-hook  'emmet-mode)))
+  (use-package prettier-js
+	:ensure t
+	:config
+	(add-hook 'web-mode-hook 'prettier-js-mode)))
 
 (use-package sql
   :defer t
@@ -376,13 +385,7 @@
 (setq-default tab-width 4)
 (setq c-default-style "linux")
 (setq-local c-basic-offset 4)
-(setq-local javascript-indent-level 4)
-(setq-local js-indent-level 4)
-(setq-local js4-basic-offset 4)
-(setq-local web-mode-markup-indent-offset 4)
-(setq-local web-mode-css-indent-offset 4)
-(setq-local web-mode-code-indent-offset 4)
-(setq-local css-indent-offset 4)
+
 
 ;; Show tabs
 (setq whitespace-style '(face tabs tab-mark trailing))
