@@ -248,14 +248,14 @@
 
 (use-package web-mode
   :defer t
+  :mode (("\\.js\\'" . web-mode)
+		 ("\\.ts\\'" . web-mode)
+		 ("\\.html?\\'" . web-mode)
+		 ("\\.css?\\'" . web-mode)
+		 ("\\.jsx\\'" . web-mode)
+		 ("\\.js\\'" . web-mode)
+		 ("\\.php\\'" . web-mode))
   :config
-  (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-
   (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
 
