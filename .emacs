@@ -295,7 +295,7 @@
 (use-package restclient
   :defer t
   :config
-  (add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode)))
+  :mode ("\\.rest\\'" . restclient-mode))
 
 (use-package rainbow-mode
   :ensure t
