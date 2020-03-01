@@ -248,18 +248,13 @@
 
 (use-package web-mode
   :defer t
-  :mode (("\\.js\\'" . web-mode)
-		 ("\\.ts\\'" . web-mode)
-		 ("\\.html?\\'" . web-mode)
+  :mode (("\\.html?\\'" . web-mode)
 		 ("\\.css?\\'" . web-mode)
-		 ("\\.jsx\\'" . web-mode)
-		 ("\\.js\\'" . web-mode)
 		 ("\\.php\\'" . web-mode))
   :config
   (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
 
-  (setq js-indent-level 2)
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 4)
@@ -267,12 +262,20 @@
   (use-package emmet-mode
 	:ensure t
 	:config
-	(add-hook 'web-mode-hook  'emmet-mode))
+	(add-hook 'web-mode-hook  'emmet-mode)))
 
-  (use-package prettier-js
+(use-package prettier-js
 	:ensure t
 	:config
-	(add-hook 'web-mode-hook 'prettier-js-mode)))
+	(add-hook 'js-mode-hook 'prettier-js-mode))
+
+(use-package js-mode
+  :defer t
+  :mode (("\\.js?\\'" . js-mode)
+		 ("\\.ts?\\'" . js-mode)
+		 ("\\.jsx?\\'" . js-mode))
+  :config
+  (setq js-indent-level 2))
 
 (use-package sql
   :defer t
