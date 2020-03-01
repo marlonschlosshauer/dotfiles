@@ -262,12 +262,10 @@
   (use-package emmet-mode
 	:ensure t
 	:config
-	(add-hook 'web-mode-hook  'emmet-mode)))
+	:hook (web-mode . emmet-mode)))
 
 (use-package prettier-js
-	:ensure t
-	:config
-	(add-hook 'js-mode-hook 'prettier-js-mode))
+  :hook (js-mode . prettier-js-mode))
 
 (use-package js-mode
   :defer t
