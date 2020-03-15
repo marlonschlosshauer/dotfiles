@@ -165,6 +165,17 @@
 	(elfeed-org)
 	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
 
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :hook(
+		(python-mode . lsp)
+		(js-mode . lsp))
+  :config
+  (use-package lsp-ui
+	:ensure t
+	:hook(lsp-mode . lsp-ui)))
+
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
@@ -191,15 +202,6 @@
   (use-package flycheck-pyflakes
 	:ensure t
 	:after flycheck))
-
-(use-package lsp-mode
-  :ensure t
-  :commands lsp
-  :custom
-  (lsp-prefer-flymake nil)
-  :hook(
-		(python-mode . lsp)
-		(js-mode . lsp)))
 
 (use-package company
   :ensure t
