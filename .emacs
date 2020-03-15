@@ -342,11 +342,6 @@
   :config
   (load-theme 'doom-molokai t))
 
-(use-package soothe-theme
-  :disabled
-  :ensure t
-  :config
-  (load-theme 'soothe t))
 ;;; End of packages
 
 ;;; Misc
