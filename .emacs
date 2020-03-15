@@ -314,6 +314,12 @@
 		 ("C-c s l" . spotify-next)
 		 ("C-c s h" . spotify-previous)))
 
+(use-package diff-hl
+  :ensure t
+  :config
+  (global-diff-hl-mode))
+
+
 (use-package doom-themes
   :ensure t
   :config
@@ -336,6 +342,8 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+(global-hl-line-mode)
 ;;; End of GUI
 
 ;; Remove splash screen
