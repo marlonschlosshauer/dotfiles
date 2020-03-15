@@ -102,13 +102,13 @@
 
 (use-package org
   :mode (("\\.org\\'" . org-mode))
-
   :defer t
   :config
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate)
   (setq org-return-follows-link t)
   (setq org-src-tab-acts-natively t)
+
 
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -196,7 +196,8 @@
 	(add-hook 'python-mode-hook 'py-yapf-enable-on-save))
 
   (use-package python-pytest
-	:ensure t)
+	:ensure t
+	:bind ("C-c t" . python-pytest-popup))
 
   (use-package virtualenvwrapper
 	:ensure t
@@ -212,6 +213,7 @@
   :ensure t
   :config
   (global-company-mode 1)
+  (global-set-key (kbd "C-x SPC") 'company-complete)
 
   (use-package company-lsp
 	:ensure t
@@ -441,8 +443,10 @@
 
 (global-set-key (kbd "C-x j") 'xref-find-definitions)
 (global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
-(global-set-key (kbd "C-x SPC") 'company-complete)
+
 (global-set-key (kbd "C-x v") 'comment-region)
+
+(global-set-key (kbd "C-x C-m") 'compile)
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
