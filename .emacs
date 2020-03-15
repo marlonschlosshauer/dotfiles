@@ -270,8 +270,8 @@
 
 (use-package web-mode
   :defer t
-  :mode (("\\.html?\\'" . web-mode)
-		 ("\\.css?\\'" . web-mode)
+  :mode (("\\.html\\'" . web-mode)
+		 ("\\.css\\'" . web-mode)
 		 ("\\.php\\'" . web-mode))
   :config
   (setq web-mode-enable-current-column-highlight t)
