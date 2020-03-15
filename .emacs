@@ -168,13 +168,18 @@
 (use-package lsp-mode
   :ensure t
   :commands lsp
+  :init (setq lsp-keymap-prefix "C-l")
   :hook(
 		(python-mode . lsp)
-		(js-mode . lsp))
+		(js2-mode . lsp))
+
   :config
   (use-package lsp-ui
 	:ensure t
-	:hook(lsp-mode . lsp-ui)))
+	:config (setq lsp-ui-doc-enable t
+				  lsp-ui-peek-enable t
+				  lsp-ui-sideline-enable nil
+				  lsp-ui-doc-position (quote at-point))))
 
 (use-package flycheck
   :ensure t
@@ -275,16 +280,16 @@
 	:config
 	:hook (web-mode . emmet-mode)))
 
-(use-package prettier-js
-  :hook (js-mode . prettier-js-mode))
-
-(use-package js-mode
+(use-package js2-mode
   :defer t
-  :mode (("\\.js?\\'" . js-mode)
-		 ("\\.ts?\\'" . js-mode)
-		 ("\\.jsx?\\'" . js-mode))
+  :mode (("\\.js?\\'" . js2-mode)
+		 ("\\.ts?\\'" . js2-mode)
+		 ("\\.jsx?\\'" . js2-mode))
   :config
-  (setq js-indent-level 2))
+  (setq js-indent-level 2)
+
+  (use-package prettier-js
+	:hook (js-mode . prettier-js-mode)))
 
 (use-package sql
   :defer t
@@ -438,8 +443,6 @@
 (global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
 (global-set-key (kbd "C-x SPC") 'company-complete)
 (global-set-key (kbd "C-x v") 'comment-region)
-(global-set-key (kbd "C-x r") 'lsp-rename)
-(global-set-key (kbd "C-x t") 'lsp-format-buffer)
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
