@@ -42,6 +42,7 @@
   (define-key evil-normal-state-map (kbd "B") 'evil-beginning-of-visual-line)
   (define-key evil-normal-state-map (kbd "E") 'evil-end-of-visual-line)
   (evil-mode 1)
+  (subword-mode 1)
 
   (use-package evil-magit
 	:ensure t)
