@@ -94,7 +94,11 @@
 
   (use-package expand-region
 	:config
-	(define-key evil-normal-state-map (kbd "s-v") 'er/expand-region)))
+	(define-key evil-normal-state-map (kbd "s-v") 'er/expand-region))
+
+(use-package ace-jump-mode
+  :config
+  (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)))
 
 (use-package org
   :mode (("\\.org\\'" . org-mode))
