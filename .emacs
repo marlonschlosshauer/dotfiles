@@ -90,7 +90,11 @@
 	:after evil
 	:config
 	(key-chord-mode 1)
-	(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)))
+	(key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
+
+  (use-package expand-region
+	:config
+	(define-key evil-normal-state-map (kbd "s-v") 'er/expand-region)))
 
 (use-package org
   :mode (("\\.org\\'" . org-mode)
