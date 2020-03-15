@@ -97,8 +97,8 @@
 	(define-key evil-normal-state-map (kbd "s-v") 'er/expand-region)))
 
 (use-package org
-  :mode (("\\.org\\'" . org-mode)
-		 ("\\.md\\'" . org-mode))
+  :mode (("\\.org\\'" . org-mode))
+
   :defer t
   :config
   (setq org-clock-persist 'history)
