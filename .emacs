@@ -336,6 +336,11 @@
   :config
   (global-diff-hl-mode))
 
+(use-package rainbow-delimiters
+  :ensure
+  :hook ((js-mode . rainbow-delimiters-mode)
+		 (emacs-elisp-mode . rainbow-delimiters-mode)
+		 (python-mode . rainbow-delimiters-mode)))
 
 (use-package doom-themes
   :ensure t
