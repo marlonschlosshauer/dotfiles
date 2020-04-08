@@ -350,6 +350,8 @@
 ;;; End of packages
 
 ;;; Misc
+(setenv "LANG" "de_DE.UTF-8")
+
 ;; Deleted repeating blank lines
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;;; End of Misc
