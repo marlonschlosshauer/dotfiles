@@ -185,6 +185,16 @@
 				  lsp-ui-sideline-enable nil
 				  lsp-ui-doc-position (quote at-point))))
 
+
+(use-package csharp-mode
+  :defer t
+  :mode ("\\.cs?\\'" . csharp-mode)
+  :config
+
+  (use-package omnisharp
+	:ensure t
+	:hook (csharp-mode . omnisharp-mode)))
+
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
@@ -218,6 +228,8 @@
   :config
   (global-company-mode 1)
   (global-set-key (kbd "C-x SPC") 'company-complete)
+
+  (push 'company-omnisharp company-backends)
 
   (use-package company-lsp
 	:ensure t
