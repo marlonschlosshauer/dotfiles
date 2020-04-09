@@ -355,7 +355,8 @@
 (use-package rainbow-delimiters
   :ensure
   :hook ((js-mode . rainbow-delimiters-mode)
-		 (emacs-elisp-mode . rainbow-delimiters-mode)
+		 (emacs-lisp-mode . rainbow-delimiters-mode)
+		 (csharp-mode . rainbow-delimiters-mode)
 		 (python-mode . rainbow-delimiters-mode)))
 
 (use-package doom-themes
