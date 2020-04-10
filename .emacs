@@ -185,7 +185,6 @@
 				  lsp-ui-sideline-enable nil
 				  lsp-ui-doc-position (quote at-point))))
 
-
 (use-package csharp-mode
   :defer t
   :mode ("\\.cs?\\'" . csharp-mode)
@@ -193,6 +192,13 @@
 
   (use-package omnisharp
 	:ensure t
+	:bind (("C-l" . nil) ; Unset non-prefix
+		   ("C-l r t" . omnisharp-unit-test-buffer)
+		   ("C-l g r" . omnisharp-helm-find-usage)
+		   ("C-l s s" . omnisharp-start-omnisharp-server)
+		   ("C-l s q" . omnisharp-stop-server)
+		   ("C-l r r" . omnisharp-rename))
+
 	:hook (csharp-mode . omnisharp-mode)))
 
 (use-package flycheck
