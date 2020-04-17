@@ -465,15 +465,8 @@
 ;;; End of Built-in Emacs
 
 ;;; Binds
-;; German keyboard binding
-(global-set-key (kbd "M-5") '(lambda () (interactive) (insert "[")))
-(global-set-key (kbd "M-6") '(lambda () (interactive) (insert "]")))
-(global-set-key (kbd "M-7") '(lambda () (interactive) (insert "|")))
-(global-set-key (kbd "M-/") '(lambda () (interactive) (insert "\\")))
-(global-set-key (kbd "M-8") '(lambda () (interactive) (insert "{")))
-(global-set-key (kbd "M-9") '(lambda () (interactive) (insert "}")))
-(global-set-key (kbd "M-l") '(lambda () (interactive) (insert "@")))
-(global-set-key (kbd "M-n") '(lambda () (interactive) (insert "~")))
+;; German keyboard binding, by making emasc ignore right-alt key
+(setq ns-right-alternate-modifier nil)
 
 (global-set-key (kbd "C-x j") 'xref-find-definitions)
 (global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
