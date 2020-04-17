@@ -200,7 +200,9 @@
 		   ("C-l s q" . omnisharp-stop-server)
 		   ("C-l r r" . omnisharp-rename))
 
-	:hook (csharp-mode . omnisharp-mode)))
+	:hook (csharp-mode . omnisharp-mode)
+	:config
+	(add-hook 'before-save-hook 'omnisharp-code-format-entire-file)))
 
 (use-package flycheck
   :ensure t
