@@ -189,6 +189,7 @@
   :defer t
   :mode ("\\.cs?\\'" . csharp-mode)
   :config
+  (setq indent-tabs-mode nil)
 
   (use-package omnisharp
 	:ensure t
@@ -441,9 +442,8 @@
 ;; Setup indentation
 (setq indent-tabs-mode t)
 (setq-default tab-width 4)
-(setq c-default-style "linux")
-(setq-local c-basic-offset 4)
-
+;;(setq c-default-style "linux")
+(setq c-basic-offset 4)
 
 ;; Show tabs
 (setq whitespace-style '(face tabs tab-mark trailing))
