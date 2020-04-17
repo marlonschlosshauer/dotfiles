@@ -100,6 +100,18 @@
 	:config
 	(define-key evil-normal-state-map (kbd "C-c v") 'mark-more-like-this))
 
+  (use-package elec-pair
+	:ensure t
+	:config
+	(setq electric-pair-pairs
+		  '(
+			(?\" . ?\")
+			(?\' . ?\')
+			(?\( . ?\))
+			(?\[ . ?\])
+			(?\{ . ?\})))
+	(electric-pair-mode 1))
+
   (use-package ace-jump-mode
 	:config
 	(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)))
@@ -278,11 +290,6 @@
   ;; Load this to fix : Symbol’s function definition is void: yasnippet-snippets--fixed-indent
   ;; Caused in python-mode by python-send-buffer
   (load "~/.emacs.d/elisp/experimental.el"))
-
-(use-package autopair
-  :ensure t
-  :config
-  (autopair-global-mode))
 
 (use-package origami
   :ensure t
