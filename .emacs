@@ -197,6 +197,23 @@
 				  lsp-ui-sideline-enable nil
 				  lsp-ui-doc-position (quote at-point))))
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode 1)
+  (global-set-key (kbd "C-x SPC") 'company-complete)
+
+  (push 'company-omnisharp company-backends)
+
+  (use-package company-lsp
+	:ensure t
+	:config
+	(push 'company-lsp company-backends)))
+
 (use-package csharp-mode
   :defer t
   :mode ("\\.cs?\\'" . csharp-mode)
@@ -215,10 +232,6 @@
 	:hook (csharp-mode . omnisharp-mode)
 	:config
 	(add-hook 'before-save-hook 'omnisharp-code-format-entire-file)))
-
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
 
 (use-package python
   :defer t
@@ -244,18 +257,37 @@
 	:ensure t
 	:after flycheck))
 
-(use-package company
-  :ensure t
+(use-package js2-mode
+  :defer t
+  :mode (("\\.js?\\'" . js2-mode)
+		 ("\\.ts?\\'" . js2-mode)
+		 ("\\.jsx?\\'" . js2-mode))
   :config
-  (global-company-mode 1)
-  (global-set-key (kbd "C-x SPC") 'company-complete)
+  (setq js-indent-level 2)
 
-  (push 'company-omnisharp company-backends)
+  (use-package js-comint)
 
-  (use-package company-lsp
+  (use-package prettier-js
+	:hook (js-mode . prettier-js-mode)))
+
+(use-package web-mode
+  :defer t
+  :mode (("\\.html\\'" . web-mode)
+		 ("\\.css\\'" . web-mode)
+		 ("\\.php\\'" . web-mode))
+  :config
+  (setq web-mode-enable-current-column-highlight t)
+  (setq web-mode-enable-current-element-highlight t)
+
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 4)
+
+  (use-package emmet-mode
 	:ensure t
 	:config
-	(push 'company-lsp company-backends)))
+	:hook (web-mode . emmet-mode)))
+
 
 (use-package ace-window
   :ensure t
@@ -295,37 +327,6 @@
   :ensure t
   :config
   (global-origami-mode))
-
-(use-package web-mode
-  :defer t
-  :mode (("\\.html\\'" . web-mode)
-		 ("\\.css\\'" . web-mode)
-		 ("\\.php\\'" . web-mode))
-  :config
-  (setq web-mode-enable-current-column-highlight t)
-  (setq web-mode-enable-current-element-highlight t)
-
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 4)
-
-  (use-package emmet-mode
-	:ensure t
-	:config
-	:hook (web-mode . emmet-mode)))
-
-(use-package js2-mode
-  :defer t
-  :mode (("\\.js?\\'" . js2-mode)
-		 ("\\.ts?\\'" . js2-mode)
-		 ("\\.jsx?\\'" . js2-mode))
-  :config
-  (setq js-indent-level 2)
-
-  (use-package js-comint)
-
-  (use-package prettier-js
-	:hook (js-mode . prettier-js-mode)))
 
 (use-package docker)
 
