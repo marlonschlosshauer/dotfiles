@@ -185,9 +185,10 @@
   :ensure t
   :commands lsp
   :init (setq lsp-keymap-prefix "C-l")
-  :hook(
-		(python-mode . lsp)
-		(js2-mode . lsp))
+  :hook((python-mode . lsp)
+		(js2-mode . lsp)
+		(clojure-mode . lsp)
+		(clojurescript-mode . lsp))
 
   :config
   (use-package lsp-ui
@@ -256,6 +257,9 @@
   (use-package flycheck-pyflakes
 	:ensure t
 	:after flycheck))
+
+(use-package clojure-mode
+  :defer t)
 
 (use-package js2-mode
   :defer t
