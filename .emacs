@@ -38,6 +38,8 @@
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+  :bind (("C-l" . nil) ; Unset non-prefix
+		 ("C-l k" . comment-or-uncomment-region))
   :config
   (define-key evil-normal-state-map (kbd "B") 'evil-beginning-of-visual-line)
   (define-key evil-normal-state-map (kbd "E") 'evil-end-of-visual-line)
@@ -223,8 +225,7 @@
 
   (use-package omnisharp
 	:ensure t
-	:bind (("C-l" . nil) ; Unset non-prefix
-		   ("C-l r t" . omnisharp-unit-test-buffer)
+	:bind (("C-l r t" . omnisharp-unit-test-buffer)
 		   ("C-l g r" . omnisharp-helm-find-usage)
 		   ("C-l s s" . omnisharp-start-omnisharp-server)
 		   ("C-l s q" . omnisharp-stop-server)
@@ -475,8 +476,6 @@
 
 (global-set-key (kbd "C-x j") 'xref-find-definitions)
 (global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
-
-(global-set-key (kbd "C-l k") 'comment-or-uncomment-region)
 
 (global-set-key (kbd "C-x C-m") 'compile)
 
