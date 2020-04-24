@@ -476,7 +476,7 @@
 (global-set-key (kbd "C-x j") 'xref-find-definitions)
 (global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
 
-(global-set-key (kbd "C-x v") 'comment-region)
+(global-set-key (kbd "C-l k") 'comment-or-uncomment-region)
 
 (global-set-key (kbd "C-x C-m") 'compile)
 
