@@ -260,7 +260,10 @@
 	:after flycheck))
 
 (use-package clojure-mode
-  :defer t)
+  :defer t
+  :config
+	:disabled)
+  (use-package cider))
 
 (use-package js2-mode
   :defer t
