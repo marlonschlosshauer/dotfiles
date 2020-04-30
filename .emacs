@@ -362,11 +362,6 @@
   :config
   :mode ("\\.rest\\'" . restclient-mode))
 
-(use-package rainbow-mode
-  :ensure t
-  :config
-  (rainbow-mode))
-
 (use-package spotify
   :ensure t
   :bind (("C-c s ." . spotify-playpause)
@@ -383,6 +378,7 @@
   :hook ((js-mode . rainbow-delimiters-mode)
 		 (emacs-lisp-mode . rainbow-delimiters-mode)
 		 (csharp-mode . rainbow-delimiters-mode)
+		 (clojure-mode . rainbow-delimiters-mode)
 		 (python-mode . rainbow-delimiters-mode)))
 
 (use-package doom-themes
