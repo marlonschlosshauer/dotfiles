@@ -154,15 +154,11 @@
 
   (use-package org-pdfview
 	:ensure t
-	:after pdf-tools
-	:config
-	;;(pdf-tools-install)
-	))
+	:after pdf-tools))
 
 (use-package pdf-tools
   :ensure t
   :config
-  (pdf-loader-install)
   (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
 
 
