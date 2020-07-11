@@ -268,8 +268,10 @@
 (use-package clojure-mode
   :defer t
   :config
+  (use-package clojure-mode-extra-font-locking
 	:disabled)
-  (use-package cider))
+  (use-package cider
+	:bind ("C-l" . cider-repl-clear-buffer)))
 
 (use-package js2-mode
   :defer t
