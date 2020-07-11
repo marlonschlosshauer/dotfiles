@@ -126,7 +126,19 @@
   (org-clock-persistence-insinuate)
   (setq org-return-follows-link t)
   (setq org-src-tab-acts-natively t)
+  (setq org-src-preserve-indentation nil)
 
+  ;; Enable exporting of highlighted syntax with minting
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (setq org-latex-listings 'minted)
+
+
+  (setq org-latex-pdf-process
+		'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+		  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+		  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+  (setq org-src-fontify-natively t)
 
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -244,7 +256,7 @@
 (use-package python
   :defer t
   :config
-  (setq python-shell-interpreter "/usr/local/bin/python3")
+  (setq python-shell-interpreter "/usr/local/opt/python@3.8/bin/python3.8")
 
   (use-package py-yapf
 	:ensure t
@@ -344,8 +356,6 @@
   :ensure t
   :config
   (global-origami-mode))
-
-(use-package docker)
 
 (use-package sql
   :defer t
@@ -488,6 +498,8 @@
 (global-set-key (kbd "C-x C-m") 'compile)
 
 (global-set-key (kbd "C-c b") 'shell)
+
+(global-set-key (kbd "C-l v r") 'vc-revision-other-window)
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
