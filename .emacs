@@ -189,6 +189,10 @@
 		(clojurescript-mode . lsp))
 
   :config
+  ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
+  ;(add-hook 'before-save-hook 'lsp-format-buffer)
+
+
   (use-package lsp-ui
 	:ensure t
 	:config (setq lsp-ui-doc-enable t
@@ -229,7 +233,10 @@
 
 	:hook (csharp-mode . omnisharp-mode)
 	:config
-	(add-hook 'before-save-hook 'omnisharp-code-format-entire-file)))
+	(add-hook 'before-save-hook
+			  (lambda ()
+				(when (eq major-mode 'csharp-mode)
+				  (omnisharp-code-format-entire-file))))))
 
 (use-package python
   :defer t
