@@ -185,6 +185,7 @@
   :init (setq lsp-keymap-prefix "C-l")
   :hook((python-mode . lsp)
 		(js2-mode . lsp)
+		(java-mode . lsp)
 		(clojure-mode . lsp)
 		(clojurescript-mode . lsp))
 
@@ -192,6 +193,8 @@
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
   ;(add-hook 'before-save-hook 'lsp-format-buffer)
 
+  (use-package lsp-java
+	:ensure t)
 
   (use-package lsp-ui
 	:ensure t
