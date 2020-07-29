@@ -223,7 +223,7 @@
   :ensure t
   :config
   (global-company-mode 1)
-  (global-set-key (kbd "C-x SPC") 'company-complete)
+  (global-set-key (kbd "C-SPC") 'company-complete)
 
   (push 'company-omnisharp company-backends)
 
