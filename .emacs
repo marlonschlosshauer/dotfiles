@@ -345,6 +345,18 @@
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
+(use-package skeletor
+  :ensure t
+  :config
+  (skeletor-define-template "java-gradle"
+	:title "Custom Java template with gradle"
+	:requires-executables
+	'(("git" . "https://git-scm.com/")
+	  ("gradle" . "https://gradle.org"))
+	:after-creation
+	(lambda (dir)
+	  (skeletor-async-shell-command "gradle wrapper"))))
+
 (use-package yasnippet
   :ensure t
   :config
