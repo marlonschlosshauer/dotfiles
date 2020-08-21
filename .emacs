@@ -42,6 +42,9 @@
   :config
   (define-key evil-normal-state-map (kbd "B") 'evil-beginning-of-visual-line)
   (define-key evil-normal-state-map (kbd "E") 'evil-end-of-visual-line)
+
+  (global-set-key (kbd "C-SPC") 'company-capf)
+
   (evil-mode 1)
   (subword-mode 1)
 
@@ -222,7 +225,6 @@
   :ensure t
   :config
   (global-company-mode 1)
-  (global-set-key (kbd "C-SPC") 'company-complete)
 
   (push 'company-omnisharp company-backends)
 
