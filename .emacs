@@ -43,8 +43,6 @@
   (define-key evil-normal-state-map (kbd "B") 'evil-beginning-of-visual-line)
   (define-key evil-normal-state-map (kbd "E") 'evil-end-of-visual-line)
 
-  (global-set-key (kbd "C-SPC") 'company-capf)
-
   (evil-mode 1)
   (subword-mode 1)
 
@@ -193,6 +191,13 @@
 	(elfeed-org)
 	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
 
+(use-package company
+  :ensure t
+  :bind ("C-SPC" . company-complete)
+  :config
+  (global-company-mode 1))
+
+
 (use-package lsp-mode
   :ensure t
   :commands lsp
@@ -223,17 +228,7 @@
   :ensure t
   :init (global-flycheck-mode))
 
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode 1)
 
-  (push 'company-omnisharp company-backends)
-
-  (use-package company-lsp
-	:ensure t
-	:config
-	(push 'company-lsp company-backends)))
 
 (use-package csharp-mode
   :defer t
