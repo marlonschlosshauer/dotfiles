@@ -208,10 +208,12 @@
   ;(add-hook 'before-save-hook 'lsp-format-buffer)
 
   (use-package lsp-java
-	:ensure t)
+	:ensure t
+	:after lsp-mode)
 
   (use-package lsp-ui
 	:ensure t
+	:after lsp-mode
 	:config (setq lsp-ui-doc-enable t
 				  lsp-ui-peek-enable t
 				  lsp-ui-sideline-enable nil
