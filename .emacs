@@ -328,15 +328,14 @@
 
 (use-package helm
   :ensure t
-  :bind ("C-x f" . helm-find-files)
-  :config
-  (global-set-key (kbd "M-x") 'helm-M-x)
+  :bind (("M-x" . helm-M-x)
+		 ("C-x f" . helm-find-files)))
 
-  (use-package helm-projectile
-	:ensure t
-	:after projectile
-	:config
-	(helm-projectile-on)))
+(use-package helm-projectile
+  :ensure t
+  :after (helm projectile)
+  :config
+  (helm-projectile-on))
 
 (use-package projectile
   :ensure t
