@@ -253,7 +253,7 @@
 (use-package python
   :defer t
   :config
-  (setq python-shell-interpreter "/usr/local/opt/python@3.8/bin/python3.8")
+  (setq python-shell-interpreter "/usr/bin/python3")
 
   (use-package py-yapf
 	:ensure t
