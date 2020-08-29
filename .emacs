@@ -244,8 +244,7 @@
 	:bind (("C-l r t" . omnisharp-unit-test-buffer)
 		   ("C-l g r" . omnisharp-helm-find-usage)
 		   ("C-l s s" . omnisharp-start-omnisharp-server)
-		   ("C-l s q" . omnisharp-stop-server)
-		   ("C-l r r" . omnisharp-rename))
+		   ("C-l s q" . omnisharp-stop-server))
 
 	:hook (csharp-mode . omnisharp-mode)
 	:config
