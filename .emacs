@@ -210,7 +210,7 @@
 
   :config
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
-  ;(add-hook 'before-save-hook 'lsp-format-buffer)
+  (add-hook 'before-save-hook 'lsp-format-buffer)
 
   (use-package lsp-java
 	:ensure t
@@ -255,6 +255,11 @@
   :config
   (setq python-shell-interpreter "/usr/bin/python3")
 
+  (add-hook 'python-mode-hook
+			(function (lambda ()
+						(setq indent-tabs-mode nil
+							  tab-width 6))))
+
   (use-package py-yapf
 	:ensure t
 	:config
@@ -288,12 +293,12 @@
 		 ("\\.ts?\\'" . js2-mode)
 		 ("\\.jsx?\\'" . js2-mode))
   :config
-  (setq js-indent-level 2)
+  (setq js-indent-level 2))
 
   (use-package js-comint)
 
-  (use-package prettier-js
-	:hook (js-mode . prettier-js-mode)))
+  ;(use-package prettier-js
+   ;:hook (js-mode . prettier-js-mode))
 
 (use-package web-mode
   :defer t
