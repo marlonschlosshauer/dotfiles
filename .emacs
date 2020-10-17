@@ -96,7 +96,7 @@
 
   (use-package expand-region
 	:config
-	(define-key evil-normal-state-map (kbd "C-w") 'er/expand-region))
+	(define-key evil-normal-state-map (kbd "s-l") 'er/expand-region))
 
   (use-package mark-multiple
 	:config
