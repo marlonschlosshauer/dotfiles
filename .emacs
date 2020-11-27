@@ -326,12 +326,6 @@
    '(aw-leading-char-face
 	 ((t (:inherit ace-jump-face-foreground :height 2.0))))))
 
-(use-package helm
-  :ensure t
-  :bind (("M-x" . helm-M-x)
-		 ("C-x f" . helm-find-files)))
-
-
 (use-package projectile
   :ensure t
   :config
@@ -339,11 +333,26 @@
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
-(use-package helm-projectile
+(use-package ivy
   :ensure t
-  :after (helm projectile)
   :config
-  (helm-projectile-on))
+  (ivy-mode)
+  ;;(setq ivy-use-virtual-buffers t)
+  ;;(setq enable-recursive-minibuffers t)
+
+  (use-package counsel
+	:ensure t
+	:config
+	(counsel-mode)
+
+	(use-package counsel-projectile
+	  :ensure t
+	  :config
+	  (counsel-projectile-mode)))
+
+  (use-package swiper
+	:ensure t
+	:bind ("C-s" . swiper)))
 
 (use-package skeletor
   :ensure t
