@@ -416,6 +416,11 @@
   :config
   (global-diff-hl-mode))
 
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
 (use-package rainbow-delimiters
   :ensure
   :hook ((js-mode . rainbow-delimiters-mode)
