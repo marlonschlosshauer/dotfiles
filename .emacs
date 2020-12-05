@@ -281,10 +281,13 @@
 (use-package clojure-mode
   :defer t
   :config
-  (use-package clojure-mode-extra-font-locking
-	:disabled)
+  (use-package clj-refactor
+	:ensure t
+	:config (cljr-add-keybindings-with-prefix "C-c C-a"))
   (use-package cider
-	:bind ("C-l" . cider-repl-clear-buffer)))
+	:bind ("C-l" . cider-repl-clear-buffer)
+	:config
+	(setq cider-show-error-buffer 'only-in-repl)))
 
 (use-package js2-mode
   :defer t
