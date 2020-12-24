@@ -333,6 +333,7 @@
   :ensure t
   :config
   (projectile-mode +1)
+  (setq projectile-use-git-grep t)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
