@@ -496,6 +496,9 @@
 ;; Enable line wrapping
 (global-visual-line-mode)
 
+;; Turn off error sound
+(setq ring-bell-function 'ignore)
+
 ;; Turn off creation of temp files
 (setq make-backup-files nil)
 (setq auto-save-default nil)
