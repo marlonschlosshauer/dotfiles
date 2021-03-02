@@ -1,1 +1,11 @@
 *.DS_Store
+*
+!*.emacs.d
+!.emacs
+!.bash_profile
+!.bashrc
+!.gitignore
+!.profiles
+!.vimrc
+!.zprofile
+!.zshrc
