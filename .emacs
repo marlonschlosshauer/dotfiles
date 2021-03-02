@@ -438,8 +438,8 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-molokai t))
-										;(load-theme 'doom-one-light t))
+ ;(load-theme 'doom-molokai t))
+  (load-theme 'doom-one-light t))
 
 ;;; End of packages
 
@@ -465,6 +465,9 @@
 ;; Hide macOS top bar
 (setq ns-auto-hide-menu-bar t)
 
+;; Set color of macOS bar
+(add-to-list 'default-frame-alist '(ns-appearance . light))
+
 ;; line numbers
 (setq linum-format "%4d  ")
 (global-linum-mode t)
@@ -474,9 +477,6 @@
 (setq show-paren-delay 0)
 
 (setq comint-process-echoes t)
-
-;; Make top bar light
-;;(add-to-list 'default-frame-alist '(ns-appearance . light))
 
 ;;; Built-in Emacs
 ;; Set enviroment variables
