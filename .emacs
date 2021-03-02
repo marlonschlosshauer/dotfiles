@@ -137,6 +137,8 @@
 
   (setq org-src-fontify-natively t)
 
+  (add-hook 'org-agenda-mode-hook (lambda() (linum-mode -1)))
+
   (org-babel-do-load-languages
    'org-babel-load-languages
    '(
