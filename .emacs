@@ -203,6 +203,10 @@
   :init (setq lsp-keymap-prefix "C-l")
   :hook((python-mode . lsp)
 		(js2-mode . lsp)
+		(ng2-mode . lsp)
+		(ng2-ts-mode . lsp)
+		(ng2-html-mode . lsp)
+		(typescript-mode . lsp)
 		(java-mode . lsp)
 		(clojure-mode . lsp)
 		(clojurescript-mode . lsp))
@@ -292,7 +296,6 @@
 (use-package js2-mode
   :defer t
   :mode (("\\.js?\\'" . js2-mode)
-		 ("\\.ts?\\'" . js2-mode)
 		 ("\\.jsx?\\'" . js2-mode))
   :config
   (setq js-indent-level 2))
@@ -301,6 +304,8 @@
 
   ;(use-package prettier-js
    ;:hook (js-mode . prettier-js-mode))
+
+(use-package ng2-mode)
 
 (use-package web-mode
   :defer t
