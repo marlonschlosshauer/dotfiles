@@ -46,9 +46,6 @@
   (evil-mode 1)
   (subword-mode 1)
 
-  (use-package evil-magit
-	:ensure t)
-
   (use-package evil-org
 	:ensure t
 	:after org
