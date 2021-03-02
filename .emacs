@@ -357,7 +357,11 @@
 	(use-package counsel-projectile
 	  :ensure t
 	  :config
-	  (counsel-projectile-mode)))
+	  (counsel-projectile-mode))
+
+	(use-package smex
+	  :config
+	  (smex-initialize)))
 
   (use-package swiper
 	:ensure t
