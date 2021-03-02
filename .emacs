@@ -149,7 +149,7 @@
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
-  (setq org-agenda-files '("~/Dropbox/org/" "~/Dropbox/study/Labs/PR2"))
+  (setq org-agenda-files '("~/Dropbox/org/" "~/Projects/p2"))
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
   (setq org-agenda-custom-commands
 		'(("c" "Simple agenda view"
@@ -159,7 +159,7 @@
   (setq org-capture-templates
 		'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
 		   "* TODO %? %i\n  %a")
-		  ("p" "PR2" entry (file+headline "~/Dropbox/study/Labs/PR2/todo.org" "Todo")
+		  ("p" "PR2" entry (file+headline "~/Projects/p2/todo.org" "Todo")
 		   "* TODO %? \n %U")))
 
   (use-package org-pdfview
