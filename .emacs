@@ -254,9 +254,7 @@
 (use-package python
   :defer t
   :config
-  (setq python-shell-interpreter "/usr/bin/python3")
-  ;(setq python-shell-completion-native-disabled-interpreters '("python"))
-
+  (setq python-shell-interpreter "python3")
   (add-hook 'python-mode-hook
 			(function (lambda ()
 						(setq indent-tabs-mode nil
