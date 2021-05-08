@@ -1,0 +1,9 @@
+# os files
+*.DS_Store
+
+# emacs files
+*.lsp
+.projectile
+.dir-locals.el
+.log
+*~

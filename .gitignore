@@ -1,4 +1,3 @@
-*.DS_Store
 *
 !*.emacs.d
 !.emacs
@@ -9,3 +8,5 @@
 !.vimrc
 !.zprofile
 !.zshrc
+!global.gitignore
+!.gitconfig

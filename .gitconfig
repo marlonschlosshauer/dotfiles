@@ -1,0 +1,5 @@
+[user]
+	name = marlonschlosshauer
+	email = marlonschlosshauer@gmail.com
+[core]
+	excludesFile = ~/global.gitignore
