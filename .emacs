@@ -302,6 +302,10 @@
   ;(use-package prettier-js
    ;:hook (js-mode . prettier-js-mode))
 
+(use-package c-mode
+  :mode (("\\.c?\\'" . c-mode)
+		 ("\\.h?\\'" . c-mode)))
+
 (use-package ng2-mode)
 
 (use-package web-mode
@@ -422,6 +426,11 @@
   :ensure t
   :config
   (global-diff-hl-mode))
+
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
 (use-package which-key
   :ensure t
