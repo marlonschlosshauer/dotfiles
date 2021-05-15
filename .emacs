@@ -211,7 +211,8 @@
 		(typescript-mode . lsp)
 		(java-mode . lsp)
 		(clojure-mode . lsp)
-		(clojurescript-mode . lsp))
+		(clojurescript-mode . lsp)
+		(web-mode . lsp))
 
   :config
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
@@ -293,29 +294,17 @@
 	:config
 	(setq cider-show-error-buffer 'only-in-repl)))
 
-(use-package js2-mode
-  :defer t
-  :mode (("\\.js?\\'" . js2-mode)
-		 ("\\.jsx?\\'" . js2-mode))
-  :config
-  (setq js-indent-level 2))
-
-  ;(use-package js-comint)
-
-  ;(use-package prettier-js
-   ;:hook (js-mode . prettier-js-mode))
-
 (use-package c-mode
   :mode (("\\.c?\\'" . c-mode)
 		 ("\\.h?\\'" . c-mode)))
-
-(use-package ng2-mode)
 
 (use-package web-mode
   :defer t
   :mode (("\\.html\\'" . web-mode)
 		 ("\\.css\\'" . web-mode)
-		 ("\\.php\\'" . web-mode))
+		 ("\\.php\\'" . web-mode)
+		 ("\\.js?\\'" . web-mode)
+		 ("\\.jsx?\\'" . web-mode))
   :config
   (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
