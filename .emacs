@@ -173,7 +173,7 @@
 
 
 (use-package elfeed
-  :defer t
+  :ensure t
   :after evil-collection
   :config
   (add-hook 'elfeed-search-mode-hook
@@ -188,6 +188,9 @@
 	:config
 	(elfeed-org)
 	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
+
+(use-package pocket-reader
+  :ensure t)
 
 (use-package company
   :ensure t
