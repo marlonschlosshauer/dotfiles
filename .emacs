@@ -2,6 +2,8 @@
 (add-to-list 'package-archives
 			 '("melpa" . "https://melpa.org/packages/"))
 
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 (package-initialize)
 
 (setq default-directory "~/")
@@ -568,10 +570,10 @@
  '(lsp-ui-doc-include-signature nil)
  '(lsp-ui-doc-position 'at-point)
  '(org-agenda-files
-   '("/Users/kehrin/Dropbox/org/commands.org" "/Users/kehrin/Dropbox/org/food.org" "/Users/kehrin/Dropbox/org/ideas.org" "/Users/kehrin/Dropbox/org/lists.org" "/Users/kehrin/Dropbox/org/plan.org" "/Users/kehrin/Dropbox/org/recipies.org" "/Users/kehrin/Dropbox/org/rss.org" "/Users/kehrin/Dropbox/org/study.org" "/Users/kehrin/Dropbox/org/todo.org"))
+   '("/Users/kehrin/Dropbox/org/todo.org" "/Users/kehrin/Projects/p2/todo.org"))
  '(org-tags-column 80)
  '(package-selected-packages
-   '(yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
+   '(json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
  '(python-shell-interpreter "python3"))
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
