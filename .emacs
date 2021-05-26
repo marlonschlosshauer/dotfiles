@@ -115,6 +115,11 @@
 	:config
 	(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)))
 
+(use-package json-reformat
+  :ensure t
+  :config
+  (define-key evil-normal-state-map (kbd "C-c j") 'json-reformat-region))
+
 (use-package org
   :mode (("\\.org\\'" . org-mode))
   :defer t
