@@ -119,6 +119,7 @@
 
 (use-package json-reformat
   :ensure t
+  :after evil
   :config
   (define-key evil-normal-state-map (kbd "C-c j") 'json-reformat-region))
 
@@ -412,8 +413,17 @@
 
 (use-package restclient
   :defer t
+  :mode ("\\.rest\\'" . restclient-mode)
   :config
-  :mode ("\\.rest\\'" . restclient-mode))
+  (defvar restclient-auth-token nil)
+  (defun update-token-restclient-hook ()
+	"Update token from a request."
+	(save-excursion
+	  (save-match-data
+		;; update regexp to extract required data
+		(when (re-search-forward "\"token\":\"\\(.*?\\)\"" nil t)
+		  (setq restclient-auth-token (match-string 1))))))
+  (add-hook 'restclient-response-received-hook #'update-token-restclient-hook))
 
 (use-package spotify
   :ensure t
@@ -573,7 +583,7 @@
    '("/Users/kehrin/Dropbox/org/todo.org" "/Users/kehrin/Projects/p2/todo.org"))
  '(org-tags-column 80)
  '(package-selected-packages
-   '(json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
+   '(company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
  '(python-shell-interpreter "python3"))
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
