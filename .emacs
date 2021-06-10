@@ -201,7 +201,9 @@
 	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
 
 (use-package pocket-reader
-  :ensure t)
+  :ensure t
+  :config
+  (define-key pocket-reader-mode-map (kbd "RET") 'pocket-reader-open-in-external-browser))
 
 (use-package company
   :ensure t
