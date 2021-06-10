@@ -156,7 +156,7 @@
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
-  (setq org-agenda-files '("~/Dropbox/org/" "~/Projects/p2"))
+  (setq org-agenda-files '("~/Dropbox/org/todo.org" "~/Projects/p2/todo.org" "~/Dropbox/Study"))
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
   (setq org-agenda-custom-commands
 		'(("c" "Simple agenda view"
@@ -167,7 +167,10 @@
 		'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
 		   "* TODO %? %i\n  %a")
 		  ("p" "PR2" entry (file+headline "~/Projects/p2/todo.org" "Todo")
-		   "* TODO %? \n %U")))
+		   "* TODO %? \n %U")
+		  ("s" "Studium" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
+		   "* TODO %? %i\n  %a")
+		  ))
 
   (use-package org-pdfview
 	:disabled
@@ -579,8 +582,6 @@
  '(lsp-prefer-flymake nil)
  '(lsp-ui-doc-include-signature nil)
  '(lsp-ui-doc-position 'at-point)
- '(org-agenda-files
-   '("/Users/kehrin/Dropbox/org/todo.org" "/Users/kehrin/Projects/p2/todo.org"))
  '(org-tags-column 80)
  '(package-selected-packages
    '(company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
