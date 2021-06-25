@@ -8,9 +8,9 @@
 
 (setq default-directory "~/")
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;(unless (package-installed-p 'use-package)
+;  (package-refresh-contents)
+;  (package-install 'use-package))
 
 (use-package dired
   :config
@@ -18,20 +18,20 @@
 
 (use-package magit
   :ensure t
+  :bind (("C-c g" . magit))
   :config
-  (global-set-key (kbd "C-c g") 'magit)
   (setq magit-display-buffer-function
-		(lambda (buffer)
-		  (display-buffer
-		   buffer (if (and (derived-mode-p 'magit-mode)
-						   (memq (with-current-buffer buffer major-mode)
-								 '(magit-process-mode
-								   magit-revision-mode
-								   magit-diff-mode
-								   magit-stash-mode
-								   magit-status-mode)))
-					  nil
-					'(display-buffer-same-window))))))
+	(lambda (buffer)
+	  (display-buffer
+	   buffer (if (and (derived-mode-p 'magit-mode)
+			   (memq (with-current-buffer buffer major-mode)
+				 '(magit-process-mode
+				   magit-revision-mode
+				   magit-diff-mode
+				   magit-stash-mode
+				   magit-status-mode)))
+		      nil
+		    '(display-buffer-same-window))))))
 
 (use-package evil
   :ensure t
@@ -126,7 +126,11 @@
 (use-package org
   :mode (("\\.org\\'" . org-mode))
   :defer t
+  :bind (("C-c a" . org-agenda)
+	 ("C-c c" . org-capture)
+	 ("C-c l" . org-store-link))
   :config
+
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate)
   (setq org-return-follows-link t)
@@ -136,12 +140,13 @@
   ;; Enable exporting of highlighted syntax with minting
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-listings 'minted)
-
+  (setq org-latex-minted-options
+	'(("breaklines=true")))
 
   (setq org-latex-pdf-process
-		'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-		  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-		  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
   (setq org-src-fontify-natively t)
 
@@ -150,8 +155,8 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '(
-	 (shell . t)
-	 (python . t)))
+     (shell . t)
+     (python . t)))
 
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
@@ -159,23 +164,23 @@
   (setq org-agenda-files '("~/Dropbox/org/todo.org" "~/Projects/p2/todo.org" "~/Dropbox/Study"))
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
   (setq org-agenda-custom-commands
-		'(("c" "Simple agenda view"
-		   ((agenda "")
-			(alltodo "")))))
+	'(("c" "Simple agenda view"
+	   ((agenda "")
+	    (alltodo "")))))
 
   (setq org-capture-templates
-		'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
-		   "* TODO %? %i\n  %a")
-		  ("p" "PR2" entry (file+headline "~/Projects/p2/todo.org" "Todo")
-		   "* TODO %? \n %U")
-		  ("s" "Studium" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
-		   "* TODO %? %i\n  %a")
-		  ))
+	'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
+	   "* TODO %? %i\n  %a")
+	  ("p" "PR2" entry (file+headline "~/Projects/p2/todo.org" "Todo")
+	   "* TODO %? \n %U")
+	  ("s" "Studium" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
+	   "* TODO %? %i\n  %a")
+	  ))
 
   (use-package org-pdfview
-	:disabled
-	:ensure t
-	:after pdf-tools))
+    :disabled
+    :ensure t
+    :after pdf-tools))
 
 (use-package pdf-tools
   :ensure t
@@ -211,20 +216,15 @@
   :config
   (global-company-mode 1))
 
-
 (use-package lsp-mode
   :ensure t
   :commands lsp
   :init (setq lsp-keymap-prefix "C-l")
   :hook((python-mode . lsp)
-		(js2-mode . lsp)
-		(ng2-mode . lsp)
-		(ng2-ts-mode . lsp)
-		(ng2-html-mode . lsp)
 		(typescript-mode . lsp)
 		(java-mode . lsp)
-		(clojure-mode . lsp)
-		(clojurescript-mode . lsp)
+		;(clojure-mode . lsp)
+		;(clojurescript-mode . lsp)
 		(web-mode . lsp))
 
   :config
@@ -246,8 +246,6 @@
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
-
-
 
 (use-package csharp-mode
   :defer t
@@ -272,15 +270,6 @@
   :defer t
   :config
   (setq python-shell-interpreter "python3")
-  (add-hook 'python-mode-hook
-			(function (lambda ()
-						(setq indent-tabs-mode nil
-							  tab-width 6))))
-
-  (use-package py-yapf
-	:ensure t
-	:config
-	(add-hook 'python-mode-hook 'py-yapf-enable-on-save))
 
   (use-package python-pytest
 	:ensure t
@@ -316,21 +305,17 @@
   :mode (("\\.html\\'" . web-mode)
 		 ("\\.css\\'" . web-mode)
 		 ("\\.php\\'" . web-mode)
+		 ("\\.ts?\\'" . web-mode)
 		 ("\\.js?\\'" . web-mode)
 		 ("\\.jsx?\\'" . web-mode))
   :config
   (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
 
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 4)
-
   (use-package emmet-mode
 	:ensure t
 	:config
 	:hook (web-mode . emmet-mode)))
-
 
 (use-package ace-window
   :ensure t
@@ -352,8 +337,6 @@
   :ensure t
   :config
   (ivy-mode)
-  ;;(setq ivy-use-virtual-buffers t)
-  ;;(setq enable-recursive-minibuffers t)
 
   (use-package counsel
 	:ensure t
@@ -373,37 +356,10 @@
 	:ensure t
 	:bind ("C-s" . swiper)))
 
-(use-package skeletor
-  :ensure t
-  :config
-  (skeletor-define-template "java-gradle"
-	:title "Custom Java template with gradle"
-	:requires-executables
-	'(("git" . "https://git-scm.com/")
-	  ("gradle" . "https://gradle.org"))
-	:after-creation
-	(lambda (dir)
-	  (skeletor-async-shell-command "gradle wrapper"))))
-
 (use-package yasnippet
   :ensure t
   :config
-  (yas-global-mode 1)
-  ;; Load this to fix : Symbol’s function definition is void: yasnippet-snippets--fixed-indent
-  ;; Caused in python-mode by python-send-buffer
-  (load "~/.emacs.d/elisp/experimental.el"))
-
-(use-package origami
-  :ensure t
-  :config
-  (global-origami-mode))
-
-(use-package sql
-  :defer t
-  :config
-  (add-hook 'sql-interactive-mode-hook
-			(lambda ()
-			  (toggle-truncate-lines t))))
+  (yas-global-mode 1))
 
 (use-package google-this
   :ensure t
@@ -480,7 +436,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(global-hl-line-mode)
+;(global-hl-line-mode)
 ;;; End of GUI
 
 ;; Remove splash screen
@@ -537,18 +493,10 @@
 
 ;; Setup indentation
 (setq indent-tabs-mode t)
-(setq-default tab-width 4)
-;;(setq c-default-style "linux")
-(setq c-basic-offset 4)
 
 ;; Show tabs
 (setq whitespace-style '(face tabs tab-mark trailing))
 
-;; (setq whitespace-display-mappings
-;; 	  '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
-
-(put 'upcase-region 'disabled nil)
-(put 'erase-buffer 'disabled nil)
 ;;; End of Built-in Emacs
 
 ;;; Binds
@@ -557,17 +505,7 @@
 
 (global-set-key (kbd "C-x j") 'xref-find-definitions)
 (global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
-
-(global-set-key (kbd "C-x C-m") 'compile)
-
 (global-set-key (kbd "C-c b") 'shell)
-
-(global-set-key (kbd "C-l v r") 'vc-revision-other-window)
-
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c l") 'org-store-link)
-
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;;; End of Binds
 
@@ -586,7 +524,7 @@
  '(lsp-ui-doc-position 'at-point)
  '(org-tags-column 80)
  '(package-selected-packages
-   '(company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
+   '(gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
  '(python-shell-interpreter "python3"))
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
