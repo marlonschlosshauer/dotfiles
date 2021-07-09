@@ -9,13 +9,5 @@ if [ -f ~/.alias ]; then
     . ~/.alias
 fi
 
-# Enable brew completion
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
 # gitignore templating service
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}

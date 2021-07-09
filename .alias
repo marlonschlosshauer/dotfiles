@@ -7,4 +7,5 @@ alias stars="telnet towel.blinkenlights.nl"
 alias ..="cd .."
 alias calc="open -na Calculator"
 alias pwdc="pwd | pbcopy"
-alias rip=youtube-dl -x --audio-format mp3 
+alias rip=youtube-dl -x --audio-format mp3
+alias o="open ."
