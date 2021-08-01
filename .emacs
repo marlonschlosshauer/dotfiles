@@ -354,7 +354,7 @@
 
   (use-package swiper
     :ensure t
-    :bind ("C-s" . swiper)))
+    :bind (("C-s" . swiper)("C-S-s" . swiper-thing-at-point))))
 
 (use-package yasnippet
   :ensure t
