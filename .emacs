@@ -220,8 +220,7 @@
   :hook((python-mode . lsp)
 	(typescript-mode . lsp)
 	(java-mode . lsp)
-					;(clojure-mode . lsp)
-					;(clojurescript-mode . lsp)
+	(css-mode . lsp)
 	(web-mode . lsp))
 
   :config
@@ -297,10 +296,13 @@
   :mode (("\\.c?\\'" . c-mode)
 	 ("\\.h?\\'" . c-mode)))
 
+(use-package css-mode
+  :defer t
+  :mode (("\\.css\\'" . web-mode)))
+
 (use-package web-mode
   :defer t
   :mode (("\\.html\\'" . web-mode)
-	 ("\\.css\\'" . web-mode)
 	 ("\\.php\\'" . web-mode)
 	 ("\\.ts?\\'" . web-mode)
 	 ("\\.js?\\'" . web-mode)
