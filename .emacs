@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives
-			 '("melpa" . "https://melpa.org/packages/"))
+	     '("melpa" . "https://melpa.org/packages/"))
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -8,9 +8,15 @@
 
 (setq default-directory "~/")
 
-;(unless (package-installed-p 'use-package)
-;  (package-refresh-contents)
-;  (package-install 'use-package))
+					;(unless (package-installed-p 'use-package)
+					;  (package-refresh-contents)
+					;  (package-install 'use-package))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 (use-package dired
   :config
@@ -40,7 +46,7 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   :bind (("C-l" . nil) ; Unset non-prefix
-		 ("C-l k" . comment-or-uncomment-region))
+	 ("C-l k" . comment-or-uncomment-region))
   :config
   (define-key evil-normal-state-map (kbd "B") 'evil-beginning-of-visual-line)
   (define-key evil-normal-state-map (kbd "E") 'evil-end-of-visual-line)
@@ -49,73 +55,63 @@
   (subword-mode 1)
 
   (use-package evil-org
-	:ensure t
-	:after org
-	:config
-	(add-hook 'org-mode-hook 'evil-org-mode)
-	(add-hook 'evil-org-mode-hook
-			  (lambda ()
-				(evil-org-set-key-theme)))
-	(require 'evil-org-agenda)
-	(evil-org-agenda-set-keys))
+    :ensure t
+    :after org
+    :config
+    (add-hook 'org-mode-hook 'evil-org-mode)
+    (add-hook 'evil-org-mode-hook
+	      (lambda ()
+		(evil-org-set-key-theme)))
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
 
   (use-package evil-collection
-	:ensure t
-	:after (evil dired)
-	:config
-	(evil-collection-init)
-	(evil-collection-define-key 'normal 'dired-mode-map
-	  (kbd ".") 'dired-up-directory))
+    :ensure t
+    :after (evil dired)
+    :config
+    (evil-collection-init)
+    (evil-collection-define-key 'normal 'dired-mode-map
+      (kbd ".") 'dired-up-directory))
 
   (use-package evil-numbers
-	:ensure t
-	:after evil
-	:config
-	(define-key evil-normal-state-map (kbd "+") 'evil-numbers/inc-at-pt)
-	(define-key evil-normal-state-map (kbd "-") 'evil-numbers/dec-at-pt))
-
-  (use-package evil-multiedit
-	:ensure t
-	:after evil
-	:config
-	(evil-multiedit-default-keybinds))
+    :ensure t
+    :after evil
+    :config
+    (define-key evil-normal-state-map (kbd "+") 'evil-numbers/inc-at-pt)
+    (define-key evil-normal-state-map (kbd "-") 'evil-numbers/dec-at-pt))
 
   (use-package evil-surround
-	:ensure t
-	:after evil
-	:config
-	(global-evil-surround-mode 1))
+    :ensure t
+    :after evil
+    :config
+    (global-evil-surround-mode 1))
 
   (use-package key-chord
-	:ensure t
-	:after evil
-	:config
-	(key-chord-mode 1)
-	(key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
+    :ensure t
+    :after evil
+    :config
+    (key-chord-mode 1)
+    (key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
 
   (use-package expand-region
-	:config
-	(define-key evil-normal-state-map (kbd "s-l") 'er/expand-region))
-
-  (use-package mark-multiple
-	:config
-	(define-key evil-normal-state-map (kbd "C-c v") 'mark-more-like-this))
+    :config
+    (define-key evil-normal-state-map (kbd "s-l") 'er/expand-region))
 
   (use-package elec-pair
-	:ensure t
-	:config
-	(setq electric-pair-pairs
-		  '(
-			(?\" . ?\")
-			(?\' . ?\')
-			(?\( . ?\))
-			(?\[ . ?\])
-			(?\{ . ?\})))
-	(electric-pair-mode 1))
+    :ensure t
+    :config
+    (setq electric-pair-pairs
+	  '(
+	    (?\" . ?\")
+	    (?\' . ?\')
+	    (?\( . ?\))
+	    (?\[ . ?\])
+	    (?\{ . ?\})))
+    (electric-pair-mode 1))
 
   (use-package ace-jump-mode
-	:config
-	(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)))
+    :config
+    (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)))
 
 (use-package json-reformat
   :ensure t
@@ -160,6 +156,7 @@
 
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
+  (add-to-list 'org-src-lang-modes (cons "jsx" 'rjsx))
 
   (setq org-agenda-files '("~/Dropbox/org/todo.org" "~/Projects/p2/todo.org" "~/Dropbox/Study"))
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
@@ -193,17 +190,17 @@
   :after evil-collection
   :config
   (add-hook 'elfeed-search-mode-hook
-			(lambda ()
-			  (evil-collection-define-key 'normal 'elfeed-search-mode-map
-				(kbd "RET") 'elfeed-search-browse-url)))
+	    (lambda ()
+	      (evil-collection-define-key 'normal 'elfeed-search-mode-map
+		(kbd "RET") 'elfeed-search-browse-url)))
   (setq-default elfeed-search-filter "@2-weeks-ago ")
 
   (use-package elfeed-org
-	:ensure t
-	:after org
-	:config
-	(elfeed-org)
-	(setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
+    :ensure t
+    :after org
+    :config
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
 
 (use-package pocket-reader
   :ensure t
@@ -221,27 +218,27 @@
   :commands lsp
   :init (setq lsp-keymap-prefix "C-l")
   :hook((python-mode . lsp)
-		(typescript-mode . lsp)
-		(java-mode . lsp)
-		;(clojure-mode . lsp)
-		;(clojurescript-mode . lsp)
-		(web-mode . lsp))
+	(typescript-mode . lsp)
+	(java-mode . lsp)
+					;(clojure-mode . lsp)
+					;(clojurescript-mode . lsp)
+	(web-mode . lsp))
 
   :config
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
   (add-hook 'before-save-hook 'lsp-format-buffer)
 
   (use-package lsp-java
-	:ensure t
-	:after lsp-mode)
+    :ensure t
+    :after lsp-mode)
 
   (use-package lsp-ui
-	:ensure t
-	:after lsp-mode
-	:config (setq lsp-ui-doc-enable t
-				  lsp-ui-peek-enable t
-				  lsp-ui-sideline-enable nil
-				  lsp-ui-doc-position (quote at-point))))
+    :ensure t
+    :after lsp-mode
+    :config (setq lsp-ui-doc-enable t
+		  lsp-ui-peek-enable t
+		  lsp-ui-sideline-enable nil
+		  lsp-ui-doc-position (quote at-point))))
 
 (use-package flycheck
   :ensure t
@@ -254,17 +251,17 @@
   (setq indent-tabs-mode nil)
 
   (use-package omnisharp
-	:ensure t
-	:bind (("C-l r t" . omnisharp-unit-test-buffer)
-		   ("C-l s s" . omnisharp-start-omnisharp-server)
-		   ("C-l s q" . omnisharp-stop-server))
+    :ensure t
+    :bind (("C-l r t" . omnisharp-unit-test-buffer)
+	   ("C-l s s" . omnisharp-start-omnisharp-server)
+	   ("C-l s q" . omnisharp-stop-server))
 
-	:hook (csharp-mode . omnisharp-mode)
-	:config
-	(add-hook 'before-save-hook
-			  (lambda ()
-				(when (eq major-mode 'csharp-mode)
-				  (omnisharp-code-format-entire-file))))))
+    :hook (csharp-mode . omnisharp-mode)
+    :config
+    (add-hook 'before-save-hook
+	      (lambda ()
+		(when (eq major-mode 'csharp-mode)
+		  (omnisharp-code-format-entire-file))))))
 
 (use-package python
   :defer t
@@ -272,50 +269,51 @@
   (setq python-shell-interpreter "python3")
 
   (use-package python-pytest
-	:ensure t
-	:bind ("C-c t" . python-pytest-popup))
+    :ensure t
+    :bind ("C-c t" . python-pytest-popup))
 
   (use-package virtualenvwrapper
-	:ensure t
-	:config
-	(venv-initialize-interactive-shells)
-	(setq venv-location "~/.venv/"))
+    :ensure t
+    :config
+    (venv-initialize-interactive-shells)
+    (setq venv-location "~/.venv/"))
 
   (use-package flycheck-pyflakes
-	:ensure t
-	:after flycheck))
+    :ensure t
+    :after flycheck))
 
 (use-package clojure-mode
   :defer t
   :config
   (use-package clj-refactor
-	:ensure t
-	:config (cljr-add-keybindings-with-prefix "C-c C-a"))
+    :ensure t
+    :config (cljr-add-keybindings-with-prefix "C-c C-a"))
   (use-package cider
-	:bind ("C-l" . cider-repl-clear-buffer)
-	:config
-	(setq cider-show-error-buffer 'only-in-repl)))
+    :bind ("C-l" . cider-repl-clear-buffer)
+    :config
+    (setq cider-show-error-buffer 'only-in-repl)))
 
 (use-package c-mode
   :mode (("\\.c?\\'" . c-mode)
-		 ("\\.h?\\'" . c-mode)))
+	 ("\\.h?\\'" . c-mode)))
 
 (use-package web-mode
   :defer t
   :mode (("\\.html\\'" . web-mode)
-		 ("\\.css\\'" . web-mode)
-		 ("\\.php\\'" . web-mode)
-		 ("\\.ts?\\'" . web-mode)
-		 ("\\.js?\\'" . web-mode)
-		 ("\\.jsx?\\'" . web-mode))
+	 ("\\.css\\'" . web-mode)
+	 ("\\.php\\'" . web-mode)
+	 ("\\.ts?\\'" . web-mode)
+	 ("\\.js?\\'" . web-mode)
+	 ("\\.jsx?\\'" . web-mode)
+	 ("\\.tsx?\\'" . web-mode))
   :config
   (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
 
   (use-package emmet-mode
-	:ensure t
-	:config
-	:hook (web-mode . emmet-mode)))
+    :ensure t
+    :config
+    :hook (web-mode . emmet-mode)))
 
 (use-package ace-window
   :ensure t
@@ -323,13 +321,13 @@
   :config
   (custom-set-faces
    '(aw-leading-char-face
-	 ((t (:inherit ace-jump-face-foreground :height 2.0))))))
+     ((t (:inherit ace-jump-face-foreground :height 2.0))))))
 
 (use-package projectile
   :ensure t
   :config
   (projectile-mode +1)
-  (setq projectile-use-git-grep t)
+
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
@@ -339,22 +337,22 @@
   (ivy-mode)
 
   (use-package counsel
-	:ensure t
-	:config
-	(counsel-mode)
+    :ensure t
+    :config
+    (counsel-mode)
 
-	(use-package counsel-projectile
-	  :ensure t
-	  :config
-	  (counsel-projectile-mode))
+    (use-package counsel-projectile
+      :ensure t
+      :config
+      (counsel-projectile-mode))
 
-	(use-package smex
-	  :config
-	  (smex-initialize)))
+    (use-package smex
+      :config
+      (smex-initialize)))
 
   (use-package swiper
-	:ensure t
-	:bind ("C-s" . swiper)))
+    :ensure t
+    :bind ("C-s" . swiper)))
 
 (use-package yasnippet
   :ensure t
@@ -366,31 +364,19 @@
   :config
   (google-this-mode 1))
 
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-  (when (memq window-system '(mac ns x))
-	(exec-path-from-shell-initialize)))
-
 (use-package restclient
   :defer t
   :mode ("\\.rest\\'" . restclient-mode)
   :config
   (defvar restclient-auth-token nil)
   (defun update-token-restclient-hook ()
-	"Update token from a request."
-	(save-excursion
-	  (save-match-data
-		;; update regexp to extract required data
-		(when (re-search-forward "\"token\":\"\\(.*?\\)\"" nil t)
-		  (setq restclient-auth-token (match-string 1))))))
+    "Update token from a request."
+    (save-excursion
+      (save-match-data
+	;; update regexp to extract required data
+	(when (re-search-forward "\"token\":\"\\(.*?\\)\"" nil t)
+	  (setq restclient-auth-token (match-string 1))))))
   (add-hook 'restclient-response-received-hook #'update-token-restclient-hook))
-
-(use-package spotify
-  :ensure t
-  :bind (("C-c s ." . spotify-playpause)
-		 ("C-c s l" . spotify-next)
-		 ("C-c s h" . spotify-previous)))
 
 (use-package diff-hl
   :ensure t
@@ -398,7 +384,7 @@
   (global-diff-hl-mode))
 
 (use-package hl-todo
-  :ensure t) 
+  :ensure t)
 
 (use-package editorconfig
   :ensure t
@@ -413,15 +399,15 @@
 (use-package rainbow-delimiters
   :ensure
   :hook ((js-mode . rainbow-delimiters-mode)
-		 (emacs-lisp-mode . rainbow-delimiters-mode)
-		 (csharp-mode . rainbow-delimiters-mode)
-		 (clojure-mode . rainbow-delimiters-mode)
-		 (python-mode . rainbow-delimiters-mode)))
+	 (emacs-lisp-mode . rainbow-delimiters-mode)
+	 (csharp-mode . rainbow-delimiters-mode)
+	 (clojure-mode . rainbow-delimiters-mode)
+	 (python-mode . rainbow-delimiters-mode)))
 
 (use-package doom-themes
   :ensure t
   :config
- ;(load-theme 'doom-molokai t))
+					;(load-theme 'doom-molokai t))
   (load-theme 'doom-one-light t))
 
 ;;; End of packages
@@ -439,7 +425,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;(global-hl-line-mode)
+					;(global-hl-line-mode)
 ;;; End of GUI
 
 ;; Remove splash screen
@@ -464,19 +450,17 @@
 ;;; Built-in Emacs
 ;; Set enviroment variables
 (setenv "PATH"
-		(concat
-		 "/usr/local/bin" ";"
-		 "/usr/bin" ";"
-		 "/bin" ";"
-		 "/usr/sbin" ";"
-		 "/sbin" ";"
-		 (getenv "PATH")
-		 )
-		)
+	(concat
+	 "/usr/local/bin" ";"
+	 "/usr/bin" ";"
+	 "/bin" ";"
+	 "/usr/sbin" ";"
+	 "/sbin" ";"
+	 (getenv "PATH")))
 
 ;; Change font color for keywords
 (if (fboundp 'global-font-lock-mode)
-	(global-font-lock-mode 1))
+    (global-font-lock-mode 1))
 
 ;; Turn auto reload of buffer (on file change) on
 (global-auto-revert-mode t)
@@ -492,7 +476,7 @@
 (setq auto-save-default nil)
 
 (add-to-list 'display-buffer-alist
-			 `(,(regexp-quote "*shell") display-buffer-same-window))
+	     `(,(regexp-quote "*shell") display-buffer-same-window))
 
 ;; Setup indentation
 (setq indent-tabs-mode t)
