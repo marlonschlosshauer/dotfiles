@@ -298,7 +298,7 @@
 
 (use-package css-mode
   :defer t
-  :mode (("\\.css\\'" . web-mode)))
+  :mode (("\\.css\\'" . css-mode)))
 
 (use-package web-mode
   :defer t
