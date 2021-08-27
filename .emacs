@@ -292,6 +292,14 @@
     :config
     (setq cider-show-error-buffer 'only-in-repl)))
 
+(use-package paredit
+  :defer t
+  :after clojure
+  :config
+  ;; TODO: evil-paredit
+  (add-hook 'clojure-mode-hook 'paredit-mode)
+  (add-hook 'clojurescript-mode-hook 'paredit-mode))
+
 (use-package c-mode
   :mode (("\\.c?\\'" . c-mode)
 	 ("\\.h?\\'" . c-mode)))
