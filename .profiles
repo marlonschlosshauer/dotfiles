@@ -1,2 +1,2 @@
-export PATH=~/Applications/:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/usr/bin:/Library/TeX/texbin/
+export PATH=/usr/local/opt/grep/libexec/gnubin:~/Applications/:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/usr/bin:/Library/TeX/texbin/
 
