@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/") t)
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -139,8 +139,12 @@
   (setq org-latex-minted-options
 	'(("breaklines=true")))
 
+  ;; TODO: find out how to change from bibtex to biber (cuz bibtex does not support biblatex anymore)
+  (setq bibtex-dialect 'biblatex)
+
   (setq org-latex-pdf-process
 	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	  "bibtex %f"
 	  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
 	  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
@@ -168,16 +172,21 @@
   (setq org-capture-templates
 	'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")
-	  ("p" "PR2" entry (file+headline "~/Projects/p2/todo.org" "Todo")
+	  ("h" "TH" entry (file+headline "~/Dropbox/Study/Labs/TH/TODO.org" "Todo")
+	   "* TODO %? \n %U")
+	  ("g" "gedankenessen" entry (file+headline "~/Projects/gde/todo.org" "Todo")
 	   "* TODO %? \n %U")
 	  ("s" "Studium" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
-	   "* TODO %? %i\n  %a")
-	  ))
+	   "* TODO %? %i\n  %a")))
 
   (use-package org-pdfview
     :disabled
     :ensure t
-    :after pdf-tools))
+    :after pdf-tools)
+
+  (use-package org-ref
+    :disabled
+    :ensure nil))
 
 (use-package pdf-tools
   :ensure t
