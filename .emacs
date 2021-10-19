@@ -162,7 +162,7 @@
   (add-to-list 'org-file-apps '(directory . emacs))
   (add-to-list 'org-src-lang-modes (cons "jsx" 'rjsx))
 
-  (setq org-agenda-files '("~/Dropbox/org/todo.org" "~/Projects/p2/todo.org" "~/Dropbox/Study" "~/Dropbox/Study/Labs/TH/TODO.org" "~/Projects/gde/todo.org"))
+  (setq org-agenda-files '("~/Dropbox/org/todo.org" "~/Projects/p2/todo.org" "~/Dropbox/Study" "~/Dropbox/Study/Labs/TH/todo.org" "~/Projects/gde/todo.org"))
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
   (setq org-agenda-custom-commands
 	'(("c" "Simple agenda view"
@@ -172,7 +172,7 @@
   (setq org-capture-templates
 	'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")
-	  ("h" "TH" entry (file+headline "~/Dropbox/Study/Labs/TH/TODO.org" "Todo")
+	  ("h" "TH" entry (file+headline "~/Dropbox/Study/Labs/TH/todo.org" "Todo")
 	   "* TODO %? \n %U")
 	  ("g" "gedankenessen" entry (file+headline "~/Projects/gde/todo.org" "Todo")
 	   "* TODO %? \n %U")
