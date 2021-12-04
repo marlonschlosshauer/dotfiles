@@ -8,9 +8,9 @@
 
 (setq default-directory "~/")
 
-					;(unless (package-installed-p 'use-package)
-					;  (package-refresh-contents)
-					;  (package-install 'use-package))
+;;(unless (package-installed-p 'use-package)
+;;  (package-refresh-contents)
+;;  (package-install 'use-package))
 
 (use-package exec-path-from-shell
   :ensure t
@@ -471,7 +471,7 @@
 (setq ns-auto-hide-menu-bar t)
 
 ;; Set color of macOS bar
-(add-to-list 'default-frame-alist '(ns-appearance . light))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
 
 ;; line numbers
 (setq linum-format "%4d  ")
@@ -547,7 +547,7 @@
  '(lsp-ui-doc-position 'at-point)
  '(org-tags-column 80)
  '(package-selected-packages
-   '(haskell-mode org-ref org counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
+   '(evil-cleverparens lsp-haskell haskell-mode org-ref org counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
  '(python-shell-interpreter "python3")
  '(show-paren-when-point-inside-paren t))
 (put 'dired-find-alternate-file 'disabled nil)
