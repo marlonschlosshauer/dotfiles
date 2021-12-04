@@ -218,7 +218,7 @@
 
 (use-package company
   :ensure t
-  :bind ("C-SPC" . company-complete)
+  :bind ("TAB" . company-complete)
   :config
   (global-company-mode 1))
 
