@@ -120,6 +120,7 @@
   (define-key evil-normal-state-map (kbd "C-c j") 'json-reformat-region))
 
 (use-package org
+  :pin gnu
   :mode (("\\.org\\'" . org-mode))
   :defer t
   :bind (("C-c a" . org-agenda)
@@ -162,7 +163,12 @@
   (add-to-list 'org-file-apps '(directory . emacs))
   (add-to-list 'org-src-lang-modes (cons "jsx" 'rjsx))
 
-  (setq org-agenda-files '("~/Dropbox/org/todo.org" "~/Projects/p2/todo.org" "~/Dropbox/Study" "~/Dropbox/Study/Labs/TH/todo.org" "~/Projects/gde/todo.org"))
+  (setq org-agenda-files '("~/Dropbox/org/todo.org"
+			   "~/Dropbox/Study/todo.org"
+			   "~/Projects/gde/todo.org"
+			   "~/Projects/neo/todo.org"
+			   "~/Dropbox/Study/Labs/TH/todo.org"))
+
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
   (setq org-agenda-custom-commands
 	'(("c" "Simple agenda view"
@@ -172,11 +178,13 @@
   (setq org-capture-templates
 	'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")
+	  ("s" "Study" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
+	   "* TODO %? %i\n  %a")
 	  ("h" "TH" entry (file+headline "~/Dropbox/Study/Labs/TH/todo.org" "Todo")
 	   "* TODO %? \n %U")
-	  ("g" "gedankenessen" entry (file+headline "~/Projects/gde/todo.org" "Todo")
+	  ("g" "gde" entry (file+headline "~/Projects/gde/todo.org" "Todo")
 	   "* TODO %? \n %U")
-	  ("s" "Studium" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
+	  ("n" "neo" entry (file+headline "~/Projects/neo/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")))
 
   (use-package org-pdfview
