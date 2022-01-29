@@ -170,11 +170,6 @@
 			   "~/Dropbox/Study/Labs/TH/todo.org"))
 
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
-  (setq org-agenda-custom-commands
-	'(("c" "Simple agenda view"
-	   ((agenda "")
-	    (alltodo "")))))
-
   (setq org-capture-templates
 	'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")
