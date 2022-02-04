@@ -294,15 +294,23 @@
     :ensure t
     :after flycheck))
 
+(use-package clojurescript-mode
+  :defer t
+  :mode (("\\.cljs?\\'" . clojurescript-mode)))
+
 (use-package clojure-mode
   :defer t
-  :config
-  (use-package cider
+  :mode (("\\.clj?\\'" . clojure-mode)))
+
+(use-package evil-cleverparens
+  :defer t
+  :hook ((clojure-mode . evil-cleverparens-mode)
+	 (clojurescript-mode . evil-cleverparens-mode)))
+
+(use-package cider
     :bind ("C-l" . cider-repl-clear-buffer)
     :config
     (setq cider-show-error-buffer 'only-in-repl))
-  (use-package evil-cleverparens
-    :ensure t))
 
 (use-package lispy
   :disabled
