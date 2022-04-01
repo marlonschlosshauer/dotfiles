@@ -164,7 +164,7 @@
 			   "~/Dropbox/Study/todo.org"
 			   "~/Projects/gde/todo.org"
 			   "~/Projects/neo/todo.org"
-			   "~/Dropbox/Study/Labs/TH/todo.org"))
+			   "~/Projects/TP/todo.org"))
 
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
   (setq org-capture-templates
@@ -172,7 +172,7 @@
 	   "* TODO %? %i\n  %a")
 	  ("s" "Study" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")
-	  ("h" "TH" entry (file+headline "~/Dropbox/Study/Labs/TH/todo.org" "Todo")
+	  ("p" "TP" entry (file+headline "~/Projects/TP/todo.org" "Todo")
 	   "* TODO %? \n %U")
 	  ("g" "gde" entry (file+headline "~/Projects/gde/todo.org" "Todo")
 	   "* TODO %? \n %U")
