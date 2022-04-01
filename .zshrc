@@ -11,3 +11,4 @@ fi
 
 # gitignore templating service
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"

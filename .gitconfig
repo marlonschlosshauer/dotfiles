@@ -3,3 +3,5 @@
 	email = marlonschlosshauer@gmail.com
 [core]
 	excludesFile = ~/global.gitignore
+[init]
+	defaultBranch = main

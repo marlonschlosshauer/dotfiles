@@ -14,6 +14,8 @@
 
 (use-package exec-path-from-shell
   :ensure t
+  :init
+  (setenv "SHELL" "/usr/local/bin/zsh")
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
@@ -24,23 +26,16 @@
 
 (use-package magit
   :ensure t
-  :bind (("C-c g" . magit))
+  :bind (("C-c g" . magit)))
+
+(use-package undo-tree
+  :ensure t
   :config
-  (setq magit-display-buffer-function
-	(lambda (buffer)
-	  (display-buffer
-	   buffer (if (and (derived-mode-p 'magit-mode)
-			   (memq (with-current-buffer buffer major-mode)
-				 '(magit-process-mode
-				   magit-revision-mode
-				   magit-diff-mode
-				   magit-stash-mode
-				   magit-status-mode)))
-		      nil
-		    '(display-buffer-same-window))))))
+  (global-undo-tree-mode))
 
 (use-package evil
   :ensure t
+  :after undo-tree
   :defer .1
   :init
   (setq evil-want-integration t)
@@ -198,7 +193,8 @@
 
 
 (use-package elfeed
-  :ensure t
+  :defer t
+  :commands elfeed
   :after evil-collection
   :config
   (add-hook 'elfeed-search-mode-hook
@@ -209,7 +205,7 @@
 
   (use-package elfeed-org
     :ensure t
-    :after org
+    :after (org, elfeed)
     :config
     (elfeed-org)
     (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
@@ -220,29 +216,39 @@
   (define-key pocket-reader-mode-map (kbd "RET") 'pocket-reader-open-in-external-browser))
 
 (use-package company
-  :ensure t
+  :defer t
   :bind ("TAB" . company-complete)
   :config
-  (global-company-mode 1))
+  (setq company-require-match nil)
+  (setq company-show-numbers t)
+  (setq company-selection-wrap-around t)
+  (global-company-mode 1)
+
+  (use-package company-restclient
+    :ensure t)
+  (use-package company-web
+    :ensure t))
+
+
 
 (use-package lsp-mode
-  :ensure t
+  :defer t
   :commands lsp
   :init (setq lsp-keymap-prefix "C-l")
-  :hook((python-mode . lsp)
-	(typescript-mode . lsp)
-	(java-mode . lsp)
-	(css-mode . lsp)
-	(web-mode . lsp)
-	(haskell-mode . lsp))
+  :hook ((python-mode . lsp)
+	 (typescript-mode . lsp)
+	 (java-mode . lsp)
+	 (css-mode . lsp)
+	 (web-mode . lsp)
+	 ;;(js-mode . lsp)
+	 (haskell-mode . lsp))
 
   :config
+
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
   ;;(add-hook 'before-save-hook 'lsp-format-buffer)
-
-  (use-package lsp-java
-    :ensure t
-    :after lsp-mode)
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-log-io nil)
 
   (use-package lsp-ui
     :ensure t
@@ -251,6 +257,10 @@
 		  lsp-ui-peek-enable t
 		  lsp-ui-sideline-enable nil
 		  lsp-ui-doc-position (quote at-point))))
+
+(use-package lsp-java
+  :ensure t
+  :after (java-mode, lsp))
 
 (use-package flycheck
   :ensure t
@@ -343,16 +353,45 @@
 	 ("\\.php\\'" . web-mode)
 	 ("\\.ts?\\'" . web-mode)
 	 ("\\.js?\\'" . web-mode)
-	 ("\\.jsx?\\'" . web-mode)
-	 ("\\.tsx?\\'" . web-mode))
+	 ("\\.tsx?\\'" . web-mode)
+	 ("\\.jsx?\\'" . web-mode))
+
   :config
   (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
 
-  (use-package emmet-mode
-    :ensure t
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+
+(use-package tide
+  :disabled
+  :ensure t
+  :after (web-mode company flycheck)
+  :init  (setq tide-server-max-response-length 2147483647)
+  :hook ((web-mode . tide-setup)
+	 (web-mode . tide-hl-identifier-mode))
+  :config
+  (company-mode +1))
+
+(use-package js-mode
+  :disabled
+  :defer t
+  :mode (("\\.ts?\\'" . js-mode)
+	 ("\\.js?\\'" . js-mode)
+	 ("\\.tsx?\\'" . js-mode)
+	 ("\\.jsx?\\'" . js-mode))
+  :config
+  (setq javascript-indent-level 2)
+  (setq js-indent-level 2))
+
+(use-package emmet-mode
+    :defer t
     :config
-    :hook (web-mode . emmet-mode)))
+    :hook ((web-mode . emmet-mode)
+	   (js2-mode . emmet-mode)
+	   (rjsx-mode . emmet-mode)
+	   (php . emmet-mode)))
 
 (use-package ace-window
   :ensure t
@@ -558,7 +597,7 @@
  '(lsp-ui-doc-position 'at-point)
  '(org-tags-column 80)
  '(package-selected-packages
-   '(plain-org-wiki evil-cleverparens lsp-haskell haskell-mode org-ref org counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
+   '(json-mode tide rjsx-mode org ivy-hydra plain-org-wiki evil-cleverparens lsp-haskell haskell-mode org-ref counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
  '(python-shell-interpreter "python3")
  '(show-paren-when-point-inside-paren t))
 (put 'dired-find-alternate-file 'disabled nil)
