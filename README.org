@@ -12,10 +12,14 @@
    | C-o   | Open in dire targeted file in another window                 |
    | C-M-J | ivy-immediate-done (for renaming files that have name clash) |
 ** Windows
-   | C-x 0 | Close window                   |
-   | C-x o | Switch window                  |
-   | C-x 2 | Create new window (verticle)   |
-   | C-x 3 | Create new window (horizontal) |
+   | C-x 0   | Close window                   |
+   | C-x o   | Switch window                  |
+   | C-w C-s | Create Horizontal split        |
+   | C-w C-v | Create vertical split          |
+   | C-w C-l | Switch left                    |
+   | C-w C-r | Switch right                   |
+   | C-x 2   | Create new window (verticle)   |
+   | C-x 3   | Create new window (horizontal) |
 ** Web-mode
    | C-j | emmet complete |
 ** eshell
