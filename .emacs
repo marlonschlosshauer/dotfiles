@@ -138,11 +138,13 @@
   ;; TODO: find out how to change from bibtex to biber (cuz bibtex does not support biblatex anymore)
   (setq bibtex-dialect 'biblatex)
 
-  (setq org-latex-pdf-process
-	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-	  "bibtex %f"
-	  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-	  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  ;; (setq org-latex-pdf-process
+  ;; 	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+  ;; 	  "bibtex %f"
+  ;; 	  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+  ;; this works for with org-ref for some reason
+  (setq org-latex-pdf-process '("latexmk -pdflatex='%latex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
 
   (setq org-src-fontify-natively t)
 
@@ -183,8 +185,7 @@
     :after pdf-tools)
 
   (use-package org-ref
-    :disabled
-    :ensure nil))
+    :ensure t))
 
 (use-package pdf-tools
   :ensure t
