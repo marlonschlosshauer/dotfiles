@@ -561,6 +561,7 @@
 ;; Turn off creation of temp files
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(setq create-lockfiles nil)
 
 (add-to-list 'display-buffer-alist
 	     `(,(regexp-quote "*shell") display-buffer-same-window))
