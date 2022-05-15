@@ -81,6 +81,10 @@
     :config
     (global-evil-surround-mode 1))
 
+  (use-package evil-matchit
+    :ensure t
+    :hook (js-mode . evil-matchit-mode))
+
   (use-package key-chord
     :ensure t
     :after evil
