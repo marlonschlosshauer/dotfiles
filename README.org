@@ -2,177 +2,177 @@
 
 * Emacs Controls
 ** Buffer
-   | C-x C-b | List buffers     |
-   | C-x b   | Return to buffer |
+| C-x C-b | List buffers     |
+| C-x b   | Return to buffer |
 ** Open file
-   | C-x C-f | Open file               |
-   | C-x 4   | Open file in new window |
+| C-x C-f | Open file               |
+| C-x 4   | Open file in new window |
 ** Dired
-   | C-x d | Enter dired                                                  |
-   | C-o   | Open in dire targeted file in another window                 |
-   | C-M-J | ivy-immediate-done (for renaming files that have name clash) |
+| C-x d | Enter dired                                                  |
+| C-o   | Open in dire targeted file in another window                 |
+| C-M-J | ivy-immediate-done (for renaming files that have name clash) |
 ** Windows
-   | C-x 0   | Close window                   |
-   | C-x o   | Switch window                  |
-   | C-w C-s | Create Horizontal split        |
-   | C-w C-v | Create vertical split          |
-   | C-w C-l | Switch left                    |
-   | C-w C-r | Switch right                   |
-   | C-x 2   | Create new window (verticle)   |
-   | C-x 3   | Create new window (horizontal) |
+| C-x 0   | Close window                   |
+| C-x o   | Switch window                  |
+| C-w C-s | Create Horizontal split        |
+| C-w C-v | Create vertical split          |
+| C-w C-l | Switch left                    |
+| C-w C-r | Switch right                   |
+| C-x 2   | Create new window (verticle)   |
+| C-x 3   | Create new window (horizontal) |
 ** Web-mode
-   | C-j | emmet complete |
+| C-j | emmet complete |
 ** eshell
-   | C-c M-o | Clear screen |
+| C-c M-o | Clear screen |
 ** evil
-   | C-o | retrace jump backwards |
-   | C-i | retrace jump forwards  |
+| C-o | retrace jump backwards |
+| C-i | retrace jump forwards  |
 *** evil-numbered
-    | C-c +  | Increment next number |
-    | C-c -  | Decrement next number |
+| C-c +  | Increment next number |
+| C-c -  | Decrement next number |
 ** evil-magit
-   | s       | stage                    |
-   | u       | unstage                  |
-   | c       | commit                   |
-   | P       | push                     |
-   | d       | diff                     |
-   | i       | ignore                   |
-   | f       | fetch                    |
-   | C-c C-c | Close commit message     |
-   | C-x v ~ | vc-revision-other-window |
+| s       | stage                    |
+| u       | unstage                  |
+| c       | commit                   |
+| P       | push                     |
+| d       | diff                     |
+| i       | ignore                   |
+| f       | fetch                    |
+| C-c C-c | Close commit message     |
+| C-x v ~ | vc-revision-other-window |
 ** evil-dired
-   | RET | Open file                   |
-   | o   | Open file in another window |
-   | +   | Create directory            |
-   | R   | Rename/move                 |
-   | C   | Copy                        |
-   | d   | Delete                      |
-   | m   | Mark                        |
-   | u   | Unmark                      |
-   | x   | Delete                      |
+| RET | Open file                   |
+| o   | Open file in another window |
+| +   | Create directory            |
+| R   | Rename/move                 |
+| C   | Copy                        |
+| d   | Delete                      |
+| m   | Mark                        |
+| u   | Unmark                      |
+| x   | Delete                      |
 ** org-mode
-   | C-c C-t     | Cycle through tag stage.                                    |
-   | C-c C-,     | Insert template (src block) (org-insert-structure-template) |
-   | C-c C-q     | Set tags.                                                   |
-   | C-c C-o     | Follow link.                                                |
-   | C-c l       | Store link.                                                 |
-   | C-c C-l     | Add link.                                                   |
-   | C-c C-x C-i | (org-clock-in)                                              |
-   | C-c C-x C-o | (org-clock-out)                                             |
-   | C-c C-s     | (org-schedule)                                              |
-   | C-c C-d     | (org-deadline)                                              |
-   | C-x n s     | (org-narrow-to-subtree)                                     |
-   | C-x n w     | (widen)                                                     |
-   | C-c *       | (org-toggle-heading)                                        |
-   | C-c C-b     | (org-backward-heading-same-level)                           |
-   | C-c C-f     | (org-forward-heading-same-level)                            |
-   | C-c C-x C-a | Archive task                                                |
+| C-c C-t     | Cycle through tag stage.                                    |
+| C-c C-,     | Insert template (src block) (org-insert-structure-template) |
+| C-c C-q     | Set tags.                                                   |
+| C-c C-o     | Follow link.                                                |
+| C-c l       | Store link.                                                 |
+| C-c C-l     | Add link.                                                   |
+| C-c C-x C-i | (org-clock-in)                                              |
+| C-c C-x C-o | (org-clock-out)                                             |
+| C-c C-s     | (org-schedule)                                              |
+| C-c C-d     | (org-deadline)                                              |
+| C-x n s     | (org-narrow-to-subtree)                                     |
+| C-x n w     | (widen)                                                     |
+| C-c *       | (org-toggle-heading)                                        |
+| C-c C-b     | (org-backward-heading-same-level)                           |
+| C-c C-f     | (org-forward-heading-same-level)                            |
+| C-c C-x C-a | Archive task                                                |
 *** org-mode-agenda
-    | x | Close org-mode-agenda-list. |
+| x | Close org-mode-agenda-list. |
 ** Editing
-   | za    | Toggle bracket folding |
-   | C-x u | (undo-tree-visualize)  |
-   | C-c n | flycheck-next-error    |
+| za    | Toggle bracket folding |
+| C-x u | (undo-tree-visualize)  |
+| C-c n | flycheck-next-error    |
 ** Bookmarks
-   | C-x r l | List all bookmark |
-   | C-x r m | Set boomark       |
-   | C-x r b | Jump to bookmark  |
+| C-x r l | List all bookmark |
+| C-x r m | Set boomark       |
+| C-x r b | Jump to bookmark  |
 ** Misc
-   | C-x C-u | Upcase region                       |
-   | C-x C-l | Downcase region                     |
-   | C-g     | Kill command input                  |
-   | C-x C-c | Quit emacs                          |
-   | C-x g   | Open magit-status                   |
-   | C-x C-h | Select all                          |
-   | C-M-\\  | Auto indent region                  |
-   | C-u M-x | eshell start second eshell instance |
-   | C-c / g | Google selected region              |
-   | C-u M-! | Execute command, pipe into buffer   |
+| C-x C-u | Upcase region                       |
+| C-x C-l | Downcase region                     |
+| C-g     | Kill command input                  |
+| C-x C-c | Quit emacs                          |
+| C-x g   | Open magit-status                   |
+| C-x C-h | Select all                          |
+| C-M-\\  | Auto indent region                  |
+| C-u M-x | eshell start second eshell instance |
+| C-c / g | Google selected region              |
+| C-u M-! | Execute command, pipe into buffer   |
 ** Help
-   | M-:   | major-mode Get major mode        |
-   | C-h k | Get function behind key sequence |
-   | C-h a | Search for pattern               |
-   | C-h i | Show documentation               |
+| M-:   | major-mode Get major mode        |
+| C-h k | Get function behind key sequence |
+| C-h a | Search for pattern               |
+| C-h i | Show documentation               |
 ** Mark
-   xref-find-definitions
-   xref-pop-marker-stack
+| C-x j | xref-find-definitions |   |
+| C-x p | xref-pop-marker-stack |   |
 ** projectile
-   | C-c p s g | Grep in project |
-   | C-c p f   | Find file       |
-   | C-c p c   | Execute Make    |
+| C-c p s g | Grep in project |
+| C-c p f   | Find file       |
+| C-c p c   | Execute Make    |
 ** ibuffer
-   | d | ibuffer-mark-for-delete           |
-   | x | ibuffer-do-kill-on-deletion-marks |
+| d | ibuffer-mark-for-delete           |
+| x | ibuffer-do-kill-on-deletion-marks |
 ** elfeed
-   | u   | elfeed-search-untag-all-unread (mark-read) |
-   | RET | elfeed-search-browse-url (open in browser) |
+| u   | elfeed-search-untag-all-unread (mark-read) |
+| RET | elfeed-search-browse-url (open in browser) |
 ** lsp
-   | C-l T l | 	Toggle code-lens overlays |
-   | C-l g d | 	Find declarations         |
-   | C-l g r | 	Find references           |
-   | C-l g h | 	Call hierachy             |
-   | C-l G g | 	Peek definition           |
-   | C-l r r | 	Refactor                  |
+| C-l T l | 	Toggle code-lens overlays |
+| C-l g d | 	Find declarations         |
+| C-l g r | 	Find references           |
+| C-l g h | 	Call hierachy             |
+| C-l G g | 	Peek definition           |
+| C-l r r | 	Refactor                  |
 ** ace-window
-   | C-x C-o | ace-window                                             |
-   | x       | delete window                                          |
-   | m       | swap windows                                           |
-   | M       | move window                                            |
-   | c       | copy window                                            |
-   | j       | select buffer                                          |
-   | n       | select the previous window                             |
-   | u       | select buffer in the other window                      |
-   | c       | split window fairly, either vertically or horizontally |
-   | v       | split window vertically                                |
-   | b       | split window horizontally                              |
-   | o       | maximize current window                                |
-   | ?       | show these command bindings                            |
+| C-x C-o | ace-window                                             |
+| x       | delete window                                          |
+| m       | swap windows                                           |
+| M       | move window                                            |
+| c       | copy window                                            |
+| j       | select buffer                                          |
+| n       | select the previous window                             |
+| u       | select buffer in the other window                      |
+| c       | split window fairly, either vertically or horizontally |
+| v       | split window vertically                                |
+| b       | split window horizontally                              |
+| o       | maximize current window                                |
+| ?       | show these command bindings                            |
 ** clojure
-   | C-c M-p     | cider-send-sexp-to-repl                   |
-   | C-c C-j C-e | Insert exp into repl                      |
-   | C-c C-k     | Compile buffer                            |
-   | C-c M-n M-n | Switch to ns of buffer                    |
-   | C-x C-e     | Evaluate last sexp                        |
-   | C-c C-d C-d | Display doc                               |
-   | C-c C-d a   | Clojure apropo                            |
-   | C-c C-d C-a | Search for function name                  |
-   | C-c C-u     | Clear REPL                                |
-   | C-c C-v C-d | Eval top level sexp                       |
-   | g z         | Switch between REPL and Clojure           |
-   | g d         | goto definiton                            |
-   | K           | View documentation                        |
-   | C-u C-c C-z | switch-buffer-to-repl (and set namespace) |
-   | C-c M-t v   | Tracing                                   |
-   | C-c M-i     | Inspect exp                               |
-   |             | cider-enlighten-mode                      |
-   | C-c C-t t   | Run test                                  |
-   | C-c C-t n   | Run namespace tests                       |
-   | C-c C-t b   | Show test report                          |
-   | C-c C-q     | Quit repl                                 |
-   | C-c C-u     | cider-undef                               |
-   | C-c SPC     | clojure-align                             |
-   | C-c C-v C-w | clojure-eval-last-sexp-and-replace        |
+| C-c M-p     | cider-send-sexp-to-repl                   |
+| C-c C-j C-e | Insert exp into repl                      |
+| C-c C-k     | Compile buffer                            |
+| C-c M-n M-n | Switch to ns of buffer                    |
+| C-x C-e     | Evaluate last sexp                        |
+| C-c C-d C-d | Display doc                               |
+| C-c C-d a   | Clojure apropo                            |
+| C-c C-d C-a | Search for function name                  |
+| C-c C-u     | Clear REPL                                |
+| C-c C-v C-d | Eval top level sexp                       |
+| g z         | Switch between REPL and Clojure           |
+| g d         | goto definiton                            |
+| K           | View documentation                        |
+| C-u C-c C-z | switch-buffer-to-repl (and set namespace) |
+| C-c M-t v   | Tracing                                   |
+| C-c M-i     | Inspect exp                               |
+|             | cider-enlighten-mode                      |
+| C-c C-t t   | Run test                                  |
+| C-c C-t n   | Run namespace tests                       |
+| C-c C-t b   | Show test report                          |
+| C-c C-q     | Quit repl                                 |
+| C-c C-u     | cider-undef                               |
+| C-c SPC     | clojure-align                             |
+| C-c C-v C-w | clojure-eval-last-sexp-and-replace        |
 ** counsel
-   |M-x M-p | Last used command  |
+|M-x M-p | Last used command  |
 ** aqua
-   | C-n | Next                   |
-   | C-p | Previous               |
-   | C-a | Begining               |
-   | C-e | End                    |
-   | C-k | Kill line              |
-   | C-d | Kill charater at point |
-   | C-m | Enter                  |
-   | C-i | Tab                    |
-   | s-d | Kill next word         |
+| C-n | Next                   |
+| C-p | Previous               |
+| C-a | Begining               |
+| C-e | End                    |
+| C-k | Kill line              |
+| C-d | Kill charater at point |
+| C-m | Enter                  |
+| C-i | Tab                    |
+| s-d | Kill next word         |
 ** paredit
-   | C-M-n     | paredit-forward-up           |
-   | C-M-f     | paredit-forward              |
-   | C-M-d     | paredit-forward-down         |
-   | C-M-b     | paredit-backwards            |
-   | C-M-p     | paredit-backwards-down       |
-   | C-M-u     | paredit-backwards-up         |
-   | C-k       | paredit-kill                 |
-   | C-M-right | paredit-backward-barf-sexp   |
-   | C-M-left  | paredit-backwards-slurp-sexp |
-   | C-left    | paredit-forward-barf-sexp    |
-   | C-right   | paredit-forward-slurp-sexp   |
+| C-M-n     | paredit-forward-up           |
+| C-M-f     | paredit-forward              |
+| C-M-d     | paredit-forward-down         |
+| C-M-b     | paredit-backwards            |
+| C-M-p     | paredit-backwards-down       |
+| C-M-u     | paredit-backwards-up         |
+| C-k       | paredit-kill                 |
+| C-M-right | paredit-backward-barf-sexp   |
+| C-M-left  | paredit-backwards-slurp-sexp |
+| C-left    | paredit-forward-barf-sexp    |
+| C-right   | paredit-forward-slurp-sexp   |
