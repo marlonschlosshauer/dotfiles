@@ -269,6 +269,7 @@
 
 (use-package flycheck
   :ensure t
+  :bind ("C-c n" . flycheck-next-error)
   :init (global-flycheck-mode))
 
 (use-package csharp-mode

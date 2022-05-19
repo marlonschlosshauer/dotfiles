@@ -72,6 +72,7 @@
 ** Editing
    | za    | Toggle bracket folding |
    | C-x u | (undo-tree-visualize)  |
+   | C-c n | flycheck-next-error    |
 ** Bookmarks
    | C-x r l | List all bookmark |
    | C-x r m | Set boomark       |
