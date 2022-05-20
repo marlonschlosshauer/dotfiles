@@ -1,3 +1,6 @@
 export PATH=/usr/local/opt/grep/libexec/gnubin:~/Applications/:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/usr/bin:/Library/TeX/texbin/
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
