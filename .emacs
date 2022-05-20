@@ -196,24 +196,23 @@
   :config
   (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
 
+(use-package elfeed-org
+  :ensure t
+  :after org
+  :config
+  (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))
+  (elfeed-org))
 
 (use-package elfeed
   :defer t
   :commands elfeed
-  :after evil-collection
+  :after (elfeed-org, evil-collection)
   :config
   (add-hook 'elfeed-search-mode-hook
 	    (lambda ()
 	      (evil-collection-define-key 'normal 'elfeed-search-mode-map
 		(kbd "RET") 'elfeed-search-browse-url)))
-  (setq-default elfeed-search-filter "@2-weeks-ago ")
-
-  (use-package elfeed-org
-    :ensure t
-    :after (org, elfeed)
-    :config
-    (elfeed-org)
-    (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))))
+  (setq-default elfeed-search-filter "@2-weeks-ago "))
 
 (use-package pocket-reader
   :ensure t
