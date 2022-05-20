@@ -242,6 +242,7 @@
 	 (css-mode . lsp)
 	 (web-mode . lsp)
 	 (js-mode . lsp)
+	 (typescript-mode . lsp)
 	 (haskell-mode . lsp))
   :config
 
@@ -375,11 +376,15 @@
   :config
   (company-mode +1))
 
+(use-package typescript-mode
+  :defer t
+  :mode (
+	 ("\\.ss?\\'" . typescript-mode)
+	 ("\\.tsx?\\'" . typescript-mode)))
+
 (use-package js-mode
   :defer t
-  :mode (("\\.ts?\\'" . js-mode)
-	 ("\\.js?\\'" . js-mode)
-	 ("\\.tsx?\\'" . js-mode)
+  :mode (("\\.js?\\'" . js-mode)
 	 ("\\.jsx?\\'" . js-mode))
   :config
   (setq javascript-indent-level 2)
