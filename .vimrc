@@ -11,3 +11,5 @@ syntax on
 set background=dark
 
 inoremap jj <Esc>
+
+colorscheme industry
