@@ -28,6 +28,9 @@
   :ensure t
   :bind (("C-c g" . magit)))
 
+(use-package forge
+  :ensure t)
+
 (use-package undo-tree
   :ensure t
   :config
@@ -613,7 +616,7 @@
  '(org-latex-tables-centered nil)
  '(org-tags-column 80)
  '(package-selected-packages
-   '(evil-matchit rainbow citeproc undo-tree json-mode tide rjsx-mode org ivy-hydra plain-org-wiki evil-cleverparens lsp-haskell haskell-mode org-ref counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
+   '(forge csv-mode popper graphql-mode evil-matchit rainbow citeproc undo-tree json-mode tide rjsx-mode org ivy-hydra plain-org-wiki evil-cleverparens lsp-haskell haskell-mode org-ref counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
  '(python-shell-interpreter "python3")
  '(show-paren-when-point-inside-paren t))
 (put 'dired-find-alternate-file 'disabled nil)

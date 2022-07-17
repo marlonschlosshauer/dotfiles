@@ -1,7 +1,14 @@
 [user]
-	name = marlonschlosshauer
-	email = marlonschlosshauer@gmail.com
+	name = Marlon Schlosshauer
+	email = Marlonschlosshauer@gmail.com
 [core]
 	excludesFile = ~/global.gitignore
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[github]
+	user = marlonschlosshauer
