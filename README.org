@@ -40,6 +40,7 @@
 | f       | fetch                    |
 | C-c C-c | Close commit message     |
 | C-x v ~ | vc-revision-other-window |
+| C-c M-g | magit-file-dispatch      |
 ** evil-dired
 | RET | Open file                   |
 | o   | Open file in another window |
@@ -107,12 +108,13 @@
 | u   | elfeed-search-untag-all-unread (mark-read) |
 | RET | elfeed-search-browse-url (open in browser) |
 ** lsp
-| C-l T l | 	Toggle code-lens overlays |
-| C-l g d | 	Find declarations         |
-| C-l g r | 	Find references           |
-| C-l g h | 	Call hierachy             |
-| C-l G g | 	Peek definition           |
-| C-l r r | 	Refactor                  |
+| C-l T l | Toggle code-lens overlays  |
+| C-l g d | Find declarations          |
+| C-l g r | Find references            |
+| C-l g h | Call hierachy              |
+| C-l G g | Peek definition            |
+| C-l r r | Refactor                   |
+| C-l h h | Describe type (Typescript) |
 ** ace-window
 | C-x C-o | ace-window                                             |
 | x       | delete window                                          |
