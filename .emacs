@@ -168,7 +168,6 @@
   (add-to-list 'org-file-apps '(directory . emacs))
 
   (setq org-agenda-files '("~/Dropbox/org/todo.org"
-			   "~/Dropbox/Study/todo.org"
 			   "~/Dropbox/gedankenessen/todo.org"
 			   "~/Dropbox/neo/todo.org"
 			   "~/Dropbox/TP/todo.org"))
@@ -176,8 +175,6 @@
   (setq org-default-notes-file "~/Dropbox/org/todo.org")
   (setq org-capture-templates
 	'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
-	   "* TODO %? %i\n  %a")
-	  ("s" "Study" entry (file+headline "~/Dropbox/Study/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")
 	  ("p" "TP" entry (file+headline "~/Dropbox/TP/todo.org" "Todo")
 	   "* TODO %? \n %U")
