@@ -246,9 +246,12 @@
 	 (haskell-mode . lsp))
   :config
 
+  (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
+
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
   ;;(add-hook 'before-save-hook 'lsp-format-buffer)
   (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-ui-doc-show-with-cursor t)
   (setq lsp-log-io nil)
 
   (use-package lsp-ui
@@ -395,6 +398,7 @@
   :config
   :hook ((web-mode . emmet-mode)
 	 ;; TOOD: Add emmet-rjsx mode
+	 (typescript-mode . emmet-mode)
 	 (js-mode . emmet-mode)
 	 (php . emmet-mode)))
 
@@ -491,6 +495,7 @@
 (use-package rainbow-mode
   :ensure
   :hook ((js-mode . rainbow-mode)
+	 (clojure-mode . rainbow-mode)
 	 (js2-mode . rainbow-mode)
 	 (web-mode . rainbow-mode)
 	 (css-mode . rainbow-mode)))
