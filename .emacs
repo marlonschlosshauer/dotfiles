@@ -178,7 +178,7 @@
 	   "* TODO %? %i\n  %a")
 	  ("p" "TP" entry (file+headline "~/Dropbox/TP/todo.org" "Todo")
 	   "* TODO %? \n %U")
-	  ("g" "gde" entry (file+headline "~/Dropbox/gde/todo.org" "Todo")
+	  ("g" "gde" entry (file+headline "~/Dropbox/gedankenessen/todo.org" "Todo")
 	   "* TODO %? \n %U")
 	  ("n" "neo" entry (file+headline "~/Dropbox/neo/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")))
