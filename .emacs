@@ -348,6 +348,13 @@
   :mode (("\\.c?\\'" . c-mode)
 	 ("\\.h?\\'" . c-mode)))
 
+(use-package objc-mode
+  :mode (("\\.mmm?\\'" . objc-mode)
+	 ("\\.m?\\'" . objc-mode)))
+
+(use-package groovy-mode
+  :mode (("\\.gradle?\\'" . groovy-mode)))
+
 (use-package css-mode
   :defer t
   :mode (("\\.css\\'" . css-mode)))
