@@ -407,6 +407,7 @@
 	 ;; TOOD: Add emmet-rjsx mode
 	 (typescript-mode . emmet-mode)
 	 (js-mode . emmet-mode)
+	 (markdown-mode . emmet-mode)
 	 (php . emmet-mode)))
 
 (use-package ace-window
