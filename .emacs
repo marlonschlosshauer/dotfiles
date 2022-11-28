@@ -557,8 +557,8 @@
 (add-to-list 'default-frame-alist '(ns-appearance . light))
 
 ;; line numbers
-(setq linum-format "%4d  ")
-(global-linum-mode t)
+;(setq linum-format "%4d  ")
+;(global-linum-mode t)
 
 ;; Highlight closing tags (parenthesis, brackets)
 (show-paren-mode t)
