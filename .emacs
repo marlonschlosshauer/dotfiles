@@ -521,6 +521,11 @@
   ;;(load-theme 'doom-molokai t))
   (load-theme 'doom-one-light t))
 
+(use-package mood-line
+  :ensure t
+  :config
+  (mood-line-mode))
+
 ;;; End of packages
 
 ;;; Misc
