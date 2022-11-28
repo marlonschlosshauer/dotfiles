@@ -544,6 +544,9 @@
 ;;(global-hl-line-mode)
 ;;; End of GUI
 
+;; Make focus help window on appear
+(setq help-window-select t)
+
 ;; Remove splash screen
 (setq inhibit-splash-screen t)
 
