@@ -297,9 +297,7 @@
 (use-package web-mode
   :defer t
   :mode (("\\.html\\'" . web-mode)
-	 ("\\.php\\'" . web-mode)
-	 ("\\.ts?\\'" . web-mode)
-	 ("\\.js?\\'" . web-mode))
+	 ("\\.php\\'" . web-mode))
 
   :config
   (setq web-mode-enable-current-column-highlight t)
@@ -312,12 +310,15 @@
 (use-package js-mode
   :defer t
   :mode (("\\.js?\\'" . js-mode)
-	 ("\\.jsx?\\'" . js-mode)
-	 ("\\.ts?\\'" . js-mode)
-	 ("\\.tsx?\\'" . js-mode))
+	 ("\\.jsx?\\'" . js-mode))
   :config
   (setq javascript-indent-level 2)
   (setq js-indent-level 2))
+
+(use-package typescript-mode
+  :defer t
+  :mode (("\\.ts?\\'" . typescript-mode)
+	 ("\\.tsx?\\'" . typescript-mode)))
 
 (use-package emmet-mode
   :defer t
