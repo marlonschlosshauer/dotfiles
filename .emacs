@@ -111,6 +111,15 @@
     :config
     (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)))
 
+(use-package tree-sitter
+  :ensure t
+  :config
+  (global-tree-sitter-mode))
+
+(use-package tree-sitter-langs
+  :ensure t
+  :after tree-sitter)
+
 (use-package org
   :pin gnu
   :mode (("\\.org\\'" . org-mode))
