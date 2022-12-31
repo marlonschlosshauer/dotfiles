@@ -530,6 +530,7 @@
 
 ;; Setup indentation
 (setq indent-tabs-mode t)
+(setq tab-width 2)
 
 ;; Show tabs
 (setq whitespace-style '(face tabs tab-mark trailing))
