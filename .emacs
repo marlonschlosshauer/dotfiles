@@ -86,7 +86,9 @@
 
   (use-package evil-matchit
     :ensure t
-    :hook (js-mode . evil-matchit-mode))
+    :hook ((js-mode . evil-matchit-mode)
+	   (typescript-mode . evil-matchit-mode)
+	   (web-mode . evil-matchit-mode)))
 
   (use-package key-chord
     :ensure t
@@ -114,11 +116,10 @@
 (use-package tree-sitter
   :ensure t
   :config
-  (global-tree-sitter-mode))
-
-(use-package tree-sitter-langs
-  :ensure t
-  :after tree-sitter)
+  (global-tree-sitter-mode)
+  (use-package tree-sitter-langs
+    :ensure t
+    :after tree-sitter))
 
 (use-package org
   :pin gnu
@@ -195,13 +196,6 @@
   :config
   (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
 
-(use-package elfeed-org
-  :ensure t
-  :after org
-  :config
-  (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))
-  (elfeed-org))
-
 (use-package elfeed
   :defer t
   :commands elfeed
@@ -211,7 +205,13 @@
 	    (lambda ()
 	      (evil-collection-define-key 'normal 'elfeed-search-mode-map
 		(kbd "RET") 'elfeed-search-browse-url)))
-  (setq-default elfeed-search-filter "@2-weeks-ago "))
+  (setq-default elfeed-search-filter "@2-weeks-ago ")
+  (use-package elfeed-org
+    :ensure t
+    :after org
+    :config
+    (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))
+    (elfeed-org)))
 
 (use-package company
   :defer t
@@ -239,11 +239,10 @@
 	 (typescript-mode . lsp)
 	 (haskell-mode . lsp))
   :config
-
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
 
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
-  ;;(add-hook 'before-save-hook 'lsp-format-buffer)
+  (add-hook 'before-save-hook 'lsp-format-buffer)
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-ui-doc-show-with-cursor t)
   (setq lsp-log-io nil)
@@ -283,15 +282,6 @@
   :config
   (setq cider-show-error-buffer 'only-in-repl))
 
-(use-package paredit
-  :disabled
-  :defer t
-  :after clojure
-  :config
-  ;; TODO: evil-paredit
-  (add-hook 'clojure-mode-hook 'paredit-mode)
-  (add-hook 'clojurescript-mode-hook 'paredit-mode))
-
 (use-package objc-mode
   :mode (("\\.mmm?\\'" . objc-mode)
 	 ("\\.m?\\'" . objc-mode)))
@@ -327,13 +317,15 @@
 (use-package typescript-mode
   :defer t
   :mode (("\\.ts?\\'" . typescript-mode)
-	 ("\\.tsx?\\'" . typescript-mode)))
+	 ("\\.tsx?\\'" . typescript-mode))
+  :config
+  (setq typescript-indent-level 2)
+  (setq typescript-auto-indent-flag t))
 
 (use-package emmet-mode
   :defer t
   :config
   :hook ((web-mode . emmet-mode)
-	 ;; TOOD: Add emmet-rjsx mode
 	 (typescript-mode . emmet-mode)
 	 (js-mode . emmet-mode)
 	 (markdown-mode . emmet-mode)
@@ -471,7 +463,6 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;;(global-hl-line-mode)
 ;;; End of GUI
 
 ;; Make focus help window on appear
@@ -562,10 +553,12 @@
  '(lsp-prefer-flymake nil)
  '(lsp-ui-doc-include-signature nil)
  '(lsp-ui-doc-position 'at-point)
+ '(org-agenda-files
+   '("/Users/marlon/Dropbox/gedankenessen/todo.org" "/Users/marlon/Dropbox/org/todo.org" "/Users/marlon/Dropbox/neo/todo.org" "/Users/marlon/Dropbox/TP/todo.org"))
  '(org-latex-tables-centered nil)
  '(org-tags-column 80)
  '(package-selected-packages
-   '(mood-line groovy-mode xterm-color edit-indirect forge csv-mode popper graphql-mode evil-matchit rainbow citeproc undo-tree json-mode tide rjsx-mode org ivy-hydra plain-org-wiki evil-cleverparens lsp-haskell haskell-mode org-ref counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
+   '(flycheck-projectile tree-sitter-langs tree-sitter docker-compose-mode dockerfile-mode mood-line groovy-mode xterm-color edit-indirect forge csv-mode popper graphql-mode evil-matchit rainbow citeproc undo-tree json-mode tide rjsx-mode org ivy-hydra plain-org-wiki evil-cleverparens lsp-haskell haskell-mode org-ref counsel-spotify evil-paredit hl-todo gitignore-mode gitattributes-mode gitconfig-mode company-restclient json-reformat scala-mode yaml-mode gradle-mode protobuf-mode editorconfig darkroom lispy evil-collection smex python-pytest ng2-mode typescript-mode eyebrowse counsel-css clj-refactor counsel ivy which-key gruvbox-theme solarized-theme vterm skeletor lsp-java js-codemod restclient-helm omnisharp csharp-mode org-pdftools cider clojure-mode-extra-font-locking clojure-mode electric-pair-mode electric-pair rainbow-delimiter-mode rainbow-delimiters docker base16-theme color-theme-sanityinc-tomorrow mark-multiple lsp-ui js2-mode ace-jump-mode expand-region diff-hl omnisharp-mode prettier-js js-comint soothe-theme helm-lsp virtualenvwrapper ace-window py-yapf magit-popup spotify yasnippet flycheck-pyflake flycheck-pyflakes pyvenv web-mode web wanderlust use-package switch-window sublime-themes restclient rainbow-mode plantuml-mode php-mode peep-dired origami org-pdfview magit-todos key-chord htmlize google-this golden-ratio flymd exec-path-from-shell evil-surround evil-org evil-numbers evil-multiedit emmet-mode elfeed-org doom-themes company-web autopair))
  '(python-shell-interpreter "python3")
  '(show-paren-when-point-inside-paren t))
 (put 'dired-find-alternate-file 'disabled nil)
