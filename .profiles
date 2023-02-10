@@ -4,3 +4,4 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export JAVA_HOME=$(/usr/libexec/java_home)
