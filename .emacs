@@ -168,20 +168,20 @@
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs))
 
-  (setq org-agenda-files '("~/Dropbox/org/todo.org"
-			   "~/Dropbox/gedankenessen/todo.org"
-			   "~/Dropbox/neo/todo.org"
-			   "~/Dropbox/TP/todo.org"))
+  (setq org-agenda-files '("~/Library/CloudStorage/Dropbox/org/todo.org"
+			   "~/Library/CloudStorage/Dropbox/gedankenessen/todo.org"
+			   "~/Library/CloudStorage/Dropbox/neo/todo.org"
+			   "~/Library/CloudStorage/Dropbox/TP/todo.org"))
 
-  (setq org-default-notes-file "~/Dropbox/org/todo.org")
+  (setq org-default-notes-file "~/Library/CloudStorage/Dropbox/org/todo.org")
   (setq org-capture-templates
-	'(("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Todo")
+	'(("t" "TODO" entry (file+headline "~/Library/CloudStorage/Dropbox/org/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")
-	  ("p" "TP" entry (file+headline "~/Dropbox/TP/todo.org" "Todo")
+	  ("p" "TP" entry (file+headline "~/Library/CloudStorage/Dropbox/TP/todo.org" "Todo")
 	   "* TODO %? \n %U")
-	  ("g" "gde" entry (file+headline "~/Dropbox/gedankenessen/todo.org" "Todo")
+	  ("g" "gde" entry (file+headline "~/Library/CloudStorage/Dropbox/gedankenessen/todo.org" "Todo")
 	   "* TODO %? \n %U")
-	  ("n" "neo" entry (file+headline "~/Dropbox/neo/todo.org" "Todo")
+	  ("n" "neo" entry (file+headline "~/Library/CloudStorage/Dropbox/neo/todo.org" "Todo")
 	   "* TODO %? %i\n  %a")))
 
   (use-package org-pdfview
