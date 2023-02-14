@@ -134,19 +134,23 @@
   ;; Enable exporting of highlighted syntax with minting
   (add-to-list 'org-latex-packages-alist '("" "minted"))
 
+  ;; Add minting option
   (setq org-latex-listings 'minted)
   (setq org-latex-minted-options
 	'(("breaklines=true")))
 
   (setq bibtex-dialect 'biblatex)
 
-  ;; this works for with org-ref for some reason
+  ;; This works with org-ref for some reason
   (setq org-latex-pdf-process '("latexmk -pdflatex='%latex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
 
+  ;; Make fonts in src buffer look pretty
   (setq org-src-fontify-natively t)
 
+  ;; Remove line-numbers in agenda
   (add-hook 'org-agenda-mode-hook (lambda() (linum-mode -1)))
 
+  ;; Setup babel support
   (org-babel-do-load-languages
    'org-babel-load-languages
    '(
