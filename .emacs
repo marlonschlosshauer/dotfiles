@@ -158,23 +158,7 @@
      (python . t)))
 
   ;; Force org to open files in dired, instead of finder
-  (add-to-list 'org-file-apps '(directory . emacs))
-
-  (setq org-agenda-files '("~/Library/CloudStorage/Dropbox/org/todo.org"
-			   "~/Library/CloudStorage/Dropbox/gedankenessen/todo.org"
-			   "~/Library/CloudStorage/Dropbox/neo/todo.org"
-			   "~/Library/CloudStorage/Dropbox/TP/todo.org"))
-
-  (setq org-default-notes-file "~/Library/CloudStorage/Dropbox/org/todo.org")
-  (setq org-capture-templates
-	'(("t" "TODO" entry (file+headline "~/Library/CloudStorage/Dropbox/org/todo.org" "Todo")
-	   "* TODO %? %i\n  %a")
-	  ("p" "TP" entry (file+headline "~/Library/CloudStorage/Dropbox/TP/todo.org" "Todo")
-	   "* TODO %? \n %U")
-	  ("g" "gde" entry (file+headline "~/Library/CloudStorage/Dropbox/gedankenessen/todo.org" "Todo")
-	   "* TODO %? \n %U")
-	  ("n" "neo" entry (file+headline "~/Library/CloudStorage/Dropbox/neo/todo.org" "Todo")
-	   "* TODO %? %i\n  %a"))))
+  (add-to-list 'org-file-apps '(directory . emacs)))
 
 (use-package org-pdfview
   :disabled
@@ -523,6 +507,11 @@
 
 ;; Bind ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; Load env related stuff (work vs home)
+(let ((path (concat "~/.emacs.d/env/" (or (getenv "emacs-env") "home") ".el")))
+  (when (file-exists-p path)
+    (load-file path)))
 
 ;; Load emacs custom stuff
 (load-file "./.emacs.d/custom.el")
