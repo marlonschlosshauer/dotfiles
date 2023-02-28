@@ -52,13 +52,16 @@
   (setq evil-want-keybinding nil)
   :bind (("C-l" . nil) ; Unset non-prefix
 	 ("C-l k" . comment-or-uncomment-region))
-  :config (evil-mode 1))
+  :config
+  (setq evil-undo-system 'undo-tree)
+  (evil-mode 1))
 
 (use-package evil-org
   :after (evil org)
   :config (add-hook 'org-mode-hook 'evil-org-mode))
 
 (use-package evil-org-agenda
+  :ensure nil
   :after evil-org
   :config (evil-org-agenda-set-keys))
 
@@ -135,6 +138,9 @@
   ;; Make fonts in src buffer look pretty
   (setq org-src-fontify-natively t)
 
+  (setq org-latex-tables-centered nil
+	org-tags-column 80)
+
   ;; Remove line-numbers in agenda
   (add-hook 'org-agenda-mode-hook (lambda() (linum-mode -1)))
 
@@ -204,9 +210,10 @@
 
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
   (add-hook 'before-save-hook 'lsp-format-buffer)
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-log-io nil))
+  (setq lsp-headerline-breadcrumb-enable nil
+	lsp-diagnostics-provider :flycheck
+	lsp-prefer-flymake nil
+	lsp-log-io nil))
 
 (use-package lsp-ui
   :after lsp-mode
@@ -214,7 +221,9 @@
   (setq lsp-ui-doc-enable t
 	lsp-ui-peek-enable t
 	lsp-ui-sideline-enable nil
-	lsp-ui-doc-position (quote at-point)))
+	lsp-ui-doc-include-signature nil
+	lsp-ui-doc-position 'at-point
+	lsp-ui-doc-show-with-cursor t))
 
 (use-package lsp-java
   :defer t
@@ -224,6 +233,7 @@
   :init (global-flycheck-mode))
 
 (use-package clojurescript-mode
+  :ensure nil
   :defer t
   :after lsp-mode
   :mode (("\\.cljs?\\'" . clojurescript-mode)))
@@ -243,6 +253,7 @@
   (setq cider-show-error-buffer 'only-in-repl))
 
 (use-package objc-mode
+  :ensure nil
   :mode (("\\.mmm?\\'" . objc-mode)
 	 ("\\.m?\\'" . objc-mode)))
 
@@ -265,6 +276,7 @@
   (setq web-mode-code-indent-offset 2))
 
 (use-package js-mode
+  :ensure nil
   :mode (("\\.js?\\'" . js-mode)
 	 ("\\.jsx?\\'" . js-mode))
   :config
@@ -339,7 +351,7 @@
 (use-package diff-hl
   :config (global-diff-hl-mode))
 
-(use-package hl-todo
+(use-package hl-todo)
 
 (use-package editorconfig
   :config (editorconfig-mode 1))
@@ -369,9 +381,12 @@
   :ensure nil
   :hook (after-init-hook . show-paren-mode)
   :config
-  (setq show-paren-style 'expression)
-  (setq show-paren-when-point-in-periphery t)
-  (setq show-paren-when-point-inside-paren nil))
+  (custom-set-faces
+   '(show-paren-match ((t nil)))
+   '(show-paren-match-expression ((t (:background "gray92")))))
+  (setq show-paren-style 'expression
+	show-paren-when-point-inside-paren nil
+	show-paren-when-point-in-periphery t))
 
 (use-package doom-themes
   :config
