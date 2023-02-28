@@ -16,16 +16,15 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq use-package-always-ensure t)
+
 (use-package tree-sitter
-  :ensure t
   :config (global-tree-sitter-mode))
 
 (use-package tree-sitter-langs
-  :ensure t
   :after tree-sitter)
 
 (use-package exec-path-from-shell
-  :ensure t
   :init (setenv "SHELL" "/usr/local/bin/zsh")
   :config
   (when (memq window-system '(mac ns x))
@@ -36,11 +35,9 @@
   (setq dired-listing-switches "-alh"))
 
 (use-package magit
-  :ensure t
   :bind (("C-c g" . magit)))
 
 (use-package forge
-  :ensure t
   :after magit)
 
 (use-package undo-tree
@@ -48,7 +45,6 @@
   :config (global-undo-tree-mode))
 
 (use-package evil
-  :ensure t
   :after undo-tree
   :defer .1
   :init
@@ -59,7 +55,6 @@
   :config (evil-mode 1))
 
 (use-package evil-org
-  :ensure t
   :after (evil org)
   :config (add-hook 'org-mode-hook 'evil-org-mode))
 
@@ -68,7 +63,6 @@
   :config (evil-org-agenda-set-keys))
 
 (use-package evil-collection
-  :ensure t
   :after (evil dired)
   :config
   (evil-collection-init)
@@ -76,33 +70,28 @@
     (kbd ".") 'dired-up-directory))
 
 (use-package evil-numbers
-  :ensure t
   :after evil
   :config
   (define-key evil-normal-state-map (kbd "+") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "-") 'evil-numbers/dec-at-pt))
 
 (use-package evil-surround
-  :ensure t
   :after evil
   :config (global-evil-surround-mode 1))
 
 (use-package evil-matchit
-  :ensure t
   :after evil
   :hook ((js-mode . evil-matchit-mode)
 	 (typescript-mode . evil-matchit-mode)
 	 (web-mode . evil-matchit-mode)))
 
 (use-package key-chord
-  :ensure t
   :after evil
   :config
   (key-chord-mode 1)
   (key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
 
 (use-package elec-pair
-  :ensure t
   :config
   (setq electric-pair-pairs
 	'((?\" . ?\")
@@ -113,7 +102,6 @@
   (electric-pair-mode 1))
 
 (use-package ace-jump-mode
-  :ensure t
   :after evil
   :config
   (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode))
@@ -162,16 +150,14 @@
 
 (use-package org-pdfview
   :disabled
-  :ensure t
+  :ensure nil
   :after pdf-tools)
 
 (use-package pdf-tools
-  :ensure t
   :config
   (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
 
 (use-package elfeed
-  :ensure t
   :commands elfeed
   :after (elfeed-org evil-collection)
   :config
@@ -182,7 +168,6 @@
   (setq-default elfeed-search-filter "@2-weeks-ago "))
 
 (use-package elfeed-org
-  :ensure t
   :after (elfeed org)
   :config
   (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))
@@ -236,7 +221,6 @@
   :after (java-mode lsp))
 
 (use-package flycheck
-  :ensure t
   :init (global-flycheck-mode))
 
 (use-package clojurescript-mode
@@ -303,7 +287,6 @@
 	 (php . emmet-mode)))
 
 (use-package ace-window
-  :ensure t
   :bind ("C-x o " . ace-window)
   :config
   (custom-set-faces
@@ -311,7 +294,6 @@
      ((t (:inherit ace-jump-face-foreground :height 2.0))))))
 
 (use-package projectile
-  :ensure t
   :config
   (projectile-mode +1)
   (setq projectile-use-git-grep t)
@@ -319,32 +301,26 @@
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (use-package ivy
-  :ensure t
   :config (ivy-mode))
 
 (use-package counsel
-  :ensure t
   :after ivy
   :config (counsel-mode))
 
 (use-package counsel-projectile
-  :ensure t
   :after (counsel projectile)
   :config (counsel-projectile-mode))
 
 (use-package smex
-  :ensure t
   :after counsel
   :config (smex-initialize))
 
 (use-package swiper
-  :ensure t
   :after ivy
   :bind (("C-s" . swiper)
 	 ("C-S-s" . swiper-thing-at-point)))
 
 (use-package yasnippet
-  :ensure t
   :config (yas-global-mode 1))
 
 (use-package restclient
@@ -361,18 +337,14 @@
   (add-hook 'restclient-response-received-hook #'update-token-restclient-hook))
 
 (use-package diff-hl
-  :ensure t
   :config (global-diff-hl-mode))
 
 (use-package hl-todo
-  :ensure t)
 
 (use-package editorconfig
-  :ensure t
   :config (editorconfig-mode 1))
 
 (use-package which-key
-  :ensure t
   :config (which-key-mode))
 
 (use-package json-reformat
@@ -380,7 +352,6 @@
   :config (define-key evil-normal-state-map (kbd "C-c j") 'json-reformat-region))
 
 (use-package rainbow-delimiters
-  :ensure t
   :hook ((js-mode . rainbow-delimiters-mode)
 	 (emacs-lisp-mode . rainbow-delimiters-mode)
 	 (csharp-mode . rainbow-delimiters-mode)
@@ -388,7 +359,6 @@
 	 (python-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-mode
-  :ensure t
   :hook ((js-mode . rainbow-mode)
 	 (clojure-mode . rainbow-mode)
 	 (js2-mode . rainbow-mode)
@@ -396,6 +366,7 @@
 	 (css-mode . rainbow-mode)))
 
 (use-package paren
+  :ensure nil
   :hook (after-init-hook . show-paren-mode)
   :config
   (setq show-paren-style 'expression)
@@ -403,13 +374,11 @@
   (setq show-paren-when-point-inside-paren nil))
 
 (use-package doom-themes
-  :ensure t
   :config
   ;;(load-theme 'doom-molokai t))
   (load-theme 'doom-one-light t))
 
 (use-package mood-line
-  :ensure t
   :config (mood-line-mode))
 
 ;;; End of packages
