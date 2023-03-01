@@ -283,8 +283,8 @@
   :mode (("\\.js?\\'" . js-mode)
 	 ("\\.jsx?\\'" . js-mode))
   :config
-  (setq javascript-indent-level 2)
-  (setq js-indent-level 2))
+  (setq javascript-indent-level 1)
+  (setq js-indent-level 1))
 
 (use-package typescript-mode
   :mode (("\\.ts?\\'" . typescript-mode)
@@ -477,6 +477,7 @@
 	     `(,(regexp-quote "*shell") display-buffer-same-window))
 
 ;; Setup indentation
+(setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode t)
 (setq tab-width 2)
 
