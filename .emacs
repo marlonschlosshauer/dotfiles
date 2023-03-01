@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Fix emacs looking for incorrect melpa certifications
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -52,7 +52,7 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   :bind (("C-l" . nil) ; Unset non-prefix
-	 ("C-l k" . comment-or-uncomment-region))
+         ("C-l k" . comment-or-uncomment-region))
   :config
   (setq evil-undo-system 'undo-tree)
   (evil-mode 1))
@@ -86,8 +86,8 @@
 (use-package evil-matchit
   :after evil
   :hook ((js-mode . evil-matchit-mode)
-	 (typescript-mode . evil-matchit-mode)
-	 (web-mode . evil-matchit-mode)))
+         (typescript-mode . evil-matchit-mode)
+         (web-mode . evil-matchit-mode)))
 
 (use-package key-chord
   :after evil
@@ -98,12 +98,12 @@
 (use-package elec-pair
   :config
   (setq electric-pair-pairs
-	'((?\" . ?\")
-	  (?\' . ?\')
-	  (?\( . ?\))
-	  (?\[ . ?\])
-	  (?\< . ?\>)
-	  (?\{ . ?\})))
+        '((?\" . ?\")
+          (?\' . ?\')
+          (?\( . ?\))
+          (?\[ . ?\])
+          (?\< . ?\>)
+          (?\{ . ?\})))
   (electric-pair-mode 1))
 
 (use-package ace-jump-mode
@@ -115,14 +115,14 @@
   :pin gnu
   :mode (("\\.org\\'" . org-mode))
   :bind (("C-c a" . org-agenda)
-	 ("C-c c" . org-capture)
-	 ("C-c l" . org-store-link))
+         ("C-c c" . org-capture)
+         ("C-c l" . org-store-link))
   :config
-  (setq org-clock-persist 'history)
+  (setq org-clock-persist 'history
+        org-return-follows-link t
+        org-src-tab-acts-natively t
+        org-src-preserve-indentation nil)
   (org-clock-persistence-insinuate)
-  (setq org-return-follows-link t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-src-preserve-indentation nil)
 
   ;; Enable exporting of highlighted syntax with minting
   (add-to-list 'org-latex-packages-alist '("" "minted"))
@@ -130,7 +130,7 @@
   ;; Add minting option
   (setq org-latex-listings 'minted)
   (setq org-latex-minted-options
-	'(("breaklines=true")))
+        '(("breaklines=true")))
 
   (setq bibtex-dialect 'biblatex)
 
@@ -141,7 +141,7 @@
   (setq org-src-fontify-natively t)
 
   (setq org-latex-tables-centered nil
-	org-tags-column 80)
+        org-tags-column 80)
 
   ;; Remove line-numbers in agenda
   (add-hook 'org-agenda-mode-hook (lambda() (linum-mode -1)))
@@ -170,9 +170,9 @@
   :after (elfeed-org evil-collection)
   :config
   (add-hook 'elfeed-search-mode-hook
-	    (lambda ()
-	      (evil-collection-define-key 'normal 'elfeed-search-mode-map
-		(kbd "RET") 'elfeed-search-browse-url)))
+            (lambda ()
+              (evil-collection-define-key 'normal 'elfeed-search-mode-map
+                (kbd "RET") 'elfeed-search-browse-url)))
   (setq-default elfeed-search-filter "@2-weeks-ago "))
 
 (use-package elfeed-org
@@ -184,9 +184,9 @@
 (use-package company
   :bind ("TAB" . company-complete)
   :config
-  (setq company-require-match nil)
-  (setq company-show-numbers t)
-  (setq company-selection-wrap-around t)
+  (setq company-require-match nil
+        company-show-numbers t
+        company-selection-wrap-around t)
   (global-company-mode 1))
 
 (use-package company-restclient
@@ -202,31 +202,31 @@
   :after (evil)
   :init (setq lsp-keymap-prefix "C-l")
   :hook ((python-mode . lsp)
-	 (java-mode . lsp)
-	 (css-mode . lsp)
-	 (web-mode . lsp)
-	 (js-mode . lsp)
-	 (typescript-mode . lsp)
-	 (haskell-mode . lsp))
+         (java-mode . lsp)
+         (css-mode . lsp)
+         (web-mode . lsp)
+         (js-mode . lsp)
+         (typescript-mode . lsp)
+         (haskell-mode . lsp))
   :config
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
 
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
   (add-hook 'before-save-hook 'lsp-format-buffer)
   (setq lsp-headerline-breadcrumb-enable nil
-	lsp-diagnostics-provider :flycheck
-	lsp-prefer-flymake nil
-	lsp-log-io nil))
+        lsp-diagnostics-provider :flycheck
+        lsp-prefer-flymake nil
+        lsp-log-io nil))
 
 (use-package lsp-ui
   :after lsp-mode
   :config
   (setq lsp-ui-doc-enable t
-	lsp-ui-peek-enable t
-	lsp-ui-sideline-enable nil
-	lsp-ui-doc-include-signature nil
-	lsp-ui-doc-position 'at-point
-	lsp-ui-doc-show-with-cursor t))
+        lsp-ui-peek-enable t
+        lsp-ui-sideline-enable nil
+        lsp-ui-doc-include-signature nil
+        lsp-ui-doc-position 'at-point
+        lsp-ui-doc-show-with-cursor t))
 
 (use-package lsp-java
   :defer t
@@ -248,7 +248,7 @@
 (use-package evil-cleverparens
   :after evil
   :hook ((clojure-mode . evil-cleverparens-mode)
-	 (clojurescript-mode . evil-cleverparens-mode)))
+         (clojurescript-mode . evil-cleverparens-mode)))
 
 (use-package cider
   :bind ("C-l" . cider-repl-clear-buffer)
@@ -258,7 +258,7 @@
 (use-package objc-mode
   :ensure nil
   :mode (("\\.mmm?\\'" . objc-mode)
-	 ("\\.m?\\'" . objc-mode)))
+         ("\\.m?\\'" . objc-mode)))
 
 (use-package groovy-mode
   :mode (("\\.gradle?\\'" . groovy-mode)))
@@ -268,27 +268,31 @@
 
 (use-package web-mode
   :mode (("\\.html\\'" . web-mode)
-	 ("\\.php\\'" . web-mode))
-
+         ("\\.php\\'" . web-mode))
   :config
-  (setq web-mode-enable-current-column-highlight t)
-  (setq web-mode-enable-current-element-highlight t)
-
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-enable-current-column-highlight t
+        web-mode-enable-current-element-highlight t
+        web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2))
 
 (use-package js-mode
   :ensure nil
   :mode (("\\.js?\\'" . js-mode)
-	 ("\\.jsx?\\'" . js-mode))
+         ("\\.jsx?\\'" . js-mode))
   :config
   (setq javascript-indent-level 1)
   (setq js-indent-level 1))
 
+(use-package prettier-js
+  :hook ((web-mode . prettier-js-mode)
+         (js-mode . prettier-js-mode)
+         (js2-mode . prettier-js-mode)
+         (typescript-mode . prettier-js-mode)))
+
 (use-package typescript-mode
   :mode (("\\.ts?\\'" . typescript-mode)
-	 ("\\.tsx?\\'" . typescript-mode))
+         ("\\.tsx?\\'" . typescript-mode))
   :config
   (setq typescript-indent-level 2)
   (setq typescript-auto-indent-flag t))
@@ -296,10 +300,10 @@
 (use-package emmet-mode
   :config
   :hook ((web-mode . emmet-mode)
-	 (typescript-mode . emmet-mode)
-	 (js-mode . emmet-mode)
-	 (markdown-mode . emmet-mode)
-	 (php . emmet-mode)))
+         (typescript-mode . emmet-mode)
+         (js-mode . emmet-mode)
+         (markdown-mode . emmet-mode)
+         (php . emmet-mode)))
 
 (use-package ace-window
   :bind ("C-x o " . ace-window)
@@ -333,7 +337,7 @@
 (use-package swiper
   :after ivy
   :bind (("C-s" . swiper)
-	 ("C-S-s" . swiper-thing-at-point)))
+         ("C-S-s" . swiper-thing-at-point)))
 
 (use-package yasnippet
   :config (yas-global-mode 1))
@@ -346,9 +350,9 @@
     "Update token from a request."
     (save-excursion
       (save-match-data
-	;; update regexp to extract required data
-	(when (re-search-forward "\"token\":\"\\(.*?\\)\"" nil t)
-	  (setq restclient-auth-token (match-string 1))))))
+        ;; update regexp to extract required data
+        (when (re-search-forward "\"token\":\"\\(.*?\\)\"" nil t)
+          (setq restclient-auth-token (match-string 1))))))
   (add-hook 'restclient-response-received-hook #'update-token-restclient-hook))
 
 (use-package diff-hl
@@ -368,17 +372,17 @@
 
 (use-package rainbow-delimiters
   :hook ((js-mode . rainbow-delimiters-mode)
-	 (emacs-lisp-mode . rainbow-delimiters-mode)
-	 (csharp-mode . rainbow-delimiters-mode)
-	 (clojure-mode . rainbow-delimiters-mode)
-	 (python-mode . rainbow-delimiters-mode)))
+         (emacs-lisp-mode . rainbow-delimiters-mode)
+         (csharp-mode . rainbow-delimiters-mode)
+         (clojure-mode . rainbow-delimiters-mode)
+         (python-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-mode
   :hook ((js-mode . rainbow-mode)
-	 (clojure-mode . rainbow-mode)
-	 (js2-mode . rainbow-mode)
-	 (web-mode . rainbow-mode)
-	 (css-mode . rainbow-mode)))
+         (clojure-mode . rainbow-mode)
+         (js2-mode . rainbow-mode)
+         (web-mode . rainbow-mode)
+         (css-mode . rainbow-mode)))
 
 (use-package paren
   :ensure nil
@@ -388,8 +392,8 @@
    '(show-paren-match ((t nil)))
    '(show-paren-match-expression ((t (:background "gray92")))))
   (setq show-paren-style 'expression
-	show-paren-when-point-inside-paren nil
-	show-paren-when-point-in-periphery t))
+        show-paren-when-point-inside-paren nil
+        show-paren-when-point-in-periphery t))
 
 (use-package doom-themes
   :config
@@ -449,13 +453,13 @@
 
 ;; Set enviroment variables
 (setenv "PATH"
-	(concat
-	 "/usr/local/bin" ";"
-	 "/usr/bin" ";"
-	 "/bin" ";"
-	 "/usr/sbin" ";"
-	 "/sbin" ";"
-	 (getenv "PATH")))
+        (concat
+         "/usr/local/bin" ";"
+         "/usr/bin" ";"
+         "/bin" ";"
+         "/usr/sbin" ";"
+         "/sbin" ";"
+         (getenv "PATH")))
 
 ;; Change font color for keywords
 (if (fboundp 'global-font-lock-mode)
@@ -477,7 +481,7 @@
 
 ;; Make shell open in same window
 (add-to-list 'display-buffer-alist
-	     `(,(regexp-quote "*shell") display-buffer-same-window))
+             `(,(regexp-quote "*shell") display-buffer-same-window))
 
 ;; Setup indentation
 (setq-default indent-tabs-mode nil)
