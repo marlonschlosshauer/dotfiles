@@ -407,6 +407,9 @@
 ;; Make subWordsCountAsEnds
 (subword-mode 1)
 
+;; Enable upcase-region
+(put 'upcase-region 'disabled nil)
+
 ;; Deleted repeating blank lines
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
@@ -503,3 +506,4 @@
 
 ;; Load emacs custom stuff
 (load-file "./.emacs.d/custom.el")
+
