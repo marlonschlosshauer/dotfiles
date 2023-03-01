@@ -198,6 +198,7 @@
 
 (use-package lsp-mode
   :commands lsp
+  :after (evil)
   :init (setq lsp-keymap-prefix "C-l")
   :hook ((python-mode . lsp)
 	 (java-mode . lsp)
