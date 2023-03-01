@@ -444,6 +444,9 @@
 ;; Turn on line numbers
 ;;(global-linum-mode t)
 
+;; Make backspace erase tab
+(setq backward-delete-char-untabify-method 'hungry)
+
 ;; Highlight closing tags (parenthesis, brackets)
 (show-paren-mode t)
 (setq show-paren-delay 0)
