@@ -284,6 +284,19 @@
   (setq javascript-indent-level 1)
   (setq js-indent-level 1))
 
+
+(use-package mmm-mode)
+
+(use-package scss-mode)
+
+(use-package css-in-js
+  :after (mmm-mode scss-mode)
+  :load-path "dangerzone/css-in-js"
+  :hook ((web-mode . css-in-js-mode)
+         (typescript-mode . css-in-js-mode)
+         (js-mode . css-in-js-mode)
+         (js2-mode . css-in-js-mode)))
+
 (use-package prettier-js
   :hook ((web-mode . prettier-js-mode)
          (js-mode . prettier-js-mode)
