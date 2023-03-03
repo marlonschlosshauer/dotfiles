@@ -1,14 +1,23 @@
 [user]
-	name = Marlon Schlosshauer
-	email = Marlonschlosshauer@gmail.com
+        name = Marlon Schlosshauer
+        email = Marlonschlosshauer@gmail.com
+[includeIf "gitdir:/Users/msc/**/.git"]
+        path = ~/.gitconfig.work
+[includeIf "gitdir:/Users/marlon/**/.git"]
+        path = ~/.gitconfig.personal
+
 [core]
-	excludesFile = ~/global.gitignore
+        excludesfile = /Users/msc/global.gitignore
 [init]
-	defaultBranch = main
+        defaultBranch = main
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
 [github]
-	user = marlonschlosshauer
+        user = marlonschlosshauer
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
