@@ -260,6 +260,8 @@
   :mode (("\\.mmm?\\'" . objc-mode)
          ("\\.m?\\'" . objc-mode)))
 
+(use-package yaml-mode)
+
 (use-package groovy-mode
   :mode (("\\.gradle?\\'" . groovy-mode)))
 
