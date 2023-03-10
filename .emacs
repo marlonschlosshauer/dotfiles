@@ -30,11 +30,22 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package epa
+  :after (exec-path-from-shell)
+  :config
+  (setq epg-gpg-program "gpg"))
+
+(use-package pinentry
+  :after (epa exec-path-from-shell)
+  :config
+  (pinentry-start))
+
 (use-package dired
   :config
   (setq dired-listing-switches "-alh"))
 
 (use-package magit
+  :after (exec-path-from-shell)
   :bind (("C-c g" . magit)))
 
 (use-package forge
@@ -529,4 +540,3 @@
 
 ;; Load emacs custom stuff
 (load-file "./.emacs.d/custom.el")
-
