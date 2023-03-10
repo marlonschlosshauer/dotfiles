@@ -212,7 +212,7 @@
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
 
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
-  (add-hook 'before-save-hook 'lsp-format-buffer)
+  ;; (add-hook 'before-save-hook 'lsp-format-buffer)
   (setq lsp-headerline-breadcrumb-enable nil
         lsp-diagnostics-provider :flycheck
         lsp-prefer-flymake nil
@@ -317,6 +317,7 @@
   :hook ((web-mode . emmet-mode)
          (typescript-mode . emmet-mode)
          (js-mode . emmet-mode)
+         (js2-mode . emmet-mode)
          (markdown-mode . emmet-mode)
          (php . emmet-mode)))
 
