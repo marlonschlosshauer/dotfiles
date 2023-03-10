@@ -17,7 +17,5 @@
         required = true
 [github]
         user = marlonschlosshauer
-[gpg]
-        format = ssh
 [commit]
-        gpgsign = true
+	gpgsign = true
