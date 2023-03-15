@@ -210,7 +210,6 @@
 
 (use-package lsp-mode
   :commands lsp
-  :after (evil)
   :init (setq lsp-keymap-prefix "C-l")
   :hook ((python-mode . lsp)
          (java-mode . lsp)
@@ -244,6 +243,7 @@
   :after (java-mode lsp))
 
 (use-package flycheck
+  :after lsp-mode
   :init (global-flycheck-mode))
 
 (use-package clojurescript-mode
@@ -262,7 +262,8 @@
          (clojurescript-mode . evil-cleverparens-mode)))
 
 (use-package cider
-  :bind ("C-l" . cider-repl-clear-buffer)
+  ;; TODO: Make bind only run in clj/cljs modes
+  ;;:bind ("C-l" . cider-repl-clear-buffer)
   :config
   (setq cider-show-error-buffer 'only-in-repl))
 
