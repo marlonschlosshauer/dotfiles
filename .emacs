@@ -225,7 +225,7 @@
   ;; (add-hook 'before-save-hook 'lsp-format-buffer)
   (setq lsp-headerline-breadcrumb-enable nil
         lsp-diagnostics-provider :flycheck
-        lsp-prefer-flymake nil
+        lsp-completion-provider :company
         lsp-log-io nil))
 
 (use-package lsp-ui
@@ -299,11 +299,14 @@
   (setq js-indent-level 1))
 
 
-(use-package mmm-mode)
+(use-package mmm-mode
+  :disabled)
 
-(use-package scss-mode)
+(use-package scss-mode
+  :disabled)
 
 (use-package css-in-js
+  :disabled
   :after (mmm-mode scss-mode)
   :load-path "dangerzone/css-in-js"
   :hook ((web-mode . css-in-js-mode)
