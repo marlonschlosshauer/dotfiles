@@ -443,8 +443,9 @@
 ;; Make subWordsCountAsEnds
 (subword-mode 1)
 
-;; Enable upcase-region
+;; Enable x-case-region
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 ;; Deleted repeating blank lines
 (add-hook 'before-save-hook 'whitespace-cleanup)
