@@ -54,7 +54,8 @@
 (use-package undo-tree
   :ensure t
   :config (global-undo-tree-mode)
-  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))
+        undo-tree-auto-save-history nil))
 
 (use-package evil
   :after undo-tree
