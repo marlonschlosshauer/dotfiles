@@ -417,6 +417,7 @@
 (use-package rainbow-mode
   :hook ((js-mode . rainbow-mode)
          (clojure-mode . rainbow-mode)
+         (typescript-mode . rainbow-mode)
          (js2-mode . rainbow-mode)
          (web-mode . rainbow-mode)
          (css-mode . rainbow-mode)))
@@ -451,6 +452,9 @@
 ;; Enable x-case-region
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+;; Enable narrow-to-region
+(put 'narrow-to-region 'disabled nil)
 
 ;; Deleted repeating blank lines
 (add-hook 'before-save-hook 'whitespace-cleanup)
