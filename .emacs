@@ -220,6 +220,7 @@
          (typescript-mode . lsp)
          (haskell-mode . lsp))
   :config
+  (define-key evil-normal-state-map (kbd "g d") 'lsp-goto-implementation)
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
 
   ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
