@@ -336,7 +336,8 @@
          (js-mode . emmet-mode)
          (js2-mode . emmet-mode)
          (markdown-mode . emmet-mode)
-         (php . emmet-mode)))
+         (php . emmet-mode)
+         (nxml-mode . emmet-mode)))
 
 (use-package ace-window
   :bind ("C-x o " . ace-window)
@@ -421,7 +422,8 @@
          (typescript-mode . rainbow-mode)
          (js2-mode . rainbow-mode)
          (web-mode . rainbow-mode)
-         (css-mode . rainbow-mode)))
+         (css-mode . rainbow-mode)
+         (nxml-mode . emmet-mode)))
 
 (use-package paren
   :ensure nil
