@@ -212,9 +212,7 @@
 (use-package lsp-mode
   :commands lsp
   :init (setq lsp-keymap-prefix "C-l")
-  :hook ((python-mode . lsp)
-         (java-mode . lsp)
-         (css-mode . lsp)
+  :hook ((css-mode . lsp)
          (web-mode . lsp)
          (js-mode . lsp)
          (typescript-mode . lsp)
@@ -241,6 +239,7 @@
         lsp-ui-doc-show-with-cursor t))
 
 (use-package lsp-java
+  :disabled
   :defer t
   :after (java-mode lsp))
 
