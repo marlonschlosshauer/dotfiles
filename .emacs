@@ -64,7 +64,8 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   :bind (("C-l" . nil) ; Unset non-prefix
-         ("C-l k" . comment-or-uncomment-region))
+         ("C-l k" . comment-or-uncomment-region)
+         ("C-x r" . replace-string))
   :config
   (setq evil-undo-system 'undo-tree)
   (evil-mode 1))
@@ -328,6 +329,8 @@
   (setq typescript-indent-level 2)
   (setq typescript-auto-indent-flag t))
 
+(use-package go-mode)
+
 (use-package emmet-mode
   :config
   :hook ((web-mode . emmet-mode)
@@ -378,6 +381,7 @@
          ("C-S-s" . swiper-thing-at-point)))
 
 (use-package yasnippet
+  :bind (("C-c C-s" . yas/expand))
   :config (yas-global-mode 1))
 
 (use-package restclient
