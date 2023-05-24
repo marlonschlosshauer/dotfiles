@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: fc
+# key: fc
+# --
+import React from "react";
+import styled from "styled-components";
+
+const $1Wrapper = styled.div\`\`;
+
+export interface $1Props {}
+
+export const Header: React.FC<$1Props> = ({}) => <$1Wrapper>$2</$1Wrapper>;
