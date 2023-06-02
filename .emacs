@@ -11,6 +11,7 @@
 ;; Set default dirs
 (setq default-directory "~/")
 (setq custom-file (concat user-emacs-directory "/custom.el"))
+(load "~/.emacs.d/functions.el")
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -56,6 +57,11 @@
   :config (global-undo-tree-mode)
   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))
         undo-tree-auto-save-history nil))
+
+(use-package gptel
+  :bind (("C-c C-r" . gptel-send))
+  :config
+  (setq gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
 
 (use-package evil
   :after undo-tree
