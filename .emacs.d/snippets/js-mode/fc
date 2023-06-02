@@ -7,6 +7,4 @@ import styled from "styled-components";
 
 const $1Wrapper = styled.div\`\`;
 
-export interface $1Props {}
-
-export const $1: React.FC<$1Props> = ({}) => <$1Wrapper>$2</$1Wrapper>;
+export const $1 = ({}) => <$1Wrapper>$2</$1Wrapper>;
