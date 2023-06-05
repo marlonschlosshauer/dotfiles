@@ -5,5 +5,5 @@
 *.lsp
 .projectile
 .dir-locals.el
-.log
+*.log
 *~
