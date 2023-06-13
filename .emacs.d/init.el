@@ -20,8 +20,6 @@
 
 (setq use-package-always-ensure t)
 
-; (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"));
-
 ;;; Graphics
 (use-package rainbow-delimiters
   :hook ((js-mode . rainbow-delimiters-mode)
@@ -214,6 +212,11 @@
 ;; Make subWordsCountAsEnds
 (subword-mode 1)
 
+(setq next-line-add-newlines t)
+
+;; Make highlighted text be replaced if something is typed
+(delete-selection-mode 1)
+
 ;; Enable x-case-region
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -354,7 +357,7 @@
   :config (which-key-mode))
 
 (use-package gptel
-  :bind (("C-c a" . gptel))
+  :bind (("C-c h" . gptel))
   :config
   (setq gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
 
