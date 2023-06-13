@@ -106,6 +106,13 @@
 ;; Set color of macOS bar
 (add-to-list 'default-frame-alist '(ns-appearance . light))
 
+;; Stop frames from opening in other windows!
+(setq display-buffer-base-action
+  '((display-buffer-reuse-window
+     display-buffer-reuse-mode-window
+     display-buffer-same-window
+     display-buffer-in-previous-window)))
+
 ;;; Editing
 (use-package undo-tree
   :ensure t
@@ -282,7 +289,10 @@
 
 (use-package magit
   :after (exec-path-from-shell)
-  :bind (("C-c g" . magit)))
+  :bind (("C-c g" . magit))
+  :config
+  (setq magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1)))
+
 
 (use-package org
   :pin gnu
@@ -400,9 +410,6 @@
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
-;; Make shell open in same window
-(add-to-list 'display-buffer-alist
-             `(,(regexp-quote "*shell") display-buffer-same-window))
 ;;; Navigation
 (use-package ivy
   :config (ivy-mode))
