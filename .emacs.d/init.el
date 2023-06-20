@@ -210,7 +210,7 @@
   :config (editorconfig-mode 1))
 
 ;; Make subWordsCountAsEnds
-(subword-mode 1)
+(global-subword-mode 1)
 
 (setq next-line-add-newlines t)
 
