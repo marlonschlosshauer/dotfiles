@@ -23,19 +23,27 @@
 ;;; Graphics
 (use-package rainbow-delimiters
   :hook ((js-mode . rainbow-delimiters-mode)
+         (ts-mode . rainbow-delimiters-mode)
          (emacs-lisp-mode . rainbow-delimiters-mode)
          (csharp-mode . rainbow-delimiters-mode)
          (clojure-mode . rainbow-delimiters-mode)
-         (python-mode . rainbow-delimiters-mode)))
+         (clojurescript-mode . rainbow-delimiters-mode)
+         (python-mode . rainbow-delimiters-mode)
+         (web-mode . rainbow-delimiters-mode)
+         (css-mode . rainbow-delimiters-mode)
+         (nxml-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-mode
   :hook ((js-mode . rainbow-mode)
+         (ts-mode . rainbow-mode)
+         (emacs-lisp-mode . rainbow-mode)
+         (csharp-mode . rainbow-mode)
          (clojure-mode . rainbow-mode)
-         (typescript-mode . rainbow-mode)
-         (js2-mode . rainbow-mode)
+         (clojurescript-mode . rainbow-mode)
+         (python-mode . rainbow-mode)
          (web-mode . rainbow-mode)
          (css-mode . rainbow-mode)
-         (nxml-mode . emmet-mode)))
+         (nxml-mode . rainbow-mode)))
 
 (use-package paren
   :ensure nil
