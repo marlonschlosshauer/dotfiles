@@ -551,6 +551,13 @@
 ;; Bind shell
 (global-set-key (kbd "C-c s") 'eshell)
 
+;; Replace zap-to-char with zap-up-to-char
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+
+;; Bind org meta keys to something more sane for German keyboards
+(global-set-key (kbd "M-p") 'org-metaup)
+(global-set-key (kbd "M-n") 'org-metadown)
+
 ;;; End of packages
 ;; Load env related stuff (work vs home)
 (let ((path (concat "~/.emacs.d/env/" (or (getenv "emacs-env") "home") ".el")))
