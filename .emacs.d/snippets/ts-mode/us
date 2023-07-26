@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: useState
+# key: us
+# --
+const [$0, $0] = useState<$1>($2);

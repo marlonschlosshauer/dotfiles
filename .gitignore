@@ -12,6 +12,7 @@
 !.gitconfig
 !README.org
 !.ideavimrc
-!.emacs.d/snippets
+!.emacs.d/snippets/
+!.emacs.d/snippets/**
 !.emacs.d/functions.el
 !.emacs.d/custom.el
