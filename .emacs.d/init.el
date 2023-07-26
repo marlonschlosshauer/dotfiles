@@ -558,6 +558,16 @@
 (global-set-key (kbd "M-p") 'org-metaup)
 (global-set-key (kbd "M-n") 'org-metadown)
 
+(defun switch-to-scratch-buffer ()
+  (interactive)
+  (if (get-buffer "*scratch*")
+      (switch-to-buffer "*scratch*")
+    (progn (create-file-buffer "*scratch*")
+           (switch-to-buffer "*scratch*"))))
+
+;; Always have scratch ready
+(global-set-key (kbd "C-c v") 'switch-to-scratch-buffer)
+
 ;;; End of packages
 ;; Load env related stuff (work vs home)
 (let ((path (concat "~/.emacs.d/env/" (or (getenv "emacs-env") "home") ".el")))
