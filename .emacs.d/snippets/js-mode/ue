@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: useEffect
-# key: us
+# key: ue
 # --
 useEffect(() => {
     $0
