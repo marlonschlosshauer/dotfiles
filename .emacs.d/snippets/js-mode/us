@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: shorthand for useState
+# key: us
+# --
+
+const [$1, set$2] = useState($3);

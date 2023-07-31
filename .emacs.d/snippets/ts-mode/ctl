@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: ctl
+# key: ctl
+# --
+$1.createField("$2", {
+    type: "Link",
+    name: "$3",
+    linkType: "Entry",
+    validations: [{ linkContentType: ["labeledLink"] }],
+    required: true,
+});
