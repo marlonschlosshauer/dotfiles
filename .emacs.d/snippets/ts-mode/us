@@ -2,4 +2,4 @@
 # name: useState
 # key: us
 # --
-const [$0, $0] = useState<$1>($2);
+const [$1, $2] = useState<$3>($4);
