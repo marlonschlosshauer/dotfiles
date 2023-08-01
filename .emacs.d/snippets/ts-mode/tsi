@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: @ts-ignore
+# key: tsi
+# --
+/* @ts-ignore */
+$1
