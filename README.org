@@ -1,4 +1,4 @@
-https://github.com/marlonschlosshauer/dotfiles/assets/24259317/5bd63ac4-d9ad-42e4-8037-ceb85d5b2078
+[[https://github.com/marlonschlosshauer/dotfiles/assets/24259317/5bd63ac4-d9ad-42e4-8037-ceb85d5b2078]]
 
 * Emacs Controls
 ** Buffer
