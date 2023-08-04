@@ -1,16 +1,15 @@
-[[https://user-images.githubusercontent.com/24259317/131217680-fd0b80f0-6498-4c2d-995c-aaef97e1ab3c.png]]
+https://github.com/marlonschlosshauer/dotfiles/assets/24259317/5bd63ac4-d9ad-42e4-8037-ceb85d5b2078
 
 * Emacs Controls
 ** Buffer
-| C-x C-b | List buffers     |
-| C-x b   | Return to buffer |
+| C-x C-b | List buffers          |
+| C-x b   | Return to buffer ffer |
 ** Open file
-| C-x C-f | Open file               |
-| C-x 4   | Open file in new window |
+| C-x C-f | Open file                  |
+| C-x 4   | Open file in new window ix |
 ** Dired
-| C-x d | Enter dired                                                  |
-| C-o   | Open in dire targeted file in another window                 |
-| C-M-J | ivy-immediate-done (for renaming files that have name clash) |
+| C-x d | dired                                  |
+| C-M-J | Force naming (for naming clash) e-done |
 ** Windows
 | C-x 0   | Close window                   |
 | C-x o   | Switch window                  |
@@ -21,15 +20,14 @@
 | C-x 2   | Create new window (verticle)   |
 | C-x 3   | Create new window (horizontal) |
 ** Web-mode
-| C-j | emmet complete |
+| C-j | Emmet complete |
 ** eshell
-| C-c M-o | Clear screen |
+| C-c C-o | Clear screen |
 ** evil
-| C-o | retrace jump backwards |
-| C-i | retrace jump forwards  |
-*** evil-numbered
-| C-c +  | Increment next number |
-| C-c -  | Decrement next number |
+| C-i | Jump forwards         |
+| C-o | Jump backwards        |
+| +   | Increment next number |
+| -   | Decrement next number |
 ** evil-magit
 | s       | stage                    |
 | u       | unstage                  |
@@ -155,7 +153,7 @@
 | C-c SPC     | clojure-align                             |
 | C-c C-v C-w | clojure-eval-last-sexp-and-replace        |
 ** counsel
-|M-x M-p | Last used command  |
+| M-x M-p | Last used command |
 ** aqua
 | C-n | Next                   |
 | C-p | Previous               |
