@@ -23,7 +23,7 @@
 ;;; Graphics
 (use-package rainbow-delimiters
   :hook ((js-mode . rainbow-delimiters-mode)
-         (ts-mode . rainbow-delimiters-mode)
+         (typescript-mode . rainbow-delimiters-mode)
          (emacs-lisp-mode . rainbow-delimiters-mode)
          (csharp-mode . rainbow-delimiters-mode)
          (clojure-mode . rainbow-delimiters-mode)
@@ -33,9 +33,21 @@
          (css-mode . rainbow-delimiters-mode)
          (nxml-mode . rainbow-delimiters-mode)))
 
+(use-package rainbow-identifiers
+  :hook ((js-mode . rainbow-identifiers-mode)
+         (typescript-mode . rainbow-identifiers-mode)
+         (emacs-lisp-mode . rainbow-identifiers-mode)
+         (csharp-mode . rainbow-identifiers-mode)
+         (clojure-mode . rainbow-identifiers-mode)
+         (clojurescript-mode . rainbow-identifiers-mode)
+         (python-mode . rainbow-identifiers-mode)
+         (web-mode . rainbow-identifiers-mode)
+         (css-mode . rainbow-identifiers-mode)
+         (nxml-mode . rainbow-identifiers-mode)))
+
 (use-package rainbow-mode
   :hook ((js-mode . rainbow-mode)
-         (ts-mode . rainbow-mode)
+         (typescript-mode . rainbow-mode)
          (emacs-lisp-mode . rainbow-mode)
          (csharp-mode . rainbow-mode)
          (clojure-mode . rainbow-mode)
@@ -51,7 +63,7 @@
   :config
   (custom-set-faces
    '(show-paren-match ((t nil)))
-   '(show-paren-match-expression ((t (:background "gray92")))))
+   '(show-paren-match-expression ((t (:background "#1B1F1B")))))
   (setq show-paren-style 'expression
         show-paren-when-point-inside-paren nil
         show-paren-when-point-in-periphery t))
@@ -64,7 +76,14 @@
 (use-package mood-line
   :config (mood-line-mode))
 
+(use-package ef-themes
+  :config
+  (load-theme 'ef-dark :no-confirm)
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
+
 (use-package doom-themes
+  :disabled
   :config
   ;;(load-theme 'doom-molokai t))
   (load-theme 'doom-one-light t))
@@ -104,13 +123,17 @@
 (setq help-window-select t)
 
 ;; Remove splash screen
-(setq inhibit-splash-screen t)
+;;(setq inhibit-splash-screen t)
 
 ;; Hide macOS top bar
 (setq ns-auto-hide-menu-bar t)
 
 ;; Set color of macOS bar
-(add-to-list 'default-frame-alist '(ns-appearance . light))
+;;(add-to-list 'default-frame-alist '(ns-appearance . light))
+
+;; Turn off title bar icon
+(setq ns-use-proxy-icon nil)
+(setq frame-title-format nil)
 
 ;; Stop frames from opening in other windows!
 (setq display-buffer-base-action
