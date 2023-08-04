@@ -240,8 +240,6 @@
 (use-package editorconfig
   :config (editorconfig-mode 1))
 
-(setq next-line-add-newlines t)
-
 ;; Make highlighted text be replaced if something is typed
 (delete-selection-mode 1)
 
