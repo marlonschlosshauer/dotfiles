@@ -198,7 +198,10 @@
   :after evil
   :config
   (key-chord-mode 1)
-  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
+  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+  (key-chord-define evil-insert-state-map "jJ" 'evil-normal-state)
+  (key-chord-define evil-insert-state-map "Jj" 'evil-normal-state)
+  (key-chord-define evil-insert-state-map "JJ" 'evil-normal-state))
 
 (use-package elec-pair
   :config
