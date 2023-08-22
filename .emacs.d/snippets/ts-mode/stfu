@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: @ts-ignore
-# key: tsi
+# key: stfu
 # --
 /* @ts-ignore */
 $1
