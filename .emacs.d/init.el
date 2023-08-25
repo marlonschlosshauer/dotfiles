@@ -157,6 +157,7 @@
   (setq evil-want-keybinding nil)
   :bind (("C-l" . nil) ; Unset non-prefix
          ("C-l k" . comment-or-uncomment-region)
+         ("C-," . comment-line)
          ("C-x r" . replace-string))
   :config
   (setq evil-undo-system 'undo-tree)
