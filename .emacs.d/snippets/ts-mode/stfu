@@ -2,5 +2,4 @@
 # name: @ts-ignore
 # key: stfu
 # --
-/* @ts-ignore */
-$1
+/* @ts-ignore */$1
