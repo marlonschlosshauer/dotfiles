@@ -387,7 +387,9 @@
   :config (which-key-mode))
 
 (use-package gptel
-  :bind (("C-c h" . gptel))
+  :bind (("C-c h" . gptel)
+         ("C-c c" . gptel-abort)
+         ("C-c RET" . gpte-send))
   :config
   (setq gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
 
