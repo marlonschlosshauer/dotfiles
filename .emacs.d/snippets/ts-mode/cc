@@ -4,7 +4,11 @@
 # --
 import React from "react";
 
-export const $1: React.FC = () => {
+export interface $1Props {
     $2
-    return <div>$3</div>
+}
+
+export const $1: React.FC<$1Props> = ($3) => {
+    $4
+    return <div>$5</div>
 };
