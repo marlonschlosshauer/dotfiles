@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: cc
+# key: cc
+# --
+import React from "react";
+
+export const $1: React.FC = () => {
+    $2
+    return <div>$3</div>
+};
