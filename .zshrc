@@ -1,5 +1,5 @@
 # Change prompt
-PS1="%1d$ "
+PS1='%~ %D{%H:%M:%S} $ '
 
 # Set region
 export LC_ALL=en_US.UTF-8
