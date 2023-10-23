@@ -258,7 +258,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; Deleted repeating blank lines
-(add-hook 'before-save-hook 'whitespace-cleanup)
+;;(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; Make backspace erase tab
 (setq backward-delete-char-untabify-method 'hungry)
@@ -392,6 +392,7 @@
 (use-package gptel
   :bind (("C-c h" . gptel)
          ("C-c c" . gptel-abort)
+         ("C-c m" . gptel-menu)
          ("C-c RET" . gpte-send))
   :config
   (setq gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
