@@ -6,4 +6,5 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH="$PATH:~/Library/Python/3.11/bin"
+export PATH="$PATH:$HOME/Library/Python/3.11/bin"
+export PATH="$PATH:$HOME/go/bin"
