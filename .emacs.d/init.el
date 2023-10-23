@@ -232,14 +232,17 @@
          (typescript-mode . prettier-js-mode)))
 
 (use-package emmet-mode
-  :config
   :hook ((web-mode . emmet-mode)
          (typescript-mode . emmet-mode)
          (js-mode . emmet-mode)
          (js2-mode . emmet-mode)
          (markdown-mode . emmet-mode)
          (php . emmet-mode)
-         (nxml-mode . emmet-mode)))
+         (nxml-mode . emmet-mode))
+  :config
+  (add-to-list 'emmet-jsx-major-modes 'typescript-mode)
+  (add-to-list 'emmet-jsx-major-modes 'js-mode)
+  (add-to-list 'emmet-jsx-major-modes 'js2-mode))
 
 (use-package editorconfig
   :config (editorconfig-mode 1))
