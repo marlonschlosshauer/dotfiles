@@ -1,0 +1,11 @@
+# -*- mode: snippet; -*-
+# name: react component with tailwind ready
+# key: tc
+# --
+import React from "react";
+
+export interface $1Props {$2}
+
+export const $1: React.FC<$1Props> = ({$3}) => (
+    <div className="$4">$5</div>
+);
