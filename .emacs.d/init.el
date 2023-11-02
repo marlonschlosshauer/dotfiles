@@ -306,6 +306,8 @@
         lsp-ui-doc-position 'at-point
         lsp-ui-doc-show-with-cursor t))
 
+(use-package lsp-tailwindcss)
+
 (use-package flycheck
   :after lsp-mode
   :init (global-flycheck-mode))
