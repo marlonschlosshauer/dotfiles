@@ -7,3 +7,14 @@
           (if (functionp secret)
               (funcall secret)
             secret))))))
+
+(defun jira-open-ticket ()
+  (interactive)
+  (let ((project (read-string "Enter project: "))
+        (code (read-string "Enter ticket: ")))
+    (browse-url (concat "https://becklyn.atlassian.net/browse/" (upcase project) "-" code))))
+
+(defun github-open-repo ()
+  (interactive)
+  (let ((repo (read-string "Enter repo: ")))
+    (browse-url (concat "https://github.com/becklyn-studios/" repo))))
