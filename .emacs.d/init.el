@@ -592,6 +592,9 @@
 (global-set-key (kbd "M-p") 'org-metaup)
 (global-set-key (kbd "M-n") 'org-metadown)
 
+;; Unbind font window (because closing it is a pain)
+(global-unset-key (kbd "s-t"))
+
 (defun switch-to-scratch-buffer ()
   (interactive)
   (if (get-buffer "*scratch*")
