@@ -105,7 +105,7 @@
 (setq linum-format "%4d  ")
 
 ;; Turn on line numbers
-;;(global-linum-mode t)
+(global-linum-mode t)
 
 ;; Set font size 18pt
 (set-face-attribute 'default nil :height 180)
@@ -284,7 +284,8 @@
          (web-mode . lsp)
          (js-mode . lsp)
          (typescript-mode . lsp)
-         (haskell-mode . lsp))
+         (haskell-mode . lsp)
+         (go-mode . lsp))
   :config
   (define-key evil-normal-state-map (kbd "g d") 'lsp-goto-implementation)
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)

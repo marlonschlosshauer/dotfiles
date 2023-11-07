@@ -8,3 +8,4 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$PATH:$HOME/Library/Python/3.11/bin"
 export PATH="$PATH:$HOME/go/bin"
+export GOPATH="$(go env GOPATH)"
