@@ -279,6 +279,7 @@
 
 (use-package lsp-mode
   :commands lsp
+  :after evil
   :init (setq lsp-keymap-prefix "C-l")
   :hook ((css-mode . lsp)
          (web-mode . lsp)
