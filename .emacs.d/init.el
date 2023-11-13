@@ -229,7 +229,8 @@
   :hook ((web-mode . prettier-js-mode)
          (js-mode . prettier-js-mode)
          (js2-mode . prettier-js-mode)
-         (typescript-mode . prettier-js-mode)))
+         (typescript-mode . prettier-js-mode)
+         (scss-mode . prettier-js-mode)))
 
 (use-package emmet-mode
   :hook ((web-mode . emmet-mode)
