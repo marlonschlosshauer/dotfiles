@@ -155,8 +155,7 @@
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
-  :bind (("C-l" . nil) ; Unset non-prefix
-         ("C-l k" . comment-or-uncomment-region)
+  :bind (("C-." . comment-or-uncomment-region)
          ("C-," . comment-line)
          ("C-x r" . replace-string))
   :config
@@ -281,7 +280,6 @@
 (use-package lsp-mode
   :commands lsp
   :after evil
-  :init (setq lsp-keymap-prefix "C-l")
   :hook ((css-mode . lsp)
          (web-mode . lsp)
          (js-mode . lsp)
@@ -289,6 +287,9 @@
          (haskell-mode . lsp)
          (go-mode . lsp))
   :config
+  ;(setq lsp-keymap-prefix "C-l")
+  ;(evil-define-minor-mode-key 'normal lsp-mode (kbd "C-l") lsp-command-map)
+  (evil-define-key 'normal lsp-mode-map (kbd "C-l") lsp-command-map)
   (define-key evil-normal-state-map (kbd "g d") 'lsp-goto-implementation)
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
 
