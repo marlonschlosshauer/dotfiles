@@ -595,8 +595,11 @@
 (global-set-key (kbd "M-p") 'org-metaup)
 (global-set-key (kbd "M-n") 'org-metadown)
 
-;; Unbind font window (because closing it is a pain)
+;; Unbind font window
 (global-unset-key (kbd "s-t"))
+
+;; Unbind color panel
+(global-unset-key (kbd "s-C"))
 
 (defun switch-to-scratch-buffer ()
   (interactive)
