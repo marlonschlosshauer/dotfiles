@@ -10,7 +10,8 @@
 
 ;; Set default dirs
 (setq default-directory "~/")
-(setq custom-file (concat user-emacs-directory "/custom.el"))
+(setq custom-file-path (concat user-emacs-directory "/custom.el"))
+(setq custom-file custom-file-path)
 (load "~/.emacs.d/functions.el")
 
 ;; Setup use package
@@ -609,6 +610,10 @@
 (let ((path (concat "~/.emacs.d/env/" (or (getenv "emacs-env") "home") ".el")))
   (when (file-exists-p path)
     (load-file path)))
+
+;; Create custom file if not there
+(if (not (file-exists-p custom-file-path))
+    (write-region "" nil custom-file-path))
 
 ;; Load emacs custom stuff
 (load-file "./.emacs.d/custom.el")
