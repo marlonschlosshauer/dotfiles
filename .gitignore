@@ -16,4 +16,3 @@
 !.emacs.d/snippets/**
 .emacs.d/snippets/*/.yas-compiled-snippets.el
 !.emacs.d/functions.el
-!.emacs.d/custom.el
