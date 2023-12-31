@@ -18,3 +18,13 @@
   (interactive)
   (let ((repo (read-string "Enter repo: ")))
     (browse-url (concat "https://github.com/becklyn-studios/" repo))))
+
+(defun px-to-region (px)
+  (concat (number-to-string (/ (string-to-number (first (split-string px "px"))) 10.0 )) "rem"))
+
+(defun px-to-rem-region ()
+  (interactive)
+  (when (region-active-p)
+    (let ((text (buffer-substring (region-beginning) (region-end))))
+      (delete-region (region-beginning) (region-end))
+      (insert (px-to-region text)))))
