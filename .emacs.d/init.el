@@ -61,9 +61,6 @@
   :ensure nil
   :hook (after-init-hook . show-paren-mode)
   :config
-  (custom-set-faces
-   '(show-paren-match ((t nil)))
-   '(show-paren-match-expression ((t (:background "#1B1F1B")))))
   (setq show-paren-style 'expression
         show-paren-when-point-inside-paren nil
         show-paren-when-point-in-periphery t))
