@@ -76,17 +76,9 @@
 (use-package mood-line
   :config (mood-line-mode))
 
-(use-package ef-themes
+(use-package kanagawa-theme
   :config
-  (load-theme 'ef-dark :no-confirm)
-  (add-to-list 'default-frame-alist '(ns-appearance . dark))
-  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
-
-(use-package doom-themes
-  :disabled
-  :config
-  ;;(load-theme 'doom-molokai t))
-  (load-theme 'doom-one-light t))
+  (load-theme 'kanagawa))
 
 ;; Highlight closing tags (parenthesis, brackets)
 (show-paren-mode t)
