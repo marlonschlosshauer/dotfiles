@@ -75,6 +75,7 @@
 
 (use-package kanagawa-theme
   :config
+  (setq custom-safe-themes t)
   (load-theme 'kanagawa))
 
 ;; Highlight closing tags (parenthesis, brackets)
@@ -119,6 +120,9 @@
 
 ;; Set color of macOS bar
 ;;(add-to-list 'default-frame-alist '(ns-appearance . light))
+
+;; Make macOS bar same color as theme
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 
 ;; Turn off title bar icon
 (setq ns-use-proxy-icon nil)
