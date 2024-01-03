@@ -96,7 +96,7 @@
 (setq linum-format "%4d  ")
 
 ;; Turn on line numbers
-(global-linum-mode t)
+(global-display-line-numbers-mode)
 
 ;; Set font size 18pt
 (set-face-attribute 'default nil :height 180)
@@ -114,7 +114,7 @@
 (setq help-window-select t)
 
 ;; Remove splash screen
-;;(setq inhibit-splash-screen t)
+(setq inhibit-splash-screen t)
 
 ;; Hide macOS top bar
 (setq ns-auto-hide-menu-bar t)
