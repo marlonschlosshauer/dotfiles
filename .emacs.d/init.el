@@ -317,7 +317,6 @@
   (setq cider-show-error-buffer 'only-in-repl))
 
 ;;; Tools
-
 (use-package dired
   :ensure nil
   :config
@@ -532,18 +531,12 @@
 
 (use-package go-mode)
 
-;;; Performance
-(use-package tree-sitter
-  :config (global-tree-sitter-mode))
-
-(use-package tree-sitter-langs
-  :after tree-sitter)
-
 ;;; Security
 (use-package epa
   :after (exec-path-from-shell)
   :config
   (setq epg-gpg-program "gpg"))
+
 (use-package pinentry
   :after (epa exec-path-from-shell)
   :config
