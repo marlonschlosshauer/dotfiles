@@ -362,7 +362,7 @@
         org-tags-column 80)
 
   ;; Remove line-numbers in agenda
-  (add-hook 'org-agenda-mode-hook (lambda() (linum-mode -1)))
+  (add-hook 'org-agenda-mode-hook (lambda() (display-line-numbers-mode -1)))
 
   ;; Setup babel support
   (org-babel-do-load-languages
@@ -398,7 +398,7 @@
 
 (use-package pdf-tools
   :config
-  (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
+  (add-hook 'pdf-view-mode-hook (lambda() (display-line-numbers-mode -1))))
 
 (use-package elfeed
   :commands elfeed
