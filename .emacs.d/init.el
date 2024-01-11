@@ -280,6 +280,9 @@
          (typescript-mode . lsp)
          (haskell-mode . lsp)
          (go-mode . lsp))
+  :custom
+  (gc-cons-threshold 1073741824/2)
+  (read-process-output-max (* 1024 1024))
   :config
   ;(setq lsp-keymap-prefix "C-l")
   ;(evil-define-minor-mode-key 'normal lsp-mode (kbd "C-l") lsp-command-map)
