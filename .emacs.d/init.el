@@ -469,10 +469,6 @@
   :after (counsel projectile)
   :config (counsel-projectile-mode))
 
-(use-package smex
-  :after counsel
-  :config (smex-initialize))
-
 (use-package swiper
   :after ivy
   :bind (("C-s" . swiper)
