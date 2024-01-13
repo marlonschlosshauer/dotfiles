@@ -298,16 +298,6 @@
         lsp-completion-provider :company
         lsp-log-io nil))
 
-(use-package lsp-ui
-  :after lsp-mode
-  :config
-  (setq lsp-ui-doc-enable t
-        lsp-ui-peek-enable t
-        lsp-ui-sideline-enable nil
-        lsp-ui-doc-include-signature nil
-        lsp-ui-doc-position 'at-point
-        lsp-ui-doc-show-with-cursor t))
-
 (use-package lsp-tailwindcss)
 
 (use-package flycheck
