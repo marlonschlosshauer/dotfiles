@@ -457,7 +457,9 @@
   :config (ivy-mode))
 
 (use-package ivy-xref
-  :after ivy)
+  :after ivy
+  :config
+  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 (use-package counsel
   :after ivy
