@@ -57,7 +57,9 @@
          (python-mode . rainbow-mode)
          (web-mode . rainbow-mode)
          (css-mode . rainbow-mode)
-         (nxml-mode . rainbow-mode)))
+         (nxml-mode . rainbow-mode)
+         (markdown-mode . rainbow-mode)
+         (org-mode . rainbow-mode)))
 
 (use-package paren
   :ensure nil
