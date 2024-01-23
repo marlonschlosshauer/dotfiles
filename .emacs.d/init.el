@@ -583,6 +583,9 @@
 ;; Unbind color panel
 (global-unset-key (kbd "s-C"))
 
+;; Remove scratch message
+(setq initial-scratch-message "\n")
+
 (defun switch-to-scratch-buffer ()
   (interactive)
   (if (get-buffer "*scratch*")
