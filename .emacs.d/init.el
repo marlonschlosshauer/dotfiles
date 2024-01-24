@@ -157,7 +157,6 @@
          ("C-x r" . replace-string))
   :config
   (setq evil-undo-system 'undo-tree)
-  (evil-set-initial-state 'eshell-mode 'emacs)
   (evil-mode 1))
 
 (use-package evil-org
