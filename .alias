@@ -15,3 +15,5 @@ alias port-mayd="cd ~/Projects/mayd-ui && npm run build && rm -rf ../creditplus/
 alias port-adapter="cd ~/Projects/contentful-adapter && npm run build && rm -rf ../creditplus/node_modules/@becklyn/contentful-adapter/lib && mv -f lib ../creditplus/node_modules/@becklyn/contentful-adapter/"
 
 alias proxy-storyblok="local-ssl-proxy --source 3010 --target 3000 --cert ~/Documents/storyblok/localhost.pem --key ~/Documents/storyblok/localhost-key.pem"
+
+alias uncors="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security"
