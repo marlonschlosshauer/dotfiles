@@ -429,6 +429,8 @@
   :defer t
   :config (define-key evil-normal-state-map (kbd "C-c j") 'json-reformat-region))
 
+(use-package xml-format
+  :defer t)
 
 ;; Stop process spamming mini buffer
 (setq comint-process-echoes t)
