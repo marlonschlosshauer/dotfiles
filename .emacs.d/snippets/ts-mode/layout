@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: layout
+# key: layout
+# --
+import { PropsWithChildren } from "react";
+
+export default ({ children }: PropsWithChildren) => {
+    $1
+    return children;
+};
