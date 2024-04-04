@@ -300,8 +300,6 @@
         lsp-completion-provider :company
         lsp-log-io nil))
 
-(use-package lsp-tailwindcss)
-
 (use-package flycheck
   :after lsp-mode
   :init (global-flycheck-mode))
