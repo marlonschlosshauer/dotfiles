@@ -513,6 +513,7 @@
 (use-package js-mode
   :ensure nil
   :mode (("\\.js?\\'" . js-mode)
+         ("\\.cjs?\\'" . js-mode)
          ("\\.jsx?\\'" . js-mode))
   :config
   (setq javascript-indent-level 1)
