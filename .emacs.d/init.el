@@ -77,10 +77,10 @@
 (use-package mood-line
   :config (mood-line-mode))
 
-(use-package kanagawa-theme
+(use-package doom-themes
   :config
   (setq custom-safe-themes t)
-  (load-theme 'kanagawa))
+  (load-theme 'doom-one-light))
 
 ;; Highlight closing tags (parenthesis, brackets)
 (show-paren-mode t)
