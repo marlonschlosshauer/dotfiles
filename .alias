@@ -17,3 +17,5 @@ alias port-adapter="cd ~/Projects/contentful-adapter && npm run build && rm -rf 
 alias proxy-storyblok="local-ssl-proxy --source 3010 --target 3000 --cert ~/Documents/storyblok/localhost.pem --key ~/Documents/storyblok/localhost-key.pem"
 
 alias uncors="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security"
+
+alias generate-secret="node -e \"console.log(require('crypto').randomBytes(32).toString('base64url'))\""
