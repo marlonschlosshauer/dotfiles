@@ -287,8 +287,12 @@
   (gc-cons-threshold 1073741824/2)
   (read-process-output-max (* 1024 1024))
   :config
-  ;(setq lsp-keymap-prefix "C-l")
-  ;(evil-define-minor-mode-key 'normal lsp-mode (kbd "C-l") lsp-command-map)
+  (defun lsp-remove-unused ()
+    "Run the remove unused imports code action."
+    (interactive)
+    (lsp-execute-code-action-by-kind "source.removeUnusedImports.ts"))
+                                        ;(setq lsp-keymap-prefix "C-l")
+                                        ;(evil-define-minor-mode-key 'normal lsp-mode (kbd "C-l") lsp-command-map)
   (evil-define-key 'normal lsp-mode-map (kbd "C-l") lsp-command-map)
   (define-key evil-normal-state-map (kbd "g d") 'lsp-goto-implementation)
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
@@ -520,6 +524,7 @@
 (use-package typescript-mode
   :mode (("\\.ts?\\'" . typescript-mode)
          ("\\.tsx?\\'" . typescript-mode))
+  :bind (("C-c r o" . lsp-remove-unused))
   :config
   (setq typescript-indent-level 2)
   (setq typescript-auto-indent-flag t))
