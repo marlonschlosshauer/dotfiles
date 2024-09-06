@@ -372,6 +372,10 @@
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs)))
 
+(use-package markdown-mode
+  :mode (("\\.md?\\'" . markdown-mode)
+         ("\\.mdx?\\'" . markdown-mode)))
+
 (use-package projectile
   :config
   (projectile-mode +1)
