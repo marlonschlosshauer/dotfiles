@@ -24,26 +24,29 @@
 
 ;;; Graphics
 (use-package rainbow-delimiters
-  :hook  ((typescript-mode . rainbow-delimiters-mode)
-          (js-mode . rainbow-delimiters-mode)
+  :hook  ((typescript-ts-mode . rainbow-delimiters-mode)
+          (typescript-mode . rainbow-delimiters-mode)
+          (js-ts-mode . rainbow-delimiters-mode)
           (web-mode . rainbow-delimiters-mode)
-          (go-mode . rainbow-delimiters-mode)
+          (go-ts-mode . rainbow-delimiters-mode)
           (emacs-lisp-mode . rainbow-delimiters-mode)
           (nxml-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-identifiers
-  :hook  ((typescript-mode . rainbow-identifiers-mode)
-          (js-mode . rainbow-identifiers-mode)
+  :hook  ((typescript-ts-mode . rainbow-identifiers-mode)
+          (typescript-mode . rainbow-identifiers-mode)
+          (js-ts-mode . rainbow-identifiers-mode)
           (web-mode . rainbow-identifiers-mode)
-          (go-mode . rainbow-identifiers-mode)
+          (go-ts-mode . rainbow-identifiers-mode)
           (emacs-lisp-mode . rainbow-identifiers-mode)
           (nxml-mode . rainbow-identifiers-mode)))
 
 (use-package rainbow-mode
-  :hook  ((typescript-mode . rainbow-mode)
-          (js-mode . rainbow-mode)
+  :hook  ((typescript-ts-mode . rainbow-mode)
+          (typescript-mode . rainbow-mode)
+          (js-ts-mode . rainbow-mode)
           (web-mode . rainbow-mode)
-          (go-mode . rainbow-mode)
+          (go-ts-mode . rainbow-mode)
           (emacs-lisp-mode . rainbow-mode)
           (nxml-mode . rainbow-mode)))
 
@@ -173,8 +176,8 @@
 
 (use-package evil-matchit
   :after evil
-  :hook ((js-mode . evil-matchit-mode)
-         (typescript-mode . evil-matchit-mode)
+  :hook ((js-ts-mode . evil-matchit-mode)
+         (typescript-ts-mode . evil-matchit-mode)
          (web-mode . evil-matchit-mode)))
 
 (use-package key-chord
@@ -204,14 +207,14 @@
 
 (use-package prettier-js
   :hook ((web-mode . prettier-js-mode)
-         (typescript-mode . prettier-js-mode)))
+         (typescript-ts-mode . prettier-js-mode)))
 
 (use-package emmet-mode
   :hook ((web-mode . emmet-mode)
-         (typescript-mode . emmet-mode)
+         (typescript-ts-mode . emmet-mode)
          (nxml-mode . emmet-mode))
   :config
-  (add-to-list 'emmet-jsx-major-modes 'typescript-mode))
+  (add-to-list 'emmet-jsx-major-modes 'typescript-ts-mode))
 
 (use-package editorconfig
   :config (editorconfig-mode 1))
@@ -249,10 +252,10 @@
 (use-package lsp-mode
   :commands lsp
   :after (evil flycheck)
-  :hook ((typescript-mode . lsp)
-         (js-mode . lsp)
+  :hook ((typescript-ts-mode . lsp)
+         (js-ts-mode . lsp)
          (web-mode . lsp)
-         (go-mode . lsp))
+         (go-ts-mode . lsp))
   :custom
   (gc-cons-threshold 1073741824/2)
   (read-process-output-max (* 1024 1024))
@@ -419,8 +422,8 @@
   (setq js-indent-level 1))
 
 (use-package typescript-mode
-  :mode (("\\.ts?\\'" . typescript-mode)
-         ("\\.tsx?\\'" . typescript-mode))
+  :mode (("\\.ts?\\'" . typescript-ts-mode)
+         ("\\.tsx?\\'" . typescript-ts-mode))
   :bind (("C-c r o" . lsp-remove-unused))
   :config
   (setq typescript-indent-level 2)
@@ -439,10 +442,24 @@
   :config
   (pinentry-start))
 
-;; Set env
+;; Grammar
+(setq major-mode-remap-alist
+ '((yaml-mode . yaml-ts-mode)
+   (js-mode . js-ts-mode)
+   (typescript-mode . typescript-ts-mode)))
+
+(setq treesit-language-source-alist
+   '((html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+
+;;; Env
 (setenv "LANG" "en_US.UTF-8")
 
-;; Set enviroment variables
 (setenv "PATH"
         (concat
          "/usr/local/bin" ";"
