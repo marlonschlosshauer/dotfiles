@@ -12,7 +12,9 @@
 (setq default-directory "~/")
 (setq custom-file-path (concat user-emacs-directory "/custom.el"))
 (setq custom-file custom-file-path)
-(load "~/.emacs.d/functions.el")
+(let ((path "~/.emacs.d/functions.el"))
+  (when (file-exists-p path)
+    (load-file path)))
 
 ;; Setup use package
 (unless (package-installed-p 'use-package)
@@ -519,4 +521,5 @@
     (write-region "" nil custom-file-path))
 
 ;; Load emacs custom stuff
-(load-file "./.emacs.d/custom.el")
+(when (file-exists-p custom-file-path)
+    (load-file custom-file-path))
