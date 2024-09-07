@@ -24,42 +24,28 @@
 
 ;;; Graphics
 (use-package rainbow-delimiters
-  :hook ((js-mode . rainbow-delimiters-mode)
-         (typescript-mode . rainbow-delimiters-mode)
-         (emacs-lisp-mode . rainbow-delimiters-mode)
-         (csharp-mode . rainbow-delimiters-mode)
-         (clojure-mode . rainbow-delimiters-mode)
-         (clojurescript-mode . rainbow-delimiters-mode)
-         (python-mode . rainbow-delimiters-mode)
-         (web-mode . rainbow-delimiters-mode)
-         (css-mode . rainbow-delimiters-mode)
-         (nxml-mode . rainbow-delimiters-mode)))
+  :hook  ((typescript-mode . rainbow-delimiters-mode)
+          (js-mode . rainbow-delimiters-mode)
+          (web-mode . rainbow-delimiters-mode)
+          (go-mode . rainbow-delimiters-mode)
+          (emacs-lisp-mode . rainbow-delimiters-mode)
+          (nxml-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-identifiers
-  :hook ((js-mode . rainbow-identifiers-mode)
-         (typescript-mode . rainbow-identifiers-mode)
-         (emacs-lisp-mode . rainbow-identifiers-mode)
-         (csharp-mode . rainbow-identifiers-mode)
-         (clojure-mode . rainbow-identifiers-mode)
-         (clojurescript-mode . rainbow-identifiers-mode)
-         (python-mode . rainbow-identifiers-mode)
-         (web-mode . rainbow-identifiers-mode)
-         (css-mode . rainbow-identifiers-mode)
-         (nxml-mode . rainbow-identifiers-mode)))
+  :hook  ((typescript-mode . rainbow-identifiers-mode)
+          (js-mode . rainbow-identifiers-mode)
+          (web-mode . rainbow-identifiers-mode)
+          (go-mode . rainbow-identifiers-mode)
+          (emacs-lisp-mode . rainbow-identifiers-mode)
+          (nxml-mode . rainbow-identifiers-mode)))
 
 (use-package rainbow-mode
-  :hook ((js-mode . rainbow-mode)
-         (typescript-mode . rainbow-mode)
-         (emacs-lisp-mode . rainbow-mode)
-         (csharp-mode . rainbow-mode)
-         (clojure-mode . rainbow-mode)
-         (clojurescript-mode . rainbow-mode)
-         (python-mode . rainbow-mode)
-         (web-mode . rainbow-mode)
-         (css-mode . rainbow-mode)
-         (nxml-mode . rainbow-mode)
-         (markdown-mode . rainbow-mode)
-         (org-mode . rainbow-mode)))
+  :hook  ((typescript-mode . rainbow-mode)
+          (js-mode . rainbow-mode)
+          (web-mode . rainbow-mode)
+          (go-mode . rainbow-mode)
+          (emacs-lisp-mode . rainbow-mode)
+          (nxml-mode . rainbow-mode)))
 
 (use-package paren
   :ensure nil
@@ -223,23 +209,14 @@
 
 (use-package prettier-js
   :hook ((web-mode . prettier-js-mode)
-         (js-mode . prettier-js-mode)
-         (js2-mode . prettier-js-mode)
-         (typescript-mode . prettier-js-mode)
-         (scss-mode . prettier-js-mode)))
+         (typescript-mode . prettier-js-mode)))
 
 (use-package emmet-mode
   :hook ((web-mode . emmet-mode)
          (typescript-mode . emmet-mode)
-         (js-mode . emmet-mode)
-         (js2-mode . emmet-mode)
-         (markdown-mode . emmet-mode)
-         (php . emmet-mode)
          (nxml-mode . emmet-mode))
   :config
-  (add-to-list 'emmet-jsx-major-modes 'typescript-mode)
-  (add-to-list 'emmet-jsx-major-modes 'js-mode)
-  (add-to-list 'emmet-jsx-major-modes 'js2-mode))
+  (add-to-list 'emmet-jsx-major-modes 'typescript-mode))
 
 (use-package editorconfig
   :config (editorconfig-mode 1))
@@ -276,12 +253,10 @@
 
 (use-package lsp-mode
   :commands lsp
-  :after evil
-  :hook ((css-mode . lsp)
-         (web-mode . lsp)
+  :after (evil flycheck)
+  :hook ((typescript-mode . lsp)
          (js-mode . lsp)
-         (typescript-mode . lsp)
-         (haskell-mode . lsp)
+         (web-mode . lsp)
          (go-mode . lsp))
   :custom
   (gc-cons-threshold 1073741824/2)
@@ -291,8 +266,6 @@
     "Run the remove unused imports code action."
     (interactive)
     (lsp-execute-code-action-by-kind "source.removeUnusedImports.ts"))
-                                        ;(setq lsp-keymap-prefix "C-l")
-                                        ;(evil-define-minor-mode-key 'normal lsp-mode (kbd "C-l") lsp-command-map)
   (evil-define-key 'normal lsp-mode-map (kbd "C-l") lsp-command-map)
   (define-key evil-normal-state-map (kbd "g d") 'lsp-goto-implementation)
   (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
@@ -305,7 +278,6 @@
         lsp-log-io nil))
 
 (use-package flycheck
-  :after lsp-mode
   :init (global-flycheck-mode))
 
 (use-package cider
@@ -503,11 +475,9 @@
 (use-package groovy-mode
   :mode (("\\.gradle?\\'" . groovy-mode)))
 
-(use-package css-mode
-  :mode (("\\.css\\'" . css-mode)))
-
 (use-package web-mode
-  :mode (("\\.html\\'" . web-mode)
+  :mode (("\\.css\\'" . web-mode)
+         ("\\.html\\'" . web-mode)
          ("\\.php\\'" . web-mode))
   :config
   (setq web-mode-enable-current-column-highlight t
