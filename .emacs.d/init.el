@@ -282,11 +282,10 @@
   (setq dired-listing-switches "-alh"))
 
 (use-package magit
-  :after (exec-path-from-shell)
+  :ensure t
   :bind (("C-c g" . magit))
   :config
   (setq magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1)))
-
 
 (use-package org
   :pin gnu
