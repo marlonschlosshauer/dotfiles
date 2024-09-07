@@ -202,11 +202,6 @@
   :config
   (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode))
 
-(use-package evil-cleverparens
-  :after evil
-  :hook ((clojure-mode . evil-cleverparens-mode)
-         (clojurescript-mode . evil-cleverparens-mode)))
-
 (use-package prettier-js
   :hook ((web-mode . prettier-js-mode)
          (typescript-mode . prettier-js-mode)))
@@ -280,12 +275,6 @@
 (use-package flycheck
   :init (global-flycheck-mode))
 
-(use-package cider
-  ;; TODO: Make bind only run in clj/cljs modes
-  ;;:bind ("C-l" . cider-repl-clear-buffer)
-  :config
-  (setq cider-show-error-buffer 'only-in-repl))
-
 ;;; Tools
 (use-package dired
   :ensure nil
@@ -306,24 +295,9 @@
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
   :config
-  (setq org-clock-persist 'history
-        org-return-follows-link t
+  (setq  org-return-follows-link t
         org-src-tab-acts-natively t
         org-src-preserve-indentation nil)
-  (org-clock-persistence-insinuate)
-
-  ;; Enable exporting of highlighted syntax with minting
-  (add-to-list 'org-latex-packages-alist '("" "minted"))
-
-  ;; Add minting option
-  (setq org-latex-listings 'minted)
-  (setq org-latex-minted-options
-        '(("breaklines=true")))
-
-  (setq bibtex-dialect 'biblatex)
-
-  ;; This works with org-ref for some reason
-  (setq org-latex-pdf-process '("latexmk -pdflatex='%latex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
 
   ;; Make fonts in src buffer look pretty
   (setq org-src-fontify-natively t)
@@ -333,13 +307,6 @@
 
   ;; Remove line-numbers in agenda
   (add-hook 'org-agenda-mode-hook (lambda() (display-line-numbers-mode -1)))
-
-  ;; Setup babel support
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '(
-     (shell . t)
-     (python . t)))
 
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs)))
@@ -369,39 +336,6 @@
          ("C-c RET" . gpte-send))
   :config
   (setq gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
-
-(use-package pdf-tools
-  :config
-  (add-hook 'pdf-view-mode-hook (lambda() (display-line-numbers-mode -1))))
-
-(use-package elfeed
-  :commands elfeed
-  :after (elfeed-org evil-collection)
-  :config
-  (add-hook 'elfeed-search-mode-hook
-            (lambda ()
-              (evil-collection-define-key 'normal 'elfeed-search-mode-map
-                (kbd "RET") 'elfeed-search-browse-url)))
-  (setq-default elfeed-search-filter "@2-weeks-ago "))
-
-(use-package elfeed-org
-  :after (elfeed org)
-  :config
-  (setq rmh-elfeed-org-files (list "~/Dropbox/org/rss.org"))
-  (elfeed-org))
-
-(use-package restclient
-  :mode ("\\.rest\\'" . restclient-mode)
-  :config
-  (defvar restclient-auth-token nil)
-  (defun update-token-restclient-hook ()
-    "Update token from a request."
-    (save-excursion
-      (save-match-data
-        ;; update regexp to extract required data
-        (when (re-search-forward "\"token\":\"\\(.*?\\)\"" nil t)
-          (setq restclient-auth-token (match-string 1))))))
-  (add-hook 'restclient-response-received-hook #'update-token-restclient-hook))
 
 (use-package json-reformat
   :defer t
@@ -455,16 +389,6 @@
      ((t (:inherit ace-jump-face-foreground :height 2.0))))))
 
 ;;; Languages
-(use-package clojurescript-mode
-  :ensure nil
-  :defer t
-  :after lsp-mode
-  :mode (("\\.cljs?\\'" . clojurescript-mode)))
-
-(use-package clojure-mode
-  :after lsp-mode
-  :mode (("\\.clj?\\'" . clojure-mode)))
-
 (use-package objc-mode
   :ensure nil
   :mode (("\\.mmm?\\'" . objc-mode)
@@ -515,13 +439,6 @@
   :after (epa exec-path-from-shell)
   :config
   (pinentry-start))
-
-;;; Compatibility
-(use-package exec-path-from-shell
-  :init (setenv "SHELL" "/usr/local/bin/zsh")
-  :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
 
 ;; Set env
 (setenv "LANG" "en_US.UTF-8")
