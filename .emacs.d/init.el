@@ -137,60 +137,6 @@
   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))
         undo-tree-auto-save-history nil))
 
-(use-package evil
-  :after undo-tree
-  :defer .1
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  :bind (("C-." . comment-or-uncomment-region)
-         ("C-," . comment-line)
-         ("C-x r" . replace-string))
-  :config
-  (setq evil-undo-system 'undo-tree)
-  (evil-mode 1))
-
-(use-package evil-org
-  :after (evil org)
-  :config (add-hook 'org-mode-hook 'evil-org-mode))
-
-(use-package evil-org-agenda
-  :ensure nil
-  :after evil-org
-  :config (evil-org-agenda-set-keys))
-
-(use-package evil-collection
-  :after (evil dired)
-  :config
-  (evil-collection-init)
-  (evil-collection-define-key 'normal 'dired-mode-map
-    (kbd ".") 'dired-up-directory))
-
-(use-package evil-numbers
-  :after evil
-  :config
-  (define-key evil-normal-state-map (kbd "+") 'evil-numbers/inc-at-pt)
-  (define-key evil-normal-state-map (kbd "-") 'evil-numbers/dec-at-pt))
-
-(use-package evil-surround
-  :after evil
-  :config (global-evil-surround-mode 1))
-
-(use-package evil-matchit
-  :after evil
-  :hook ((js-ts-mode . evil-matchit-mode)
-         (typescript-ts-mode . evil-matchit-mode)
-         (web-mode . evil-matchit-mode)))
-
-(use-package key-chord
-  :after evil
-  :config
-  (key-chord-mode 1)
-  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-  (key-chord-define evil-insert-state-map "jJ" 'evil-normal-state)
-  (key-chord-define evil-insert-state-map "Jj" 'evil-normal-state)
-  (key-chord-define evil-insert-state-map "JJ" 'evil-normal-state))
-
 (use-package elec-pair
   :config
   (setq electric-pair-pairs
@@ -203,9 +149,7 @@
   (electric-pair-mode 1))
 
 (use-package ace-jump-mode
-  :after evil
-  :config
-  (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode))
+  :bind ("C-SPC" . ace-jump-mode))
 
 (use-package prettier-js
   :hook ((web-mode . prettier-js-mode)
@@ -253,7 +197,7 @@
 
 (use-package lsp-mode
   :commands lsp
-  :after (evil flycheck)
+  :after (flycheck)
   :hook ((typescript-ts-mode . lsp)
          (js-ts-mode . lsp)
          (web-mode . lsp)
@@ -343,7 +287,7 @@
 
 (use-package json-reformat
   :defer t
-  :config (define-key evil-normal-state-map (kbd "C-c j") 'json-reformat-region))
+  :bind ("C-c j" . json-reformat-region))
 
 (use-package xml-format
   :defer t)
