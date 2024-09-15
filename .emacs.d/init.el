@@ -283,6 +283,7 @@
          ("C-c m" . gptel-menu)
          ("C-c RET" . gpte-send))
   :config
+  (setq gptel-model "gpt-4o")
   (setq gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
 
 (use-package json-reformat
