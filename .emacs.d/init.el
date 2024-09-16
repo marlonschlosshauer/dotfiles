@@ -331,6 +331,10 @@
          ("C-x C-r" . ivy-resume)
          ("C-S-s" . swiper-thing-at-point)))
 
+(use-package avy
+  :ensure t
+  :bind ("C-:" . avy-goto-char))
+
 (use-package ace-window
   :bind ("C-x o " . ace-window)
   :config
