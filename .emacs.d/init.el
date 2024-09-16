@@ -8,6 +8,10 @@
 ;; Load packages
 (package-initialize)
 
+;; Performance
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max 10000000)
+
 ;; Set default dirs
 (setq default-directory "~/")
 (setq custom-file-path (concat user-emacs-directory "/custom.el"))
@@ -202,9 +206,6 @@
          (js-ts-mode . lsp)
          (web-mode . lsp)
          (go-ts-mode . lsp))
-  :custom
-  (gc-cons-threshold 1073741824/2)
-  (read-process-output-max (* 1024 1024))
   :config
   (defun lsp-remove-unused ()
     "Run the remove unused imports code action."
