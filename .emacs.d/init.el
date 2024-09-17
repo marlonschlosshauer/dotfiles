@@ -56,29 +56,24 @@
           (nxml-mode . rainbow-mode)))
 
 (use-package paren
-  :ensure nil
-  :hook (after-init-hook . show-paren-mode)
+  :custom
+  (show-paren-style 'expression)
+  (show-paren-delay 0)
+  (show-paren-when-at-point-inside nil)
+  (show-paren-when-at-point-in-periphery t)
   :config
-  (setq show-paren-style 'expression
-        show-paren-when-point-inside-paren nil
-        show-paren-when-point-in-periphery t))
+  (show-paren-mode))
 
 (use-package diff-hl
-  :config (global-diff-hl-mode))
-
-(use-package hl-todo)
+  :init (global-diff-hl-mode))
 
 (use-package mood-line
   :config (mood-line-mode))
 
 (use-package doom-themes
+  :custom (custom-safe-themes t)
   :config
-  (setq custom-safe-themes t)
   (load-theme 'doom-one-light))
-
-;; Highlight closing tags (parenthesis, brackets)
-(show-paren-mode t)
-(setq show-paren-delay 0)
 
 ;; Change font color for keywords
 (global-font-lock-mode t)
@@ -136,23 +131,21 @@
 ;;; Editing
 (use-package undo-tree
   :ensure t
-  :config (global-undo-tree-mode)
-  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))
-        undo-tree-auto-save-history nil))
+  :custom
+  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+  (undo-tree-auto-save-history nil)
+  :init (global-undo-tree-mode))
 
 (use-package elec-pair
-  :config
-  (setq electric-pair-pairs
+  :custom
+  (electric-pair-pairs
         '((?\" . ?\")
           (?\' . ?\')
           (?\( . ?\))
           (?\[ . ?\])
           (?\< . ?\>)
           (?\{ . ?\})))
-  (electric-pair-mode 1))
-
-(use-package ace-jump-mode
-  :bind ("C-SPC" . ace-jump-mode))
+ :init (electric-pair-mode))
 
 (use-package prettier-js
   :hook ((web-mode . prettier-js-mode)
@@ -166,7 +159,7 @@
   (add-to-list 'emmet-jsx-major-modes 'typescript-ts-mode))
 
 (use-package editorconfig
-  :config (editorconfig-mode 1))
+  :init (editorconfig-mode))
 
 ;; Make highlighted text be replaced if something is typed
 (delete-selection-mode 1)
@@ -192,11 +185,12 @@
 ;;; Projects
 (use-package company
   :bind ("TAB" . company-complete)
-  :config
-  (setq company-require-match nil
-        company-show-numbers t
-        company-selection-wrap-around t)
-  (global-company-mode 1))
+  :custom
+  (company-require-match nil)
+  (company-show-numbers t)
+  (company-selection-wrap-around t)
+  :init
+  (global-company-mode))
 
 (use-package lsp-mode
   :commands lsp
@@ -205,6 +199,13 @@
          (js-ts-mode . lsp)
          (web-mode . lsp)
          (go-ts-mode . lsp))
+  :bind ("M-?" . lsp-find-references)
+  :custom
+  (lsp-headerline-breadcrumb-enable nil)
+  (lsp-diagnostics-provider :flycheck)
+  (lsp-completion-provider :company)
+  (lsp-log-io nil)
+  :functions lsp-execute-code-action-by-kind
   :config
   (defun lsp-remove-unused ()
     "Run the remove unused imports code action."
@@ -216,15 +217,13 @@
 
 ;;; Tools
 (use-package dired
-  :ensure nil
-  :config
-  (setq dired-listing-switches "-alh"))
+  :custom
+  (dired-listing-switches "-alh"))
 
 (use-package magit
-  :ensure t
   :bind (("C-c g" . magit))
-  :config
-  (setq magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1)))
+  :custom
+  (magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1)))
 
 (use-package org
   :pin gnu
@@ -232,17 +231,12 @@
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
+  :custom
+  (org-return-follows-link t)
+  (org-src-tab-acts-natively t)
+  (org-src-preserve-indentation nil)
+  (org-src-fontify-natively t)
   :config
-  (setq  org-return-follows-link t
-        org-src-tab-acts-natively t
-        org-src-preserve-indentation nil)
-
-  ;; Make fonts in src buffer look pretty
-  (setq org-src-fontify-natively t)
-
-  (setq org-latex-tables-centered nil
-        org-tags-column 80)
-
   ;; Remove line-numbers in agenda
   (add-hook 'org-agenda-mode-hook (lambda() (display-line-numbers-mode -1)))
 
@@ -254,27 +248,27 @@
          ("\\.mdx?\\'" . markdown-mode)))
 
 (use-package projectile
+  :init (projectile-mode)
+  :custom (projectile-use-git-grep t)
   :config
-  (projectile-mode +1)
-  (setq projectile-use-git-grep t)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (use-package yasnippet
   :bind (("C-c C-s" . yas-expand))
-  :config (yas-global-mode 1))
+  :init (yas-global-mode))
 
 (use-package which-key
-  :config (which-key-mode))
+  :init (which-key-mode))
 
 (use-package gptel
   :bind (("C-c h" . gptel)
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu)
          ("C-c RET" . gpte-send))
-  :config
-  (setq gptel-model "gpt-4o")
-  (setq gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
+  :custom
+  (gptel-model "gpt-4o")
+  (gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
 
 (use-package json-reformat
   :defer t
@@ -299,20 +293,20 @@
 
 ;;; Navigation
 (use-package ivy
-  :config (ivy-mode))
+  :init (ivy-mode))
 
 (use-package ivy-xref
   :after ivy
-  :config
-  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+  :custom
+  (xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 (use-package counsel
   :after ivy
-  :config (counsel-mode))
+  :init (counsel-mode))
 
 (use-package counsel-projectile
   :after (counsel projectile)
-  :config (counsel-projectile-mode))
+  :init (counsel-projectile-mode))
 
 (use-package swiper
   :after ivy
@@ -321,8 +315,7 @@
          ("C-S-s" . swiper-thing-at-point)))
 
 (use-package avy
-  :ensure t
-  :bind ("C-:" . avy-goto-char))
+  :bind ("C-SPC" . avy-goto-char))
 
 (use-package ace-window
   :bind ("C-x o " . ace-window)
@@ -333,11 +326,11 @@
 
 ;;; Languages
 (use-package objc-mode
-  :ensure nil
   :mode (("\\.mmm?\\'" . objc-mode)
          ("\\.m?\\'" . objc-mode)))
 
-(use-package yaml-mode)
+(use-package yaml-mode
+  :mode (("\\.yml?\\'" . yaml-mode)))
 
 (use-package groovy-mode
   :mode (("\\.gradle?\\'" . groovy-mode)))
@@ -346,41 +339,39 @@
   :mode (("\\.css\\'" . web-mode)
          ("\\.html\\'" . web-mode)
          ("\\.php\\'" . web-mode))
-  :config
-  (setq web-mode-enable-current-column-highlight t
-        web-mode-enable-current-element-highlight t
-        web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-code-indent-offset 2))
+  :custom
+  (web-mode-enable-current-column-highlight t)
+  (web-mode-enable-current-element-highlight t)
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 2)
+  (web-mode-code-indent-offset 2))
 
 (use-package js-mode
-  :ensure nil
   :mode (("\\.js?\\'" . js-mode)
          ("\\.cjs?\\'" . js-mode)
          ("\\.jsx?\\'" . js-mode))
-  :config
-  (setq javascript-indent-level 1)
-  (setq js-indent-level 1))
+  :custom
+  (javascript-indent-level 1)
+  (js-indent-level 1))
 
 (use-package typescript-mode
   :mode (("\\.ts?\\'" . typescript-ts-mode)
          ("\\.tsx?\\'" . typescript-ts-mode))
   :bind (("C-c r o" . lsp-remove-unused))
-  :config
-  (setq typescript-indent-level 2)
-  (setq typescript-auto-indent-flag t))
+  :custom
+  (typescript-indent-level 2)
+  (typescript-auto-indent-flag t))
 
 (use-package go-mode)
 
 ;;; Security
 (use-package epa
-  :after (exec-path-from-shell)
-  :config
-  (setq epg-gpg-program "gpg"))
+  :custom
+  (epg-gpg-program "gpg"))
 
 (use-package pinentry
-  :after (epa exec-path-from-shell)
-  :config
+  :after epa
+  :init
   (pinentry-start))
 
 ;; Grammar
