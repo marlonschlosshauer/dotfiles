@@ -25,7 +25,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(setq use-package-always-ensure t)
 (setq package-install-upgrade-built-in t)
 
 ;;; Graphics
