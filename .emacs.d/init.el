@@ -210,17 +210,7 @@
   (defun lsp-remove-unused ()
     "Run the remove unused imports code action."
     (interactive)
-    (lsp-execute-code-action-by-kind "source.removeUnusedImports.ts"))
-  (evil-define-key 'normal lsp-mode-map (kbd "C-l") lsp-command-map)
-  (define-key evil-normal-state-map (kbd "g d") 'lsp-goto-implementation)
-  (define-key evil-normal-state-map (kbd "g t") 'lsp-goto-type-definition)
-
-  ;; Poor performance with languages that don't provide formatter and have formatter setup (py-yapf)
-  ;; (add-hook 'before-save-hook 'lsp-format-buffer)
-  (setq lsp-headerline-breadcrumb-enable nil
-        lsp-diagnostics-provider :flycheck
-        lsp-completion-provider :company
-        lsp-log-io nil))
+    (lsp-execute-code-action-by-kind "source.removeUnusedImports.ts")))
 
 (use-package flycheck
   :init (global-flycheck-mode))
