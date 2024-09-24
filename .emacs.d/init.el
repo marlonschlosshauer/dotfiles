@@ -29,31 +29,34 @@
 
 ;;; Graphics
 (use-package rainbow-delimiters
-  :hook  ((typescript-ts-mode . rainbow-delimiters-mode)
+  :hook  ((tsx-mode . rainbow-delimiters-mode)
           (typescript-mode . rainbow-delimiters-mode)
-          (js-ts-mode . rainbow-delimiters-mode)
+          (js-mode . rainbow-delimiters-mode)
           (web-mode . rainbow-delimiters-mode)
-          (go-ts-mode . rainbow-delimiters-mode)
-          (emacs-lisp-mode . rainbow-delimiters-mode)
-          (nxml-mode . rainbow-delimiters-mode)))
+          (scss-mode . rainbow-delimiters-mode)
+          (nxml-mode . rainbow-delimiters-mode)
+          (go-mode . rainbow-delimiters-mode)
+          (emacs-lisp-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-identifiers
-  :hook  ((typescript-ts-mode . rainbow-identifiers-mode)
+  :hook  ((tsx-mode . rainbow-identifiers-mode)
           (typescript-mode . rainbow-identifiers-mode)
-          (js-ts-mode . rainbow-identifiers-mode)
+          (js-mode . rainbow-identifiers-mode)
           (web-mode . rainbow-identifiers-mode)
-          (go-ts-mode . rainbow-identifiers-mode)
-          (emacs-lisp-mode . rainbow-identifiers-mode)
-          (nxml-mode . rainbow-identifiers-mode)))
+          (scss-mode . rainbow-identifiers-mode)
+          (nxml-mode . rainbow-identifiers-mode)
+          (go-mode . rainbow-identifiers-mode)
+          (emacs-lisp-mode . rainbow-identifiers-mode)))
 
 (use-package rainbow-mode
-  :hook  ((typescript-ts-mode . rainbow-mode)
+  :hook  ((tsx-mode . rainbow-mode)
           (typescript-mode . rainbow-mode)
-          (js-ts-mode . rainbow-mode)
+          (js-mode . rainbow-mode)
           (web-mode . rainbow-mode)
-          (go-ts-mode . rainbow-mode)
-          (emacs-lisp-mode . rainbow-mode)
-          (nxml-mode . rainbow-mode)))
+          (scss-mode . rainbow-mode)
+          (nxml-mode . rainbow-mode)
+          (go-mode . rainbow-mode)
+          (emacs-lisp-mode . rainbow-mode)))
 
 (use-package paren
   :custom
@@ -128,6 +131,16 @@
      display-buffer-same-window
      display-buffer-in-previous-window)))
 
+;; Make confirmations less annoying
+(setq use-dialog-box nil)
+
+;;; Movement
+(global-set-key (kbd "M-SPC") 'pop-global-mark)
+(global-set-key (kbd "M-l") 'mark-word)
+
+(use-package avy
+  :bind ("C-SPC" . avy-goto-char))
+
 ;;; Editing
 (use-package undo-tree
   :ensure t
@@ -148,15 +161,18 @@
  :init (electric-pair-mode))
 
 (use-package prettier-js
-  :hook ((web-mode . prettier-js-mode)
-         (typescript-ts-mode . prettier-js-mode)))
+  :hook ((typescript-mode . prettier-js-mode)
+         (tsx-mode . prettier-js-mode)
+         (js-mode . prettier-js-mode)
+         (web-mode . prettier-js-mode)
+         (scss-mode . prettier-js-mode)))
 
 (use-package emmet-mode
-  :hook ((web-mode . emmet-mode)
-         (typescript-ts-mode . emmet-mode)
-         (nxml-mode . emmet-mode))
-  :config
-  (add-to-list 'emmet-jsx-major-modes 'typescript-ts-mode))
+  :hook ((tsx-mode . emmet-mode)
+         (typescript-mode . emmet-mode)
+         (web-mode . emmet-mode)
+         (scss-mode . emmet-mode)
+         (nxml-mode . emmet-mode)))
 
 (use-package editorconfig
   :init (editorconfig-mode))
@@ -195,11 +211,10 @@
 (use-package lsp-mode
   :commands lsp
   :after (flycheck)
-  :hook ((typescript-ts-mode . lsp)
-         (js-ts-mode . lsp)
+  :hook ((tsx-mode . lsp)
+         (typescript-mode . lsp)
          (web-mode . lsp)
-         (go-ts-mode . lsp))
-  :bind ("M-?" . lsp-find-references)
+         (go-mode . lsp))
   :custom
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-diagnostics-provider :flycheck)
@@ -207,6 +222,9 @@
   (lsp-log-io nil)
   :functions lsp-execute-code-action-by-kind
   :config
+  (define-key lsp-command-map (kbd "g d") 'lsp-goto-implementation)
+  (define-key lsp-command-map (kbd "g t") 'lsp-goto-type-definition)
+  (define-key lsp-command-map (kbd "g r") 'lsp-find-references)
   (defun lsp-remove-unused ()
     "Run the remove unused imports code action."
     (interactive)
@@ -230,7 +248,9 @@
   :mode (("\\.org\\'" . org-mode))
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
-         ("C-c l" . org-store-link))
+         ("C-c l" . org-store-link)
+         ("M-p" . org-metaup)
+         ("M-n" . org-metadown))
   :custom
   (org-return-follows-link t)
   (org-src-tab-acts-natively t)
@@ -293,7 +313,8 @@
 
 ;;; Navigation
 (use-package ivy
-  :init (ivy-mode))
+  :init (ivy-mode)
+  :bind ("C-x C-r" . ivy-resume))
 
 (use-package ivy-xref
   :after ivy
@@ -311,18 +332,7 @@
 (use-package swiper
   :after ivy
   :bind (("C-s" . swiper)
-         ("C-x C-r" . ivy-resume)
          ("C-S-s" . swiper-thing-at-point)))
-
-(use-package avy
-  :bind ("C-SPC" . avy-goto-char))
-
-(use-package ace-window
-  :bind ("C-x o " . ace-window)
-  :config
-  (custom-set-faces
-   '(aw-leading-char-face
-     ((t (:inherit ace-jump-face-foreground :height 2.0))))))
 
 ;;; Languages
 (use-package objc-mode
@@ -351,12 +361,9 @@
          ("\\.cjs?\\'" . js-mode)
          ("\\.jsx?\\'" . js-mode))
   :custom
-  (javascript-indent-level 1)
-  (js-indent-level 1))
+  (js-indent-level 2))
 
 (use-package typescript-mode
-  :mode (("\\.ts?\\'" . typescript-ts-mode)
-         ("\\.tsx?\\'" . typescript-ts-mode))
   :bind (("C-c r o" . lsp-remove-unused))
   :custom
   (typescript-indent-level 2)
@@ -378,7 +385,8 @@
 (setq major-mode-remap-alist
  '((yaml-mode . yaml-ts-mode)
    (js-mode . js-ts-mode)
-   (typescript-mode . typescript-ts-mode)))
+   (typescript-mode . typescript-ts-mode)
+   (tsx-mode . tsx-ts-mode)))
 
 (setq treesit-language-source-alist
    '((html "https://github.com/tree-sitter/tree-sitter-html")
@@ -392,14 +400,12 @@
 ;;; Env
 (setenv "LANG" "en_US.UTF-8")
 
-(setenv "PATH"
-        (concat
-         "/usr/local/bin" ";"
-         "/usr/bin" ";"
-         "/bin" ";"
-         "/usr/sbin" ";"
-         "/sbin" ";"
-         (getenv "PATH")))
+;(setenv "PATH"
+;        (concat
+;         "/opt/homebrew/bin" ";"
+;         (getenv "PATH")))
+
+;;(add-to-list 'exec-path "/opt/homebrew/bin/")
 
 ;;; Binds
 ;; German keyboard binding, by making emasc ignore right-alt key
@@ -416,10 +422,6 @@
 
 ;; Replace zap-to-char with zap-up-to-char
 (global-set-key (kbd "M-z") 'zap-up-to-char)
-
-;; Bind org meta keys to something more sane for German keyboards
-(global-set-key (kbd "M-p") 'org-metaup)
-(global-set-key (kbd "M-n") 'org-metadown)
 
 ;; Unbind font window
 (global-unset-key (kbd "s-t"))
