@@ -71,7 +71,7 @@
   :init (global-diff-hl-mode))
 
 (use-package mood-line
-  :config (mood-line-mode))
+  :init (mood-line-mode))
 
 (use-package doom-themes
   :custom (custom-safe-themes t)
@@ -110,12 +110,6 @@
 
 ;; Remove splash screen
 (setq inhibit-splash-screen t)
-
-;; Hide macOS top bar
-(setq ns-auto-hide-menu-bar t)
-
-;; Set color of macOS bar
-;;(add-to-list 'default-frame-alist '(ns-appearance . light))
 
 ;; Make macOS bar same color as theme
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -249,6 +243,7 @@
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link)
+         :map org-mode-map
          ("M-p" . org-metaup)
          ("M-n" . org-metadown))
   :custom
