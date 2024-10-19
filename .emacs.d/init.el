@@ -367,6 +367,8 @@
   (js-indent-level 2))
 
 (use-package typescript-mode
+  :mode (("\\.ts?\\'" . typescript-ts-mode)
+         ("\\.tsx?\\'" . tsx-ts-mode))
   :bind (:map typescript-mode-map
               ("C-c r o" . lsp-remove-unused))
   :custom
