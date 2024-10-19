@@ -292,7 +292,7 @@
          :map gptel-mode-map
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu)
-         ("C-c RET" . gpte-send))
+         ("C-c RET" . gptel-send))
   :custom
   (gptel-model "gpt-4o")
   (gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
