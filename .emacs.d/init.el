@@ -120,10 +120,10 @@
 
 ;; Stop frames from opening in other windows!
 (setq display-buffer-base-action
-  '((display-buffer-reuse-window
-     display-buffer-reuse-mode-window
-     display-buffer-same-window
-     display-buffer-in-previous-window)))
+      '((display-buffer-reuse-window
+         display-buffer-reuse-mode-window
+         display-buffer-same-window
+         display-buffer-in-previous-window)))
 
 ;; Make confirmations less annoying
 (setq use-dialog-box nil)
@@ -150,13 +150,13 @@
 (use-package elec-pair
   :custom
   (electric-pair-pairs
-        '((?\" . ?\")
-          (?\' . ?\')
-          (?\( . ?\))
-          (?\[ . ?\])
-          (?\< . ?\>)
-          (?\{ . ?\})))
- :init (electric-pair-mode))
+   '((?\" . ?\")
+     (?\' . ?\')
+     (?\( . ?\))
+     (?\[ . ?\])
+     (?\< . ?\>)
+     (?\{ . ?\})))
+  :init (electric-pair-mode))
 
 (use-package prettier-js
   :hook ((tsx-ts-mode . prettier-js-mode)
@@ -297,10 +297,6 @@
   (gptel-model "gpt-4o")
   (gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
 
-(use-package json-reformat
-  :defer t
-  :bind ("C-c j" . json-reformat-region))
-
 (use-package xml-format
   :defer t)
 
@@ -391,29 +387,22 @@
 
 ;; Grammar
 (setq major-mode-remap-alist
- '((yaml-mode . yaml-ts-mode)
-   (js-mode . js-ts-mode)
-   (typescript-mode . typescript-ts-mode)
-   (tsx-mode . tsx-ts-mode)))
+      '((yaml-mode . yaml-ts-mode)
+        (js-mode . js-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (tsx-mode . tsx-ts-mode)))
 
 (setq treesit-language-source-alist
-   '((html "https://github.com/tree-sitter/tree-sitter-html")
-     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-     (json "https://github.com/tree-sitter/tree-sitter-json")
-     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+      '((html "https://github.com/tree-sitter/tree-sitter-html")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
 ;;; Env
 (setenv "LANG" "en_US.UTF-8")
-
-;(setenv "PATH"
-;        (concat
-;         "/opt/homebrew/bin" ";"
-;         (getenv "PATH")))
-
-;;(add-to-list 'exec-path "/opt/homebrew/bin/")
 
 ;;; Binds
 ;; German keyboard binding, by making emasc ignore right-alt key
@@ -447,4 +436,4 @@
 
 ;; Load emacs custom stuff
 (when (file-exists-p custom-file-path)
-    (load-file custom-file-path))
+  (load-file custom-file-path))
