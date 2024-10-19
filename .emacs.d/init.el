@@ -221,7 +221,8 @@
   :bind (:map lsp-command-map
               ("g d" . lsp-goto-implementation)
               ("g t" . lsp-goto-type-definition)
-              ("g r" . lsp-find-references))
+              ("g r" . lsp-find-references)
+              ("r o" . lsp-remove-unused))
   :config
   (company-mode 1)
   (defun lsp-remove-unused ()
@@ -368,8 +369,6 @@
 (use-package typescript-mode
   :mode (("\\.ts?\\'" . typescript-ts-mode)
          ("\\.tsx?\\'" . tsx-ts-mode))
-  :bind (:map typescript-mode-map
-              ("C-c r o" . lsp-remove-unused))
   :custom
   (typescript-indent-level 2)
   (typescript-auto-indent-flag t))
