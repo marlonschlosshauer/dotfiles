@@ -202,9 +202,7 @@
   :custom
   (company-require-match nil)
   (company-show-numbers t)
-  (company-selection-wrap-around t)
-  :init
-  (global-company-mode))
+  (company-selection-wrap-around t))
 
 (use-package lsp-mode
   :commands lsp
@@ -225,6 +223,7 @@
               ("g t" . lsp-goto-type-definition)
               ("g r" . lsp-find-references))
   :config
+  (company-mode 1)
   (defun lsp-remove-unused ()
     "Run the remove unused imports code action."
     (interactive)
