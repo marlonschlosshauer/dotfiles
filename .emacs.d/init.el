@@ -29,9 +29,9 @@
 
 ;;; Graphics
 (use-package rainbow-delimiters
-  :hook  ((tsx-mode . rainbow-delimiters-mode)
-          (typescript-mode . rainbow-delimiters-mode)
-          (js-mode . rainbow-delimiters-mode)
+  :hook  ((tsx-ts-mode . rainbow-delimiters-mode)
+          (typescript-ts-mode . rainbow-delimiters-mode)
+          (js-ts-mode . rainbow-delimiters-mode)
           (web-mode . rainbow-delimiters-mode)
           (scss-mode . rainbow-delimiters-mode)
           (nxml-mode . rainbow-delimiters-mode)
@@ -39,9 +39,9 @@
           (emacs-lisp-mode . rainbow-delimiters-mode)))
 
 (use-package rainbow-identifiers
-  :hook  ((tsx-mode . rainbow-identifiers-mode)
-          (typescript-mode . rainbow-identifiers-mode)
-          (js-mode . rainbow-identifiers-mode)
+  :hook  ((tsx-ts-mode . rainbow-identifiers-mode)
+          (typescript-ts-mode . rainbow-identifiers-mode)
+          (js-ts-mode . rainbow-identifiers-mode)
           (web-mode . rainbow-identifiers-mode)
           (scss-mode . rainbow-identifiers-mode)
           (nxml-mode . rainbow-identifiers-mode)
@@ -49,9 +49,9 @@
           (emacs-lisp-mode . rainbow-identifiers-mode)))
 
 (use-package rainbow-mode
-  :hook  ((tsx-mode . rainbow-mode)
-          (typescript-mode . rainbow-mode)
-          (js-mode . rainbow-mode)
+  :hook  ((tsx-ts-mode . rainbow-mode)
+          (typescript-ts-mode . rainbow-mode)
+          (js-ts-mode . rainbow-mode)
           (web-mode . rainbow-mode)
           (scss-mode . rainbow-mode)
           (nxml-mode . rainbow-mode)
@@ -155,15 +155,14 @@
  :init (electric-pair-mode))
 
 (use-package prettier-js
-  :hook ((typescript-mode . prettier-js-mode)
-         (tsx-mode . prettier-js-mode)
-         (js-mode . prettier-js-mode)
+  :hook ((tsx-ts-mode . prettier-js-mode)
+         (typescript-ts-mode . prettier-js-mode)
+         (js-ts-mode . prettier-js-mode)
          (web-mode . prettier-js-mode)
          (scss-mode . prettier-js-mode)))
 
 (use-package emmet-mode
-  :hook ((tsx-mode . emmet-mode)
-         (typescript-mode . emmet-mode)
+  :hook ((tsx-ts-mode . emmet-mode)
          (web-mode . emmet-mode)
          (scss-mode . emmet-mode)
          (nxml-mode . emmet-mode)))
@@ -205,8 +204,9 @@
 (use-package lsp-mode
   :commands lsp
   :after (flycheck)
-  :hook ((tsx-mode . lsp)
-         (typescript-mode . lsp)
+  :hook ((tsx-ts-mode . lsp)
+         (typescript-ts-mode . lsp)
+         (js-ts-mode . lsp)
          (web-mode . lsp)
          (go-mode . lsp))
   :custom
