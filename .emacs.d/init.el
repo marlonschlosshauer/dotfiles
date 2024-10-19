@@ -131,6 +131,10 @@
 ;;; Movement
 (global-set-key (kbd "M-SPC") 'pop-global-mark)
 (global-set-key (kbd "M-l") 'mark-word)
+(global-set-key (kbd "C-M-l") 'set-mark-command)
+(global-set-key (kbd "M-n") 'scroll-up-command)
+(global-set-key (kbd "M-p") 'scroll-down-command)
+(global-set-key (kbd "M-z") 'zap-up-to-char)
 
 (use-package avy
   :bind ("C-SPC" . avy-goto-char))
@@ -193,7 +197,8 @@
 
 ;;; Projects
 (use-package company
-  :bind ("TAB" . company-complete)
+  :bind (:map company-mode-map
+              ("TAB" . company-complete))
   :custom
   (company-require-match nil)
   (company-show-numbers t)
@@ -215,10 +220,11 @@
   (lsp-completion-provider :company)
   (lsp-log-io nil)
   :functions lsp-execute-code-action-by-kind
+  :bind (:map lsp-command-map
+              ("g d" . lsp-goto-implementation)
+              ("g t" . lsp-goto-type-definition)
+              ("g r" . lsp-find-references))
   :config
-  (define-key lsp-command-map (kbd "g d") 'lsp-goto-implementation)
-  (define-key lsp-command-map (kbd "g t") 'lsp-goto-type-definition)
-  (define-key lsp-command-map (kbd "g r") 'lsp-find-references)
   (defun lsp-remove-unused ()
     "Run the remove unused imports code action."
     (interactive)
@@ -229,8 +235,13 @@
 
 ;;; Tools
 (use-package dired
+  :bind (:map dired-mode-map
+              ("." . dired-up-directory))
   :custom
   (dired-listing-switches "-alh"))
+
+(use-package eshell
+  :bind ("C-c s" . eshell))
 
 (use-package magit
   :bind (("C-c g" . magit))
@@ -265,12 +276,12 @@
 (use-package projectile
   :init (projectile-mode)
   :custom (projectile-use-git-grep t)
-  :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)))
 
 (use-package yasnippet
-  :bind (("C-c C-s" . yas-expand))
+  :bind (:map yas-minor-mode-map
+              ("C-c C-s" . yas-expand))
   :init (yas-global-mode))
 
 (use-package which-key
@@ -278,6 +289,7 @@
 
 (use-package gptel
   :bind (("C-c h" . gptel)
+         :map gptel-mode-map
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu)
          ("C-c RET" . gpte-send))
@@ -359,7 +371,8 @@
   (js-indent-level 2))
 
 (use-package typescript-mode
-  :bind (("C-c r o" . lsp-remove-unused))
+  :bind (:map typescript-mode-map
+              ("C-c r o" . lsp-remove-unused))
   :custom
   (typescript-indent-level 2)
   (typescript-auto-indent-flag t))
@@ -406,22 +419,10 @@
 ;; German keyboard binding, by making emasc ignore right-alt key
 (setq ns-right-alternate-modifier nil)
 
-;; Bind goto definition
-(global-set-key (kbd "C-x j") 'xref-find-definitions)
+(global-set-key (kbd "C-c v") 'switch-to-scratch-buffer)
 
-;; Bind go back (e.g from find definition)
-(global-set-key (kbd "C-x p") 'xref-pop-marker-stack)
-
-;; Bind shell
-(global-set-key (kbd "C-c s") 'eshell)
-
-;; Replace zap-to-char with zap-up-to-char
-(global-set-key (kbd "M-z") 'zap-up-to-char)
-
-;; Unbind font window
 (global-unset-key (kbd "s-t"))
 
-;; Unbind color panel
 (global-unset-key (kbd "s-C"))
 
 ;; Remove scratch message
@@ -433,9 +434,6 @@
       (switch-to-buffer "*scratch*")
     (progn (create-file-buffer "*scratch*")
            (switch-to-buffer "*scratch*"))))
-
-;; Always have scratch ready
-(global-set-key (kbd "C-c v") 'switch-to-scratch-buffer)
 
 ;;; End of packages
 ;; Load env related stuff (work vs home)
