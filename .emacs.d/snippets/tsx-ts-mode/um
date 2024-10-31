@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: useMemo
+# key: um
+# --
+const $1 = useMemo(() => {$2}, [$3]);

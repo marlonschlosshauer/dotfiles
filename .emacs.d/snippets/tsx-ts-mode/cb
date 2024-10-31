@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: bc
-# key: bc
+# name: Component Base
+# key: cb
 # --
 import React from "react";
 import styled from "styled-components";
 
 const $1Wrapper = styled.div\`\`;
 
-export const $1: React.FC = () => <$1Wrapper>$2</$1Wrapper>;
+export const $1: React.FC = ($2) => <$1Wrapper>$3</$1Wrapper>;

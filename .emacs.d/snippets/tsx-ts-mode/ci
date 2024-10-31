@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: cc
-# key: cc
+# name: Component Interface
+# key: ci
 # --
 import React from "react";
 

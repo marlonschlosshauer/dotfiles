@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: useCallback
+# key: uc
+# --
+const $1 = useCallback(() => {$2}, [$3]);

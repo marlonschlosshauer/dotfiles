@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: fc
-# key: fc
+# name: Component Styled
+# key: cs
 # --
 import React from "react";
 import styled from "styled-components";
