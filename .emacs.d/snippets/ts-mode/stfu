@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: @ts-ignore
+# name: stfu
 # key: stfu
 # --
 /* @ts-ignore */$1
