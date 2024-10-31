@@ -135,6 +135,7 @@
 (global-set-key (kbd "M-n") 'scroll-up-command)
 (global-set-key (kbd "M-p") 'scroll-down-command)
 (global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-g") 'goto-line)
 
 (use-package avy
   :bind ("C-SPC" . avy-goto-char))
