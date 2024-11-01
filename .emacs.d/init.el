@@ -137,6 +137,9 @@
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-g") 'goto-line)
 
+;; Preserve position on scrolling
+(setq scroll-preserve-screen-position t)
+
 (use-package avy
   :bind ("C-SPC" . avy-goto-char))
 
