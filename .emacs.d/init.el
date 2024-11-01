@@ -140,6 +140,9 @@
 ;; Preserve position on scrolling
 (setq scroll-preserve-screen-position t)
 
+;; Repeat pop
+(setq-default set-mark-command-repeat-pop t)
+
 (use-package avy
   :bind ("C-SPC" . avy-goto-char))
 
