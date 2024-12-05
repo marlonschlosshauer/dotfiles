@@ -136,6 +136,8 @@
 (global-set-key (kbd "M-p") 'scroll-down-command)
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-g") 'goto-line)
+(global-set-key (kbd "s-n") 'end-of-buffer)
+(global-set-key (kbd "s-p") 'beginning-of-buffer)
 
 ;; Preserve position on scrolling
 (setq scroll-preserve-screen-position t)
