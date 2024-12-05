@@ -298,12 +298,11 @@
 
 (use-package gptel
   :bind (("C-c h" . gptel)
-         :map gptel-mode-map
-         ("C-c c" . gptel-abort)
-         ("C-c m" . gptel-menu)
-         ("C-c RET" . gptel-send))
+         ("C-c RET" . gptel-send)
+         ("C-c r" . gptel-rewrite)
+         ("C-c c" . gpte-abort)
+         ("C-c m" . gptel-menu))
   :custom
-  (gptel-model "gpt-4o")
   (gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
 
 (use-package xml-format
