@@ -336,6 +336,12 @@
   :bind (("C-s" . swiper)
          ("C-S-s" . swiper-thing-at-point)))
 
+(use-package marginalia
+  :init (marginalia-mode))
+
+(use-package savehist
+  :init (savehist-mode))
+
 ;;; Languages
 (use-package objc-mode
   :mode (("\\.mmm?\\'" . objc-mode)
