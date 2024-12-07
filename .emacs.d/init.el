@@ -58,15 +58,6 @@
           (go-mode . rainbow-mode)
           (emacs-lisp-mode . rainbow-mode)))
 
-(use-package paren
-  :custom
-  (show-paren-style 'expression)
-  (show-paren-delay 0)
-  (show-paren-when-at-point-inside nil)
-  (show-paren-when-at-point-in-periphery t)
-  :config
-  (show-paren-mode))
-
 (use-package diff-hl
   :init (global-diff-hl-mode))
 
