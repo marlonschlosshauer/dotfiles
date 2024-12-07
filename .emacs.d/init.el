@@ -64,10 +64,14 @@
 (use-package mood-line
   :init (mood-line-mode))
 
-(use-package doom-themes
-  :custom (custom-safe-themes t)
+(use-package ef-themes
+  :demand t)
+
+(use-package theme-buffet
+  :after (ef-themes)
   :config
-  (load-theme 'doom-one-light))
+  (theme-buffet-modus-ef)
+  (theme-buffet-a-la-carte))
 
 ;; Change font color for keywords
 (global-font-lock-mode t)
