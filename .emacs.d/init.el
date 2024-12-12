@@ -145,7 +145,6 @@
 
 ;;; Editing
 (use-package undo-tree
-  :ensure t
   :custom
   (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
   (undo-tree-auto-save-history nil)
