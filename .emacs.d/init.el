@@ -303,6 +303,10 @@
 (use-package xml-format
   :defer t)
 
+(use-package eat
+  :config
+  (eat-eshell-mode))
+
 ;; Stop process spamming mini buffer
 (setq comint-process-echoes t)
 
