@@ -420,7 +420,7 @@
 ;; German keyboard binding, by making emasc ignore right-alt key
 (setq ns-right-alternate-modifier nil)
 
-(global-set-key (kbd "C-c v") 'switch-to-scratch-buffer)
+(global-set-key (kbd "C-c v") 'scratch-buffer)
 
 (global-unset-key (kbd "s-t"))
 
@@ -428,13 +428,6 @@
 
 ;; Remove scratch message
 (setq initial-scratch-message "\n")
-
-(defun switch-to-scratch-buffer ()
-  (interactive)
-  (if (get-buffer "*scratch*")
-      (switch-to-buffer "*scratch*")
-    (progn (create-file-buffer "*scratch*")
-           (switch-to-buffer "*scratch*"))))
 
 ;;; End of packages
 ;; Load env related stuff (work vs home)
