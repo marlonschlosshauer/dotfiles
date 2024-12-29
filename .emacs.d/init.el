@@ -349,6 +349,14 @@
 (use-package savehist
   :init (savehist-mode))
 
+(use-package smartparens
+  :hook ((tsx-ts-mode . smartparens-mode)
+         (typescript-ts-mode . smartparens-mode)
+         (js-ts-mode . smartparens-mode)
+         (go-ts-mode . smartparens-mode))
+  :bind (("C-M-f" . sp-forward-sexp)
+         ("C-M-b" . sp-backward-sexp)))
+
 ;;; Languages
 (use-package objc-mode
   :mode (("\\.mmm?\\'" . objc-mode)
