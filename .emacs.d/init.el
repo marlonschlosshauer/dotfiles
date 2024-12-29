@@ -141,7 +141,9 @@
 (setq-default set-mark-command-repeat-pop t)
 
 (use-package avy
-  :bind ("s-." . avy-goto-char))
+  :bind (("s-." . avy-goto-char)
+         ("s-r" . avy-resume)
+         ("s-g" . avy-goto-line)))
 
 ;;; Editing
 (use-package undo-tree
