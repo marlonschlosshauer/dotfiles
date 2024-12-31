@@ -254,7 +254,6 @@
   (magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1)))
 
 (use-package org
-  :pin gnu
   :mode (("\\.org\\'" . org-mode))
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
