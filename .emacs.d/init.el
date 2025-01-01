@@ -53,7 +53,6 @@
   ;; Make backspace erase tab
   (backward-delete-char-untabify-method 'hungry)
   ;; Setup indentation
-  (indent-tabs-mode nil)
   (indent-tabs-mode t)
   (tab-width 2)
   ;; Stop process spamming mini buffer
@@ -127,34 +126,37 @@
       (load-file path))))
 
 (use-package rainbow-delimiters
-  :hook  ((tsx-ts-mode . rainbow-delimiters-mode)
-          (typescript-ts-mode . rainbow-delimiters-mode)
-          (js-ts-mode . rainbow-delimiters-mode)
-          (web-mode . rainbow-delimiters-mode)
-          (scss-mode . rainbow-delimiters-mode)
-          (nxml-mode . rainbow-delimiters-mode)
-          (go-mode . rainbow-delimiters-mode)
-          (emacs-lisp-mode . rainbow-delimiters-mode)))
+  :hook  ((tsx-ts-mode
+           typescript-ts-mode
+           js-ts-mode
+           web-mode
+           scss-mode
+           nxml-mode
+           go-mode
+           emacs-lisp-mode)
+					. rainbow-delimiters-mode))
 
 (use-package rainbow-identifiers
-  :hook  ((tsx-ts-mode . rainbow-identifiers-mode)
-          (typescript-ts-mode . rainbow-identifiers-mode)
-          (js-ts-mode . rainbow-identifiers-mode)
-          (web-mode . rainbow-identifiers-mode)
-          (scss-mode . rainbow-identifiers-mode)
-          (nxml-mode . rainbow-identifiers-mode)
-          (go-mode . rainbow-identifiers-mode)
-          (emacs-lisp-mode . rainbow-identifiers-mode)))
+  :hook ((tsx-ts-mode
+          typescript-ts-mode
+          js-ts-mode
+          web-mode
+          scss-mode
+          nxml-mode
+          go-mode
+          emacs-lisp-mode)
+         . rainbow-identifiers-mode))
 
 (use-package rainbow-mode
-  :hook  ((tsx-ts-mode . rainbow-mode)
-          (typescript-ts-mode . rainbow-mode)
-          (js-ts-mode . rainbow-mode)
-          (web-mode . rainbow-mode)
-          (scss-mode . rainbow-mode)
-          (nxml-mode . rainbow-mode)
-          (go-mode . rainbow-mode)
-          (emacs-lisp-mode . rainbow-mode)))
+  :hook  ((tsx-ts-mode
+           typescript-ts-mode
+           js-ts-mode
+           web-mode
+           scss-mode
+           nxml-mode
+           go-mode
+           emacs-lisp-mode)
+					. rainbow-mode))
 
 (use-package diff-hl
   :init (global-diff-hl-mode))
@@ -231,17 +233,19 @@
   :init (electric-pair-mode))
 
 (use-package prettier-js
-  :hook ((tsx-ts-mode . prettier-js-mode)
-         (typescript-ts-mode . prettier-js-mode)
-         (js-ts-mode . prettier-js-mode)
-         (web-mode . prettier-js-mode)
-         (scss-mode . prettier-js-mode)))
+  :hook ((tsx-ts-mode
+          typescript-ts-mode
+          js-ts-mode
+          web-mode
+          scss-mode)
+         . prettier-js-mode))
 
 (use-package emmet-mode
-  :hook ((tsx-ts-mode . emmet-mode)
-         (web-mode . emmet-mode)
-         (scss-mode . emmet-mode)
-         (nxml-mode . emmet-mode)))
+  :hook ((tsx-ts-mode
+          web-mode
+          scss-mode
+          nxml-mode)
+         . emmet-mode))
 
 (use-package editorconfig
   :init (editorconfig-mode))
@@ -399,10 +403,11 @@
   :init (savehist-mode))
 
 (use-package smartparens
-  :hook ((tsx-ts-mode . smartparens-mode)
-         (typescript-ts-mode . smartparens-mode)
-         (js-ts-mode . smartparens-mode)
-         (go-ts-mode . smartparens-mode))
+  :hook ((tsx-ts-mode
+          typescript-ts-mode
+          js-ts-mode
+          go-ts-mode)
+         . smartparens-mode)
   :bind (("C-M-f" . sp-forward-sexp)
          ("C-M-b" . sp-backward-sexp)))
 
