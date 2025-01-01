@@ -69,8 +69,45 @@
 
 (use-package theme-buffet
   :after (ef-themes)
+  :custom
+  (theme-buffet-end-user
+   '(:night
+     (ef-autumn
+      ef-duo-dark
+      ef-night
+      ef-tritanopia-dark
+      ef-winter
+      ef-dark)
+     :twilight
+     (ef-bio
+      ef-cherie)
+     :morning
+     (ef-elea-light
+      ef-maris-light
+      ef-spring
+      ef-tritanopia-light)
+     :day
+     (ef-deuteranopia-light
+      ef-frost
+      ef-light
+      ef-trio-light)
+     :afternoon
+     (ef-cyprus
+      ef-arbutus
+      ef-day
+      ef-duo-light
+      ef-kassio
+      ef-melissa-light
+      ef-summer)
+     :evening
+     (ef-deuteranopia-dark
+      ef-elea-dark
+      ef-maris-dark
+      ef-melissa-dark
+      ef-symbiosis
+      ef-trio-dark)))
   :config
-  (theme-buffet-modus-ef)
+  (theme-buffet-end-user)
   (theme-buffet-a-la-carte))
 
 ;; Change font color for keywords
