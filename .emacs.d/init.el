@@ -231,9 +231,6 @@
 ;; Enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
 
-;; Deleted repeating blank lines
-;;(add-hook 'before-save-hook 'whitespace-cleanup)
-
 ;; Make backspace erase tab
 (setq backward-delete-char-untabify-method 'hungry)
 
