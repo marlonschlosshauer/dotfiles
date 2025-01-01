@@ -1,21 +1,6 @@
 alias tick="ping www.google.de"
 alias tock="ping 8.8.8.8"
-alias remote="ssh pi@192.168.2.112"
 alias reload=". ~/.zshrc"
-alias dragon="fortune | cowsay -f dragon | lolcat"
 alias ..="cd .."
-alias calc="open -na Calculator"
-alias pwdc="pwd | pbcopy"
-alias rip=youtube-dl -x --audio-format mp3
-alias o="open ."
-alias slow"=arch -x86_64 zsh"
-
-alias port-mayd="cd ~/Projects/mayd-ui && npm run build && rm -rf ../creditplus/node_modules/@mayd/ui/build && mv -f build ../creditplus/node_modules/@mayd/ui/"
-
-alias port-adapter="cd ~/Projects/contentful-adapter && npm run build && rm -rf ../creditplus/node_modules/@becklyn/contentful-adapter/lib && mv -f lib ../creditplus/node_modules/@becklyn/contentful-adapter/"
-
-alias proxy-storyblok="local-ssl-proxy --source 3010 --target 3000 --cert ~/Documents/storyblok/localhost.pem --key ~/Documents/storyblok/localhost-key.pem"
-
+alias secret="node -e \"console.log(require('crypto').randomBytes(32).toString('base64url'))\""
 alias uncors="open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security"
-
-alias generate-secret="node -e \"console.log(require('crypto').randomBytes(32).toString('base64url'))\""
