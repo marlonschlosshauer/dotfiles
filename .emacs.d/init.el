@@ -247,8 +247,10 @@
   :init (editorconfig-mode))
 
 (use-package company
-  :bind (:map company-mode-map
-              ("TAB" . company-complete))
+  :bind
+	(:map
+	 company-mode-map
+   ("TAB" . company-complete))
   :custom
   (company-require-match nil)
   (company-show-numbers t)
@@ -268,11 +270,13 @@
   (lsp-completion-provider :company)
   (lsp-log-io nil)
   :functions lsp-execute-code-action-by-kind
-  :bind (:map lsp-command-map
-              ("g d" . lsp-goto-implementation)
-              ("g t" . lsp-goto-type-definition)
-              ("g r" . lsp-find-references)
-              ("r o" . lsp-remove-unused))
+  :bind
+	(:map
+	 lsp-command-map
+   ("g d" . lsp-goto-implementation)
+   ("g t" . lsp-goto-type-definition)
+   ("g r" . lsp-find-references)
+   ("r o" . lsp-remove-unused))
   :config
   (company-mode 1)
   (defun lsp-remove-unused ()
@@ -284,8 +288,10 @@
   :init (global-flycheck-mode))
 
 (use-package dired
-  :bind (:map dired-mode-map
-              ("." . dired-up-directory))
+  :bind
+	(:map
+	 dired-mode-map
+   ("." . dired-up-directory))
   :custom
   (dired-listing-switches "-alh"))
 
@@ -299,12 +305,14 @@
 
 (use-package org
   :mode (("\\.org\\'" . org-mode))
-  :bind (("C-c a" . org-agenda)
-         ("C-c c" . org-capture)
-         ("C-c l" . org-store-link)
-         :map org-mode-map
-         ("M-p" . org-metaup)
-         ("M-n" . org-metadown))
+  :bind
+	(("C-c a" . org-agenda)
+	 ("C-c c" . org-capture)
+	 ("C-c l" . org-store-link)
+	 :map
+	 org-mode-map
+	 ("M-p" . org-metaup)
+	 ("M-n" . org-metadown))
   :custom
   (org-return-follows-link t)
   (org-src-tab-acts-natively t)
@@ -323,12 +331,16 @@
 (use-package projectile
   :init (projectile-mode)
   :custom (projectile-use-git-grep t)
-  :bind (:map projectile-mode-map
-              ("C-c p" . projectile-command-map)))
+  :bind
+	(:map
+	 projectile-mode-map
+   ("C-c p" . projectile-command-map)))
 
 (use-package yasnippet
-  :bind (:map yas-minor-mode-map
-              ("C-c C-s" . yas-expand))
+  :bind
+	(:map
+	 yas-minor-mode-map
+   ("C-c C-s" . yas-expand))
   :init (yas-global-mode))
 
 (use-package which-key
