@@ -24,11 +24,6 @@
 (when (file-exists-p custom-file-path)
   (load-file custom-file-path))
 
-;; Setup use package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
 (setq package-install-upgrade-built-in t)
 
 ;;; Graphics
