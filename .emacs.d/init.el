@@ -476,6 +476,14 @@
 
 (global-unset-key (kbd "s-C"))
 
+(global-unset-key (kbd "C-<end>"))
+
+(global-unset-key (kbd "C-<home>"))
+
+(global-unset-key (kbd "C-<prior>"))
+
+(global-unset-key (kbd "C-<next>"))
+
 ;; Remove scratch message
 (setq initial-scratch-message "\n")
 
