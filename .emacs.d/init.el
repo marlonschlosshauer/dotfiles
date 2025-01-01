@@ -335,7 +335,14 @@
          ("C-c c" . gpte-abort)
          ("C-c m" . gptel-menu))
   :custom
-  (gptel-api-key (get-authinfo-value "api.openai.com" "apikey")))
+  (gptel-api-key
+   (let ((match (auth-source-search :host "api.openai.com" :user "apikey")))
+     (when match
+       (let ((secret (plist-get (car match) :secret)))
+         (when secret
+           (if (functionp secret)
+               (funcall secret)
+             secret)))))))
 
 (use-package xml-format
   :defer t)
