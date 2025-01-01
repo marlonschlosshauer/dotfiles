@@ -15,7 +15,6 @@
 ;; Set default dirs
 (setq default-directory "~/")
 (setq custom-file-path (concat user-emacs-directory "/custom.el"))
-(setq custom-file custom-file-path)
 
 ;; Create custom file if not there
 (if (not (file-exists-p custom-file-path))
