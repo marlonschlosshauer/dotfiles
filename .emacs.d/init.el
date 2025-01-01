@@ -1,32 +1,131 @@
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+(use-package emacs
+  :bind
+  (:map
+   global-map
+   (("M-SPC" . pop-global-mark)
+    ("M-l" . mark-word)
+    ("C-M-l".  set-mark-command)
+    ("M-n". scroll-up-command)
+    ("M-p". scroll-down-command)
+    ("M-z". zap-up-to-char)
+    ("M-g". goto-line)
+    ("s-n". end-of-buffer)
+    ("s-p". beginning-of-buffer)
+    ("C-c v". scratch-buffer)
+    ("s-t" . nil)
+    ("s-C" . nil)
+    ("C-<end>" . nil)
+    ("C-<home>". nil)
+    ("C-<prior>" . nil)
+    ("C-<next>". nil)))
+  :custom
+  ;; Fix emacs looking for incorrect melpa certifications
+  (gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+  ;; Turn on upgrades
+  (package-install-upgrade-built-in t)
+  ;; Performance
+  (gc-cons-threshold 100000000)
+  (read-process-output-max 10000000)
+  ;; Set default dirs
+  (default-directory "~/")
+  ;; Make line numbers 4 digits + space
+  (linum-format "%4d  ")
+  ;; Make focus help window on appear
+  (help-window-select t)
+  ;; Remove splash screen
+  (inhibit-splash-screen t)
+  ;; Turn off title bar icon
+  (ns-use-proxy-icon nil)
+  ;; Remove title
+  ( frame-title-format nil)
+  ;; Stop frames from opening in other windows!
+  (display-buffer-base-action
+   '((display-buffer-reuse-window
+      display-buffer-reuse-mode-window
+      display-buffer-same-window
+      display-buffer-in-previous-window)))
+  ;; Make confirmations less annoying
+  (use-dialog-box nil)
+  ;; Preserve position on scrolling
+  (scroll-preserve-screen-position t)
+  ;; Repeat pop
+  ( set-mark-command-repeat-pop t)
+  ;; Make backspace erase tab
+  (backward-delete-char-untabify-method 'hungry)
+  ;; Setup indentation
+  (indent-tabs-mode nil)
+  (indent-tabs-mode t)
+  (tab-width 2)
+  ;; Stop process spamming mini buffer
+  (comint-process-echoes t)
+  ;; Turn off error sound
+  (ring-bell-function 'ignore)
+  ;; Turn off creation of "~" temp files
+  (make-backup-files nil)
+  (auto-save-default nil)
+  (create-lockfiles nil)
+  ;; Grammar
+  (major-mode-remap-alist
+   '((yaml-mode . yaml-ts-mode)
+     (js-mode . js-ts-mode)
+     (typescript-mode . typescript-ts-mode)
+     (tsx-mode . tsx-ts-mode)))
+  ;; Set grammar sources
+  (treesit-language-source-alist
+   '((html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+  ;; German keyboard binding, by making emasc ignore right-alt key
+  (ns-right-alternate-modifier nil)
+  ;; Remove scratch message
+  (initial-scratch-message "\n")
+  :init
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/") t)
+  ;; Make macOS bar same color as theme
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  :config
+  ;; Change font color for keywords
+  (global-font-lock-mode t)
+  ;; Enable line wrapping
+  (global-visual-line-mode)
+  ;; Highlight current line
+  (global-hl-line-mode)
+  ;; Turn on line numbers
+  (global-display-line-numbers-mode)
+  ;; Set font size 18pt
+  (set-face-attribute 'default nil :height 180)
+  ;; Remove ugly menu bar
+  (menu-bar-mode -1)
+  ;; Remove ugly top bar
+  (tool-bar-mode -1)
+  ;; Remove ugly scroll bar
+  (scroll-bar-mode -1)
+  ;; Turn auto reload of buffer (on file change) on
+  (global-auto-revert-mode t)
+  ;; Make highlighted text be replaced if something is typed
+  (delete-selection-mode 1)
+  (setenv "LANG" "en_US.UTF-8")
+  ;; Enable functions
+  (put 'upcase-region 'disabled nil)
+  (put 'downcase-region 'disabled nil)
+  (put 'narrow-to-region 'disabled nil)
+	;; Create custom file if not there
+	(setq custom-file-path (concat user-emacs-directory "/custom.el"))
+	(if (not (file-exists-p custom-file-path))
+			(write-region "" nil custom-file-path))
+	;; Load emacs custom stuff
+	(when (file-exists-p custom-file-path)
+		(load-file custom-file-path))
+  ;; Load env related stuff (work vs home)
+  (let ((path (concat user-emacs-directory "/env/" (or (getenv "emacs-env") "home") ".el")))
+    (when (file-exists-p path)
+      (load-file path))))
 
-;; Fix emacs looking for incorrect melpa certifications
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
-;; Load packages
-(package-initialize)
-
-;; Performance
-(setq gc-cons-threshold 100000000)
-(setq read-process-output-max 10000000)
-
-;; Set default dirs
-(setq default-directory "~/")
-(setq custom-file-path (concat user-emacs-directory "/custom.el"))
-
-;; Create custom file if not there
-(if (not (file-exists-p custom-file-path))
-    (write-region "" nil custom-file-path))
-
-;; Load emacs custom stuff
-(when (file-exists-p custom-file-path)
-  (load-file custom-file-path))
-
-(setq package-install-upgrade-built-in t)
-
-;;; Graphics
 (use-package rainbow-delimiters
   :hook  ((tsx-ts-mode . rainbow-delimiters-mode)
           (typescript-ts-mode . rainbow-delimiters-mode)
@@ -109,79 +208,11 @@
   (theme-buffet-end-user)
   (theme-buffet-a-la-carte))
 
-;; Change font color for keywords
-(global-font-lock-mode t)
-
-;; Enable line wrapping
-(global-visual-line-mode)
-
-;; Highlight current line
-(global-hl-line-mode)
-
-;; Make line numbers 4 digits + space
-(setq linum-format "%4d  ")
-
-;; Turn on line numbers
-(global-display-line-numbers-mode)
-
-;; Set font size 18pt
-(set-face-attribute 'default nil :height 180)
-
-;; Remove ugly menu bar
-(menu-bar-mode -1)
-
-;; Remove ugly top bar
-(tool-bar-mode -1)
-
-;; Remove ugly scroll bar
-(scroll-bar-mode -1)
-
-;; Make focus help window on appear
-(setq help-window-select t)
-
-;; Remove splash screen
-(setq inhibit-splash-screen t)
-
-;; Make macOS bar same color as theme
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-
-;; Turn off title bar icon
-(setq ns-use-proxy-icon nil)
-(setq frame-title-format nil)
-
-;; Stop frames from opening in other windows!
-(setq display-buffer-base-action
-      '((display-buffer-reuse-window
-         display-buffer-reuse-mode-window
-         display-buffer-same-window
-         display-buffer-in-previous-window)))
-
-;; Make confirmations less annoying
-(setq use-dialog-box nil)
-
-;;; Movement
-(global-set-key (kbd "M-SPC") 'pop-global-mark)
-(global-set-key (kbd "M-l") 'mark-word)
-(global-set-key (kbd "C-M-l") 'set-mark-command)
-(global-set-key (kbd "M-n") 'scroll-up-command)
-(global-set-key (kbd "M-p") 'scroll-down-command)
-(global-set-key (kbd "M-z") 'zap-up-to-char)
-(global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "s-n") 'end-of-buffer)
-(global-set-key (kbd "s-p") 'beginning-of-buffer)
-
-;; Preserve position on scrolling
-(setq scroll-preserve-screen-position t)
-
-;; Repeat pop
-(setq-default set-mark-command-repeat-pop t)
-
 (use-package avy
   :bind (("s-." . avy-goto-char)
          ("s-r" . avy-resume)
          ("s-g" . avy-goto-line)))
 
-;;; Editing
 (use-package undo-tree
   :custom
   (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
@@ -215,25 +246,6 @@
 (use-package editorconfig
   :init (editorconfig-mode))
 
-;; Make highlighted text be replaced if something is typed
-(delete-selection-mode 1)
-
-;; Enable x-case-region
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-;; Enable narrow-to-region
-(put 'narrow-to-region 'disabled nil)
-
-;; Make backspace erase tab
-(setq backward-delete-char-untabify-method 'hungry)
-
-;; Setup indentation
-(setq-default indent-tabs-mode nil)
-(setq indent-tabs-mode t)
-(setq tab-width 2)
-
-;;; Projects
 (use-package company
   :bind (:map company-mode-map
               ("TAB" . company-complete))
@@ -271,7 +283,6 @@
 (use-package flycheck
   :init (global-flycheck-mode))
 
-;;; Tools
 (use-package dired
   :bind (:map dired-mode-map
               ("." . dired-up-directory))
@@ -302,7 +313,6 @@
   :config
   ;; Remove line-numbers in agenda
   (add-hook 'org-agenda-mode-hook (lambda() (display-line-numbers-mode -1)))
-
   ;; Force org to open files in dired, instead of finder
   (add-to-list 'org-file-apps '(directory . emacs)))
 
@@ -347,21 +357,6 @@
   :config
   (eat-eshell-mode))
 
-;; Stop process spamming mini buffer
-(setq comint-process-echoes t)
-
-;; Turn auto reload of buffer (on file change) on
-(global-auto-revert-mode t)
-
-;; Turn off error sound
-(setq ring-bell-function 'ignore)
-
-;; Turn off creation of "~" temp files
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-(setq create-lockfiles nil)
-
-;;; Navigation
 (use-package ivy
   :init (ivy-mode)
   :custom (ivy-initial-inputs-alist nil)
@@ -399,7 +394,6 @@
   :bind (("C-M-f" . sp-forward-sexp)
          ("C-M-b" . sp-backward-sexp)))
 
-;;; Languages
 (use-package objc-mode
   :mode (("\\.mmm?\\'" . objc-mode)
          ("\\.m?\\'" . objc-mode)))
@@ -437,7 +431,6 @@
 
 (use-package go-mode)
 
-;;; Security
 (use-package epa
   :custom
   (epg-gpg-program "gpg"))
@@ -446,50 +439,3 @@
   :after epa
   :init
   (pinentry-start))
-
-;; Grammar
-(setq major-mode-remap-alist
-      '((yaml-mode . yaml-ts-mode)
-        (js-mode . js-ts-mode)
-        (typescript-mode . typescript-ts-mode)
-        (tsx-mode . tsx-ts-mode)))
-
-(setq treesit-language-source-alist
-      '((html "https://github.com/tree-sitter/tree-sitter-html")
-        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-        (json "https://github.com/tree-sitter/tree-sitter-json")
-        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
-
-;;; Env
-(setenv "LANG" "en_US.UTF-8")
-
-;;; Binds
-;; German keyboard binding, by making emasc ignore right-alt key
-(setq ns-right-alternate-modifier nil)
-
-(global-set-key (kbd "C-c v") 'scratch-buffer)
-
-(global-unset-key (kbd "s-t"))
-
-(global-unset-key (kbd "s-C"))
-
-(global-unset-key (kbd "C-<end>"))
-
-(global-unset-key (kbd "C-<home>"))
-
-(global-unset-key (kbd "C-<prior>"))
-
-(global-unset-key (kbd "C-<next>"))
-
-;; Remove scratch message
-(setq initial-scratch-message "\n")
-
-;;; End of packages
-;; Load env related stuff (work vs home)
-(let ((path (concat "~/.emacs.d/env/" (or (getenv "emacs-env") "home") ".el")))
-  (when (file-exists-p path)
-    (load-file path)))
-
