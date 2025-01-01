@@ -177,10 +177,13 @@
       ef-night
       ef-tritanopia-dark
       ef-winter
-      ef-dark)
+      ef-dark
+			ef-dream)
      :twilight
      (ef-bio
-      ef-cherie)
+      ef-cherie
+			ef-owl
+			ef-rosa)
      :morning
      (ef-elea-light
       ef-maris-light
@@ -190,7 +193,8 @@
      (ef-deuteranopia-light
       ef-frost
       ef-light
-      ef-trio-light)
+      ef-trio-light
+			ef-reverie)
      :afternoon
      (ef-cyprus
       ef-arbutus
