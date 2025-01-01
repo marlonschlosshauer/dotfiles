@@ -324,6 +324,7 @@
 ;;; Navigation
 (use-package ivy
   :init (ivy-mode)
+  :custom (ivy-initial-inputs-alist nil)
   :bind ("C-x C-r" . ivy-resume))
 
 (use-package ivy-xref
