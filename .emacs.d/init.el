@@ -454,8 +454,6 @@
   (typescript-indent-level 2)
   (typescript-auto-indent-flag t))
 
-(use-package go-mode)
-
 (use-package epa
   :custom
   (epg-gpg-program "gpg"))
