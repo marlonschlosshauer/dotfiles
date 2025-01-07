@@ -133,7 +133,6 @@
            typescript-ts-mode
            js-ts-mode
            web-mode
-           scss-mode
            nxml-mode
            go-mode
            emacs-lisp-mode)
@@ -144,7 +143,6 @@
           typescript-ts-mode
           js-ts-mode
           web-mode
-          scss-mode
           nxml-mode
           go-mode
           emacs-lisp-mode)
@@ -155,7 +153,6 @@
            typescript-ts-mode
            js-ts-mode
            web-mode
-           scss-mode
            nxml-mode
            go-mode
            emacs-lisp-mode)
@@ -243,14 +240,12 @@
   :hook ((tsx-ts-mode
           typescript-ts-mode
           js-ts-mode
-          web-mode
-          scss-mode)
+          web-mode)
          . prettier-js-mode))
 
 (use-package emmet-mode
   :hook ((tsx-ts-mode
           web-mode
-          scss-mode
           nxml-mode)
          . emmet-mode))
 
