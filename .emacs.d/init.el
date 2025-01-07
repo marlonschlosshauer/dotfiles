@@ -13,7 +13,7 @@
     ("s-p". beginning-of-buffer)
 		("s-," . indent-region)
     ("C-c v". scratch-buffer)
-		("C-u" . undo)
+		("C-U" . undo)
 		("C-r" . undo-redo)
     ("s-t" . nil)
     ("s-C" . nil)
