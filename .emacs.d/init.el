@@ -134,6 +134,7 @@
            typescript-ts-mode
            js-ts-mode
            web-mode
+					 scss-mode
            nxml-mode
            go-mode
            emacs-lisp-mode)
@@ -144,6 +145,7 @@
           typescript-ts-mode
           js-ts-mode
           web-mode
+					scss-mode
           nxml-mode
           go-mode
           emacs-lisp-mode)
@@ -154,6 +156,7 @@
            typescript-ts-mode
            js-ts-mode
            web-mode
+					 scss-mode
            nxml-mode
            go-mode
            emacs-lisp-mode)
@@ -241,7 +244,8 @@
   :hook ((tsx-ts-mode
           typescript-ts-mode
           js-ts-mode
-          web-mode)
+          web-mode
+					scss-mode)
          . prettier-js-mode))
 
 (use-package emmet-mode
@@ -269,6 +273,7 @@
   :hook ((tsx-ts-mode . lsp)
          (typescript-ts-mode . lsp)
          (js-ts-mode . lsp)
+				 (scss-mode . lsp)
          (web-mode . lsp)
          (go-mode . lsp))
   :custom
@@ -424,9 +429,11 @@
 (use-package groovy-mode
   :mode (("\\.gradle?\\'" . groovy-mode)))
 
+(use-package scss-mode
+	:mode (("\\.scss\\'" . scss-mode)))
+
 (use-package web-mode
-  :mode (("\\.scss\\'" . web-mode)
-				 ("\\.css\\'" . web-mode)
+  :mode (("\\.css\\'" . web-mode)
          ("\\.html\\'" . web-mode)
          ("\\.php\\'" . web-mode))
   :custom
