@@ -429,7 +429,8 @@
   :mode (("\\.gradle?\\'" . groovy-mode)))
 
 (use-package web-mode
-  :mode (("\\.css\\'" . web-mode)
+  :mode (("\\.scss\\'" . web-mode)
+				 ("\\.css\\'" . web-mode)
          ("\\.html\\'" . web-mode)
          ("\\.php\\'" . web-mode))
   :custom
