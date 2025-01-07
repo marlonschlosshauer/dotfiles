@@ -118,6 +118,7 @@
   (put 'narrow-to-region 'disabled nil)
 	;; Create custom file if not there
 	(setq custom-file-path (concat user-emacs-directory "/custom.el"))
+	(setq custom-file custom-file-path)
 	(if (not (file-exists-p custom-file-path))
 			(write-region "" nil custom-file-path))
 	;; Load emacs custom stuff
