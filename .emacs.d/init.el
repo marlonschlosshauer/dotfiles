@@ -26,6 +26,7 @@
   (gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   ;; Turn on upgrades
   (package-install-upgrade-built-in t)
+	(custom-file (concat user-emacs-directory "/custom.el"))
   ;; Performance
   (gc-cons-threshold 100000000)
   (read-process-output-max 10000000)
@@ -117,13 +118,11 @@
   (put 'downcase-region 'disabled nil)
   (put 'narrow-to-region 'disabled nil)
 	;; Create custom file if not there
-	(setq custom-file-path (concat user-emacs-directory "/custom.el"))
-	(setq custom-file custom-file-path)
-	(if (not (file-exists-p custom-file-path))
-			(write-region "" nil custom-file-path))
+	(if (not (file-exists-p custom-file))
+			(write-region "" nil custom-file))
 	;; Load emacs custom stuff
-	(when (file-exists-p custom-file-path)
-		(load-file custom-file-path))
+	(when (file-exists-p custom-file)
+		(load-file custom-file))
   ;; Load env related stuff (work vs home)
   (let ((path (concat user-emacs-directory "/env/" (or (getenv "emacs-env") "home") ".el")))
     (when (file-exists-p path)
