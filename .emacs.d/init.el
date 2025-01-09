@@ -245,7 +245,8 @@
           typescript-ts-mode
           js-ts-mode
           web-mode
-					scss-mode)
+					scss-mode
+					js-json-mode)
          . prettier-js-mode))
 
 (use-package emmet-mode
