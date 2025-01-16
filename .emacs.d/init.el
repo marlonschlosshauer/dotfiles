@@ -28,6 +28,9 @@
   (gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   ;; Turn on upgrades
   (package-install-upgrade-built-in t)
+	;; Always install stuff
+	(use-package-always-ensure t)
+	;; Set custom file
 	(custom-file (concat user-emacs-directory "/custom.el"))
   ;; Performance
   (gc-cons-threshold 100000000)
