@@ -92,6 +92,8 @@
   ;; Make macOS bar same color as theme
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   :config
+	;; Capital letters are word seperators
+	(global-subword-mode t)
   ;; Change font color for keywords
   (global-font-lock-mode t)
   ;; Enable line wrapping
