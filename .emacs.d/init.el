@@ -257,16 +257,6 @@
 (use-package editorconfig
   :init (editorconfig-mode))
 
-(use-package company
-  :bind
-	(:map
-	 company-mode-map
-   ("TAB" . company-complete))
-  :custom
-  (company-require-match nil)
-  (company-show-numbers t)
-  (company-selection-wrap-around t))
-
 (use-package lsp-mode
   :commands lsp
   :after (flycheck)
@@ -279,7 +269,6 @@
   :custom
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-diagnostics-provider :flycheck)
-  (lsp-completion-provider :company)
   (lsp-log-io nil)
   :functions lsp-execute-code-action-by-kind
   :bind
@@ -290,7 +279,6 @@
    ("g r" . lsp-find-references)
    ("r o" . lsp-remove-unused))
   :config
-  (company-mode 1)
   (defun lsp-remove-unused ()
     "Run the remove unused imports code action."
     (interactive)
