@@ -71,6 +71,8 @@
   (make-backup-files nil)
   (auto-save-default nil)
   (create-lockfiles nil)
+	;; Save mini-buffer history
+	(savehist-mode)
   ;; Grammar
   (major-mode-remap-alist
    '((yaml-mode . yaml-ts-mode)
@@ -400,19 +402,6 @@
 
 (use-package marginalia
   :init (marginalia-mode))
-
-(use-package savehist
-  :init (savehist-mode))
-
-(use-package objc-mode
-  :mode (("\\.mmm?\\'" . objc-mode)
-         ("\\.m?\\'" . objc-mode)))
-
-(use-package yaml-mode
-  :mode (("\\.yml?\\'" . yaml-mode)))
-
-(use-package groovy-mode
-  :mode (("\\.gradle?\\'" . groovy-mode)))
 
 (use-package scss-mode
 	:mode (("\\.scss\\'" . scss-mode)))
