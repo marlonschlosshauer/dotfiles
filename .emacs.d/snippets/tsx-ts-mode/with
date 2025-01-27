@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: withProvider
+# key: with
+# --
+export const with$1 = <P extends $2{}>(Component: React.FC<P>) => {
+    return (props: P) => (
+        <$1Provider>
+            <Component {...props} />
+        </$1Provider>
+    );
+};
+
