@@ -24,6 +24,7 @@
     ("C-<prior>" . nil)
     ("C-<next>". nil)))
   :custom
+	(initial-major-mode 'org-mode)
   ;; Fix emacs looking for incorrect melpa certifications
   (gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   ;; Turn on upgrades
