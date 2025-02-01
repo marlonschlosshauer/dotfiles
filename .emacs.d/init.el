@@ -433,6 +433,19 @@
   (typescript-indent-level 2)
   (typescript-auto-indent-flag t))
 
+(use-package clojure-ts-mode
+	:custom
+	(clojure-ts-comment-macro-font-lock-body t)
+	(clojure-ts-toplevel-inside-comment-form t))
+
+(use-package cider
+	:custom
+	(cider-show-error-buffer 'only-in-repl)
+	:bind
+	(:map
+	 cider-mode-map
+	 ("C-l" . cider-repl-clear-buffer)))
+
 (use-package epa
   :custom
   (epg-gpg-program "gpg"))
