@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: stfu
-# key: stfu
-# --
-/* @ts-ignore */$1
