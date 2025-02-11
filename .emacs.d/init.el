@@ -14,6 +14,8 @@
 		("s-," . indent-region)
     ("C-c v". scratch-buffer)
 		("C-:" . replace-regexp)
+		("C-," . comment-line)
+		("C-;" . comment-region)
 		("C-z". undo)
 		("C-r" . undo-redo)
     ("s-t" . nil)
