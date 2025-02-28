@@ -362,7 +362,7 @@
   :bind (("C-c h" . gptel)
          ("C-c RET" . gptel-send)
          ("C-c r" . gptel-rewrite)
-         ("C-c c" . gpte-abort)
+         ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu))
   :custom
   (gptel-api-key
