@@ -229,10 +229,6 @@
   (theme-buffet-end-user)
   (theme-buffet-a-la-carte))
 
-(use-package avy
-  :bind (("s-." . avy-goto-char)
-         ("s-r" . avy-resume)
-         ("s-g" . avy-goto-line)))
 
 (use-package undo-tree
   :custom
@@ -381,10 +377,18 @@
   :config
   (eat-eshell-mode))
 
+(use-package swiper
+  :after ivy
+  :bind (("s-s" . swiper)
+         ("s-S" . swiper-thing-at-point)))
+
+(use-package avy
+  :bind (("s-." . avy-goto-char)))
+
 (use-package ivy
   :init (ivy-mode)
   :custom (ivy-initial-inputs-alist nil)
-  :bind ("C-x C-r" . ivy-resume))
+  :bind ("s-r" . ivy-resume))
 
 (use-package ivy-xref
   :after ivy
@@ -398,11 +402,6 @@
 (use-package counsel-projectile
   :after (counsel projectile)
   :init (counsel-projectile-mode))
-
-(use-package swiper
-  :after ivy
-  :bind (("C-s" . swiper)
-         ("C-S-s" . swiper-thing-at-point)))
 
 (use-package marginalia
   :init (marginalia-mode))
