@@ -365,6 +365,7 @@
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu))
 	:custom
+	(gptel-default-mode 'org-mode)
 	(gptel-model 'claude-3-5-sonnet-20241022)
 	(gptel-api-key
    (let ((match (auth-source-search :host "api.anthropic.com" :user "apikey")))
