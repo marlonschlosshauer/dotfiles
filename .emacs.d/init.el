@@ -378,7 +378,8 @@
 	:config
 	(setq gptel-backend
 	 (gptel-make-anthropic "Claude"
-		 :stream t)))
+		 :stream t
+		 :key gptel-api-key)))
 
 (use-package xml-format
   :defer t)
