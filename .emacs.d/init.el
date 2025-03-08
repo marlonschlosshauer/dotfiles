@@ -234,6 +234,20 @@
          ("s-r" . avy-resume)
          ("s-g" . avy-goto-line)))
 
+(use-package ivy
+  :init (ivy-mode)
+  :custom (ivy-initial-inputs-alist nil)
+  :bind ("C-x C-r" . ivy-resume))
+
+(use-package swiper
+  :after ivy
+  :bind (("C-s" . swiper)
+         ("C-S-s" . swiper-thing-at-point)))
+
+(use-package counsel
+  :after ivy
+  :init (counsel-mode))
+
 (use-package back-button
 	:bind (("s-f" . back-button-global-forward)
 				 ("s-b" . back-button-global-backward)))
@@ -352,6 +366,10 @@
 	 projectile-mode-map
    ("C-c p" . projectile-command-map)))
 
+(use-package counsel-projectile
+  :after (counsel projectile)
+  :init (counsel-projectile-mode))
+
 (use-package yasnippet
   :bind
 	(:map
@@ -392,28 +410,10 @@
   :config
   (eat-eshell-mode))
 
-(use-package ivy
-  :init (ivy-mode)
-  :custom (ivy-initial-inputs-alist nil)
-  :bind ("C-x C-r" . ivy-resume))
-
 (use-package ivy-xref
   :after ivy
   :custom
   (xref-show-xrefs-function #'ivy-xref-show-xrefs))
-
-(use-package counsel
-  :after ivy
-  :init (counsel-mode))
-
-(use-package counsel-projectile
-  :after (counsel projectile)
-  :init (counsel-projectile-mode))
-
-(use-package swiper
-  :after ivy
-  :bind (("C-s" . swiper)
-         ("C-S-s" . swiper-thing-at-point)))
 
 (use-package marginalia
   :init (marginalia-mode))
