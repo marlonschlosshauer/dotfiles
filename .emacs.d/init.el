@@ -234,6 +234,10 @@
          ("s-r" . avy-resume)
          ("s-g" . avy-goto-line)))
 
+(use-package back-button
+	:bind (("s-f" . back-button-global-forward)
+				 ("s-b" . back-button-global-backward)))
+
 (use-package undo-tree
   :custom
   (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
