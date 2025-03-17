@@ -185,48 +185,8 @@
 (use-package theme-buffet
   :after (ef-themes)
   :custom
-  (theme-buffet-end-user
-   '(:night
-     (ef-autumn
-      ef-duo-dark
-      ef-night
-      ef-tritanopia-dark
-      ef-winter
-      ef-dark
-			ef-dream)
-     :twilight
-     (ef-bio
-      ef-cherie
-			ef-owl
-			ef-rosa)
-     :morning
-     (ef-elea-light
-      ef-maris-light
-      ef-spring
-      ef-tritanopia-light)
-     :day
-     (ef-deuteranopia-light
-      ef-frost
-      ef-light
-      ef-trio-light
-			ef-reverie)
-     :afternoon
-     (ef-cyprus
-      ef-arbutus
-      ef-day
-      ef-duo-light
-      ef-kassio
-      ef-melissa-light
-      ef-summer)
-     :evening
-     (ef-deuteranopia-dark
-      ef-elea-dark
-      ef-maris-dark
-      ef-melissa-dark
-      ef-symbiosis
-      ef-trio-dark)))
+	(theme-buffet-menu 'modus-ef)
   :config
-  (theme-buffet-end-user)
   (theme-buffet-a-la-carte))
 
 (use-package avy
