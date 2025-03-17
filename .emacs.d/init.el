@@ -208,7 +208,7 @@
   :init (counsel-mode))
 
 (use-package back-button
-	:bind (("s-f" . back-button-global-forward)
+	:bind	(("s-f" . back-button-global-forward)
 				 ("s-b" . back-button-global-backward)))
 
 (use-package undo-tree
@@ -358,9 +358,9 @@
              secret))))))
 	:config
 	(setq gptel-backend
-	 (gptel-make-anthropic "Claude"
-		 :stream t
-		 :key gptel-api-key)))
+				(gptel-make-anthropic "Claude"
+					:stream t
+					:key gptel-api-key)))
 
 (use-package xml-format
   :defer t)
