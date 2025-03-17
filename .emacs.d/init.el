@@ -184,10 +184,9 @@
 
 (use-package theme-buffet
   :after (ef-themes)
-  :custom
-	(theme-buffet-menu 'modus-ef)
   :config
-  (theme-buffet-a-la-carte))
+  (theme-buffet-modus-ef)
+	(theme-buffet-a-la-carte))
 
 (use-package avy
   :bind (("s-." . avy-goto-char)
