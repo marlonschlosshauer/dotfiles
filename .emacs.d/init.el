@@ -208,8 +208,10 @@
   :init (counsel-mode))
 
 (use-package back-button
-	:bind	(("s-f" . back-button-global-forward)
-				 ("s-b" . back-button-global-backward)))
+	:bind	(("s-f" . back-button-local-forward)
+				 ("s-b" . back-button-local-backward)
+				 ("s-F" . back-button-global-forward)
+				 ("s-B" . back-button-global-backward)))
 
 (use-package undo-tree
   :custom
