@@ -261,6 +261,7 @@
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-diagnostics-provider :flycheck)
   (lsp-log-io nil)
+	(lsp-clients-typescript-prefer-use-project-ts-server t)
   :functions lsp-execute-code-action-by-kind
   :bind
 	(:map
