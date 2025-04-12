@@ -349,21 +349,15 @@
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu))
 	:custom
-	(gptel-default-mode 'org-mode)
-	(gptel-model 'claude-3-5-sonnet-20241022)
+	(gptel-model 'o3-mini)
 	(gptel-api-key
-   (let ((match (auth-source-search :host "api.anthropic.com" :user "apikey")))
+   (let ((match (auth-source-search :host "api.openai.com" :user "apikey")))
      (when match
        (let ((secret (plist-get (car match) :secret)))
          (when secret
            (if (functionp secret)
                (funcall secret)
-             secret))))))
-	:config
-	(setq gptel-backend
-				(gptel-make-anthropic "Claude"
-					:stream t
-					:key gptel-api-key)))
+             secret)))))))
 
 (use-package xml-format
   :defer t)
