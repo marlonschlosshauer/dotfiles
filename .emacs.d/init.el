@@ -3,6 +3,7 @@
   (:map
    global-map
    (("M-SPC" . pop-global-mark)
+		("C-q" . pop-global-mark)
     ("M-l" . mark-word)
     ("C-M-l".  set-mark-command)
     ("M-n". scroll-up-command)
@@ -16,8 +17,8 @@
 		("C-:" . replace-regexp)
 		("C-," . comment-line)
 		("C-;" . comment-region)
-		("C-z". undo)
-		("C-r" . undo-redo)
+		("C-r" . undo-tree-redo)
+		("C-u" . undo-tree-undo)
     ("s-t" . nil)
     ("s-C" . nil)
 		("s-h" . nil)
