@@ -79,21 +79,6 @@
   (create-lockfiles nil)
 	;; Save mini-buffer history
 	(savehist-mode)
-  ;; Grammar
-  (major-mode-remap-alist
-   '((yaml-mode . yaml-ts-mode)
-     (js-mode . js-ts-mode)
-     (typescript-mode . typescript-ts-mode)
-     (tsx-mode . tsx-ts-mode)))
-  ;; Set grammar sources
-  (treesit-language-source-alist
-   '((html "https://github.com/tree-sitter/tree-sitter-html")
-     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-     (json "https://github.com/tree-sitter/tree-sitter-json")
-     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
   ;; German keyboard binding, by making emasc ignore right-alt key
   (ns-right-alternate-modifier nil)
   ;; Remove scratch message
@@ -141,6 +126,22 @@
   (let ((path (concat user-emacs-directory "/env/" (or (getenv "emacs-env") "home") ".el")))
     (when (file-exists-p path)
       (load-file path))))
+
+(use-package treesit
+	:custom
+  (major-mode-remap-alist
+   '((yaml-mode . yaml-ts-mode)
+     (js-mode . js-ts-mode)
+     (typescript-mode . typescript-ts-mode)
+     (tsx-mode . tsx-ts-mode)))
+  (treesit-language-source-alist
+   '((html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml"))))
 
 (use-package rainbow-delimiters
   :hook  ((tsx-ts-mode
