@@ -335,7 +335,13 @@
 
 (use-package counsel-projectile
   :after (counsel projectile)
-  :init (counsel-projectile-mode))
+  :init (counsel-projectile-mode)
+	:config
+	(defun mark-before-call (orig-fn &rest args)
+		(push-mark (point))
+		(apply orig-fn args))
+	(advice-add 'counsel-projectile-grep :around #'mark-before-call)
+	(advice-add 'counsel-projectile-find-file :around #'mark-before-call))
 
 (use-package yasnippet
   :bind
