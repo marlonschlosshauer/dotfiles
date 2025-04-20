@@ -325,7 +325,9 @@
 
 (use-package projectile
   :init (projectile-mode)
-  :custom (projectile-use-git-grep t)
+  :custom
+	(projectile-use-git-grep t)
+	(projectile-sort-order 'recentf)
   :bind
 	(:map
 	 projectile-mode-map
