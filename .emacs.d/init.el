@@ -352,7 +352,6 @@
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu))
 	:custom
-	(gptel-model 'o3-mini)
 	(gptel-api-key
    (let ((match (auth-source-search :host "api.openai.com" :user "apikey")))
      (when match
