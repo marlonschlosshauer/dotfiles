@@ -14,5 +14,7 @@
 !.ideavimrc
 !.emacs.d/snippets/
 !.emacs.d/snippets/**
+!.emacs.d/packages/
+!.emacs.d/packages/**
 .emacs.d/snippets/*/.yas-compiled-snippets.el
 !.emacs.d/functions.el
