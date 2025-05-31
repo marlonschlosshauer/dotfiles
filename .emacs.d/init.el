@@ -51,7 +51,9 @@
   ;; Turn off title bar icon
   (ns-use-proxy-icon nil)
   ;; Remove title
-  ( frame-title-format nil)
+  (frame-title-format nil)
+	;; Remove modeline
+	(mode-line-format nil)
   ;; Stop frames from opening in other windows!
   (display-buffer-base-action
    '((display-buffer-reuse-window
@@ -67,7 +69,7 @@
   ;; Make backspace erase tab
   (backward-delete-char-untabify-method 'hungry)
   ;; Setup indentation
-  (indent-tabs-mode t)
+  (indent-tabs-mode nil)
   (tab-width 2)
   ;; Stop process spamming mini buffer
   (comint-process-echoes t)
@@ -78,7 +80,7 @@
   (auto-save-default nil)
   (create-lockfiles nil)
 	;; Save mini-buffer history
-	(savehist-mode)
+	(savehist-mode 1)
   ;; German keyboard binding, by making emasc ignore right-alt key
   (ns-right-alternate-modifier nil)
   ;; Remove scratch message
@@ -183,16 +185,21 @@
 (use-package diff-hl
   :init (global-diff-hl-mode))
 
-(use-package mood-line
-  :init (mood-line-mode))
-
 (use-package ef-themes
   :demand t)
 
 (use-package theme-buffet
   :after (ef-themes)
+	:custom
+	((theme-buffet-end-user
+		'(:night     (ef-bio ef-tritanopia-dark ef-rosa)
+			:twilight  (ef-autumn ef-trio-dark ef-cherie)
+			:morning   (ef-reverie ef-day ef-duo-light)
+			:day       (ef-arbutus ef-elea-light ef-eagle)
+			:afternoon (ef-cyprus ef-kassio ef-trio-light)
+			:evening   (ef-dream ef-melissa-dark ef-owl))))
   :config
-  (theme-buffet-modus-ef)
+  (theme-buffet-end-user)
 	(theme-buffet-a-la-carte))
 
 (use-package avy
@@ -221,10 +228,11 @@
   :init (counsel-mode))
 
 (use-package back-button
-	:bind	(("s-f" . back-button-local-forward)
-				 ("s-b" . back-button-local-backward)
-				 ("s-F" . back-button-global-forward)
-				 ("s-B" . back-button-global-backward)))
+	:bind
+	(("s-f" . back-button-local-forward)
+	 ("s-b" . back-button-local-backward)
+	 ("s-F" . back-button-global-forward)
+	 ("s-B" . back-button-global-backward)))
 
 (use-package undo-tree
   :custom
@@ -271,6 +279,7 @@
          (web-mode . lsp)
          (go-mode . lsp))
   :custom
+  ;; (lsp-eldoc-enable-hover t)
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-diagnostics-provider :flycheck)
   (lsp-log-io nil)
@@ -289,7 +298,42 @@
     (interactive)
     (lsp-execute-code-action-by-kind "source.removeUnusedImports.ts")))
 
+(use-package eldoc)
+
+(use-package eldoc-box
+  :after eldoc
+  :ensure t
+  :bind ("C-z" . eldoc-box-help-at-point))
+
 (use-package flycheck
+  :after eldoc
+  :preface
+  ;; Taken from https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc#merge-flycheck-and-eldoc-messages
+  (defun mp-flycheck-eldoc (callback &rest _ignored)
+    "Print flycheck messages at point by calling CALLBACK."
+    (when-let ((flycheck-errors (and flycheck-mode (flycheck-overlay-errors-at (point)))))
+      (mapc
+       (lambda (err)
+         (funcall callback
+                  (format "%s: %s"
+                          (let ((level (flycheck-error-level err)))
+                            (pcase level
+                              ('info (propertize "I" 'face 'flycheck-error-list-info))
+                              ('error (propertize "E" 'face 'flycheck-error-list-error))
+                              ('warning (propertize "W" 'face 'flycheck-error-list-warning))
+                              (_ level)))
+                          (flycheck-error-message err))
+                  :thing (or (flycheck-error-id err)
+                             (flycheck-error-group err))
+                  :face 'font-lock-doc-face))
+       flycheck-errors)))
+
+  (defun mp-flycheck-prefer-eldoc ()
+    (add-hook 'eldoc-documentation-functions #'mp-flycheck-eldoc nil t)
+    (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
+    (setq flycheck-display-errors-function nil)
+    (setq flycheck-help-echo-function nil))
+  :hook ((flycheck-mode . mp-flycheck-prefer-eldoc))
   :init (global-flycheck-mode))
 
 (use-package dired
@@ -390,6 +434,15 @@
 
 (use-package marginalia
   :init (marginalia-mode))
+
+(use-package spacious-padding
+  :custom
+  (spacious-padding-subtle-mode-line t)
+	:config
+	(spacious-padding-mode 1))
+
+(use-package dimmer
+  :config (dimmer-mode))
 
 (use-package scss-mode
 	:mode (("\\.scss\\'" . scss-mode)))
