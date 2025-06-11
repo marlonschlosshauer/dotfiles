@@ -367,6 +367,7 @@
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu))
 	:custom
+	(gptel-model 'gpt-4.1-mini)
 	(gptel-api-key
    (let ((match (auth-source-search :host "api.openai.com" :user "apikey")))
      (when match
