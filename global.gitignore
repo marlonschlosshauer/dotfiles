@@ -9,5 +9,11 @@
 *~
 
 # temp files
-
 bun.lockb
+
+# develop files
+.vercel
+
+# env files
+.env
+.env.local
