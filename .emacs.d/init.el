@@ -8,8 +8,6 @@
     ("C-M-l".  set-mark-command)
     ("M-n". scroll-up-command)
     ("M-p". scroll-down-command)
-    ("M-z". zap-up-to-char)
-    ("M-g". goto-line)
     ("s-n". end-of-buffer)
     ("s-p". beginning-of-buffer)
 		("s-," . indent-region)
