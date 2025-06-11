@@ -191,8 +191,17 @@
 
 (use-package theme-buffet
   :after (ef-themes)
+	:custom
+	((theme-buffet-end-user
+		'(
+      :night     (ef-bio ef-tritanopia-dark ef-rosa)
+			:twilight  (ef-autumn ef-trio-dark ef-cherie)
+			:morning   (ef-reverie ef-day ef-duo-light)
+			:day       (ef-arbutus ef-elea-light ef-eagle)
+			:afternoon (ef-cyprus ef-kassio ef-trio-light)
+			:evening   (ef-dream ef-melissa-dark ef-owl))))
   :config
-  (theme-buffet-modus-ef)
+  (theme-buffet-end-user)
 	(theme-buffet-a-la-carte))
 
 (use-package avy
