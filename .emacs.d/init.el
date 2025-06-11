@@ -78,7 +78,7 @@
   (auto-save-default nil)
   (create-lockfiles nil)
 	;; Save mini-buffer history
-	(savehist-mode)
+	(savehist-mode 1)
   ;; German keyboard binding, by making emasc ignore right-alt key
   (ns-right-alternate-modifier nil)
   ;; Remove scratch message
