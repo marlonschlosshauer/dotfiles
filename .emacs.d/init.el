@@ -17,7 +17,7 @@
 		("C-;" . comment-region)
 		("C-r" . undo-tree-redo)
 		("C-u" . undo-tree-undo)
-		("M-m" . nil)
+		("M-m" . quoted-insert)
     ("s-t" . nil)
     ("s-C" . nil)
 		("s-h" . nil)
