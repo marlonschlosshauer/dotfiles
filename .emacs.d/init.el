@@ -3,7 +3,7 @@
   (:map
    global-map
    (("M-SPC" . pop-global-mark)
-		("C-q" . pop-global-mark)
+		("C-q" . pop-to-mark-command)
     ("M-l" . mark-word)
     ("C-M-l".  set-mark-command)
     ("M-n". scroll-up-command)
@@ -225,7 +225,8 @@
 
 (use-package counsel
   :after ivy
-  :init (counsel-mode))
+  :init (counsel-mode)
+	:bind (("s-c" . counsel-mark-ring)))
 
 (use-package back-button
 	:bind	(("s-f" . back-button-local-forward)
