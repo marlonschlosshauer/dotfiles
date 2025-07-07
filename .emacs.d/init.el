@@ -194,7 +194,7 @@
 		'(
       :night     (ef-bio ef-tritanopia-dark ef-rosa)
 			:twilight  (ef-autumn ef-trio-dark ef-cherie)
-			:morning   (ef-reverie ef-day ef-duo-light)
+			:morning   (ef-reverie ef-day)
 			:day       (ef-arbutus ef-elea-light ef-eagle)
 			:afternoon (ef-cyprus ef-kassio ef-trio-light)
 			:evening   (ef-dream ef-melissa-dark ef-owl))))
