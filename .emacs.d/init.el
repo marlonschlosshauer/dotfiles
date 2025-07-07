@@ -205,8 +205,7 @@
 (use-package avy
 	:after (mark)
   :bind (("s-." . avy-goto-char)
-         ("s-r" . avy-resume)
-         ("s-g" . avy-goto-line))
+         ("s-r" . avy-resume))
 	:config
 	(advice-add 'avy-goto-char :around #'mark-before-call))
 
@@ -226,7 +225,7 @@
 (use-package counsel
   :after ivy
   :init (counsel-mode)
-	:bind (("s-c" . counsel-mark-ring)))
+	:bind (("s-g" . counsel-mark-ring)))
 
 (use-package back-button
 	:bind	(("s-f" . back-button-local-forward)
