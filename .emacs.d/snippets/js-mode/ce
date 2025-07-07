@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ce
+# key:  ce
+# --
+console.error($0)
