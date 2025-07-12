@@ -3,7 +3,7 @@
   (:map
    global-map
    (("M-SPC" . pop-global-mark)
-		("C-q" . pop-to-mark-command)
+		("C-q" . pop-global-mark)
     ("M-l" . mark-word)
     ("C-M-l".  set-mark-command)
     ("M-n". scroll-up-command)
