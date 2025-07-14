@@ -2,10 +2,7 @@
   :bind
   (:map
    global-map
-   (("M-SPC" . pop-global-mark)
-		("C-q" . pop-global-mark)
-    ("M-l" . mark-word)
-    ("C-M-l".  set-mark-command)
+   (("M-l" . mark-word)
     ("M-n". scroll-up-command)
     ("M-p". scroll-down-command)
     ("s-n". end-of-buffer)
@@ -16,7 +13,8 @@
 		("C-," . comment-line)
 		("C-;" . comment-region)
 		("C-r" . undo-tree-redo)
-		("C-u" . undo-tree-undo)
+		("C-z" . undo-tree-undo)
+		("C-x C-z" . nil)
 		("M-m" . quoted-insert)
     ("s-t" . nil)
     ("s-C" . nil)
