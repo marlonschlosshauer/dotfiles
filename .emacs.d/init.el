@@ -197,7 +197,6 @@
 	(theme-buffet-a-la-carte))
 
 (use-package avy
-	:after (mark)
   :bind (("s-." . avy-goto-char)
          ("s-r" . avy-resume)))
 
@@ -207,7 +206,7 @@
   :bind ("C-x C-r" . ivy-resume))
 
 (use-package swiper
-  :after (mark ivy)
+  :after (ivy)
   :bind (("C-s" . swiper)
          ("C-S-s" . swiper-thing-at-point)))
 
