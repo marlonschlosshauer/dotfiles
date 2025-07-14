@@ -83,8 +83,7 @@
   (initial-scratch-message "\n")
   :init
   (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t)
-	(add-to-list 'load-path "~/.emacs.d/packages")
+               '("melpa" . "https://melpa.org/packages/") t)	
   ;; Make macOS bar same color as theme
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   :config
@@ -141,9 +140,6 @@
      (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml"))))
-
-(use-package mark
-	:load-path "~/.emacs.d/packages")
 
 (use-package rainbow-delimiters
   :hook  ((tsx-ts-mode
@@ -205,9 +201,7 @@
 (use-package avy
 	:after (mark)
   :bind (("s-." . avy-goto-char)
-         ("s-r" . avy-resume))
-	:config
-	(advice-add 'avy-goto-char :around #'mark-before-call))
+         ("s-r" . avy-resume)))
 
 (use-package ivy
   :init (ivy-mode)
@@ -217,10 +211,7 @@
 (use-package swiper
   :after (mark ivy)
   :bind (("C-s" . swiper)
-         ("C-S-s" . swiper-thing-at-point))
-	:config
-	(advice-add 'swiper :around #'mark-before-call)
-	(advice-add 'swiper-thing-at-point :around #'mark-before-call))
+         ("C-S-s" . swiper-thing-at-point)))
 
 (use-package counsel
   :after ivy
@@ -352,10 +343,7 @@
 
 (use-package counsel-projectile
   :after (mark counsel projectile)
-  :init (counsel-projectile-mode)
-	:config
-	(advice-add 'counsel-projectile-grep :around #'mark-before-call)
-	(advice-add 'counsel-projectile-find-file :around #'mark-before-call))
+  :init (counsel-projectile-mode))
 
 (use-package yasnippet
   :bind
