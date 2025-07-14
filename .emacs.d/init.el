@@ -81,7 +81,7 @@
   (initial-scratch-message "\n")
   :init
   (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t)	
+               '("melpa" . "https://melpa.org/packages/") t)
   ;; Make macOS bar same color as theme
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   :config
