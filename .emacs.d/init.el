@@ -215,12 +215,6 @@
   :init (counsel-mode)
 	:bind (("s-g" . counsel-mark-ring)))
 
-(use-package back-button
-	:bind	(("s-f" . back-button-local-forward)
-				 ("s-b" . back-button-local-backward)
-				 ("s-F" . back-button-global-forward)
-				 ("s-B" . back-button-global-backward)))
-
 (use-package undo-tree
   :custom
   (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
