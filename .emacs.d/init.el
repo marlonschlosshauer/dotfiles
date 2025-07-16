@@ -333,7 +333,7 @@
    ("C-c p" . projectile-command-map)))
 
 (use-package counsel-projectile
-  :after (mark counsel projectile)
+  :after (counsel projectile)
   :init (counsel-projectile-mode))
 
 (use-package yasnippet
