@@ -1,0 +1,29 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Provider
+# key: provider
+# --
+import { createContext, FC, PropsWithChildren, useContext } from "react";
+
+export interface $1Data  {
+	$2
+}
+
+export interface $1Props extends $1Data {
+	$3
+}
+
+const Context = createContext({} as $1Data);
+
+export const $1: FC<PropsWithChildren<$1Props>> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Context.Provider value={props}>
+      {children}
+    </Context.Provider>
+  );
+};
+
+export const use$1 = () => useContext(Context);
+
