@@ -19,6 +19,7 @@
     ("s-t" . nil)
     ("s-C" . nil)
 		("s-h" . nil)
+		("C-h h" . nil)
     ("C-<end>" . nil)
     ("C-<home>". nil)
     ("C-<prior>" . nil)
