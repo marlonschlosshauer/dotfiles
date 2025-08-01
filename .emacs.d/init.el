@@ -220,7 +220,7 @@
   :custom
   (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
   (undo-tree-auto-save-history nil)
-  :init (global-undo-tree-mode))
+  :hook (after-init . global-undo-tree-mode))
 
 (use-package elec-pair
   :custom
@@ -280,7 +280,7 @@
     (lsp-execute-code-action-by-kind "source.removeUnusedImports.ts")))
 
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :hook (after-init . global-flycheck-mode))
 
 (use-package dired
   :bind
@@ -342,7 +342,7 @@
 	(:map
 	 yas-minor-mode-map
    ("C-c C-s" . yas-expand))
-  :init (yas-global-mode))
+  :hook (after-init . yas-global-mode))
 
 (use-package which-key
   :hook (after-init . which-key-mode))
