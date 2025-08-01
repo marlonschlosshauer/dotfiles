@@ -174,7 +174,7 @@
 					. rainbow-mode))
 
 (use-package diff-hl
-  :init (global-diff-hl-mode))
+	:hook (after-init . global-diff-hl-mode))
 
 (use-package mood-line
   :init (mood-line-mode))
@@ -202,7 +202,7 @@
          ("s-r" . avy-resume)))
 
 (use-package ivy
-  :init (ivy-mode)
+	:hook (after-init . ivy-mode)
   :custom (ivy-initial-inputs-alist nil)
   :bind ("C-x C-r" . ivy-resume))
 
@@ -213,7 +213,7 @@
 
 (use-package counsel
   :after ivy
-  :init (counsel-mode)
+	:hook (after-init . counsel-mode)
 	:bind (("s-g" . counsel-mark-ring)))
 
 (use-package undo-tree
@@ -231,7 +231,7 @@
      (?\[ . ?\])
      (?\< . ?\>)
      (?\{ . ?\})))
-  :init (electric-pair-mode))
+	:hook (after-init . electric-pair-mode))
 
 (use-package prettier-js
   :hook ((tsx-ts-mode
@@ -249,7 +249,7 @@
          . emmet-mode))
 
 (use-package editorconfig
-  :init (editorconfig-mode))
+  :hook (after-init . editorconfig-mode))
 
 (use-package lsp-mode
   :commands lsp
@@ -324,7 +324,7 @@
          ("\\.mdx?\\'" . markdown-mode)))
 
 (use-package projectile
-  :init (projectile-mode)
+  :hook (after-init . projectile-mode)
   :custom
 	(projectile-use-git-grep t)
 	(projectile-sort-order 'recentf)
@@ -335,7 +335,7 @@
 
 (use-package counsel-projectile
   :after (counsel projectile)
-  :init (counsel-projectile-mode))
+  :hook (after-init . counsel-projectile-mode))
 
 (use-package yasnippet
   :bind
@@ -345,7 +345,7 @@
   :init (yas-global-mode))
 
 (use-package which-key
-  :init (which-key-mode))
+  :hook (after-init . which-key-mode))
 
 (use-package gptel
   :bind (("C-c h" . gptel)
@@ -377,7 +377,7 @@
   (xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 (use-package marginalia
-  :init (marginalia-mode))
+  :hook (after-init . marginalia-mode))
 
 (use-package scss-mode
 	:mode (("\\.scss\\'" . scss-mode)))
@@ -426,5 +426,4 @@
 
 (use-package pinentry
   :after epa
-  :init
-  (pinentry-start))
+  :hook (after-init . pinentry-start))
