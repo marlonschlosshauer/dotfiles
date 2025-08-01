@@ -364,6 +364,10 @@
                (funcall secret)
              secret)))))))
 
+(use-package claude-code
+  :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
+  :bind-keymap ("C-c c" . claude-code-command-map))
+
 (use-package xml-format
   :defer t)
 
