@@ -17,3 +17,6 @@ bun.lockb
 # env files
 .env
 .env.local
+
+# ai
+.claude
