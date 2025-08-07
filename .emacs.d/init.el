@@ -207,13 +207,13 @@
   :bind ("C-x C-r" . ivy-resume))
 
 (use-package swiper
-  :after (ivy)
+  :after ivy
   :bind (("C-s" . swiper)
          ("C-S-s" . swiper-thing-at-point)))
 
 (use-package counsel
   :after ivy
-	:hook (after-init . counsel-mode)
+	:init (counsel-mode)
 	:bind (("s-g" . counsel-mark-ring)))
 
 (use-package undo-tree
@@ -335,7 +335,7 @@
 
 (use-package counsel-projectile
   :after (counsel projectile)
-  :hook (after-init . counsel-projectile-mode))
+  :init (counsel-projectile-mode))
 
 (use-package yasnippet
   :bind
