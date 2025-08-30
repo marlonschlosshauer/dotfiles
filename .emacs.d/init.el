@@ -183,16 +183,15 @@
   :demand t)
 
 (use-package theme-buffet
+	:vc (:url "https://github.com/marlonschlosshauer/theme-buffet" :rev :newest)
   :after (ef-themes)
 	:custom
 	((theme-buffet-end-user
-		'(
-      :night     (ef-bio ef-tritanopia-dark ef-rosa)
-			:twilight  (ef-autumn ef-trio-dark ef-cherie)
-			:morning   (ef-reverie ef-day)
-			:day       (ef-arbutus ef-elea-light ef-eagle)
-			:afternoon (ef-cyprus ef-kassio ef-trio-light)
-			:evening   (ef-dream ef-melissa-dark ef-owl))))
+		'(ef-bio ef-tritanopia-dark ef-rosa ef-autumn
+			ef-trio-dark ef-cherie ef-reverie ef-day
+			ef-arbutus ef-elea-light ef-eagle ef-cyprus
+			ef-kassio ef-trio-light ef-dream
+			ef-melissa-dark ef-owl)))
   :config
   (theme-buffet-end-user)
 	(theme-buffet-a-la-carte))
