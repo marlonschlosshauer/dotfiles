@@ -287,6 +287,8 @@
 	(:map
 	 dired-mode-map
    ("." . dired-up-directory))
+	:hook
+  (dired-mode . dired-hide-details-mode)
   :custom
   (dired-listing-switches "-alh")
 	(dired-hide-details-hide-absolute-location t)
