@@ -183,15 +183,15 @@
   :demand t)
 
 (use-package theme-buffet
-  :after (ef-themes)
+	:after (ef-themes)
 	:custom
 	((theme-buffet-end-user
 		'(:morning
 			(ef-bio ef-tritanopia-dark ef-rosa ef-autumn ef-trio-dark ef-cherie
-       ef-reverie ef-day ef-arbutus ef-elea-light ef-eagle ef-cyprus ef-kassio
-       ef-trio-light ef-dream ef-melissa-dark ef-owl))))
-  :config
-  (theme-buffet-end-user)
+							ef-reverie ef-day ef-arbutus ef-elea-light ef-eagle ef-cyprus ef-kassio
+							ef-trio-light ef-dream ef-melissa-dark ef-owl))))
+	:config
+	(theme-buffet-end-user)
 	(theme-buffet-a-la-carte))
 
 (use-package avy
