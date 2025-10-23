@@ -288,7 +288,9 @@
 	 dired-mode-map
    ("." . dired-up-directory))
   :custom
-  (dired-listing-switches "-alh"))
+  (dired-listing-switches "-alh")
+	(dired-hide-details-hide-absolute-location t)
+	(delete-by-moving-to-trash t))
 
 (use-package eshell
   :bind ("C-c s" . eshell))
