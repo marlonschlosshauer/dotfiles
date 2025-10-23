@@ -236,13 +236,15 @@
           js-ts-mode
           web-mode
 					scss-mode
-					js-json-mode)
+					js-json-mode
+					markdown-mode)
          . prettier-js-mode))
 
 (use-package emmet-mode
   :hook ((tsx-ts-mode
           web-mode
-          nxml-mode)
+          nxml-mode
+					markdown-mode)
          . emmet-mode))
 
 (use-package editorconfig
@@ -251,8 +253,9 @@
 (use-package lsp-mode
   :commands lsp
   :after (flycheck)
-  :hook ((tsx-ts-mode . lsp)
-         (typescript-ts-mode . lsp)
+  :hook ((typescript-ts-mode . lsp)
+				 (markdown-mode . lsp)
+				 (tsx-ts-mode . lsp)
          (js-ts-mode . lsp)
 				 (scss-mode . lsp)
          (web-mode . lsp)
