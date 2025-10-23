@@ -15,7 +15,7 @@
 		("C-r" . undo-tree-redo)
 		("C-z" . undo-tree-undo)
 		("C-x C-z" . nil)
-		("M-m" . quoted-insert)
+		("M-q" . quoted-insert)
     ("s-t" . nil)
     ("s-C" . nil)
 		("s-h" . nil)
@@ -340,10 +340,6 @@
 	(bug-reference-url-format "https://becklyn.atlassian.net/jira/software/c/projects/%s/boards/%s"))
 
 (use-package yasnippet
-  :bind
-	(:map
-	 yas-minor-mode-map
-   ("C-c C-s" . yas-expand))
   :hook (after-init . yas-global-mode))
 
 (use-package which-key
