@@ -325,7 +325,8 @@
 	 :map
 	 org-mode-map
 	 ("M-p" . org-metaup)
-	 ("M-n" . org-metadown))
+	 ("M-n" . org-metadown)
+	 ("C-c C-s" . org-schedule))
   :custom
   (org-return-follows-link t)
   (org-src-tab-acts-natively t)
