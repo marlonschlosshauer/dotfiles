@@ -191,6 +191,7 @@
 							ef-reverie ef-day ef-arbutus ef-elea-light ef-eagle ef-cyprus ef-kassio
 							ef-trio-light ef-dream ef-melissa-dark ef-owl))))
 	:config
+	(theme-buffet-timer-hours 2)
 	(theme-buffet-end-user)
 	(theme-buffet-a-la-carte))
 
