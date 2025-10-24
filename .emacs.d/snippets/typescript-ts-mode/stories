@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: stories
+# key: stories
+# --
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { $2 } from "./$2";
+import { mock$2 } from "./$2.mock";
+
+const meta: Meta<typeof $2> = {
+    title: "$1/$2",
+    component: $2,
+    parameters: {
+        layout: "centered",
+    },
+};
+
+export default meta;
+type Story = StoryObj<typeof $2>;
+
+export const Default: Story = {
+    args: mock$2,
+};
+
+

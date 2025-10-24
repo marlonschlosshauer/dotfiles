@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: mock
+# key: mock
+# --
+import { $1Props } from "./$1.schema";
+
+export const mock$1: $1Props = {
+	$2
+};
+
+$3

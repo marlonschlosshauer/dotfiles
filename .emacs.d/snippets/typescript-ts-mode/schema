@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Define schema
+# key: schema
+# --
+import {z} from "zod";
+
+export const $1Schema = z.$3object({
+	$2
+})
+
+export type $1Props = z.infer<typeof $1Schema>;

@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Define component
+# key: comp
+# --
+import { FC } from "react";
+import clsx from "clsx";
+import { PropsWithClassName } from "@becklyn/next/types/style";
+import styles from "./$1.module.scss";
+import { $1Props, $1Schema } from "./$1.schema";
+
+export const $1: FC<PropsWithClassName<$1Props>> = ({ className, ...props$2 }) => {
+    const { $3 } = $1Schema.parse(props);
+		$4
+    return <div className={clsx(styles.wrapper, className$5)}>$6</div>
+};
