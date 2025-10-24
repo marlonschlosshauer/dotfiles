@@ -290,6 +290,7 @@
 	:hook
   (dired-mode . dired-hide-details-mode)
   :custom
+	(dired-kill-when-opening-new-dired-buffer t)
   (dired-listing-switches "-alh")
 	(dired-hide-details-hide-absolute-location t)
 	(delete-by-moving-to-trash t))
