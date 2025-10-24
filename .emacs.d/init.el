@@ -370,16 +370,20 @@
          ("C-c r" . gptel-rewrite)
          ("C-c c" . gptel-abort)
          ("C-c m" . gptel-menu))
-	:custom
-	(gptel-model 'gpt-4.1-mini)
-	(gptel-api-key
-   (let ((match (auth-source-search :host "api.openai.com" :user "apikey")))
-     (when match
-       (let ((secret (plist-get (car match) :secret)))
-         (when secret
-           (if (functionp secret)
-               (funcall secret)
-             secret)))))))
+	:config
+	(setq
+	 gptel-model 'claude-3-7-sonnet-20250219
+	 gptel-backend
+	 (gptel-make-anthropic
+			 "Claude"
+		 :stream t
+		 :key (let ((match (auth-source-search :host "api.anthropic.com" :user "apikey")))
+						(when match
+							(let ((secret (plist-get (car match) :secret)))
+								(when secret
+									(if (functionp secret)
+											(funcall secret)
+										secret))))))))
 
 (use-package claude-code
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
