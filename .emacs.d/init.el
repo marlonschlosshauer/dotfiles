@@ -5,6 +5,7 @@
    (("M-l" . mark-word)
     ("M-n". scroll-up-command)
     ("M-p". scroll-down-command)
+		("C-M-z" . delete-pair)
     ("s-n". end-of-buffer)
     ("s-p". beginning-of-buffer)
 		("s-," . indent-region)
@@ -80,6 +81,8 @@
   (ns-right-alternate-modifier nil)
   ;; Remove scratch message
   (initial-scratch-message "\n")
+	;; Remove delete-pair delay
+	(delete-pair-blink-delay 0.001)
   :init
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/") t)
