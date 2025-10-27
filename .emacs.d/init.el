@@ -408,6 +408,7 @@
   :hook (after-init . marginalia-mode))
 
 (use-package scss-mode
+	:vc (:url "https://github.com/marlonschlosshauer/scss-mode" :branch "master" :rev :newest)
 	:mode (("\\.scss\\'" . scss-mode)))
 
 (use-package web-mode
