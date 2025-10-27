@@ -82,7 +82,7 @@
   ;; Remove scratch message
   (initial-scratch-message "\n")
 	;; Remove delete-pair delay
-	(delete-pair-blink-delay 0.001)
+	(delete-pair-blink-delay 0)
   :init
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/") t)
