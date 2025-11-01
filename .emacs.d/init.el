@@ -391,15 +391,16 @@
 											(funcall secret)
 										secret))))))))
 
+(use-package monet
+  :vc (:url "https://github.com/stevemolitor/monet" :rev :newest))
+
 (use-package claude-code
+	:after monet
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
   :bind-keymap ("C-c c" . claude-code-command-map)
 	:config
 	(add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
   (monet-mode 1))
-
-(use-package monet
-  :vc (:url "https://github.com/stevemolitor/monet" :rev :newest))
 
 (use-package xml-format
   :defer t)
