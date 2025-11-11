@@ -75,8 +75,6 @@
   (make-backup-files nil)
   (auto-save-default nil)
   (create-lockfiles nil)
-	;; Save mini-buffer history
-	(savehist-mode 1)
   ;; German keyboard binding, by making emasc ignore right-alt key
   (ns-right-alternate-modifier nil)
   ;; Remove scratch message
@@ -126,6 +124,10 @@
   (let ((path (concat user-emacs-directory "/env/" (or (getenv "emacs-env") "home") ".el")))
     (when (file-exists-p path)
       (load-file path))))
+
+(use-package savehist
+	:init
+	(savehist-mode))
 
 (use-package treesit
 	:custom
