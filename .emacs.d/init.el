@@ -205,8 +205,13 @@
          ("s-r" . avy-resume)))
 
 (use-package ivy
-	:hook (after-init . ivy-mode)
-  :custom (ivy-initial-inputs-alist nil)
+  :hook (after-init . ivy-mode)
+  :custom
+  (ivy-initial-inputs-alist nil)
+  (completion-in-region-function #'ivy-completion-in-region)
+  (ivy-display-functions-alist
+   '((ivy-completion-in-region . nil)
+     (t . nil)))
   :bind ("C-x C-r" . ivy-resume))
 
 (use-package swiper
