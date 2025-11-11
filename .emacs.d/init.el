@@ -276,7 +276,15 @@
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-diagnostics-provider :flycheck)
   (lsp-log-io nil)
+	(lsp-signature-auto-activate t)
+  (lsp-signature-render-documentation t)
+  (lsp-typescript-suggest-auto-imports t)
+  (lsp-typescript-suggestion-actions-enabled t)
+	(lsp-typescript-suggest-complete-function-calls t)
 	(lsp-clients-typescript-prefer-use-project-ts-server t)
+	(lsp-clients-typescript-preferences '((includeCompletionsForImportStatements . t)
+																				(includeCompletionsWithSnippetText . t)
+																				(includeAutomaticOptionalChainCompletions . t)))
   :functions lsp-execute-code-action-by-kind
   :bind
 	(:map
