@@ -444,6 +444,7 @@
   (web-mode-code-indent-offset 2))
 
 (use-package js-mode
+	:ensure nil
   :mode (("\\.js?\\'" . js-mode)
          ("\\.cjs?\\'" . js-mode)
          ("\\.jsx?\\'" . js-mode))
