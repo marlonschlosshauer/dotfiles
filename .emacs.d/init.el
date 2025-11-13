@@ -352,6 +352,7 @@
 	:hook (after-init . global-flycheck-mode))
 
 (use-package dired
+	:ensure nil
 	:bind
 	(:map
 	 dired-mode-map
