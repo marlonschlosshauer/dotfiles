@@ -494,8 +494,8 @@
 
 (use-package jtsx
 	:mode (("\\.jsx?\\'" . jtsx-jsx-mode)
-         ("\\.tsx\\'" . jtsx-tsx-mode)
-         ("\\.ts\\'" . jtsx-typescript-mode)
+				 ("\\.tsx\\'" . jtsx-tsx-mode)
+				 ("\\.ts\\'" . jtsx-typescript-mode)
 				 ("\\.js\\'" . jtsx-js-mode)
 				 ("\\.cjs\\'" . jtsx-js-mode))
 	:bind (:map jtsx-tsx-mode-map
