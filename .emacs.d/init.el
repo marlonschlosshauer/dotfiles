@@ -125,6 +125,10 @@
 		(when (file-exists-p path)
 			(load-file path))))
 
+(use-package autorevert
+	:custom (global-auto-revert-non-file-buffers t)
+	:init (global-auto-revert-mode t))
+
 (use-package savehist
 	:init
 	(savehist-mode))
