@@ -173,12 +173,8 @@
 				(switch-to-buffer buffer)))))
 
 (use-package treesit
+	:ensure nil
 	:custom
-	(major-mode-remap-alist
-	 '((yaml-mode . yaml-ts-mode)
-		 (js-mode . js-ts-mode)
-		 (typescript-mode . typescript-ts-mode)
-		 (tsx-mode . tsx-ts-mode)))
 	(treesit-language-source-alist
 	 '((html "https://github.com/tree-sitter/tree-sitter-html")
 		 (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
@@ -295,18 +291,21 @@
 					web-mode
 					scss-mode
 					js-json-mode
-					markdown-mode)
+					markdown-mode
+					jtsx-jsx-mode
+					jtsx-tsx-mode)
 				 . prettier-js-mode))
 
 (use-package emmet-mode
-	:hook ((tsx-ts-mode
+	:hook ((jtsx-jsx-mode
+					jtsx-tsx-mode
 					web-mode
 					nxml-mode
 					markdown-mode)
 				 . emmet-mode)
-	:custom
-	(emmet-jsx-className-braces? t)
-	(emmet-jsx-major-modes '(tsx-ts-mode)))
+	:init
+	(setq emmet-jsx-className-braces? t)
+	(setq emmet-jsx-major-modes '(jtsx-jsx-mode jtsx-tsx-mode)))
 
 (use-package editorconfig
 	:hook (after-init . editorconfig-mode))
@@ -493,20 +492,27 @@
 	(web-mode-css-indent-offset 2)
 	(web-mode-code-indent-offset 2))
 
-(use-package js-mode
-	:ensure nil
-	:mode (("\\.js?\\'" . js-mode)
-				 ("\\.cjs?\\'" . js-mode)
-				 ("\\.jsx?\\'" . js-mode))
+(use-package jtsx
+	:mode (("\\.jsx?\\'" . jtsx-jsx-mode)
+         ("\\.tsx\\'" . jtsx-tsx-mode)
+         ("\\.ts\\'" . jtsx-typescript-mode)
+				 ("\\.js\\'" . jtsx-js-mode)
+				 ("\\.cjs\\'" . jtsx-js-mode))
+	:bind (:map jtsx-tsx-mode-map
+							("C-c j r" . jtsx-rename-jsx-element)
+							("C-c j w" . jtsx-wrap-in-jsx-element)
+							("C-c j o" . jtsx-jump-jsx-opening-tag)
+							("C-c j c" . jtsx-jump-jsx-closing-tag)
+							("C-c j u" . jtsx-unwrap-jsx)
+							("C-c j d n" . jtsx-delete-jsx-node)
+							("C-c j d a" . jtsx-delete-jsx-attribute))
 	:custom
-	(js-indent-level 2))
-
-(use-package typescript-mode
-	:mode (("\\.ts?\\'" . typescript-ts-mode)
-				 ("\\.tsx?\\'" . tsx-ts-mode))
-	:custom
+	(js-indent-level 2)
 	(typescript-indent-level 2)
-	(typescript-auto-indent-flag t))
+	(typescript-auto-indent-flag t)
+	(typescript-ts-mode-indent-offset 2)
+	(jtsx-enable-jsx-element-tags-auto-sync t)
+	(jtsx-enable-electric-open-newline-between-jsx-element-tags t))
 
 (use-package clojure-ts-mode
 	:custom
