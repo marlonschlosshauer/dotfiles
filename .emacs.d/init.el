@@ -128,7 +128,7 @@
 (use-package eshell
 	:custom
 	(eshell-scroll-to-bottom-on-input t)
-  (eshell-highlight-prompt t)
+	(eshell-highlight-prompt t)
 	(eshell-cd-on-directory t))
 
 (use-package autorevert
@@ -141,7 +141,7 @@
 
 (use-package simple
 	:ensure nil
-  :config
+	:config
 	;; This is an tweaked version of pop-global-mark from simple.el
 	;; It checks if the popped mark is open in a current window
 	;; if it is, instead of switching the current buffer to the buffer from the mark
