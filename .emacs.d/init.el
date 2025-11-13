@@ -133,6 +133,39 @@
 	:init
 	(savehist-mode))
 
+(use-package simple
+	:ensure nil
+  :config
+	;; This is an tweaked version of pop-global-mark from simple.el
+	;; It checks if the popped mark is open in a current window
+	;; if it is, instead of switching the current buffer to the buffer from the mark
+	;; it instead switches to that window
+	(defun pop-global-mark ()
+		"Pop off global mark ring and jump to the top location."
+		(interactive)
+		;; Pop entries that refer to non-existent buffers.
+		(while (and global-mark-ring (not (marker-buffer (car global-mark-ring))))
+			(setq global-mark-ring (cdr global-mark-ring)))
+		(or global-mark-ring
+				(error "No global mark set"))
+		(let* ((marker (car global-mark-ring))
+					 (buffer (marker-buffer marker))
+					 (position (marker-position marker))
+					 (window (get-buffer-window buffer)))
+			(setq global-mark-ring (nconc (cdr global-mark-ring)
+																		(list (car global-mark-ring))))
+			(if window
+					(select-window window)
+				(set-buffer buffer)
+				(or (and (>= position (point-min))
+								 (<= position (point-max)))
+						(if widen-automatically
+								(widen)
+							(error "Global mark position is outside accessible part of buffer %s"
+										 (buffer-name buffer))))
+				(goto-char position)
+				(switch-to-buffer buffer)))))
+
 (use-package treesit
 	:custom
 	(major-mode-remap-alist
