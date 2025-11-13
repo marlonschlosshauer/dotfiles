@@ -125,6 +125,12 @@
 		(when (file-exists-p path)
 			(load-file path))))
 
+(use-package eshell
+	:custom
+	(eshell-scroll-to-bottom-on-input t)
+  (eshell-highlight-prompt t)
+	(eshell-cd-on-directory t))
+
 (use-package autorevert
 	:custom (global-auto-revert-non-file-buffers t)
 	:init (global-auto-revert-mode t))
