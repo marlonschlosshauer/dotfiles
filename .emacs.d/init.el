@@ -303,7 +303,10 @@
 					web-mode
 					nxml-mode
 					markdown-mode)
-				 . emmet-mode))
+				 . emmet-mode)
+	:custom
+	(emmet-jsx-className-braces? t)
+	(emmet-jsx-major-modes '(tsx-ts-mode)))
 
 (use-package editorconfig
 	:hook (after-init . editorconfig-mode))
