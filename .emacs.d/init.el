@@ -269,9 +269,6 @@
 	(undo-tree-auto-save-history nil)
 	:hook (after-init . global-undo-tree-mode))
 
-(use-package simpleclip
-	:init (simpleclip-mode))
-
 (use-package elec-pair
 	:custom
 	(electric-pair-pairs
