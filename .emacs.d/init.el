@@ -433,7 +433,7 @@
 				 ("C-c m" . gptel-menu))
 	:config
 	(setq
-	 gptel-model 'claude-3-7-sonnet-20250219
+	 gptel-model 'claude-sonnet-4-5-20250929
 	 gptel-backend
 	 (gptel-make-anthropic
 			 "Claude"
