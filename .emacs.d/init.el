@@ -3,8 +3,6 @@
 	(:map
 	 global-map
 	 (("M-l" . mark-word)
-		("M-n". scroll-up-command)
-		("M-p". scroll-down-command)
 		("C-M-z" . delete-pair)
 		("s-n". end-of-buffer)
 		("s-p". beginning-of-buffer)
@@ -13,14 +11,12 @@
 		("C-:" . replace-regexp)
 		("C-," . comment-line)
 		("C-;" . comment-region)
-		("C-r" . undo-tree-redo)
-		("C-z" . undo-tree-undo)
-		("C-x C-z" . nil)
 		("M-q" . quoted-insert)
 		("s-t" . nil)
 		("s-C" . nil)
 		("s-h" . nil)
 		("C-h h" . nil)
+		("C-x C-z" . nil)
 		("C-<end>" . nil)
 		("C-<home>". nil)
 		("C-<prior>" . nil)
@@ -264,6 +260,8 @@
 	:bind (("s-g" . counsel-mark-ring)))
 
 (use-package undo-tree
+	:bind (("C-r" . undo-tree-redo)
+				 ("C-z" . undo-tree-undo))
 	:custom
 	(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 	(undo-tree-auto-save-history nil)
