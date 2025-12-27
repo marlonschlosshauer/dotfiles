@@ -426,7 +426,8 @@
 (use-package multiple-cursors
 	:bind (("M-s n" . mc/mark-next-like-this)
 				 ("M-s p" . mc/mark-previous-like-this)
-				 ("M-s ." . mc/mark-all-like-this)))
+				 ("M-s ." . mc/mark-all-like-this)
+				 ("M-s d" . mc/mark-all-like-this-dwim)))
 
 (use-package gptel
 	:bind (("C-c h" . gptel)
