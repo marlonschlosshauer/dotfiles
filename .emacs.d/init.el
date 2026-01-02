@@ -12,6 +12,7 @@
 		("C-," . comment-line)
 		("C-;" . comment-region)
 		("M-q" . quoted-insert)
+		("C-x M-l" . capitalize-dwim)
 		("s-t" . nil)
 		("s-C" . nil)
 		("s-h" . nil)
