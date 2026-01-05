@@ -3,6 +3,7 @@
 	(:map
 	 global-map
 	 (("M-l" . mark-word)
+		("M-s" . mark-whole-symbol)
 		("C-M-z" . delete-pair)
 		("s-n". end-of-buffer)
 		("s-p". beginning-of-buffer)
@@ -22,6 +23,14 @@
 		("C-<home>". nil)
 		("C-<prior>" . nil)
 		("C-<next>". nil)))
+	:preface
+  (defun mark-whole-symbol ()
+    "Mark the entire symbol at point."
+    (interactive)
+    (let ((bounds (bounds-of-thing-at-point 'symbol)))
+      (when bounds
+        (goto-char (car bounds))
+        (set-mark (cdr bounds)))))
 	:custom
 	(initial-major-mode 'org-mode)
 	;; Fix emacs looking for incorrect melpa certifications
@@ -425,10 +434,10 @@
 	:hook (after-init . which-key-mode))
 
 (use-package multiple-cursors
-	:bind (("M-s n" . mc/mark-next-like-this)
-				 ("M-s p" . mc/mark-previous-like-this)
-				 ("M-s ." . mc/mark-all-like-this)
-				 ("M-s d" . mc/mark-all-like-this-dwim)))
+	:bind (("M-p n" . mc/mark-next-like-this)
+				 ("M-p p" . mc/mark-previous-like-this)
+				 ("M-p ." . mc/mark-all-like-this)
+				 ("M-p d" . mc/mark-all-like-this-dwim)))
 
 (use-package gptel
 	:bind (("C-c h" . gptel)
