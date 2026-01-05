@@ -319,7 +319,6 @@
 	:commands lsp
 	:after (flycheck)
 	:hook ((typescript-ts-mode . lsp)
-				 (markdown-mode . lsp)
 				 (tsx-ts-mode . lsp)
 				 (js-ts-mode . lsp)
 				 (scss-mode . lsp)
