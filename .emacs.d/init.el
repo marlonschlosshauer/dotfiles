@@ -32,7 +32,7 @@
         (goto-char (car bounds))
         (set-mark (cdr bounds)))))
 	:custom
-	(initial-major-mode 'org-mode)
+	(initial-major-mode 'fundamental-mode)
 	;; Fix emacs looking for incorrect melpa certifications
 	(gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 	;; Turn on upgrades
