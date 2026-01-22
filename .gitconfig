@@ -19,3 +19,5 @@
         user = marlonschlosshauer
 [commit]
 	gpgsign = true
+[rerere]
+	enabled = true
