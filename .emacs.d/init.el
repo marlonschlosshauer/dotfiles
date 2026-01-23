@@ -132,6 +132,39 @@
 			(load-file path))))
 
 (use-package eshell
+	:preface
+	(defun eshell-snail (&optional arg)
+		"Switch between eshell buffers or create one based on context.
+With prefix ARG, always create a new eshell buffer."
+		(interactive "P")
+		(let* ((eshell-buffers (seq-filter
+														(lambda (buf)
+															(eq (buffer-local-value 'major-mode buf) 'eshell-mode))
+														(buffer-list)))
+					 (current-is-eshell (eq major-mode 'eshell-mode))
+					 (other-eshells (if current-is-eshell
+															(remove (current-buffer) eshell-buffers)
+														eshell-buffers)))
+			(cond
+			 ;; Prefix arg: always create new eshell
+			 (arg
+				(eshell t))
+			 ;; No eshell buffers
+			 ((null eshell-buffers)
+				(eshell))
+			 ;; Current is eshell, other eshell exists: switch to it
+			 ((and current-is-eshell other-eshells)
+				(switch-to-buffer (car (last other-eshells))))
+			 ;; Current is eshell, no other eshell: do nothing
+			 ((and current-is-eshell (not other-eshells))
+				nil)
+			 ;; Not in eshell, eshell exists: switch to it
+			 ((and (not current-is-eshell) (not (null eshell-buffers)))
+				(switch-to-buffer (car other-eshells)))
+			 ;; Fallback
+			 (t
+				nil))))
+	:bind ("C-c s" . eshell-snail)
 	:custom
 	(eshell-scroll-to-bottom-on-input t)
 	(eshell-highlight-prompt t)
@@ -372,9 +405,6 @@
 		:ensure t
 		:config
 		(diredfl-global-mode 1))
-
-(use-package eshell
-	:bind ("C-c s" . eshell))
 
 (use-package magit
 	:bind (("C-c g" . magit))
