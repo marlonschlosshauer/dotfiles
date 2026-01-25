@@ -387,11 +387,6 @@
 	:after (counsel projectile)
 	:init (counsel-projectile-mode))
 
-(use-package bug-reference
-	:custom
-	(bug-reference-bug-regexp "\\b\\([A-Z]\\{2,4\\}-[0-9]\\{1,4\\}\\)\\b")
-	(bug-reference-url-format "https://becklyn.atlassian.net/jira/software/c/projects/%s/boards/%s"))
-
 (use-package yasnippet
 	:hook (after-init . yas-global-mode))
 
