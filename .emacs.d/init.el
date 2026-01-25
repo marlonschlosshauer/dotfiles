@@ -278,6 +278,9 @@ With prefix ARG, always create a new eshell buffer."
 	(theme-buffet-end-user)
 	(theme-buffet-a-la-carte))
 
+(use-package ace-window
+	:bind ("M-o" . ace-window))
+
 (use-package avy
 	:bind (("s-." . avy-goto-char)
 				 ("s-r" . avy-resume)))
