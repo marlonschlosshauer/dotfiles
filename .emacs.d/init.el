@@ -131,45 +131,6 @@
 		(when (file-exists-p path)
 			(load-file path))))
 
-(use-package eshell
-	:preface
-	(defun eshell-snail (&optional arg)
-		"Switch between eshell buffers or create one based on context.
-With prefix ARG, always create a new eshell buffer."
-		(interactive "P")
-		(let* ((eshell-buffers (seq-filter
-														(lambda (buf)
-															(eq (buffer-local-value 'major-mode buf) 'eshell-mode))
-														(buffer-list)))
-					 (current-is-eshell (eq major-mode 'eshell-mode))
-					 (other-eshells (if current-is-eshell
-															(remove (current-buffer) eshell-buffers)
-														eshell-buffers)))
-			(cond
-			 ;; Prefix arg: always create new eshell
-			 (arg
-				(eshell t))
-			 ;; No eshell buffers
-			 ((null eshell-buffers)
-				(eshell))
-			 ;; Current is eshell, other eshell exists: switch to it
-			 ((and current-is-eshell other-eshells)
-				(switch-to-buffer (car (last other-eshells))))
-			 ;; Current is eshell, no other eshell: do nothing
-			 ((and current-is-eshell (not other-eshells))
-				nil)
-			 ;; Not in eshell, eshell exists: switch to it
-			 ((and (not current-is-eshell) (not (null eshell-buffers)))
-				(switch-to-buffer (car other-eshells)))
-			 ;; Fallback
-			 (t
-				nil))))
-	:bind ("C-c s" . eshell-snail)
-	:custom
-	(eshell-scroll-to-bottom-on-input t)
-	(eshell-highlight-prompt t)
-	(eshell-cd-on-directory t))
-
 (use-package autorevert
 	:custom (global-auto-revert-non-file-buffers t)
 	:init (global-auto-revert-mode t))
@@ -178,38 +139,10 @@ With prefix ARG, always create a new eshell buffer."
 	:init
 	(savehist-mode))
 
-(use-package simple
-	:ensure nil
+(use-package simpler
+	:vc (:url "https://github.com/marlonschlosshauer/simpler.el" :rev :newest)
 	:config
-	;; This is an tweaked version of pop-global-mark from simple.el
-	;; It checks if the popped mark is open in a current window
-	;; if it is, instead of switching the current buffer to the buffer from the mark
-	;; it instead switches to that window
-	(defun pop-global-mark ()
-		"Pop off global mark ring and jump to the top location."
-		(interactive)
-		;; Pop entries that refer to non-existent buffers.
-		(while (and global-mark-ring (not (marker-buffer (car global-mark-ring))))
-			(setq global-mark-ring (cdr global-mark-ring)))
-		(or global-mark-ring
-				(error "No global mark set"))
-		(let* ((marker (car global-mark-ring))
-					 (buffer (marker-buffer marker))
-					 (position (marker-position marker))
-					 (window (get-buffer-window buffer)))
-			(setq global-mark-ring (nconc (cdr global-mark-ring)
-																		(list (car global-mark-ring))))
-			(if window
-					(select-window window)
-				(set-buffer buffer)
-				(or (and (>= position (point-min))
-								 (<= position (point-max)))
-						(if widen-automatically
-								(widen)
-							(error "Global mark position is outside accessible part of buffer %s"
-										 (buffer-name buffer))))
-				(goto-char position)
-				(switch-to-buffer buffer)))))
+	(simpler-mode 1))
 
 (use-package treesit
 	:ensure nil
@@ -509,6 +442,17 @@ With prefix ARG, always create a new eshell buffer."
 (use-package eat
 	:config
 	(eat-eshell-mode))
+
+(use-package eshell
+	:custom
+	(eshell-scroll-to-bottom-on-input t)
+	(eshell-highlight-prompt t)
+	(eshell-cd-on-directory t))
+
+(use-package conch.el
+	:after eshell
+	:vc (:url "https://github.com/marlonschlosshauer/conch.el" :rev :newest)
+	:bind (("C-c s" . conch-eshell)))
 
 (use-package ivy-xref
 	:after ivy
