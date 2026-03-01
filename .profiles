@@ -11,5 +11,5 @@ export PATH="$PATH:$HOME/go/bin"
 export GOPATH="$(go env GOPATH)"
 export PATH="$PATH:/Applications/Emacs.app/Contents/MacOS"
 
-export EDITOR="emacsclient -c"
+export EDITOR="emacsclient -a ''" 
 export VISUAL="$EDITOR"
