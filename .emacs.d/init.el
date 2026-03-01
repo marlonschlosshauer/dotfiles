@@ -318,7 +318,9 @@
 	(lsp-clients-typescript-prefer-use-project-ts-server t)
 	(lsp-clients-typescript-preferences '((includeCompletionsForImportStatements . t)
 																				(includeCompletionsWithSnippetText . t)
-																				(includeAutomaticOptionalChainCompletions . t)))
+																				(includeAutomaticOptionalChainCompletions . t)
+																				(importModuleSpecifierPreference . "shortest")
+																				(allowRenameOfImportPath . t)))
 	:functions lsp-execute-code-action-by-kind
 	:bind
 	(:map
@@ -326,12 +328,17 @@
 	 ("g d" . lsp-goto-implementation)
 	 ("g t" . lsp-goto-type-definition)
 	 ("g r" . lsp-find-references)
-	 ("r o" . lsp-remove-unused))
+	 ("r o" . lsp-remove-unused)
+	 ("r a" . lsp-add-missing))
 	:config
 	(defun lsp-remove-unused ()
 		"Run the remove unused imports code action."
 		(interactive)
-		(lsp-execute-code-action-by-kind "source.removeUnusedImports.ts")))
+		(lsp-execute-code-action-by-kind "source.removeUnusedImports.ts"))
+	(defun lsp-add-missing ()
+		"Run the add missing imports code action."
+		(interactive)
+		(lsp-execute-code-action-by-kind "source.addMissingImports.ts")))
 
 (use-package flycheck
 	:hook (after-init . global-flycheck-mode))
