@@ -245,6 +245,12 @@
 	:init (counsel-mode)
 	:bind (("s-g" . counsel-mark-ring)))
 
+ (use-package ivy-prescient
+    :after ivy
+    :config
+    (ivy-prescient-mode 1)
+    (prescient-persist-mode 1))
+
 (use-package undo-tree
 	:bind (("C-r" . undo-tree-redo)
 				 ("C-z" . undo-tree-undo))
