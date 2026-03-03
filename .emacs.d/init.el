@@ -163,6 +163,10 @@
 		 (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
 		 (yaml "https://github.com/ikatyang/tree-sitter-yaml"))))
 
+(use-package expreg
+	:bind (("C-=" . expreg-expand)
+         ("C--" . expreg-contract)))
+
 (use-package rainbow-delimiters
 	:hook	((tsx-ts-mode
 					 typescript-ts-mode
