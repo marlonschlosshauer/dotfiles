@@ -49,8 +49,8 @@
 	;; Set custom file
 	(custom-file (concat user-emacs-directory "/custom.el"))
 	;; Performance
-	(gc-cons-threshold 100000000)
-	(read-process-output-max 10000000)
+	(gc-cons-threshold (* 100 1024 1024))
+	(read-process-output-max (* 1024 1024))
 	;; Set default dirs
 	(default-directory "~/")
 	;; Make line numbers 4 digits + space
@@ -318,6 +318,7 @@
 				 (web-mode . lsp)
 				 (go-mode . lsp))
 	:custom
+	(lsp-idle-delay 0.1)
 	(lsp-headerline-breadcrumb-enable nil)
 	(lsp-diagnostics-provider :flycheck)
 	(lsp-log-io nil)
@@ -352,7 +353,8 @@
 		(lsp-execute-code-action-by-kind "source.addMissingImports.ts")))
 
 (use-package flycheck
-	:hook (after-init . global-flycheck-mode))
+	:hook (after-init . global-flycheck-mode)
+	:custom (flycheck-idle-change-delay 0.1))
 
 (use-package dired
 	:ensure nil
