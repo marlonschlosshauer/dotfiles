@@ -208,14 +208,18 @@
 (use-package ef-themes
 	:demand t)
 
+(use-package doric-themes
+	:demand t)
+
+(use-package modus-themes
+	:demand t)
+
 (use-package theme-buffet
-	:after (ef-themes)
+	:after (ef-themes doric-themes modus-themes)
 	:custom
 	((theme-buffet-end-user
 		'(:morning
-			(ef-bio ef-tritanopia-dark ef-rosa ef-autumn ef-trio-dark ef-cherie
-							ef-reverie ef-day ef-arbutus ef-elea-light ef-eagle ef-cyprus ef-kassio
-							ef-trio-light ef-dream ef-melissa-dark ef-owl))))
+			(modus-operandi-tinted ef-arbutus ef-cyprus ef-day ef-elea-light ef-kassio ef-melissa-light ef-orange ef-spring ef-summer ef-bioef-cherie ef-dream ef-duo-darkef-elea-dark ef-melissa-dark ef-owl ef-rosa ef-fig ef-symbiosis doric-cherry doric-earth doric-jade doric-marble doric-oak doric-wind doric-copper doric-dark doric-fire doric-magma doric-mermaid doric-obsidian doric-pine doric-plum doric-valley doric-walnut doric-water))))
 	:config
 	(theme-buffet-timer-hours 2)
 	(theme-buffet-end-user)
