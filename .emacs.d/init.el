@@ -9,7 +9,6 @@
 		("s-p". beginning-of-buffer)
 		("s-," . indent-region)
 		("C-c v". scratch-buffer)
-		("C-:" . replace-regexp)
 		("C-," . comment-line)
 		("C-;" . comment-region)
 		("M-q" . quoted-insert)
@@ -107,7 +106,7 @@
 	;; Enable line wrapping
 	(global-visual-line-mode)
 	;; Highlight current line
-	(global-hl-line-mode)
+	;; (global-hl-line-mode)
 	;; Turn on line numbers
 	(global-display-line-numbers-mode)
 	;; Set font size 18pt
@@ -261,6 +260,10 @@
     :config
     (ivy-prescient-mode 1)
     (prescient-persist-mode 1))
+
+(use-package substitute
+  :config
+	:bind (("C-:" . substitute-target-in-buffer)))
 
 (use-package undo-tree
 	:bind (("C-r" . undo-tree-redo)
