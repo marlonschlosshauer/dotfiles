@@ -219,7 +219,7 @@
 	:custom
 	((theme-buffet-end-user
 		'(:morning
-			(modus-operandi-tinted ef-arbutus ef-cyprus ef-day ef-elea-light ef-kassio ef-melissa-light ef-orange ef-spring ef-summer ef-bioef-cherie ef-dream ef-duo-darkef-elea-dark ef-melissa-dark ef-owl ef-rosa ef-symbiosis doric-cherry doric-earth doric-jade doric-marble doric-oak doric-wind doric-copper doric-dark doric-fire doric-mermaid doric-obsidian doric-pine doric-plum doric-valley doric-walnut doric-water))))
+			(modus-operandi-tinted ef-arbutus ef-cyprus ef-day ef-elea-light ef-kassio ef-melissa-light ef-orange ef-spring ef-summer ef-bio ef-cherie ef-dream ef-duo-dark ef-elea-dark ef-melissa-dark ef-owl ef-rosa ef-symbiosis doric-cherry doric-earth doric-jade doric-marble doric-oak doric-wind doric-copper doric-dark doric-fire doric-mermaid doric-obsidian doric-pine doric-plum doric-valley doric-walnut doric-water))))
 	:config
 	(theme-buffet-timer-hours 2)
 	(theme-buffet-end-user)
