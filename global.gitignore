@@ -20,3 +20,4 @@ bun.lockb
 
 # ai
 .claude/*
+.agent-shell/*
