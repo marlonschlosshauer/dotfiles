@@ -19,5 +19,5 @@ bun.lockb
 .env.local
 
 # ai
-.claude/*
-.agent-shell/*
+.claude/
+.agent-shell/
