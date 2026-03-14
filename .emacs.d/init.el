@@ -463,7 +463,8 @@
 	:custom
 	(agent-shell-preferred-agent-config 'claude-code)
 	(agent-shell-header-style nil)
-	(agent-shell-show-welcome-message nil))
+	(agent-shell-show-welcome-message nil)
+	(agent-shell-show-busy-indicator nil))
 
 (use-package xml-format
 	:defer t)
