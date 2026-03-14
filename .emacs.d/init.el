@@ -99,10 +99,6 @@
 	;; Make macOS bar same color as theme
 	(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 	:config
-	;; Remove border around modeline
-	(set-face-attribute 'mode-line nil :box nil)
-  (set-face-attribute 'mode-line-active nil :box nil)
-  (set-face-attribute 'mode-line-inactive nil :box nil)
 	;; Capital letters are word seperators
 	(global-subword-mode t)
 	;; Change font color for keywords
