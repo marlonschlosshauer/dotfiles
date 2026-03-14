@@ -484,9 +484,8 @@
 	(eshell-cd-on-directory t))
 
 (use-package conch.el
-	:after eshell
 	:vc (:url "https://github.com/marlonschlosshauer/conch.el" :rev :newest)
-	:bind (("C-c s" . conch-eshell)))
+	:bind ("C-c s" . conch-eshell))
 
 (use-package ivy-xref
 	:after ivy
