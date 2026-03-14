@@ -249,6 +249,7 @@
 (use-package swiper
 	:after ivy
 	:bind (("C-s" . swiper)
+				 ("C-M-s" . swiper-all)
 				 ("C-S-s" . swiper-thing-at-point)))
 
 (use-package counsel
