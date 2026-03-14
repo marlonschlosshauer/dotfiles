@@ -459,7 +459,18 @@
 										secret))))))))
 
 (use-package agent-shell
-	:bind ("C-c C-a" . agent-shell)
+	:demand
+	:preface
+	(defun agent-shell-resume ()
+		"Start agent-shell and prompt to resume an existing session."
+		(interactive)
+		(agent-shell--start :config (or (agent-shell--resolve-preferred-config)
+																		(agent-shell-select-config :prompt "Resume agent: ")
+																		(error "No agent config found"))
+												:session-strategy 'prompt))
+	:bind (("C-c C-a" . agent-shell)
+				 ("C-c C-S-a" . agent-shell-resume)
+				 ("C-c C-!" . agent-shell-dwim))
 	:custom
 	(agent-shell-preferred-agent-config 'claude-code)
 	(agent-shell-header-style nil)
