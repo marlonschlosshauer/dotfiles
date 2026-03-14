@@ -208,10 +208,11 @@
 (use-package ef-themes
 	:demand t)
 
-(use-package doric-themes
+(use-package modus-themes
 	:demand t)
 
-(use-package modus-themes
+(use-package doric-themes
+	:vc (:url "https://github.com/protesilaos/doric-themes.git" :rev :newest)
 	:demand t)
 
 (use-package theme-buffet
