@@ -208,19 +208,16 @@
 (use-package ef-themes
 	:demand t)
 
-(use-package modus-themes
-	:demand t)
-
 (use-package doric-themes
 	:vc (:url "https://github.com/protesilaos/doric-themes.git" :rev :newest)
 	:demand t)
 
 (use-package theme-buffet
-	:after (ef-themes doric-themes modus-themes)
+	:after (ef-themes doric-themes)
 	:custom
 	(theme-buffet-menu 'end-user)
 	(theme-buffet-end-user
-		'(modus-operandi-tinted ef-arbutus ef-cyprus ef-day ef-elea-light ef-kassio ef-melissa-light ef-orange ef-spring ef-summer ef-bio ef-cherie ef-dream ef-duo-dark ef-elea-dark ef-melissa-dark ef-owl ef-rosa ef-symbiosis doric-cherry doric-earth doric-jade doric-marble doric-oak doric-wind doric-copper doric-dark doric-fire doric-mermaid doric-obsidian doric-pine doric-plum doric-valley doric-walnut doric-water))
+		'(ef-arbutus ef-cyprus ef-day ef-elea-light ef-kassio ef-melissa-light ef-orange ef-spring ef-summer ef-bio ef-cherie ef-dream ef-duo-dark ef-elea-dark ef-melissa-dark ef-owl ef-rosa ef-symbiosis doric-cherry doric-earth doric-jade doric-marble doric-oak doric-wind doric-copper doric-dark doric-fire doric-mermaid doric-obsidian doric-pine doric-plum doric-valley doric-walnut doric-water))
 	:config
 	(theme-buffet-a-la-carte)
   (theme-buffet-timer-hours 2))
