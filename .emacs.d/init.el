@@ -346,7 +346,8 @@
 	 ("g t" . lsp-goto-type-definition)
 	 ("g r" . lsp-find-references)
 	 ("r o" . lsp-remove-unused)
-	 ("r a" . lsp-add-missing))
+	 ("r a" . lsp-add-missing)
+	 ("r f" . lsp-file-rename))
 	:config
 	(defun lsp-remove-unused ()
 		"Run the remove unused imports code action."
@@ -355,7 +356,30 @@
 	(defun lsp-add-missing ()
 		"Run the add missing imports code action."
 		(interactive)
-		(lsp-execute-code-action-by-kind "source.addMissingImports.ts")))
+		(lsp-execute-code-action-by-kind "source.addMissingImports.ts"))
+	(defun lsp-file-rename (new-name)
+		"Rename the current file and update all LSP references.
+Sends workspace/willRenameFiles to get import updates from the
+language server, applies them, then renames the file on disk."
+		(interactive
+		 (let ((old (buffer-file-name)))
+			 (unless old (user-error "Buffer is not visiting a file"))
+			 (unless (lsp-workspaces) (user-error "No active LSP session"))
+			 (list (read-file-name "Rename to: " (file-name-directory old)
+													 nil nil (file-name-nondirectory old)))))
+		(let* ((old-path (buffer-file-name))
+					 (new-path (expand-file-name new-name))
+					 (params (lsp-make-rename-files-params
+										:files (vector (lsp-make-file-rename
+																		:oldUri (lsp--path-to-uri old-path)
+																		:newUri (lsp--path-to-uri new-path))))))
+			(when (string= old-path new-path)
+				(user-error "New name is the same as the old name"))
+			(when-let* ((edits (lsp-request "workspace/willRenameFiles" params)))
+				(lsp--apply-workspace-edit edits 'rename-file))
+			(rename-file old-path new-path t)
+			(set-visited-file-name new-path t t)
+			(lsp-notify "workspace/didRenameFiles" params))))
 
 (use-package flycheck
 	:hook (after-init . global-flycheck-mode)
