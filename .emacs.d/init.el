@@ -552,6 +552,7 @@ language server, applies them, then renames the file on disk."
 	(xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 (use-package marginalia
+	:custom (marginalia-field-width 240)
 	:hook (after-init . marginalia-mode))
 
 (use-package scss-mode
