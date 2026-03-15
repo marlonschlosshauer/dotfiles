@@ -333,12 +333,21 @@
 	(lsp-typescript-suggestion-actions-enabled t)
 	(lsp-typescript-suggest-complete-function-calls t)
 	(lsp-clients-typescript-prefer-use-project-ts-server t)
-	(lsp-clients-typescript-preferences '((includeCompletionsForImportStatements . t)
-																				(includeCompletionsWithSnippetText . t)
-																				(includeAutomaticOptionalChainCompletions . t)
-																				(importModuleSpecifierPreference . "shortest")
-																				(allowRenameOfImportPath . t)))
-	:functions lsp-execute-code-action-by-kind
+	(lsp-clients-typescript-preferences
+	 '((includeCompletionsForImportStatements . t)
+		 (includeCompletionsWithSnippetText . t)
+		 (includeAutomaticOptionalChainCompletions . t)
+		 (importModuleSpecifierPreference . "shortest")
+		 (allowRenameOfImportPath . t)))
+	:functions
+	(lsp-execute-code-action-by-kind
+	 lsp-workspaces
+	 lsp-make-rename-files-params
+	 lsp-request
+	 lsp-make-file-rename
+	 lsp--path-to-uri
+	 lsp--apply-workspace-edit
+	 lsp-notify)
 	:bind
 	(:map
 	 lsp-command-map
@@ -348,7 +357,7 @@
 	 ("r o" . lsp-remove-unused)
 	 ("r a" . lsp-add-missing)
 	 ("r f" . lsp-file-rename))
-	:config
+	:preface
 	(defun lsp-remove-unused ()
 		"Run the remove unused imports code action."
 		(interactive)
@@ -366,20 +375,26 @@ language server, applies them, then renames the file on disk."
 			 (unless old (user-error "Buffer is not visiting a file"))
 			 (unless (lsp-workspaces) (user-error "No active LSP session"))
 			 (list (read-file-name "Rename to: " (file-name-directory old)
-													 nil nil (file-name-nondirectory old)))))
+														 nil nil (file-name-nondirectory old)))))
 		(let* ((old-path (buffer-file-name))
+					 (old-dir (file-name-directory old-path))
 					 (new-path (expand-file-name new-name))
+					 (new-dir (file-name-directory new-path))
 					 (params (lsp-make-rename-files-params
 										:files (vector (lsp-make-file-rename
 																		:oldUri (lsp--path-to-uri old-path)
 																		:newUri (lsp--path-to-uri new-path))))))
 			(when (string= old-path new-path)
 				(user-error "New name is the same as the old name"))
+			(make-directory new-dir t)
 			(when-let* ((edits (lsp-request "workspace/willRenameFiles" params)))
 				(lsp--apply-workspace-edit edits 'rename-file))
 			(rename-file old-path new-path t)
 			(set-visited-file-name new-path t t)
-			(lsp-notify "workspace/didRenameFiles" params))))
+			(lsp-notify "workspace/didRenameFiles" params)
+			(when (and (not (string= old-dir new-dir))
+								 (directory-empty-p old-dir))
+				(delete-directory old-dir)))))
 
 (use-package flycheck
 	:hook (after-init . global-flycheck-mode)
