@@ -213,6 +213,7 @@
 	:demand t)
 
 (use-package theme-buffet
+	:vc (:url "https://github.com/marlonschlosshauer/theme-buffet.git" :rev :newest)
 	:after (ef-themes doric-themes)
 	:custom
 	(theme-buffet-menu 'end-user)
