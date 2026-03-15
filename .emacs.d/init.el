@@ -257,11 +257,12 @@
 	:init (counsel-mode)
 	:bind (("s-g" . counsel-mark-ring)))
 
- (use-package ivy-prescient
-    :after ivy
-    :config
-    (ivy-prescient-mode 1)
-    (prescient-persist-mode 1))
+(use-package ivy-prescient
+	:functions prescient-persist-mode
+  :after ivy
+  :config
+  (ivy-prescient-mode 1)
+  (prescient-persist-mode 1))
 
 (use-package substitute
   :config
@@ -499,6 +500,10 @@ language server, applies them, then renames the file on disk."
 
 (use-package agent-shell
 	:demand
+	:functions
+	(agent-shell--start
+	 agent-shell--resolve-preferred-config
+	 agent-shell-select-config)
 	:preface
 	(defun agent-shell-resume ()
 		"Start agent-shell and prompt to resume an existing session."
@@ -524,6 +529,7 @@ language server, applies them, then renames the file on disk."
 	(eat-eshell-mode))
 
 (use-package eshell
+	:functions eshell/clear-scrollback
 	:preface
 	(defun eshell-clear-scrollback ()
 		(interactive)
