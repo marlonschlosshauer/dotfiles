@@ -11,6 +11,7 @@
 		("C-c v". scratch-buffer)
 		("C-," . comment-line)
 		("C-;" . comment-region)
+		("C-M-:" . replace-regexp)
 		("M-q" . quoted-insert)
 		("C-x M-l" . capitalize-dwim)
 		("s-t" . nil)
