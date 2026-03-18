@@ -330,8 +330,9 @@
 	(lsp-headerline-breadcrumb-enable nil)
 	(lsp-diagnostics-provider :flycheck)
 	(lsp-log-io nil)
-	(lsp-signature-auto-activate t)
-	(lsp-signature-render-documentation t)
+	(lsp-eldoc-enable-hover nil)
+	(lsp-signature-auto-activate nil)
+	(lsp-signature-render-documentation nil)
 	(lsp-typescript-suggest-auto-imports t)
 	(lsp-typescript-suggestion-actions-enabled t)
 	(lsp-typescript-suggest-complete-function-calls t)
@@ -359,7 +360,8 @@
 	 ("g r" . lsp-find-references)
 	 ("r o" . lsp-remove-unused)
 	 ("r a" . lsp-add-missing)
-	 ("r f" . lsp-file-rename))
+	 ("r f" . lsp-file-rename)
+	 ("h h" . lsp-describe-thing-at-point))
 	:preface
 	(defun lsp-remove-unused ()
 		"Run the remove unused imports code action."
