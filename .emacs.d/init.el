@@ -255,9 +255,11 @@
 				 ("C-S-s" . swiper-thing-at-point)))
 
 (use-package counsel
+	:vc (:url "https://github.com/marlonschlosshauer/swiper" :rev :newest)
 	:after ivy
 	:init (counsel-mode)
-	:bind (("s-g" . counsel-mark-ring)))
+	:bind (("s-g" . counsel-global-mark-ring)
+				 ("s-G" . counsel-mark-ring)))
 
 (use-package ivy-prescient
 	:functions prescient-persist-mode
