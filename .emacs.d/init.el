@@ -4,7 +4,7 @@
 	 global-map
 	 (("M-l" . mark-word)
 		("M-s" . mark-whole-symbol)
-		("s-1" . pair-program)
+		("s-1" . pair-program-mode)
 		("C-M-z" . delete-pair)
 		("s-n". end-of-buffer)
 		("s-p". beginning-of-buffer)
@@ -32,13 +32,18 @@
       (when bounds
         (goto-char (car bounds))
         (set-mark (cdr bounds)))))
-	(defun pair-program ()
+	(define-minor-mode pair-program-mode
 		"Make it easier for coworkers to understand what is going on."
-		(interactive)
-		(setq dimmer-fraction 0.4)
-		(dimmer-mode)
-		(global-display-line-numbers-mode)
-		(global-hl-line-mode))
+		:global t
+		(if pair-program-mode
+				(progn
+					(setq dimmer-fraction 0.4)
+					(dimmer-mode 1)
+					(global-display-line-numbers-mode 1)
+					(global-hl-line-mode 1))
+			(dimmer-mode -1)
+			(global-display-line-numbers-mode -1)
+			(global-hl-line-mode -1)))
 	:custom
 	(initial-major-mode 'fundamental-mode)
 	;; Fix emacs looking for incorrect melpa certifications
