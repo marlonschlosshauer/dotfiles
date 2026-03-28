@@ -261,13 +261,6 @@
 	:bind (("s-g" . counsel-global-mark-ring)
 				 ("s-G" . counsel-mark-ring)))
 
-(use-package ivy-prescient
-	:functions prescient-persist-mode
-  :after ivy
-  :config
-  (ivy-prescient-mode 1)
-  (prescient-persist-mode 1))
-
 (use-package substitute
   :config
 	:bind (("C-:" . substitute-target-in-buffer)))
