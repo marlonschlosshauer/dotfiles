@@ -4,6 +4,7 @@
 	 global-map
 	 (("M-l" . mark-word)
 		("M-s" . mark-whole-symbol)
+		("s-1" . pair-program)
 		("C-M-z" . delete-pair)
 		("s-n". end-of-buffer)
 		("s-p". beginning-of-buffer)
@@ -30,7 +31,14 @@
     (let ((bounds (bounds-of-thing-at-point 'symbol)))
       (when bounds
         (goto-char (car bounds))
-        (set-mark (cdr bounds)))))	
+        (set-mark (cdr bounds)))))
+	(defun pair-program ()
+		"Make it easier for coworkers to understand what is going on."
+		(interactive)
+		(setq dimmer-fraction 0.4)
+		(dimmer-mode)
+		(global-display-line-numbers-mode)
+		(global-hl-line-mode))
 	:custom
 	(initial-major-mode 'fundamental-mode)
 	;; Fix emacs looking for incorrect melpa certifications
@@ -102,7 +110,7 @@
 	;; Highlight current line
 	;; (global-hl-line-mode)
 	;; Turn on line numbers
-	(global-display-line-numbers-mode)
+	;; (global-display-line-numbers-mode)
 	;; Set font size 18pt
 	(set-face-attribute 'default nil :height 180)
 	;; Remove ugly menu bar
