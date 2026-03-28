@@ -482,7 +482,7 @@ language server, applies them, then renames the file on disk."
 				 ("C-c m" . gptel-menu))
 	:config
 	(setq
-	 gptel-model 'claude-opus-4-5-20251101
+	 gptel-model 'claude-opus-4-6
 	 gptel-backend
 	 (gptel-make-anthropic
 			 "Claude"
