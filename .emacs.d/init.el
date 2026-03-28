@@ -239,7 +239,9 @@
 	(ivy-display-functions-alist
 	 '((ivy-completion-in-region . nil)
 		 (t . nil)))
-	:bind ("C-x C-r" . ivy-resume))
+	:bind ("C-x C-r" . ivy-resume)
+	:config
+	(add-to-list 'ivy-sort-functions-alist '(ivy-completion-in-region)))
 
 (use-package ivy-history
 	:vc (:url "https://github.com/marlonschlosshauer/ivy-history.el" :rev :newest)
