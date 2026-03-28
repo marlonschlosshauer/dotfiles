@@ -160,6 +160,18 @@
 	:bind (("C-=" . expreg-expand)
          ("C--" . expreg-contract)))
 
+(use-package modus-themes
+	:config
+	(load-theme 'modus-operandi t)
+	(custom-set-faces
+	 '(line-number ((t (:background unspecified))))
+	 '(line-number-current-line ((t (:background unspecified))))
+	 '(linum ((t (:background unspecified))))
+	 '(fringe ((t (:background unspecified))))
+	 '(mode-line ((t (:box nil))))
+	 '(mode-line-active ((t (:foreground nil :box nil))))
+	 '(mode-line-inactive ((t (:foreground nil :box nil))))))
+
 (use-package rainbow-delimiters
 	:hook	((tsx-ts-mode
 					 typescript-ts-mode
@@ -198,24 +210,6 @@
 
 (use-package mood-line
 	:init (mood-line-mode))
-
-(use-package ef-themes
-	:demand t)
-
-(use-package doric-themes
-	:vc (:url "https://github.com/protesilaos/doric-themes.git" :rev :newest)
-	:demand t)
-
-(use-package theme-buffet
-	:vc (:url "https://github.com/marlonschlosshauer/theme-buffet.git" :rev :newest)
-	:after (ef-themes doric-themes)
-	:custom
-	(theme-buffet-menu 'end-user)
-	(theme-buffet-end-user
-		'(ef-arbutus ef-cyprus ef-day ef-elea-light ef-kassio ef-melissa-light ef-orange ef-spring ef-summer ef-bio ef-cherie ef-dream ef-duo-dark ef-elea-dark ef-melissa-dark ef-owl ef-rosa ef-symbiosis doric-cherry doric-earth doric-jade doric-marble doric-oak doric-wind doric-copper doric-dark doric-fire doric-mermaid doric-obsidian doric-pine doric-plum doric-valley doric-walnut doric-water))
-	:config
-	(theme-buffet-a-la-carte)
-  (theme-buffet-timer-hours 2))
 
 (use-package ace-window
 	:bind ("M-o" . ace-window))
