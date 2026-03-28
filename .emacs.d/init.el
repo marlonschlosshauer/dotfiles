@@ -30,14 +30,7 @@
     (let ((bounds (bounds-of-thing-at-point 'symbol)))
       (when bounds
         (goto-char (car bounds))
-        (set-mark (cdr bounds)))))
-	(defun jump-to-thing-center (&optional thing)
-    "Jump to the center of THING at point.
-  THING defaults to `symbol'."
-    (interactive)
-    (let ((bounds (bounds-of-thing-at-point (or thing 'symbol))))
-      (when bounds
-        (goto-char (/ (+ (car bounds) (cdr bounds)) 2)))))
+        (set-mark (cdr bounds)))))	
 	:custom
 	(initial-major-mode 'fundamental-mode)
 	;; Fix emacs looking for incorrect melpa certifications
