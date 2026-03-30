@@ -426,6 +426,22 @@ language server, applies them, then renames the file on disk."
 	:custom
 	(magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1)))
 
+(use-package vdiff
+	:config
+	(define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map)
+	(define-key vdiff-3way-mode-map (kbd "C-c") vdiff-mode-prefix-map))
+
+(use-package vdiff-magit
+	:after magit
+	:bind (:map magit-mode-map
+				("e" . vdiff-magit-dwim)
+				("E" . vdiff-magit))
+	:config
+	(transient-suffix-put 'magit-dispatch "e" :description "vdiff (dwim)")
+	(transient-suffix-put 'magit-dispatch "e" :command 'vdiff-magit-dwim)
+	(transient-suffix-put 'magit-dispatch "E" :description "vdiff")
+	(transient-suffix-put 'magit-dispatch "E" :command 'vdiff-magit))
+
 (use-package org
 	:mode (("\\.org\\'" . org-mode))
 	:bind
