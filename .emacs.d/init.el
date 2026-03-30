@@ -243,13 +243,6 @@
 	:config
 	(add-to-list 'ivy-sort-functions-alist '(ivy-completion-in-region)))
 
-(use-package ivy-history
-	:vc (:url "https://github.com/marlonschlosshauer/ivy-history.el" :rev :newest)
-  :bind (("C-c C-p" . ivy-history-backward)
-         ("C-c C-n" . ivy-history-forward))
-  :config
-  (ivy-history-mode 1))
-
 (use-package swiper
 	:after ivy
 	:bind (("C-s" . swiper)
