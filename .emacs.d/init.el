@@ -525,7 +525,9 @@ language server, applies them, then renames the file on disk."
 												:session-strategy 'prompt))
 	:bind (("C-c C-a" . agent-shell)
 				 ("C-c C-S-a" . agent-shell-resume)
-				 ("C-c C-!" . agent-shell-dwim))
+				 ("C-c C-!" . agent-shell-dwim)
+				 :map agent-shell-mode-map
+				 ("C-c r" . agent-shell-queue-request))
 	:custom
 	(agent-shell-preferred-agent-config 'claude-code)
 	(agent-shell-header-style nil)
