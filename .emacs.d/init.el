@@ -489,6 +489,7 @@ language server, applies them, then renames the file on disk."
 
 (use-package gptel
 	:bind (("C-c h" . gptel)
+				 :map gptel-mode-map
 				 ("C-c RET" . gptel-send)
 				 ("C-c r" . gptel-rewrite)
 				 ("C-c c" . gptel-abort)
