@@ -229,7 +229,8 @@
 
 (use-package avy
 	:bind (("s-." . avy-goto-char)
-				 ("s-r" . avy-resume)))
+				 ("s-r" . avy-resume)
+				 ("s-t" . avy-goto-char-timer)))
 
 (use-package ivy
 	:hook (after-init . ivy-mode)
