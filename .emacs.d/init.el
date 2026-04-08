@@ -56,13 +56,20 @@
 	(custom-file (concat user-emacs-directory "/custom.el"))
 	;; Performance
 	(gc-cons-threshold (* 100 1024 1024))
-	(read-process-output-max (* 1024 1024))
+	(read-process-output-max (* 4 1024 1024))
+	(bidi-display-reordering
+	 'left-to-right
+	 bidi-paragraph-direction 'left-to-right)
+	(bidi-inhibit-bpa t)
+	(redisplay-skip-fontification-on-input t)
 	;; Set default dirs
 	(default-directory "~/")
 	;; Make line numbers 4 digits + space
 	(linum-format "%4d	")
 	;; Make focus help window on appear
 	(help-window-select t)
+	;; Proportionally resize window
+	(window-combination-resize t)
 	;; Remove splash screen
 	(inhibit-splash-screen t)
 	;; Turn off title bar icon
@@ -77,6 +84,10 @@
 			display-buffer-in-previous-window)))
 	;; Make confirmations less annoying
 	(use-dialog-box nil)
+	;; Preserve clipboard
+	(save-interprogram-paste-before-kill t)
+	;; No Duplicates in the Kill Ring
+	(kill-do-not-save-duplicates t)
 	;; Preserve position on scrolling
 	(scroll-preserve-screen-position t)
 	;; Repeat pop
@@ -150,7 +161,10 @@
 
 (use-package savehist
 	:init
-	(savehist-mode))
+	(savehist-mode)
+	:custom
+	(savehist-additional-variables
+   '(search-ring regexp-search-ring kill-ring)))
 
 (use-package simpler
 	:vc (:url "https://github.com/marlonschlosshauer/simpler.el" :rev :newest)
