@@ -12,6 +12,12 @@ fi
 
 export PATH="/opt/homebrew/opt/node@16/bin:/opt/homebrew/lib/node_modules/typescript/lib:$PATH"
 
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+autoload -Uz compinit
+compinit
+
 # Fix git bricking itself because GPG wants in terminal or TTY
 export GPG_TTY=$(tty)
 
