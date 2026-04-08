@@ -201,6 +201,13 @@
 	 '(mode-line-active ((t (:foreground nil :box nil))))
 	 '(mode-line-inactive ((t (:foreground nil :box nil))))))
 
+(use-package auto-dark
+  :ensure t
+	:custom
+	(auto-dark-themes '((modus-vivendi-tinted) (modus-operandi)))
+  :config
+  (auto-dark-mode))
+
 (use-package rainbow-delimiters
 	:hook	((tsx-ts-mode
 					 typescript-ts-mode
