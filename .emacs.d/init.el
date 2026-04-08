@@ -91,7 +91,7 @@
 	;; Preserve position on scrolling
 	(scroll-preserve-screen-position t)
 	;; Repeat pop
-	( set-mark-command-repeat-pop t)
+	(set-mark-command-repeat-pop t)
 	;; Make backspace erase tab
 	(backward-delete-char-untabify-method 'hungry)
 	;; Setup indentation
@@ -117,6 +117,8 @@
 	;; Make macOS bar same color as theme
 	(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 	:config
+	;; Turn on repeat mode
+	(repeat-mode 1)
 	;; Capital letters are word seperators
 	(global-subword-mode t)
 	;; Change font color for keywords
