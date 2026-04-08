@@ -3,6 +3,7 @@
 !.emacs
 !.bash_profile
 !.bashrc
+!.npmrc
 !.gitignore
 !.profiles
 !.vimrc
