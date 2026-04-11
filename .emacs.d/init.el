@@ -628,7 +628,9 @@ language server, applies them, then renames the file on disk."
 	(typescript-auto-indent-flag t)
 	(typescript-ts-mode-indent-offset 2)
 	(jtsx-enable-jsx-element-tags-auto-sync t)
-	(jtsx-enable-electric-open-newline-between-jsx-element-tags t))
+	(jtsx-enable-electric-open-newline-between-jsx-element-tags t)
+	:config
+	(completion-preview-mode 1))
 
 (use-package clojure-ts-mode
 	:custom
