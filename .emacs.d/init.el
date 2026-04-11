@@ -612,8 +612,8 @@ language server, applies them, then renames the file on disk."
 	:mode (("\\.jsx?\\'" . jtsx-jsx-mode)
 				 ("\\.tsx\\'" . jtsx-tsx-mode)
 				 ("\\.ts\\'" . jtsx-typescript-mode)
-				 ("\\.js\\'" . jtsx-js-mode)
-				 ("\\.cjs\\'" . jtsx-js-mode))
+				 ("\\.js\\'" . jtsx-typescript-mode)
+				 ("\\.cjs\\'" . jtsx-typescript-mode))
 	:bind (:map jtsx-tsx-mode-map
 							("C-c j r" . jtsx-rename-jsx-element)
 							("C-c j w" . jtsx-wrap-in-jsx-element)
