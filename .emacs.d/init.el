@@ -204,7 +204,7 @@
 (use-package auto-dark
   :ensure t
 	:custom
-	(auto-dark-themes '((modus-vivendi-tinted) (modus-operandi)))
+	(auto-dark-themes '((modus-vivendi) (modus-operandi)))
   :config
   (auto-dark-mode))
 
