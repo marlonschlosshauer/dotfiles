@@ -292,6 +292,18 @@
 	(undo-tree-auto-save-history nil)
 	:hook (after-init . global-undo-tree-mode))
 
+
+(use-package visible-mark
+	:custom
+	(visible-mark-max 2)
+	(visible-mark-faces '(visible-mark-face1 visible-mark-face2))
+	:custom-face
+	(visible-mark-active
+	 ((((type tty) (class mono)) (:inverse-video t))
+		(t (:background "magenta"))))
+	:config
+	(global-visible-mark-mode 1))
+
 (use-package elec-pair
 	:custom
 	(electric-pair-pairs
