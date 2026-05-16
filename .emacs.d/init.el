@@ -568,6 +568,12 @@ language server, applies them, then renames the file on disk."
 	(agent-shell-show-welcome-message nil)
 	(agent-shell-show-busy-indicator nil))
 
+(use-package agent-shell-attention
+	:vc (:url "https://github.com/ultronozm/agent-shell-attention.el" :rev :newest)
+	:bind ("C-c M-a" . agent-shell-attention-jump)
+	:config
+	(agent-shell-attention-mode 1))
+
 (use-package xml-format
 	:defer t)
 
