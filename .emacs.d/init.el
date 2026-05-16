@@ -117,8 +117,6 @@
 	;; Make macOS bar same color as theme
 	(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 	:config
-	;; Turn on repeat mode
-	(repeat-mode 1)
 	;; Capital letters are word seperators
 	(global-subword-mode t)
 	;; Change font color for keywords
