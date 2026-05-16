@@ -630,6 +630,7 @@ language server, applies them, then renames the file on disk."
 				 ("\\.ts\\'" . jtsx-typescript-mode)
 				 ("\\.js\\'" . jtsx-typescript-mode)
 				 ("\\.cjs\\'" . jtsx-typescript-mode))
+	:hook ((jtsx-tsx-mode jtsx-jsx-mode jtsx-typescript-mode) . completion-preview-mode)
 	:bind (:map jtsx-tsx-mode-map
 							("C-c j r" . jtsx-rename-jsx-element)
 							("C-c j w" . jtsx-wrap-in-jsx-element)
@@ -644,9 +645,7 @@ language server, applies them, then renames the file on disk."
 	(typescript-auto-indent-flag t)
 	(typescript-ts-mode-indent-offset 2)
 	(jtsx-enable-jsx-element-tags-auto-sync t)
-	(jtsx-enable-electric-open-newline-between-jsx-element-tags t)
-	:config
-	(completion-preview-mode 1))
+	(jtsx-enable-electric-open-newline-between-jsx-element-tags t))
 
 (use-package clojure-ts-mode
 	:custom
