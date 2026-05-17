@@ -441,6 +441,7 @@ language server, applies them, then renames the file on disk."
 	(dired-kill-when-opening-new-dired-buffer t)
 	(dired-listing-switches "-alh")
 	(dired-hide-details-hide-absolute-location t)
+	(dired-create-destination-dirs t)
 	(delete-by-moving-to-trash t))
 
 (use-package diredfl
