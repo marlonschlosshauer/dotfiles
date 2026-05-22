@@ -549,7 +549,8 @@ language server, applies them, then renames the file on disk."
 	:functions
 	(agent-shell--start
 	 agent-shell--resolve-preferred-config
-	 agent-shell-select-config)
+	 agent-shell-select-config
+	 agent-shell-toggle)
 	:preface
 	(defun agent-shell-resume ()
 		"Start agent-shell and prompt to resume an existing session."
@@ -558,16 +559,34 @@ language server, applies them, then renames the file on disk."
 																		(agent-shell-select-config :prompt "Resume agent: ")
 																		(error "No agent config found"))
 												:session-strategy 'prompt))
-	:bind (("C-c C-a" . agent-shell)
+	(defun agent-shell-jump ()
+		"Jump to agent-shell without DWIM context collection.
+Falls back to starting a new shell if none exists."
+		(interactive)
+		(condition-case nil
+				(agent-shell-toggle)
+			(user-error (agent-shell '(4)))))
+	(defun agent-shell-clear-input ()
+		"Clear all uncommitted input at the shell prompt."
+		(interactive)
+		(delete-region
+		 (or (marker-position comint-accum-marker)
+				 (process-mark (get-buffer-process (current-buffer))))
+		 (point-max)))
+	:bind (("C-c C-a" . agent-shell-jump)
+				 ("C-c S-a" . agent-shell)
 				 ("C-c C-S-a" . agent-shell-resume)
-				 ("C-c C-!" . agent-shell-dwim)
 				 :map agent-shell-mode-map
+				 ("RET" . newline)
+				 ("S-<return>" . shell-maker-submit)
+				 ("C-c C-k" . agent-shell-clear-input)
 				 ("C-c r" . agent-shell-queue-request))
 	:custom
 	(agent-shell-preferred-agent-config 'claude-code)
 	(agent-shell-header-style nil)
 	(agent-shell-show-welcome-message nil)
-	(agent-shell-show-busy-indicator nil))
+	(agent-shell-show-busy-indicator nil)
+	(agent-shell-anthropic-default-session-mode-id "bypassPermissions"))
 
 (use-package agent-shell-attention
 	:vc (:url "https://github.com/ultronozm/agent-shell-attention.el" :rev :newest)
