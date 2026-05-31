@@ -140,8 +140,6 @@
 	;; Make highlighted text be replaced if something is typed
 	(delete-selection-mode 1)
 	(setenv "LANG" "en_US.UTF-8")
-	;; Make links visitable
-	(goto-address-mode 1)
 	;; Enable functions
 	(put 'upcase-region 'disabled nil)
 	(put 'downcase-region 'disabled nil)
