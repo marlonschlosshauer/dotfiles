@@ -574,7 +574,7 @@ Falls back to starting a new shell if none exists."
 				 (process-mark (get-buffer-process (current-buffer))))
 		 (point-max)))
 	:bind (("C-c C-a" . agent-shell-jump)
-				 ("C-c S-a" . agent-shell)
+				 ("C-c M-a" . agent-shell)
 				 ("C-c C-S-a" . agent-shell-resume)
 				 :map agent-shell-mode-map
 				 ("RET" . newline)
