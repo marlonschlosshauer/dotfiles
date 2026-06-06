@@ -187,6 +187,9 @@
 	:bind (("C-=" . expreg-expand)
          ("C--" . expreg-contract)))
 
+(use-package elisp-demos
+	:hook (help-fns-describe-function-functions . elisp-demos-advice-describe-function-1))
+
 (use-package modus-themes
 	:config
 	(load-theme 'modus-operandi t)
