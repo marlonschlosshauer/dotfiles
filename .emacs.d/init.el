@@ -582,7 +582,10 @@ Falls back to starting a new shell if none exists."
 				 ("C-c C-k" . agent-shell-clear-input)
 				 ("C-c r" . agent-shell-queue-request))
 	:custom
-	(agent-shell-preferred-agent-config 'claude-code)
+	(agent-shell-preferred-agent-config
+	 (if-let ((provider (getenv "AGENT_PROVIDER")))
+			 (intern provider)
+		 'claude-code))
 	(agent-shell-header-style nil)
 	(agent-shell-show-welcome-message nil)
 	(agent-shell-show-busy-indicator nil)
