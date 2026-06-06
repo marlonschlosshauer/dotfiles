@@ -590,7 +590,8 @@ Falls back to starting a new shell if none exists."
 
 (use-package agent-shell-attention
 	:vc (:url "https://github.com/ultronozm/agent-shell-attention.el" :rev :newest)
-	:bind ("C-c M-a" . agent-shell-attention-jump)
+	:bind (("C-c C-a" . agent-shell-jump)
+				 ("C-c M-a" . agent-shell-attention-jump))
 	:config
 	(agent-shell-attention-mode 1))
 
