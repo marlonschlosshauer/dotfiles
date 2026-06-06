@@ -592,14 +592,8 @@ Falls back to starting a new shell if none exists."
 	(agent-shell-header-style nil)
 	(agent-shell-show-welcome-message nil)
 	(agent-shell-show-busy-indicator nil)
-	(agent-shell-anthropic-default-session-mode-id "bypassPermissions"))
-
-(use-package agent-shell-attention
-	:vc (:url "https://github.com/ultronozm/agent-shell-attention.el" :rev :newest)
-	:bind (("C-c C-a" . agent-shell-jump)
-				 ("C-c M-a" . agent-shell-attention-jump))
-	:config
-	(agent-shell-attention-mode 1))
+	(agent-shell-anthropic-default-session-mode-id "bypassPermissions")
+	(agent-shell-openai-default-session-mode-id "bypassPermissions"))
 
 (use-package xml-format
 	:defer t)
