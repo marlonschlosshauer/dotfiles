@@ -593,7 +593,7 @@ Falls back to starting a new shell if none exists."
 	(agent-shell-show-welcome-message nil)
 	(agent-shell-show-busy-indicator nil)
 	(agent-shell-anthropic-default-session-mode-id "bypassPermissions")
-	(agent-shell-openai-default-session-mode-id "bypassPermissions"))
+	(agent-shell-openai-default-session-mode-id "full-access"))
 
 (use-package xml-format
 	:defer t)
