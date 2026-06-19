@@ -523,6 +523,7 @@ language server, applies them, then renames the file on disk."
 	:bind (("M-p n" . mc/mark-next-like-this)
 				 ("M-p p" . mc/mark-previous-like-this)
 				 ("M-p ." . mc/mark-all-like-this)
+				 ("M-p l" . mc/mark-next-lines)
 				 ("M-p d" . mc/mark-all-like-this-dwim)))
 
 (use-package gptel
