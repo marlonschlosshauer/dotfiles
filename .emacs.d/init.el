@@ -526,28 +526,6 @@ language server, applies them, then renames the file on disk."
 				 ("M-p l" . mc/mark-next-lines)
 				 ("M-p d" . mc/mark-all-like-this-dwim)))
 
-(use-package gptel
-	:bind (("C-c h" . gptel)
-				 :map gptel-mode-map
-				 ("C-c RET" . gptel-send)
-				 ("C-c r" . gptel-rewrite)
-				 ("C-c c" . gptel-abort)
-				 ("C-c m" . gptel-menu))
-	:config
-	(setq
-	 gptel-model 'claude-opus-4-6
-	 gptel-backend
-	 (gptel-make-anthropic
-			 "Claude"
-		 :stream t
-		 :key (let ((match (auth-source-search :host "api.anthropic.com" :user "apikey")))
-						(when match
-							(let ((secret (plist-get (car match) :secret)))
-								(when secret
-									(if (functionp secret)
-											(funcall secret)
-										secret))))))))
-
 (use-package agent-shell
 	:demand
 	:functions
@@ -580,6 +558,7 @@ Falls back to starting a new shell if none exists."
 	:bind (("C-c C-a" . agent-shell-jump)
 				 ("C-c M-a" . agent-shell)
 				 ("C-c C-S-a" . agent-shell-resume)
+				 ("C-c h" . agent-shell-new-temp-shell)
 				 :map agent-shell-mode-map
 				 ("RET" . newline)
 				 ("S-<return>" . shell-maker-submit)
