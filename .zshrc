@@ -10,6 +10,24 @@ if [ -f ~/.alias ]; then
     . ~/.alias
 fi
 
+npm() {
+  if [[ "$1" == "u" ]]; then
+    shift
+    command npm uninstall "$@"
+  else
+    command npm "$@"
+  fi
+}
+
+pnpm() {
+  if [[ "$1" == "u" ]]; then
+    shift
+    command pnpm uninstall "$@"
+  else
+    command pnpm "$@"
+  fi
+}
+
 export PATH="/opt/homebrew/opt/node@16/bin:/opt/homebrew/lib/node_modules/typescript/lib:$PATH"
 
 if type brew &>/dev/null; then
