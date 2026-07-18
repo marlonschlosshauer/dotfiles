@@ -336,9 +336,29 @@
 					nxml-mode
 					markdown-mode)
 				 . emmet-mode)
-	:init
-	(setq emmet-jsx-className-braces? t)
-	(setq emmet-jsx-major-modes '(jtsx-jsx-mode jtsx-tsx-mode)))
+	:custom
+	(emmet-jsx-className-braces? t)
+	(emmet-move-cursor-after-expanding t)
+	(emmet-move-cursor-between-quotes t)
+	(emmet-jsx-major-modes '(jtsx-jsx-mode jtsx-tsx-mode))
+	:config
+	(defun emmet-expand-line-self-closing ()
+		(interactive)
+		(let ((expr (emmet-expr-on-line)))
+			(when expr
+				(save-excursion
+					(goto-char (cl-second expr))
+					(skip-chars-forward "a-zA-Z0-9:!$@-")
+					(unless (looking-at "/")
+						(insert "/")))
+				(end-of-line)
+				(emmet-expand-line nil))))
+	(define-advice emmet-reposition-cursor (:after (_expr) self-closing-cursor)
+		(when (looking-back "/>" (- (point) 2))
+			(backward-char 2)))
+	:bind (:map emmet-mode-keymap
+							("C-S-j" . emmet-expand-line-self-closing)))
+
 
 (use-package editorconfig
 	:hook (after-init . editorconfig-mode))
