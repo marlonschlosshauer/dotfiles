@@ -13,7 +13,7 @@
 		("C-c v". scratch-buffer)
 		("C-," . comment-line)
 		("C-;" . comment-region)
-		("C-M-:" . replace-regexp)
+		("C-:" . replace-regexp)
 		("M-q" . quoted-insert)
 		("C-x M-l" . capitalize-dwim)
 		("s-t" . nil)
@@ -294,10 +294,6 @@
 	:bind (("s-g" . counsel-global-mark-ring)
 				 ("s-G" . counsel-mark-ring)))
 
-(use-package substitute
-  :config
-	:bind (("C-:" . substitute-target-in-buffer)))
-
 (use-package undo-tree
 	:bind (("C-r" . undo-tree-redo)
 				 ("C-z" . undo-tree-undo))
@@ -305,7 +301,6 @@
 	(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 	(undo-tree-auto-save-history nil)
 	:hook (after-init . global-undo-tree-mode))
-
 
 (use-package visible-mark
 	:custom
