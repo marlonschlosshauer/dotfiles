@@ -453,7 +453,8 @@ language server, applies them, then renames the file on disk."
 		(diredfl-global-mode 1))
 
 (use-package magit
-	:bind (("C-c g" . magit))
+	:bind (("C-c g" . magit)
+				 ("C-c C-g" . magit-file-dispatch))
 	:custom
 	(magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1)))
 
