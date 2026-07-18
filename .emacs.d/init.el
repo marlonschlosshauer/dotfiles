@@ -623,7 +623,7 @@ Falls back to starting a new shell if none exists."
 		(interactive)
 		(eshell/clear-scrollback))
 	:bind (:map eshell-mode-map
-							("C-c C-k" . eshell-clear-scrollback))
+							("M-k" . eshell-clear-scrollback))
 	:custom
 	(eshell-scroll-to-bottom-on-input t)
 	(eshell-highlight-prompt t)
