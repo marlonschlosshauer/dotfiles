@@ -6,6 +6,7 @@
 		("M-s" . mark-whole-symbol)
 		("s-1" . pair-program-mode)
 		("C-M-z" . delete-pair)
+		("M-z" . goto-char-forward)
 		("s-n". end-of-buffer)
 		("s-p". beginning-of-buffer)
 		("s-," . indent-region)
@@ -32,6 +33,14 @@
       (when bounds
         (goto-char (car bounds))
         (set-mark (cdr bounds)))))
+  (defun goto-char-forward (char)
+    "Jump to the next occurrence of CHAR, like `zap-to-char' without deleting."
+    (interactive (list (read-char "Go to char: " t)))
+    (let ((direction (if current-prefix-arg -1 1)))
+      (forward-char direction)
+      (unwind-protect
+          (search-forward (char-to-string char) nil nil direction)
+        (backward-char direction))))
 	(define-minor-mode pair-program-mode
 		"Make it easier for coworkers to understand what is going on."
 		:global t
