@@ -164,6 +164,10 @@
 		(when (file-exists-p path)
 			(load-file path))))
 
+(use-package comint
+	:bind (:map comint-mode-map
+				 ("C-c C-a" . nil)))
+
 (use-package autorevert
 	:custom (global-auto-revert-non-file-buffers t)
 	:init (global-auto-revert-mode t))
