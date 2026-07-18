@@ -7,6 +7,7 @@
 		("s-1" . pair-program-mode)
 		("C-M-z" . delete-pair)
 		("M-z" . goto-char-forward)
+		("M-Z" . zap-to-char)
 		("s-n". end-of-buffer)
 		("s-p". beginning-of-buffer)
 		("s-," . indent-region)
