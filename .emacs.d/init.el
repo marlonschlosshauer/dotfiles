@@ -527,7 +527,9 @@ language server, applies them, then renames the file on disk."
 
 (use-package markdown-mode
 	:mode (("\\.md?\\'" . markdown-mode)
-				 ("\\.mdx?\\'" . markdown-mode)))
+				 ("\\.mdx?\\'" . markdown-mode))
+	:bind (:map markdown-mode-map
+							("C-c C-a" . nil)))
 
 (use-package projectile
 	:hook (after-init . projectile-mode)
