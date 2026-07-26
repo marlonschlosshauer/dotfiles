@@ -605,6 +605,13 @@ Falls back to starting a new shell if none exists."
 	(agent-shell-anthropic-default-session-mode-id "bypassPermissions")
 	(agent-shell-openai-default-session-mode-id "agent-full-access"))
 
+(use-package agent-shell-overlord
+	:after agent-shell
+	:vc (:url "https://github.com/marlonschlosshauer/agent-shell-overlord" :rev :newest)
+	:bind (("C-c s-a" . agent-shell-overlord-show-buffers))
+	:hook (after-init . agent-shell-overlord-mode))
+
+
 (use-package xml-format
 	:defer t)
 
