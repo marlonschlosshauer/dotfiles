@@ -560,19 +560,13 @@ language server, applies them, then renames the file on disk."
 
 (use-package agent-shell
 	:demand
+	:hook (agent-shell-mode . my/agent-shell-busy-prompt-setup)
 	:functions
 	(agent-shell--start
 	 agent-shell--resolve-preferred-config
 	 agent-shell-select-config
 	 agent-shell-toggle)
 	:preface
-	(defun agent-shell-resume ()
-		"Start agent-shell and prompt to resume an existing session."
-		(interactive)
-		(agent-shell--start :config (or (agent-shell--resolve-preferred-config)
-																		(agent-shell-select-config :prompt "Resume agent: ")
-																		(error "No agent config found"))
-												:session-strategy 'prompt))
 	(defun agent-shell-jump ()
 		"Jump to agent-shell without DWIM context collection.
 Falls back to starting a new shell if none exists."
@@ -587,13 +581,10 @@ Falls back to starting a new shell if none exists."
 		 (or (marker-position comint-accum-marker)
 				 (process-mark (get-buffer-process (current-buffer))))
 		 (point-max)))
-	:bind (("C-c C-a" . agent-shell-jump)
-				 ("C-c M-a" . agent-shell)
-				 ("C-c C-S-a" . agent-shell-resume)
+	:bind (("C-ä" . agent-shell)
+				 ("C-Ä" . agent-shell-switch-buffer)
 				 ("C-c h" . agent-shell-new-temp-shell)
 				 :map agent-shell-mode-map
-				 ("RET" . newline)
-				 ("S-<return>" . shell-maker-submit)
 				 ("C-c C-k" . agent-shell-clear-input)
 				 ("C-c r" . agent-shell-queue-request))
 	:custom
@@ -604,8 +595,66 @@ Falls back to starting a new shell if none exists."
 	(agent-shell-header-style nil)
 	(agent-shell-show-welcome-message nil)
 	(agent-shell-show-busy-indicator nil)
+	(agent-shell-session-restore-verbosity 'full)
+	(agent-shell-prefer-viewport-interaction t)
 	(agent-shell-anthropic-default-session-mode-id "bypassPermissions")
-	(agent-shell-openai-default-session-mode-id "agent-full-access"))
+	(agent-shell-openai-default-session-mode-id "agent-full-access")
+	:config
+	(defface my/agent-shell-busy-prompt
+		'((t (:inherit warning :weight bold)))
+		"Face for the latest agent-shell prompt while the agent is busy.")
+
+	(defvar-local my/agent-shell-busy-prompt-overlay nil)
+	(defvar-local my/agent-shell-busy-prompt-subscription nil)
+
+	(defun my/agent-shell-latest-prompt-range ()
+		"Return the latest shell prompt's buffer range."
+		(or (when-let* ((prompt comint-last-prompt)
+									(start (marker-position (car prompt)))
+									(end (marker-position (cdr prompt)))
+									((< start end)))
+				(cons start end))
+			(save-excursion
+				(goto-char (point-max))
+				(when (re-search-backward comint-prompt-regexp nil t)
+					(cons (match-beginning 0) (match-end 0))))))
+
+	(defun my/agent-shell-busy-prompt-set (busy)
+		"Highlight the latest prompt when BUSY, otherwise clear it."
+		(when (overlayp my/agent-shell-busy-prompt-overlay)
+			(delete-overlay my/agent-shell-busy-prompt-overlay)
+			(setq my/agent-shell-busy-prompt-overlay nil))
+		(when-let* ((range (and busy (my/agent-shell-latest-prompt-range))))
+			(setq my/agent-shell-busy-prompt-overlay
+						(make-overlay (car range) (cdr range)))
+			(overlay-put my/agent-shell-busy-prompt-overlay
+								 'face 'my/agent-shell-busy-prompt)
+			(overlay-put my/agent-shell-busy-prompt-overlay 'priority 1000)
+			(overlay-put my/agent-shell-busy-prompt-overlay 'evaporate t)))
+
+	(defun my/agent-shell-busy-prompt-on-event (event)
+		"Update the prompt face in response to an agent-shell EVENT."
+		(pcase (map-elt event :event)
+			('input-submitted
+			 (my/agent-shell-busy-prompt-set t))
+			((or 'turn-complete 'error 'clean-up)
+			 (my/agent-shell-busy-prompt-set nil))))
+
+	(defun my/agent-shell-busy-prompt-setup ()
+		"Use the latest prompt as agent-shell's busy indicator."
+		(unless my/agent-shell-busy-prompt-subscription
+			(setq my/agent-shell-busy-prompt-subscription
+						(agent-shell-subscribe-to
+						 :shell-buffer (current-buffer)
+						 :on-event #'my/agent-shell-busy-prompt-on-event)))
+		(my/agent-shell-busy-prompt-set
+		 (memq (agent-shell-status) '(busy blocked))))
+
+	;; `:hook' handles new shells.  Also cover live shells when this
+	;; use-package form is evaluated interactively.
+	(dolist (buffer (agent-shell-buffers))
+		(with-current-buffer buffer
+			(my/agent-shell-busy-prompt-setup))))
 
 (use-package agent-shell-overlord
 	:after agent-shell
