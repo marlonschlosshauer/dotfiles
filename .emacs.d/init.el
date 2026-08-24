@@ -596,7 +596,6 @@ Falls back to starting a new shell if none exists."
 	(agent-shell-show-welcome-message nil)
 	(agent-shell-show-busy-indicator nil)
 	(agent-shell-session-restore-verbosity 'full)
-	(agent-shell-prefer-viewport-interaction t)
 	(agent-shell-anthropic-default-session-mode-id "bypassPermissions")
 	(agent-shell-openai-default-session-mode-id "agent-full-access")
 	:config
