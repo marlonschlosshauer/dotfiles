@@ -742,11 +742,8 @@ Falls back to starting a new shell if none exists."
 
 (use-package cider
 	:custom
-	(cider-show-error-buffer 'only-in-repl)
-	:bind
-	(:map
-	 cider-mode-map
-	 ("C-l" . cider-repl-clear-buffer)))
+	(cider-show-error-buffer nil)
+	(cider-use-overlays 'both))
 
 (use-package epa
 	:custom
