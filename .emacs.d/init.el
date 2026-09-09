@@ -466,6 +466,11 @@ language server, applies them, then renames the file on disk."
 	:hook
 	(dired-mode . dired-hide-details-mode)
 	:custom
+	(dired-auto-revert-buffer 'dired-directory-changed-p)
+	(dired-deletion-confirmer 'y-or-n-p)
+  (dired-recursive-deletes 'top)
+  (dired-clean-confirm-killing-deleted-buffers nil)
+	(dired-vc-rename-file t)
 	(dired-kill-when-opening-new-dired-buffer t)
 	(dired-listing-switches "-alh")
 	(dired-hide-details-hide-absolute-location t)
