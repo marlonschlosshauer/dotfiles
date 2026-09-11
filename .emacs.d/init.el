@@ -226,7 +226,6 @@
 					 web-mode
 					 scss-mode
 					 nxml-mode
-					 go-mode
 					 emacs-lisp-mode)
 					. rainbow-delimiters-mode))
 
@@ -237,7 +236,6 @@
 					web-mode
 					scss-mode
 					nxml-mode
-					go-mode
 					emacs-lisp-mode)
 				 . rainbow-identifiers-mode))
 
@@ -248,7 +246,6 @@
 					 web-mode
 					 scss-mode
 					 nxml-mode
-					 go-mode
 					 emacs-lisp-mode)
 					. rainbow-mode))
 
@@ -576,17 +573,7 @@ language server, applies them, then renames the file on disk."
 	(agent-shell-show-busy-indicator nil)
 	(agent-shell-session-restore-verbosity 'full)
 	(agent-shell-anthropic-default-session-mode-id "bypassPermissions")
-
-(use-package agent-shell-overlord
-	:after agent-shell
-	:vc (:url "https://github.com/marlonschlosshauer/agent-shell-overlord" :rev :newest)
-	:bind (("C-c s-a" . agent-shell-overlord-show-buffers))
-	:hook (after-init . agent-shell-overlord-mode))
-
 	(agent-shell-openai-default-session-mode-id "agent-full-access"))
-
-(use-package xml-format
-	:defer t)
 
 (use-package eat
 	:config
@@ -657,16 +644,6 @@ language server, applies them, then renames the file on disk."
 	(typescript-ts-mode-indent-offset 2)
 	(jtsx-enable-jsx-element-tags-auto-sync t)
 	(jtsx-enable-electric-open-newline-between-jsx-element-tags t))
-
-(use-package clojure-ts-mode
-	:custom
-	(clojure-ts-comment-macro-font-lock-body t)
-	(clojure-ts-toplevel-inside-comment-form t))
-
-(use-package cider
-	:custom
-	(cider-show-error-buffer nil)
-	(cider-use-overlays 'both))
 
 (use-package epa
 	:custom
