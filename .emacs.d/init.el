@@ -139,8 +139,8 @@
 	;; (global-hl-line-mode)
 	;; Turn on line numbers
 	;; (global-display-line-numbers-mode)
-	;; Set font size 18pt
-	(set-face-attribute 'default nil :height 180)
+	;; Set font size 14pt
+	(set-face-attribute 'default nil :height 140)
 	;; Remove ugly menu bar
 	(menu-bar-mode -1)
 	;; Remove ugly top bar
