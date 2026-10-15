@@ -62,6 +62,8 @@
 	(package-install-upgrade-built-in t)
 	;; Always install stuff
 	(use-package-always-ensure t)
+	;; Block when native compiling
+	(native-comp-jit-compilation nil)
 	;; Set custom file
 	(custom-file (concat user-emacs-directory "/custom.el"))
 	;; Performance
