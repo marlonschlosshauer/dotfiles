@@ -568,6 +568,8 @@ language server, applies them, then renames the file on disk."
 	(agent-shell-header-style nil)
 	(agent-shell-show-welcome-message nil)
 	(agent-shell-show-busy-indicator nil)
+	(agent-shell-busy-submit-default-function #'agent-shell-busy-submit-steer)
+	(agent-shell-busy-submit-override-function #'agent-shell-busy-submit-queue)
 	(agent-shell-session-restore-verbosity 'full)
 	(agent-shell-anthropic-default-session-mode-id "bypassPermissions")
 	(agent-shell-openai-default-session-mode-id "agent-full-access"))
