@@ -195,13 +195,6 @@
 		 (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
 		 (yaml "https://github.com/ikatyang/tree-sitter-yaml"))))
 
-(use-package expreg
-	:bind (("C-=" . expreg-expand)
-         ("C--" . expreg-contract)))
-
-(use-package elisp-demos
-	:hook (help-fns-describe-function-functions . elisp-demos-advice-describe-function-1))
-
 (use-package modus-themes
 	:config
 	(load-theme 'modus-operandi t)
@@ -587,16 +580,15 @@ language server, applies them, then renames the file on disk."
 	(defun eshell-clear-scrollback ()
 		(interactive)
 		(eshell/clear-scrollback))
-	:bind (:map eshell-mode-map
-							("M-k" . eshell-clear-scrollback))
+	:bind
+	("C-c s" . eshell)
+	(:map
+	 eshell-mode-map
+	 ("M-k" . eshell-clear-scrollback))
 	:custom
 	(eshell-scroll-to-bottom-on-input t)
 	(eshell-highlight-prompt t)
 	(eshell-cd-on-directory t))
-
-(use-package conch.el
-	:vc (:url "https://github.com/marlonschlosshauer/conch.el" :rev :newest)
-	:bind ("C-c s" . conch-eshell))
 
 (use-package ivy-xref
 	:after ivy
