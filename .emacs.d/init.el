@@ -5,6 +5,8 @@
 	(:map
 	 global-map
 	 (("M-l" . mark-word)
+		("M-d" . kill-word)
+		("M-D" . backward-kill-word)
 		("M-s" . mark-whole-symbol)
 		("s-1" . pair-program-mode)
 		("C-M-z" . delete-pair)
