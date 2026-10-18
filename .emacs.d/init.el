@@ -180,11 +180,6 @@
 	(savehist-additional-variables
    '(search-ring regexp-search-ring kill-ring)))
 
-(use-package simpler
-	:vc (:url "https://github.com/marlonschlosshauer/simpler.el" :rev :newest)
-	:config
-	(simpler-mode 1))
-
 (use-package treesit
 	:ensure nil
 	:custom
