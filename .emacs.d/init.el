@@ -382,7 +382,7 @@
 	 '((includeCompletionsForImportStatements . t)
 		 (includeCompletionsWithSnippetText . t)
 		 (includeAutomaticOptionalChainCompletions . t)
-		 (importModuleSpecifierPreference . "shortest")
+		 (importModuleSpecifierPreference . "non-relative")
 		 (allowRenameOfImportPath . t)))
 	:functions
 	(lsp-execute-code-action-by-kind
