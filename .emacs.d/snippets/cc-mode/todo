@@ -1,5 +1,4 @@
 # -*- mode: snippet -*-
-# name: todo
 # key: todo
 # --
 // @todo: $1

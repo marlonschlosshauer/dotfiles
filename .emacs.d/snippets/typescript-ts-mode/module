@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: Define module.scss
-# key: module
-# --
-@use "@avemo/ui/styles/mixins.scss" as *;
-
-.wrapper {
-$1
-}

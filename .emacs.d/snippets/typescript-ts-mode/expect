@@ -1,5 +1,4 @@
 # -*- mode: snippet -*-
-# name: expect
 # key: expect
 # --
 // @ts-expect-error $1

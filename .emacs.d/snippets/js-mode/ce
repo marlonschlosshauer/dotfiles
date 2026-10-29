@@ -1,5 +1,4 @@
 # -*- mode: snippet -*-
-# name: ce
 # key:  ce
 # --
-console.error($0)
+console.error($1)

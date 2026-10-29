@@ -1,7 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: useEffect
 # key: ue
 # --
 useEffect(() => {
-    $0
-}, [$1]);
+    $1
+}, [$2]);

@@ -1,5 +1,4 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: const declaration
 # key: const
 # --
-const ${1:name} = ${2:initial};
+const $1 = $2;

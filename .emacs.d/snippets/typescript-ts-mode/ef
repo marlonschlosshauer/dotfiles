@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# key: ef
+# --
+export const $1 = $2($3)$4 => {
+			 $5
+}

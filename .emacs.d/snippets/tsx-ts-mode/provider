@@ -1,5 +1,4 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: Provider
 # key: provider
 # --
 import { createContext, FC, PropsWithChildren, useContext } from "react";

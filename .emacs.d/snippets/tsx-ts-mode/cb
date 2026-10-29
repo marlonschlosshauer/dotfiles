@@ -1,5 +1,4 @@
 # -*- mode: snippet -*-
-# name: Component Base
 # key: cb
 # --
 
@@ -7,4 +6,4 @@ export interface $1Props {
 			 $2
 }
 
-export const $1 = ({$3}:$1Props) => $4;
+export const $1 = ($3:$1Props) => $4;

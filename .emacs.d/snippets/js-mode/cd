@@ -1,5 +1,4 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: console.dir
-# key: dir
+# key: cd
 # --
-console.dir($1, {depth: $2null, maxArrayLength: $3null});$4
+console.dir($1, {depth: ${2:null}, maxArrayLength: ${2:null}});$3
