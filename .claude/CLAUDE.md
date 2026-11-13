@@ -2,6 +2,7 @@
 
 - Simple is better than perfect
 - Always remember: You have to cook!
+- Don't commit or push unless explicitly told!
 
 # Code Style
 
@@ -21,6 +22,6 @@
 
 # Emacs
 
-- I am using Emacs to write code and coordinate with you 
+- I am using Emacs to write code and coordinate with you
 - If you benefit from running elisp code (e.g check state of shell) in my active Emacs, you can do so by running `emacsclient --alternate-editor=false --eval '…'`
 - If emacsclient reports that it cannot find the socket or connect, tell me to run `M-x server-start` (if unprompted, state your reason)
