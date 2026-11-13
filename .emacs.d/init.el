@@ -311,7 +311,7 @@
 		 (?\{ . ?\})))
 	:hook (after-init . electric-pair-mode))
 
-(use-package apheleia
+(use-package prettier-js
 		:hook ((tsx-ts-mode
 					typescript-ts-mode
 					js-ts-mode
@@ -321,7 +321,7 @@
 					markdown-mode
 					jtsx-jsx-mode
 					jtsx-tsx-mode)
-				 . apheleia-mode))
+				 . prettier-js-mode))
 
 (use-package emmet-mode
 	:hook ((jtsx-jsx-mode
