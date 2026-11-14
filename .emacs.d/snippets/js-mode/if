@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# key:  cl
+# key:  if
 # --
 if ($1) {
   $2
